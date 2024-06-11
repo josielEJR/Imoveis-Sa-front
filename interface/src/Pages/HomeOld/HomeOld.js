@@ -2,7 +2,7 @@ import React from 'react'
 import ExemplaresVenda from '../../components/ExemplaresVenda.js'
 import ExemplaresAluguel from '../../components/ExemplaresAluguel.js'
 import Footer from '../../components/Footer.js'
-import Hero from '../../layouts/Home/sections/Hero/index.tsx'
+import Hero from '../../layouts/Home/sections/Hero/index.jsx'
 // import { useHref } from 'react-router-dom'
 
 const HomeOld = () => {
