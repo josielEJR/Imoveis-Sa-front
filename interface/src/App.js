@@ -6,7 +6,7 @@ import NavBar from './components/NavBar.js';
 import Login from './Pages/Login/Login.js'
 import LoginConsultor from './Pages/LoginConsultor/LoginConsultor.js'
 import Cadastrar from './Pages/Register/Cadastrar.js'
-import Home from './Pages/Home/Home.js'
+import HomeOld from './Pages/HomeOld/HomeOld.js'
 import Clientes from './Pages/Clientes/Clientes.js'
 import Comprar from './Pages/Comprar/Comprar.js'
 import Alugar from './Pages/Alugar/Alugar.js'
@@ -14,13 +14,14 @@ import SobreNos from './Pages/SobreNos/SobreNos.js'
 import AnunciarImovel from './Pages/Anunciar/AnunciarImovel.js'
 import Imovel from './Pages/Imovel/Imovel.js'
 
+
 const App = () => {
   return (
     <div className="text-xl font-bitter font-normal text-center h-full bg-blue-600">
       <BrowserRouter>
         <NavBar />
         <Routes>
-          <Route path='/home' element={<Home />} />
+          
           <Route path='/comprar' element={<Comprar />} />
           <Route path='/alugar' element={<Alugar />} />
           <Route path='/sobrenos' element={<SobreNos />} />
@@ -31,6 +32,7 @@ const App = () => {
           <Route path='/cadastrar' element={<Cadastrar />} />
           <Route path='/' element={<Clientes />} />
           <Route path='*' element={<Cadastrar />} />
+          <Route path='/homeold' element={<HomeOld />} />
         </Routes>
       </BrowserRouter>
     </div>
