@@ -6,7 +6,7 @@ import NavBar from './components/NavBar.js';
 import Login from './Pages/Login/Login.js'
 import LoginConsultor from './Pages/LoginConsultor/LoginConsultor.js'
 import Cadastrar from './Pages/Register/Cadastrar.js'
-import HomeOld from './Pages/HomeOld/HomeOld.js'
+import Home from './Pages/Home/Home.js'
 import Clientes from './Pages/Clientes/Clientes.js'
 import Comprar from './Pages/Comprar/Comprar.js'
 import Alugar from './Pages/Alugar/Alugar.js'
@@ -32,7 +32,7 @@ const App = () => {
           <Route path='/cadastrar' element={<Cadastrar />} />
           <Route path='/' element={<Clientes />} />
           <Route path='*' element={<Cadastrar />} />
-          <Route path='/homeold' element={<HomeOld />} />
+          <Route path='/home' element={<Home />} />
         </Routes>
       </BrowserRouter>
     </div>
