@@ -1,8 +1,12 @@
 import React from 'react'
+import { Container } from './style'
+
 
 const Slider = () => {
   return (
-    <div>Slider</div>
+    <Container>
+      olá
+    </Container>
   )
 }
 

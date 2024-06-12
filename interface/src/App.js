@@ -13,6 +13,7 @@ import Alugar from './Pages/Alugar/Alugar.js'
 import SobreNos from './Pages/SobreNos/SobreNos.js'
 import AnunciarImovel from './Pages/Anunciar/AnunciarImovel.js'
 import Imovel from './Pages/Imovel/Imovel.js'
+import Home from './Pages/home.js';
 
 
 const App = () => {
@@ -21,7 +22,7 @@ const App = () => {
       <BrowserRouter>
         <NavBar />
         <Routes>
-          
+          <Route path='/home' element={<Home/>}/>
           <Route path='/comprar' element={<Comprar />} />
           <Route path='/alugar' element={<Alugar />} />
           <Route path='/sobrenos' element={<SobreNos />} />
