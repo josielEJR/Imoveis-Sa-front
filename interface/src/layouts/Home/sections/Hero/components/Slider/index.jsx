@@ -5,7 +5,7 @@ import { Container } from './style'
 const Slider = () => {
   return (
     <Container>
-      olá
+      <div>olá, mundo</div>
     </Container>
   )
 }
