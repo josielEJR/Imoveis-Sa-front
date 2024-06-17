@@ -77,7 +77,7 @@ const Login = () => {
   }
 
   return (
-    <div className='min-h-screen bg-white flex'>
+    <div className='min-h-screen bg-white flex overflow-hidden'>
       <div className='hidden lg:block relative w-0 flex-1 bg-gray-900'>
         <div className='flex h-full justify-center items-center'>
           <img src="logo.svg" alt="" />

@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 //components
-import NavBar from './components/NavBar.js';
+import NavBar from './components/Navbar/index.jsx';
 
 // Pages
 import Login from './Pages/Login/Login.js'
@@ -17,11 +17,10 @@ import Imovel from './Pages/Imovel/Imovel.js'
 
 const App = () => {
   return (
-    <div className="text-xl font-bitter font-normal text-center h-full bg-blue-600">
+    <>
       <BrowserRouter>
-        <NavBar />
+      <NavBar />
         <Routes>
-          
           <Route path='/comprar' element={<Comprar />} />
           <Route path='/alugar' element={<Alugar />} />
           <Route path='/sobrenos' element={<SobreNos />} />
@@ -35,8 +34,7 @@ const App = () => {
           <Route path='/home' element={<Home />} />
         </Routes>
       </BrowserRouter>
-    </div>
-
+    </>
   );
 }
 
