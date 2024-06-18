@@ -144,37 +144,37 @@ padding: 20px;
 export const Direita = styled.button`
     width: 45px;
     height: 45px;
-    outline: none;
-    border: none;
-    background: none;
+    display: flex;
+    align-items: center;
     background-color: rgba(0, 0, 0, 0.5);
     cursor: pointer;
-    padding: 0;
     right: 30px;
     position: absolute;
     top: 50%;
     border-radius: 50%;
-    color: white;
-    box-shadow: 0px 4px 60px 20px rgba(3, 3, 3, 0.9), 
-        inset 0 -3em 3em rgba(3, 3, 3, 0.5);
-    transform: translate(0, -50%);
-`;
-export const Esquerda = styled.button`
-    width: 45px;
-    height: 45px;
-    outline: none;
-    border: none;
-    background: none;
-    background-color: rgba(0, 0, 0, 0.5);
-    cursor: pointer;
-    padding: 0;
-    position: absolute;
-    left: 30px;
-    top: 50%;
-    border-radius: 50%;
-    color: white;
+    color: #f2f2f2;
     box-shadow: 0px 4px 60px 20px rgba(3, 3, 3, 0.9), 
         inset 0 -3em 3em rgba(3, 3, 3, 0.5);
     transform: translate(0, -50%);
 `;
 
+export const Esquerda = styled.button`
+    width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+    right: 30px;
+    position: absolute;
+    top: 50%;
+    border-radius: 50%;
+    color: #f2f2f2;
+    box-shadow: 0px 4px 60px 20px rgba(3, 3, 3, 0.9), 
+        inset 0 -3em 3em rgba(3, 3, 3, 0.5);
+    transform: translate(0, -50%);
+`;
+
+export const Icon = styled.i`
+    padding-left: 12px;
+`;

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
-import {  Busca, ButtonPrice, Codigo, Container, Filtro, ImageContainer, NavButton,  TextArea, Bairros, Tipo, Comprar,  Direita, Esquerda } from './style'
+import {  Busca, ButtonPrice, Codigo, Container, Filtro, ImageContainer, NavButton,  TextArea, Bairros, Tipo, Comprar,  Direita, Esquerda, Icon } from './style'
 import { useNavigate } from 'react-router-dom'
-import { StaticImage } from "gatsby-plugin-image"
+import { FaAngleRight } from "react-icons/fa6"
 
 
 
@@ -65,9 +65,9 @@ const Slider = ({ config }) => {
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}  />
       <Direita onClick={next} >
-        <StaticImage
-            src="../../../../../../imagens/arrow-right-solid.svg"
-        />
+        <Icon>
+          <FaAngleRight />
+        </Icon>
       </Direita>
       <Esquerda onClick={prev} >
       </Esquerda>
