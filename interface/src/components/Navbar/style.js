@@ -1,18 +1,15 @@
 import styled from 'styled-components'
 
-export const NavContainer = styled.div`
+export const Nav = styled.nav`
     height: 95px;
     width: 100%;
     background-color: #F2F2F2;
-    position: sticky;
     top: 0;
     overflow: visible;
     box-shadow: 0px 4px 8px 0px #00000026;
-`
-
-export const Nav = styled.nav`
     display: flex;
     justify-content: space-between;
+    position: sticky;
 `
 
 export const Logo = styled.div`

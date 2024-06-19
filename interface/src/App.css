@@ -10,3 +10,7 @@
     width: 240px;
     box-sizing: border-box;
 }
+
+#root{
+    max-width: 1680px;
+}

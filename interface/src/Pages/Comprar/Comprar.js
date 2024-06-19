@@ -16,11 +16,12 @@ const Comprar = () => {
     const [precoVendaMin, setPrecoVendaMin] = useState(0)
     const [precoVendaMax, setPrecoVendaMax] = useState(0)
 
+    // decodeURIComponent(window.location.href.replace('http://localhost:3000/comprar?cidade=', '')) para formatar a string corretamente
+
     const requestOptions = {
         method: "GET",
         redirect: "follow"
     };
-
     useEffect(() => {
         fetch("http://localhost:3001/imoveis/venda", requestOptions)
             .then((response) => response.text())
