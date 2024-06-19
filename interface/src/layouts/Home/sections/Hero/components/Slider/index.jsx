@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react'
-import {  Busca, ButtonPrice, Codigo, Container, Filtro, ImageContainer, NavButton,  TextArea, Bairros, Tipo, Comprar,  Direita, Esquerda, Icon } from './style'
+import {   ButtonPrice,  Container,  ImageContainer, NavButton,  TextArea,  Direita, Esquerda, Icon,  } from './style'
 import { useNavigate } from 'react-router-dom'
-import { FaAngleRight } from "react-icons/fa6"
+import { FaAngleLeft, FaAngleRight } from "react-icons/fa6"
+//import FiltroBusca from '../FiltroBusca'
 
 
 
@@ -15,15 +16,13 @@ const Slider = ({ config }) => {
     setImageIndex((state) => (state += 1))
     if (ImageIndex === config.length - 1) setImageIndex(0)
     setSelectedButton((state) => (state += 1))
-    if (selectedButton === config.length - 1) setSelectedButton(0)
-      console.log(selectedButton)
-   
+    if (selectedButton === config.length ) setSelectedButton(1)
     }
   const prev = () => {
     setImageIndex((state) => (state -= 1))
     if (ImageIndex === 0) setImageIndex(config.length  - 1)
     setSelectedButton((state) => (state -= 1))
-    if (selectedButton === 0) setSelectedButton(config.length - 1)
+    if (selectedButton === 1) setSelectedButton(config.length)
     }
 
   const handleButtonClick = (buttonIndex ) => {
@@ -32,14 +31,14 @@ const Slider = ({ config }) => {
   }
 
   const handleNavigateToPage = () => {
-    navigate("/imovel?id=6")
+    navigate(config[ImageIndex].url)
   }
 
-{/*   useEffect(() => {
+{ /*   useEffect(() => {
     const interval = setInterval(() => {
       if(!paused){
         setImageIndex((prevIndex) => (prevIndex + 1) % config.length)}},
-        6000)
+        600)
         return()=>{
           if(interval){
             clearInterval(interval)
@@ -49,14 +48,14 @@ const Slider = ({ config }) => {
   useEffect(() => {
     const interval = setInterval(() => {
       if(!paused){
-        setSelectedButton((prevIndex) => (prevIndex + 1) % config.length)}},
-        6000)
+        setSelectedButton((prevIndex) => (prevIndex ) % config.length + 1)}},
+        600)
         return()=>{
           if(interval){
             clearInterval(interval)
           }
         }
-  }) */}
+  }) */ }
 
   return (
     <Container>
@@ -70,18 +69,16 @@ const Slider = ({ config }) => {
         </Icon>
       </Direita>
       <Esquerda onClick={prev} >
+      <Icon>
+          <FaAngleLeft />
+      </Icon>
       </Esquerda>
-      
       <TextArea>
         Veja aqui alguns de nossos destaque, os melhores imóveis da região  
       </TextArea>
-      
-      <ButtonPrice
-        onClick={handleNavigateToPage}
-      >
-        ALUGUEL | R$ 15.000
+      <ButtonPrice onClick={handleNavigateToPage}>
+        {config[ImageIndex].text} | R$ {config[ImageIndex].price}
       </ButtonPrice>
-      
       <NavButton
         width={selectedButton === 1 ? 65.28 : 26.38}
         left={ selectedButton === 2 ? 864.05 : 879.75}
@@ -103,19 +100,6 @@ const Slider = ({ config }) => {
         onClick={() => handleButtonClick(3)}
       >  
       </NavButton>
-      <Filtro/>
-        <Busca
-      
-        > Buscar </Busca>/
-        <Codigo 
-        placeholder='Código'
-      
-        />
-        <Bairros > selecione os bairros</Bairros>
-        <Tipo> Tipo de imóveis </Tipo>
-        <Comprar> Comprar </Comprar>
-  
-      
     </Container>
   )
 }

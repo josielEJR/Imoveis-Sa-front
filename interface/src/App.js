@@ -6,7 +6,7 @@ import NavBar from './components/NavBar.js';
 import Login from './Pages/Login/Login.js'
 import LoginConsultor from './Pages/LoginConsultor/LoginConsultor.js'
 import Cadastrar from './Pages/Register/Cadastrar.js'
-import Home from './Pages/Home/Home.js'
+
 import Clientes from './Pages/Clientes/Clientes.js'
 import Comprar from './Pages/Comprar/Comprar.js'
 import Alugar from './Pages/Alugar/Alugar.js'
@@ -14,6 +14,7 @@ import SobreNos from './Pages/SobreNos/SobreNos.js'
 import AnunciarImovel from './Pages/Anunciar/AnunciarImovel.js'
 import Imovel from './Pages/Imovel/Imovel.js'
 import Home from './Pages/home.js';
+import HomeOld from './Pages/Home/HomeOld.js';
 
 
 const App = () => {
@@ -22,7 +23,7 @@ const App = () => {
       <BrowserRouter>
         <NavBar />
         <Routes>
-          <Route path='/home' element={<Home/>}/>
+          <Route path='/homeold' element={<HomeOld/>}/>
           <Route path='/comprar' element={<Comprar />} />
           <Route path='/alugar' element={<Alugar />} />
           <Route path='/sobrenos' element={<SobreNos />} />
