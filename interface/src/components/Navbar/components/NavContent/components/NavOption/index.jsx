@@ -9,19 +9,19 @@ import { ContentLink } from '../../style'
 
 import Itens from './itens'
 
-const NavOption = ({ tipo, url }) => {
+const NavOption = ({ tipo, url, right }) => {
 
     const [dropdownVisible, setDropdownVisible] = useState(false)
-
-    const redirect = tipo.toLowerCase()
-
+    
     const handleMouseEnter = () => {
         setDropdownVisible(true)
     }
-
+    
     const handleMouseLeave = () => {
         setDropdownVisible(false)
     }
+    
+    const redirect = tipo.toLowerCase()
 
     return (
         <ContentLink onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
@@ -29,7 +29,8 @@ const NavOption = ({ tipo, url }) => {
                 to={`/${redirect}`}
             ><span className='p-1'>{tipo}</span><FontAwesomeIcon icon={faAngleDown} /></Link>
 
-            {dropdownVisible && <Itens lista={url} redirect={redirect} />}
+            {dropdownVisible && <Itens lista={url} redirect={redirect} right={right} />}
+            {/* <Itens lista={url} redirect={redirect} right={right} /> */}
         </ContentLink>
     )
 }

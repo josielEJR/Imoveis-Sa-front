@@ -2,11 +2,20 @@ import { Link } from 'react-router-dom'
 
 import { useState, useEffect } from 'react'
 
-import { Dropdown, Title, Li } from '../../style'
+import { Dropdown, Title, SideDropdown, DropdownContent, Li } from '../../style'
 
-const Itens = ({ lista, redirect }) => {
+const Itens = ({ lista, redirect, right }) => {
 
     const [cidades, setCidades] = useState([])
+    const [selected, setSelected] = useState('')
+
+    const handleMouseEnter = (value) => {
+        setSelected(value)
+    }
+
+    const handleMouseLeave = () => {
+        setSelected('')
+    }
 
     useEffect(() => {
         if (lista) {
@@ -26,20 +35,49 @@ const Itens = ({ lista, redirect }) => {
     const setDropdown = () => {
         if (lista) {
             return (
-                <Dropdown>
+                <Dropdown onMouseLeave={handleMouseLeave}>
                     <Title>Cidade</Title>
                     <ul>
                         {cidades.map(elem => (
-                            <Li key={elem.cidade}>
-                                <Link
-                                    to={{
-                                        pathname: `/${redirect}`,
-                                        search: `?cidade=${elem.cidade}`
-                                    }}
-                                >{elem.cidade}</Link>
+                            <Li key={elem.cidade} onMouseEnter={() => handleMouseEnter(elem.cidade)}>
+                                <button>{elem.cidade}</button>
                             </Li>
                         ))}
                     </ul>
+
+                    {selected &&
+                        <SideDropdown right={right}>
+                            <DropdownContent>
+                            <Title>Tipo de imóvel</Title>
+                                <ul>
+                                    <Li>
+                                        <Link
+                                            to={{
+                                                pathname: `/${redirect}`,
+                                                search: `?cidade=${selected}&tipo=casa`
+                                            }}
+                                        >Casas</Link>
+                                    </Li>
+                                    <Li>
+                                        <Link
+                                            to={{
+                                                pathname: `/${redirect}`,
+                                                search: `?cidade=${selected}&tipo=apartamento`
+                                            }}
+                                        >Apartamentos</Link>
+                                    </Li>
+                                    <Li>
+                                        <Link
+                                            to={{
+                                                pathname: `/${redirect}`,
+                                                search: `?cidade=${selected}`
+                                            }}
+                                        >Todos</Link>
+                                    </Li>
+                                </ul>
+                            </DropdownContent>
+                        </SideDropdown>
+                    }
                 </Dropdown>
             )
         } else {

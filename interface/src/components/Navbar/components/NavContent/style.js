@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled, { keyframes } from 'styled-components'
 
 export const  NavContent = styled.div`
     margin-right: 50px;
@@ -21,7 +21,34 @@ export const Dropdown = styled.div`
     box-sizing: border-box;
     padding: 29px;
     box-shadow: 0px 4px 8px 0px #00000026;
+    border-radius: 3px;
+`
+
+export const SideDropdown = styled.div`
+    position: absolute;
+    width: 280px;
+    right: ${props => props.right+"px"};
+    top: 0;
+    font-weight: 300;
+    font-size: 20px;
+    background-color: #F2F2F2;
+    box-sizing: border-box;
+    padding: 29px;
+    box-shadow: 0px 4px 8px 0px #00000026;
     overflow: hidden;
+    border-radius: 3px;
+`
+
+const textSlide = keyframes`
+    0% {left: 150%;}
+    100% {left: 0;}
+`
+
+export const DropdownContent = styled.div`
+    position: relative;
+    left: 0;
+    animation-name: ${textSlide};
+    animation-duration: 0.4s;
 `
 
 export const Title = styled.div`
@@ -32,5 +59,6 @@ export const Title = styled.div`
 `
 
 export const Li = styled.li`
-    margin-top: 14px;
+    padding-top: 14px;
+    font-weight: 500px;
 `
