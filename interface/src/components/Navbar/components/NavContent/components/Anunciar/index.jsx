@@ -8,14 +8,11 @@ import { ContentLink } from '../../style'
 const Anunciar = () => {
     return (
         <>
-            {localStorage.tipo != undefined ?
-                <ContentLink>
-                    <NavLink to="/anunciarimovel">
-                        <span className='p-1'>Anunciar</span><FontAwesomeIcon icon={faAngleDown} />
-                    </NavLink>
-                </ContentLink>
-                :
-                ''}
+            <ContentLink>
+                <NavLink to="/anunciarimovel">
+                    <span className='p-1'>Anunciar</span><FontAwesomeIcon icon={faAngleDown} />
+                </NavLink>
+            </ContentLink>
         </>
     )
 }

@@ -1,30 +1,38 @@
 import { NavLink } from 'react-router-dom'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCircleUser } from '@fortawesome/free-solid-svg-icons'
+import { faCircleUser } from '@fortawesome/free-regular-svg-icons'
 
-import { ContentLink } from '../../style'
+import { ContentLink, Dropdown } from '../../style'
 
 const Login = () => {
 
     const handleLogin = () => {
         if (localStorage.length === 0) {
             return (
-                <NavLink
-                    to="/login"
-                    className="mr-4">
-                    <FontAwesomeIcon icon={faCircleUser} /> Entrar
-                </NavLink>
+                <ContentLink>
+                    <NavLink
+                        to="/login"
+                    >
+                        <FontAwesomeIcon icon={faCircleUser} /> Entrar
+                    </NavLink>
+                </ContentLink>
             )
         } else {
-            return <button id='usuario'><FontAwesomeIcon icon={faCircleUser} /> {localStorage.currentUserNome}</button>
+            return (
+                <ContentLink>
+                    <button id='usuario'><FontAwesomeIcon icon={faCircleUser} style={{fill: "white"}} /> {localStorage.currentUserNome}</button>
+
+
+                </ContentLink>
+            )
         }
     }
 
     return (
-        <ContentLink>
-            <button id='usuario'><FontAwesomeIcon icon={faCircleUser} /> {localStorage.currentUserNome}</button>
-        </ContentLink>
+        <>
+            {handleLogin()}
+        </>
     )
 }
 

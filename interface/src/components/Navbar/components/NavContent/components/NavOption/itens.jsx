@@ -2,6 +2,9 @@ import { Link } from 'react-router-dom'
 
 import { useState, useEffect } from 'react'
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faAngleRight } from '@fortawesome/free-solid-svg-icons'
+
 import { Dropdown, Title, SideDropdown, DropdownContent, Li } from '../../style'
 
 const Itens = ({ lista, redirect, right }) => {
@@ -39,8 +42,8 @@ const Itens = ({ lista, redirect, right }) => {
                     <Title>Cidade</Title>
                     <ul>
                         {cidades.map(elem => (
-                            <Li key={elem.cidade} onMouseEnter={() => handleMouseEnter(elem.cidade)}>
-                                <button>{elem.cidade}</button>
+                            <Li key={elem.cidade} onMouseEnter={() => handleMouseEnter(elem.cidade)} weight={selected === elem.cidade ? "bold" : ''}>
+                                <button>{elem.cidade}</button> {selected === elem.cidade ? <FontAwesomeIcon icon={faAngleRight} /> : ''}
                             </Li>
                         ))}
                     </ul>
@@ -48,31 +51,16 @@ const Itens = ({ lista, redirect, right }) => {
                     {selected &&
                         <SideDropdown right={right}>
                             <DropdownContent>
-                            <Title>Tipo de imóvel</Title>
+                                <Title>Tipo de imóvel</Title>
                                 <ul>
                                     <Li>
-                                        <Link
-                                            to={{
-                                                pathname: `/${redirect}`,
-                                                search: `?cidade=${selected}&tipo=casa`
-                                            }}
-                                        >Casas</Link>
+                                        <a href={`/${redirect}?cidade=${selected}&tipo=casa`}>Casas</a>
                                     </Li>
                                     <Li>
-                                        <Link
-                                            to={{
-                                                pathname: `/${redirect}`,
-                                                search: `?cidade=${selected}&tipo=apartamento`
-                                            }}
-                                        >Apartamentos</Link>
+                                        <a href={`/${redirect}?cidade=${selected}&tipo=apartamento`}>Apartamentos</a>
                                     </Li>
                                     <Li>
-                                        <Link
-                                            to={{
-                                                pathname: `/${redirect}`,
-                                                search: `?cidade=${selected}`
-                                            }}
-                                        >Todos</Link>
+                                        <a href={`/${redirect}?cidade=${selected}`}>Todos</a>
                                     </Li>
                                 </ul>
                             </DropdownContent>

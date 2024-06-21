@@ -57,22 +57,15 @@ const Login = () => {
             localStorage.setItem("currentUserCelular", userCelular)
           })
 
-        return window.location.reload()
+        setTimeout(() => {
+          window.location.reload(false)
+        }, 500)
 
       } else {
         setError("Usuario não cadastrado ")
       }
     } catch (error) {
       setError("Usuario não cadastrado ")
-    }
-  }
-
-  let userID = null
-  const pegarIdUsuario = async () => {
-    try {
-      const data = await fetch('http://localhost:3001/')
-    } catch (err) {
-      throw err
     }
   }
 

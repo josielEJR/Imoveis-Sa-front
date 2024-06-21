@@ -12,15 +12,15 @@ import Itens from './itens'
 const NavOption = ({ tipo, url, right }) => {
 
     const [dropdownVisible, setDropdownVisible] = useState(false)
-    
+
     const handleMouseEnter = () => {
         setDropdownVisible(true)
     }
-    
+
     const handleMouseLeave = () => {
         setDropdownVisible(false)
     }
-    
+
     const redirect = tipo.toLowerCase()
 
     return (
