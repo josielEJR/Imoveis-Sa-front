@@ -14,7 +14,7 @@ export const ContentLink = styled.span`
 
 export const Dropdown = styled.div`
     position: absolute;
-    width: 270px;
+    width: 263px;
     right: ${props => props.right+"px"};
     font-weight: 300;
     font-size: 18px;
@@ -59,7 +59,8 @@ export const Title = styled.div`
 `
 
 export const Li = styled.li`
-    padding-top: 14px;
+    padding-top: 7px;
+    padding-bottom: 7px;
     font-weight: ${props => props.weight || ''};
     display: flex;
     justify-content: space-between;
