@@ -6,7 +6,7 @@ export const  NavContent = styled.div`
 
 export const ContentLink = styled.span`
     display: inline-block;
-    color: #141414;
+    color: #EEEEEE;
     margin: 28px 20px 26px 20px;
     font-weight: 300px;
     font-size: 20px;
@@ -18,7 +18,7 @@ export const Dropdown = styled.div`
     right: ${props => props.right+"px"};
     font-weight: 300;
     font-size: 18px;
-    background-color: #F2F2F2;
+    background-color: #050505;
     box-sizing: border-box;
     padding: 29px;
     box-shadow: 0px 4px 8px 0px #00000026;
@@ -32,7 +32,7 @@ export const SideDropdown = styled.div`
     top: 0;
     font-weight: 300;
     font-size: 18px;
-    background-color: #F2F2F2;
+    background-color: #050505;
     box-sizing: border-box;
     padding: 29px;
     box-shadow: 0px 4px 8px 0px #00000026;

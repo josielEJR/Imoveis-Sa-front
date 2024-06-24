@@ -23,7 +23,7 @@ const Login = () => {
                 <ContentLink>
                     <button id='usuario'><FontAwesomeIcon icon={faCircleUser} style={{fill: "white"}} /> {localStorage.currentUserNome}</button>
 
-
+                    {/* inserir dropdown aqui */}
                 </ContentLink>
             )
         }
