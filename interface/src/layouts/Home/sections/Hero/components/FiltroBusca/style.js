@@ -102,14 +102,16 @@ export const IconDrop = styled.i`
     cursor: pointer;
 `
 export const ListaCompra = styled.ul`
-    position: relative;
-    background: #ffffff;
     width: 228.47px;
-    height: 65.28px;
-    right: 20px;
-    margin-top: 20px;
+    position: relative;
     padding: 20px;
+    transition: opacity 0.5s ease, max-height 0.5s ease;
+    margin-top: 20px;
+    background: #ffffff;
+    flex-direction: column;
+    right: 20px;
     border-radius: 8px;
+    border: 2px solid #000;
 `
 export const LiTipo = styled.li`
     right: 5px;
@@ -121,26 +123,49 @@ export const UlOptions = styled.ul`
     position: relative;
     padding: 20px;
     margin-top: 20px;
+    transition: opacity 0.1s ease, max-height 0.1s ease;
     background: #ffffff;
     display: flex;
     flex-direction: column;
     width: 326.3px;
     right: 20px;
     border-radius: 8px;
-    transition: opacity 0.3s ease, max-height 0.3s ease;
+    border: 2px solid #000;
 `
 export const UlBairros = styled.ul`
     position: relative;
     padding: 20px;
+    transition: opacity 0.5s ease, max-height 0.5s ease;
     margin-top: 20px;
     background: #ffffff;
     flex-direction: column;
     width: 326.3px;
     right: 20px;
     border-radius: 8px;
+    border: 2px solid #000;
 `
 
-export const ListaBairros = styled.li`
+export const CheckBoxWrapper = styled.div`
     display: flex;
+    align-items: center;
+`
+export const CheckBox = styled.input`
+    margin-right: 10px;
+
+`
+export const CheckBoxLabel = styled.label`
+    cursor: pointer;
+
+`
+export const ErroText = styled.ul`
+    position: absolute;
+    width: 163.19px;
+    height: auto;
+    top: 707.36px;
+    left: 1527.5px;
     background: #ffffff;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+
 `
