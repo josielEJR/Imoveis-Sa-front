@@ -6,8 +6,6 @@ const ProdutoPreview = ({ imovelID, titulo, rua, numero, bairro, cidade, tamanho
         return new Intl.NumberFormat('de-DE', { currency: 'BRL' }).format(preco)
     }
 
-    console.log(disponibilidade)
-
     const precoImovel = () => {
         // {precoVenda > 0 ? <span>R$ {formatarPreco(precoVenda)}</span> : null} {precoVenda > 0 && precoAluguel > 0 ? 'ou' : null} {precoAluguel > 0 ? <span>R$ {formatarPreco(precoAluguel)}/mês</span> : null}
         if(disponibilidade === 'venda'){

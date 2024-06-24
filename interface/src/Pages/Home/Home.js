@@ -6,7 +6,7 @@ import Footer from '../../components/Footer.js'
 
 const HomeOld = () => {
   return (
-    <div className='flex h-100 w-full flex-wrap bg-gray-100'>
+    <div className='flex h-100 w-full flex-wrap bg-gray-100 text-xl font-bitter font-normal text-center'>
       <main className='m-2 w-full'>
         <section id='apresentacao' className='grid grid-cols-3 mb-32'>
           <div className='col-span-1 m-2 p-2'>

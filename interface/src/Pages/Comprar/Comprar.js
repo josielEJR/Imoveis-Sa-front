@@ -20,9 +20,12 @@ const Comprar = () => {
         method: "GET",
         redirect: "follow"
     };
-
     useEffect(() => {
-        fetch("http://localhost:3001/imoveis/venda", requestOptions)
+        let query = `?disponibilidade=venda`
+
+        // console.log(decodeURIComponent(window.location.href.replace('http://localhost:3000/comprar?', '')))
+
+        fetch("http://localhost:3001/imoveis/busca" + query, requestOptions)
             .then((response) => response.text())
             .then((result) => JSON.parse(result))
             .then((produtos) => setProdutos(produtos))
