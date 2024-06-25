@@ -25,9 +25,7 @@ const NavOption = ({ tipo, url, right }) => {
 
     return (
         <ContentLink onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
-            <Link
-                to={`/${redirect}`}
-            ><span className='p-1'>{tipo}</span><FontAwesomeIcon icon={faAngleDown} /></Link>
+            <Link><span className='p-1'>{tipo}</span><FontAwesomeIcon icon={faAngleDown} /></Link>
 
             {dropdownVisible && <Itens lista={url} redirect={redirect} right={right} />}
             {/* <Itens lista={url} redirect={redirect} right={right} /> */}

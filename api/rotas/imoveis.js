@@ -272,4 +272,7 @@ router.get('/:id', (req, res) => {
     })
 })
 
+// está acontecendo algum conflito desta linha para baixo, provavelmente relacionado a rota acima
+// nenhuma rota que está abaixo da rota de cima funciona
+
 module.exports = router

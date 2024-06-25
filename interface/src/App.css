@@ -11,6 +11,8 @@
     box-sizing: border-box;
 }
 
-#root{
-    max-width: 1680px;
+@media (max-width: 375px) {
+    #root {
+        overflow: hidden;
+    }
 }
