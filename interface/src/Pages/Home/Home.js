@@ -10,8 +10,7 @@ import Hero from '../../layouts/Home/sections/Hero/index.jsx'
 const Home = () => {
   return (
     <div className='flex h-100 w-full flex-wrap bg-gray-100'>
-    <Hero />
-    <div className='flex h-100 w-full flex-wrap bg-gray-100 text-xl font-bitter font-normal text-center'>
+      <Hero />
       <main className='m-2 w-full'>
         <section id='apresentacao' className='grid grid-cols-3 mb-32'>
           <div className='col-span-1 m-2 p-2'>
