@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react'
 import ProdutoPreview from '../../components/ProdutoPreview.js'
 import Footer from '../../components/Footer.js'
 
-const Comprar = () => {
+const Imoveis = () => {
 
     const [produtos, setProdutos] = useState([]);
 
@@ -13,19 +13,16 @@ const Comprar = () => {
     const [quartos, setQuartos] = useState(0)
     const [banheiros, setBanheiros] = useState(0)
     const [qualidade, setQualidade] = useState(0)
-    const [precoVendaMin, setPrecoVendaMin] = useState(0)
-    const [precoVendaMax, setPrecoVendaMax] = useState(0)
+    const [precoAluguelMin, setPrecoAluguelMin] = useState(0)
+    const [precoAluguelMax, setPrecoAluguelMax] = useState(0)
 
     const requestOptions = {
         method: "GET",
         redirect: "follow"
     };
+
     useEffect(() => {
-        let query = `?disponibilidade=venda`
-
-        // console.log(decodeURIComponent(window.location.href.replace('http://localhost:3000/comprar?', '')))
-
-        fetch("http://localhost:3001/imoveis/busca" + query, requestOptions)
+        fetch("http://localhost:3001/imoveis", requestOptions)
             .then((response) => response.text())
             .then((result) => JSON.parse(result))
             .then((produtos) => setProdutos(produtos))
@@ -33,7 +30,7 @@ const Comprar = () => {
     }, [])
 
     const filtrarProdutos = () => {
-        let query = `?disponibilidade=venda&${tipo ? `tipo=${tipo}&` : ''}${bairro ? `bairro=${bairro}&` : ''}${cidade ? `cidade=${cidade}&` : ''}${quartos ? `quartos=${quartos}&` : ''}${banheiros ? `banheiros=${banheiros}&` : ''}${qualidade ? `qualidadeMin=${qualidade}&` : ''}${precoVendaMin ? `precoVendaMin=${precoVendaMin}&` : ''}${precoVendaMax ? `precoVendaMax=${precoVendaMax}&` : ''}`
+        let query = `?disponibilidade=aluguel&venda&venda_e_aluguel&${tipo ? `tipo=${tipo}&` : ''}${bairro ? `bairro=${bairro}&` : ''}${cidade ? `cidade=${cidade}&` : ''}${quartos ? `quartos=${quartos}&` : ''}${banheiros ? `banheiros=${banheiros}&` : ''}${qualidade ? `qualidadeMin=${qualidade}&` : ''}${precoAluguelMin ? `precoAluguelMin=${precoAluguelMin}&` : ''}${precoAluguelMax ? `precoAluguelMax=${precoAluguelMax}&` : ''}`
 
         fetch("http://localhost:3001/imoveis/busca" + query, requestOptions)
             .then((response) => response.text())
@@ -78,11 +75,11 @@ const Comprar = () => {
                         <div className='grid grid-cols-2'>
                             <div>
                                 <label className='text-base'>PREÇO MÍNIMO</label>
-                                <input className='p-1 rounded-lg shadow-lg text-base' type='text' placeholder='0' style={{ width: '140px' }} onChange={(e) => setPrecoVendaMin(e.target.value)}></input>
+                                <input className='p-1 rounded-lg shadow-lg text-base' type='text' placeholder='0' style={{ width: '140px' }} onChange={(e) => setPrecoAluguelMin(e.target.value)}></input>
                             </div>
                             <div className='text-right'>
                                 <label className='text-base'>PREÇO MÁXIMO</label>
-                                <input className='p-1 rounded-lg shadow-lg text-base' type='text' placeholder='ilimitado' style={{ width: '140px' }} onChange={(e) => setPrecoVendaMax(e.target.value)}></input>
+                                <input className='p-1 rounded-lg shadow-lg text-base' type='text' placeholder='ilimitado' style={{ width: '140px' }} onChange={(e) => setPrecoAluguelMax(e.target.value)}></input>
                             </div>
                         </div>
                         <div className='flex justify-center mt-5 text-base'>
@@ -118,4 +115,4 @@ const Comprar = () => {
     )
 }
 
-export default Comprar
+export default Imoveis
