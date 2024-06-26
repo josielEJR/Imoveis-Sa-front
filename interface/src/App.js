@@ -6,13 +6,12 @@ import NavBar from './components/Navbar/index.jsx';
 import Login from './Pages/Login/Login.js'
 import LoginConsultor from './Pages/LoginConsultor/LoginConsultor.js'
 import Cadastrar from './Pages/Register/Cadastrar.js'
+import Clientes from './Pages/Clientes/Clientes.js'
 import Home from './Pages/Home/Home.js'
 import Imoveis from './Pages/Imoveis/Imoveis.js'
 import SobreNos from './Pages/SobreNos/SobreNos.js'
 import AnunciarImovel from './Pages/Anunciar/AnunciarImovel.js'
 import Imovel from './Pages/Imovel/Imovel.js'
-
-
 
 const App = () => {
   return (

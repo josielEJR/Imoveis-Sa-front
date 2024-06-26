@@ -25,7 +25,7 @@ router.get('/busca', (req, res) => {
     if (tipo) {
         sqlQuery += ` AND tipo = '${tipo}'`
     }
-
+    
     if (bairro) {
         sqlQuery += ` AND bairro = '${bairro}'`
     }
