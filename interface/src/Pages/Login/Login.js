@@ -57,7 +57,9 @@ const Login = () => {
             localStorage.setItem("currentUserCelular", userCelular)
           })
 
-        return window.location.reload()
+        setTimeout(() => {
+          window.location.reload(false)
+        }, 500)
 
       } else {
         setError("Usuario não cadastrado ")
@@ -67,17 +69,8 @@ const Login = () => {
     }
   }
 
-  let userID = null
-  const pegarIdUsuario = async () => {
-    try {
-      const data = await fetch('http://localhost:3001/')
-    } catch (err) {
-      throw err
-    }
-  }
-
   return (
-    <div className='min-h-screen bg-white flex'>
+    <div className='min-h-screen bg-white flex overflow-hidden'>
       <div className='hidden lg:block relative w-0 flex-1 bg-gray-900'>
         <div className='flex h-full justify-center items-center'>
           <img src="logo.svg" alt="" />

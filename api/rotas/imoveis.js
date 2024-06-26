@@ -237,6 +237,27 @@ router.get('/aluguel', (req, res) => {
         res.json(results)
     })
 })
+// rota para pegar as cidades disponíveis dos imóveis a venda
+router.get('/cidadesvenda', (req, res) => {
+    connection.query('SELECT DISTINCT cidade FROM imoveis WHERE disponibilidade = "venda" OR disponibilidade = "venda_e_aluguel"', (err, results) => {
+        if(err){
+            console.error('Erro ao buscar cidades disponíveis: ', err)
+            return res.status(500).json({ error: 'Erro ao buscar cidades disponíveis'})
+        }
+        res.json(results)
+    })
+})
+// rota para pegar as cidades disponíveis dos imóveis para alugar
+router.get('/cidadesaluguel', (req, res) => {
+    let sqlQuery = 'SELECT DISTINCT cidade FROM imoveis WHERE disponibilidade = "aluguel" OR disponibilidade = "venda_e_aluguel"'
+    connection.query(sqlQuery, (err, results) => {
+        if(err){
+            console.error('Erro ao buscar cidades disponíveis: ', err)
+            return res.status(500).json({ error: 'Erro ao buscar cidades disponíveis'})
+        }
+        res.json(results)
+    })
+})
 // rota para pegar o imóvel pelo id 
 router.get('/:id', (req, res) => {
     const imovelID = req.params.id

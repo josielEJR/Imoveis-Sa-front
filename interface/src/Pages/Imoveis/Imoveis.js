@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react'
 import ProdutoPreview from '../../components/ProdutoPreview.js'
 import Footer from '../../components/Footer.js'
 
-const Alugar = () => {
+const Imoveis = () => {
 
     const [produtos, setProdutos] = useState([]);
 
@@ -22,7 +22,7 @@ const Alugar = () => {
     };
 
     useEffect(() => {
-        fetch("http://localhost:3001/imoveis/aluguel", requestOptions)
+        fetch("http://localhost:3001/imoveis", requestOptions)
             .then((response) => response.text())
             .then((result) => JSON.parse(result))
             .then((produtos) => setProdutos(produtos))
@@ -30,7 +30,7 @@ const Alugar = () => {
     }, [])
 
     const filtrarProdutos = () => {
-        let query = `?disponibilidade=aluguel&${tipo ? `tipo=${tipo}&` : ''}${bairro ? `bairro=${bairro}&` : ''}${cidade ? `cidade=${cidade}&` : ''}${quartos ? `quartos=${quartos}&` : ''}${banheiros ? `banheiros=${banheiros}&` : ''}${qualidade ? `qualidadeMin=${qualidade}&` : ''}${precoAluguelMin ? `precoAluguelMin=${precoAluguelMin}&` : ''}${precoAluguelMax ? `precoAluguelMax=${precoAluguelMax}&` : ''}`
+        let query = `?disponibilidade=aluguel&venda&venda_e_aluguel&${tipo ? `tipo=${tipo}&` : ''}${bairro ? `bairro=${bairro}&` : ''}${cidade ? `cidade=${cidade}&` : ''}${quartos ? `quartos=${quartos}&` : ''}${banheiros ? `banheiros=${banheiros}&` : ''}${qualidade ? `qualidadeMin=${qualidade}&` : ''}${precoAluguelMin ? `precoAluguelMin=${precoAluguelMin}&` : ''}${precoAluguelMax ? `precoAluguelMax=${precoAluguelMax}&` : ''}`
 
         fetch("http://localhost:3001/imoveis/busca" + query, requestOptions)
             .then((response) => response.text())
@@ -115,4 +115,4 @@ const Alugar = () => {
     )
 }
 
-export default Alugar
+export default Imoveis
