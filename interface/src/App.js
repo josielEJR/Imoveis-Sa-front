@@ -6,14 +6,12 @@ import NavBar from './components/Navbar/index.jsx';
 import Login from './Pages/Login/Login.js'
 import LoginConsultor from './Pages/LoginConsultor/LoginConsultor.js'
 import Cadastrar from './Pages/Register/Cadastrar.js'
-import Home from './Pages/Home/Home.js'
 import Clientes from './Pages/Clientes/Clientes.js'
-import Comprar from './Pages/Comprar/Comprar.js'
-import Alugar from './Pages/Alugar/Alugar.js'
+import Home from './Pages/Home/Home.js'
+import Imoveis from './Pages/Imoveis/Imoveis.js'
 import SobreNos from './Pages/SobreNos/SobreNos.js'
 import AnunciarImovel from './Pages/Anunciar/AnunciarImovel.js'
 import Imovel from './Pages/Imovel/Imovel.js'
-
 
 const App = () => {
   return (
@@ -21,8 +19,7 @@ const App = () => {
       <BrowserRouter>
       <NavBar />
         <Routes>
-          <Route path='/comprar' element={<Comprar />} />
-          <Route path='/alugar' element={<Alugar />} />
+          <Route path='/imoveis' element={<Imoveis />} />
           <Route path='/sobrenos' element={<SobreNos />} />
           <Route path='/anunciarimovel' element={<AnunciarImovel />} />
           <Route path='/imovel' element={<Imovel />} />
