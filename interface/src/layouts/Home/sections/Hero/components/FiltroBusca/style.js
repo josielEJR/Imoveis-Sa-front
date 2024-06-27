@@ -1,13 +1,15 @@
 import styled from "styled-components"
 
 export const ContainerFiltro = styled.div`
-    
+    background: #000000CC;
+    max-width: 1566.67px;
+    max-height: 130.56px;
 `
 
 export const Filtro = styled.div`
     width: 1566.67px;
     height: 130.56px;
-    top: 874.72px;
+    top: 975.15px;
     left: 156.67px;
     border: 1px;
     background-color: black;
@@ -18,7 +20,7 @@ export const Filtro = styled.div`
 export const Busca = styled.button`
     width: 163.19px;
     height: 65.28px;
-    top: 907.36px;
+    top: 1008px;
     left: 1527.5px;
     background-color: #212121;
     position: absolute;
@@ -34,7 +36,7 @@ export const Busca = styled.button`
 export const Codigo = styled.input`
     width: 326.3px;
     height: 65.28px;
-    top: 907.36px;
+    top: 1008px;
     left: 1168.47px;
     background-color: #FFFFFF;
     position: absolute;
@@ -50,7 +52,7 @@ export const Bairros = styled.div`
     left: 809.44px;
     width: 326.3px;
     height: 65.28px;
-    top: 907.36px;
+    top: 1008px;
     background-color: #FFFFFF;
     position: absolute;
     font-size: 20px;
@@ -63,7 +65,7 @@ export const Bairros = styled.div`
 export const Tipo = styled.div`
     width: 326.3px;
     height: 65.28px;
-    top: 907.36px;
+    top: 1008px;
     left: 450.42px;
     background-color: #FFFFFF;
     position: absolute;
@@ -77,7 +79,7 @@ export const Tipo = styled.div`
 export const Comprar = styled.div`
     width: 228.47px;
     height: 65.28px;
-    top: 907.36px;
+    top: 1008px;
     left: 189.31px;
     background-color: #FFFFFF;
     position: absolute;

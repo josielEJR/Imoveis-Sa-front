@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState} from 'react';
 import { useNavigate } from 'react-router-dom'
 import { Filtro, Bairros, Codigo, IconDrop, ListaCompra, Tipo, Comprar, Busca, ContainerFiltro, UlOptions, UlBairros, LiTipo, CheckBoxWrapper, CheckBox, CheckBoxLabel, ErroText } from './style';
 import { IoIosArrowDropdownCircle } from "react-icons/io";
-import { data } from 'autoprefixer';
+
 
 const FiltroBusca = () => {
     const navigate = useNavigate()
@@ -15,6 +15,8 @@ const FiltroBusca = () => {
     const [selectedCompra, setSelectedCompra ] = useState([])
     const [codigo, setCodigo] = useState ('')
     const [error, setError] = useState('')
+
+   
 
     const handleMouseEnter = (setter) => () => {
         setter(true)
@@ -69,26 +71,60 @@ const FiltroBusca = () => {
 const filtrarImoveis = () => {
     let disponibilidadeQuery = '';
     let query = ''
+    const imovelID  = codigo.trim()
+
+    
+    if (query || imovelID) {
+      fetch(`http://localhost:3001/imoveis/${imovelID}?${query}`, { method: 'GET', redirect: 'follow' })
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error('Erro na resposta da API');
+          }
+          return response.json();
+        })
+        .then((data) => {
+          console.log('Resposta do servidor:', data);
+          setProdutos(data);
+
+          if (data.length > 0) {
+            navigate(`/imovel?id=${imovelID}`);
+          } else {
+            console.log('Não foram encontrados imóveis com o código fornecido.');
+          }
+        })
+        .catch((error) => {
+          console.error('Erro ao buscar imóvel por ID:', error);
+          setError('Erro ao buscar imóvel por ID');
+        });
+      return;
+    }
 
     if (selectedCompra.includes('Alugar')) {
-        disponibilidadeQuery = 'aluguel';
-        query += `?disponibilidade=${disponibilidadeQuery}`
-        if (selectedTipo.length) {
-          query += `&tipo=${selectedTipo.join(',')}`
-        }
-        if (selectedBairro.length) {
-          query += `&bairro=${selectedBairro.join(',')}`
-        }
-        
+      disponibilidadeQuery = 'aluguel';
+    } else if (selectedCompra.includes('Comprar')) {
+        disponibilidadeQuery = 'venda';
+    }
 
-        fetch("http://localhost:3001/imoveis/busca" + query, { method: "GET", redirect: "follow" })
+    if (disponibilidadeQuery) {
+      query += `?disponibilidade=${disponibilidadeQuery}`
+    }
+
+    if (selectedTipo.length) {
+      query += query ? `&tipo=${selectedTipo.join(',')}` : `?tipo=${selectedTipo.join(',')}`
+    }
+
+    if (selectedBairro.length) {
+      query += query ? `&bairro=${selectedBairro.join(',')}` : `?bairro=${selectedBairro.join(',')}`;
+    }
+    
+    if (query) {
+      fetch("http://localhost:3001/imoveis/busca" + query, { method: "GET", redirect: "follow" })
             .then((response) => response.json())
             .then((data) => {
                 console.log('Resposta do servidor:', data);
-                setProdutos(data);
-
+                setProdutos(data)
                 if (data.length > 0) {
-                    navigate(`/Alugar${query}`); 
+                    navigate(`/imoveis${query}`); 
                 }else {
                   console.log('Não foram encontrados imóveis com os filtros selecionados.');
               }
@@ -97,7 +133,10 @@ const filtrarImoveis = () => {
             .catch((error) => {
                 console.error('Erro ao buscar imóveis:', error);
                 setError('Erro ao buscar imóveis');
-            });
+            })
+    } else {
+      console.log('Por favor, selecione pelo menos um filtro.')
+      setError('Por favor, selecione pelo menos um filtro')
     } 
 }
 
@@ -118,10 +157,6 @@ const getDisplayTextBairro = () => {
 const getDisplayTextCompra = () => {
   return selectedCompra.length === 0 ? 'Venda ou Aluguel' : selectedCompra.join(', ');
 }
-
-
-
-
 
   return (
     <ContainerFiltro>
@@ -214,6 +249,7 @@ const getDisplayTextCompra = () => {
         </ListaCompra>
       )}
       </Comprar>
+      
     </ContainerFiltro>
   );
 }

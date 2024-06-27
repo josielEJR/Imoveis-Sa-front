@@ -35,7 +35,7 @@ export const TextArea = styled.div`
     height: 221.94px;
     font-weight: 700px;
     top: 334.22px;
-    left: 263.73px;
+    left: 272.72px;
     position: absolute;
     background-color: transparent;
     text-align: left;
@@ -48,8 +48,8 @@ export const ButtonPrice = styled.button`
     border-radius: 32px;
     width: 266.33px;
     height: 71.81px;
-    top: 541.03px;
-    left: 363.73px;
+    top: 651.44px;
+    left: 275.33px;
     border: 2px groove #ffffff;
     font: italic;
     cursor: pointer;
@@ -58,7 +58,7 @@ export const ButtonPrice = styled.button`
     line-height: 24.2px;
     color: #FFFFFF;
     position: absolute;
-    background-color: black;
+    
 `
 
 export const Direita = styled.button`
