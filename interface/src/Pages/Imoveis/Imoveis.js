@@ -22,7 +22,10 @@ const Imoveis = () => {
     };
 
     useEffect(() => {
-        fetch("http://localhost:3001/imoveis", requestOptions)
+
+        const query = `${decodeURIComponent(window.location.href)}`.replace('http://localhost:3000/imoveis', '');
+
+        fetch("http://localhost:3001/imoveis/busca" + query, requestOptions)
             .then((response) => response.text())
             .then((result) => JSON.parse(result))
             .then((produtos) => setProdutos(produtos))

@@ -43,6 +43,7 @@ export const NavContent = styled.div`
         left: ${props => props.display === "true" ? "20%" : "100%"};
         animation-name: ${props => handleSectionSlide(props.display)};
         animation-duration: 0.5s;
+        overflow: scroll;
     }
 `
 
@@ -67,6 +68,10 @@ export const Dropdown = styled.div`
     padding: 29px;
     box-shadow: 0px 4px 8px 0px #00000026;
     border-radius: 0 0 3px 3px;
+
+    @media (max-width: 375px) {
+        position: unset;
+    }
 `
 
 export const SideDropdown = styled.div`
@@ -81,18 +86,36 @@ export const SideDropdown = styled.div`
     box-shadow: 0px 4px 8px 0px #00000026;
     overflow: hidden;
     border-radius: 3px;
+
+    @media (max-width: 375px) {
+        position: unset;
+        padding: 0px;
+        padding-top: 20px;
+        width: 205px;
+    }
 `
 
-const textSlide = keyframes`
+const textSlideLeft = keyframes`
     0% {left: -150%;}
     100% {left: 0;}
+`
+
+const textSlideTop = keyframes`
+    0% {top: -200px;}
+    100% {top: 0;}
 `
 
 export const DropdownContent = styled.div`
     position: relative;
     left: 0;
-    animation-name: ${textSlide};
+    animation-name: ${textSlideLeft};
     animation-duration: 0.4s;
+
+    @media (max-width: 375px) {
+        top: 0px;
+        animation-name: ${textSlideTop};
+        animation-duration: 0.4s;
+    }
 `
 
 export const Title = styled.div`

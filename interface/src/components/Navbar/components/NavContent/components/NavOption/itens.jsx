@@ -52,15 +52,16 @@ const Itens = ({ lista, redirect, right }) => {
                         <SideDropdown right={right}>
                             <DropdownContent>
                                 <Title>Tipo de imóvel</Title>
+
                                 <ul>
                                     <Li>
-                                        <a href={`/${redirect}?cidade=${selected}&tipo=casa`}>Casas</a>
+                                        <a href={`/imoveis?cidade=${selected}&tipo=casa&disponibilidade=${redirect}`}>Casas</a>
                                     </Li>
                                     <Li>
-                                        <a href={`/${redirect}?cidade=${selected}&tipo=apartamento`}>Apartamentos</a>
+                                        <a href={`/imoveis?cidade=${selected}&tipo=apartamento&disponibilidade=${redirect}`}>Apartamentos</a>
                                     </Li>
                                     <Li>
-                                        <a href={`/${redirect}?cidade=${selected}`}>Todos</a>
+                                        <a href={`/imoveis?cidade=${selected}&disponibilidade=${redirect}`}>Todos</a>
                                     </Li>
                                 </ul>
                             </DropdownContent>
@@ -72,6 +73,7 @@ const Itens = ({ lista, redirect, right }) => {
             return (
                 <Dropdown>
                     <Title>Ajuda</Title>
+
                     <ul>
                         <Li key="duvidasfrequentes">
                             <Link

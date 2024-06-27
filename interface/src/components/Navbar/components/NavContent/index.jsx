@@ -28,15 +28,17 @@ const Content = () => {
                     <FontAwesomeIcon icon={faXmark} />
                 </MenuButton>
 
-                <NavOption tipo={"Comprar"} url={"http://localhost:3001/imoveis/cidadesvenda"} right="-260" />
+                {window.innerWidth <= 375 && <Login />}
 
-                <NavOption tipo={"Alugar"} url={"http://localhost:3001/imoveis/cidadesaluguel"} right="-260" />
+                <NavOption tipo={"Venda"} url={"http://localhost:3001/imoveis/cidadesvenda"} right="-260" />
+
+                <NavOption tipo={"Aluguel"} url={"http://localhost:3001/imoveis/cidadesaluguel"} right="-260" />
 
                 <Anunciar />
 
                 <NavOption tipo={"Ajuda"} />
 
-                <Login />
+                {window.innerWidth > 375 && <Login />}
             </NavContent>
         </>
     )
