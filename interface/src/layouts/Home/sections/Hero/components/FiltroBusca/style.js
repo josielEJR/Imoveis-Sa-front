@@ -1,4 +1,4 @@
-import styled from "styled-components"
+import styled, { css } from "styled-components"
 
 export const ContainerFiltro = styled.div`
     background: #000000CC;
@@ -26,6 +26,8 @@ export const Busca = styled.button`
     position: absolute;
     display: flex;
     color: #FFFFFF;
+    ${({ error }) => error && css`
+    border: 2px solid red; `}
     font-size: 20px;
     font-style: italic;
     line-height: 24.2px;
@@ -40,6 +42,7 @@ export const Codigo = styled.input`
     left: 1168.47px;
     background-color: #FFFFFF;
     position: absolute;
+    border: 1px solid #ccc;
     display: flex;
     font-size: 20px;
     font-weight: 500px;
@@ -159,15 +162,14 @@ export const CheckBoxLabel = styled.label`
     cursor: pointer;
 
 `
-export const ErroText = styled.ul`
+export const ErroText = styled.p`
     position: absolute;
-    width: 163.19px;
     height: auto;
-    top: 707.36px;
-    left: 1527.5px;
-    background: #ffffff;
+    top: 970px;
+    left: 700.47px;
     display: flex;
     flex-direction: column;
     padding: 10px;
-
+    color: red;
+    font-size: large;
 `

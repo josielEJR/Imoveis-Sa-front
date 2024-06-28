@@ -43,11 +43,13 @@ router.get('/busca', (req, res) => {
     if (banheiros) {
         sqlQuery += ` AND banheiros = '${banheiros}'`
     }
-    if (disponibilidade === 'aluguel') {
-        sqlQuery += ` AND (disponibilidade = 'aluguel' OR disponibilidade = 'venda_e_aluguel') `
+    if (disponibilidade.includes('aluguel')) {
+        const disponibilidades = disponibilidade.split(',').map(t => `'${t.trim()}'`).join(',');
+        sqlQuery += ` AND (disponibilidade IN (${disponibilidades}) OR disponibilidade = 'venda_e_aluguel')`;
     }
-    if (disponibilidade === 'venda') {
-        sqlQuery += ` AND (disponibilidade = 'venda' OR disponibilidade = 'venda_e_aluguel') `
+    if (disponibilidade.includes('venda')) {
+        const disponibilidades = disponibilidade.split(',').map(t => `'${t.trim()}'`).join(',');
+        sqlQuery += ` AND (disponibilidade IN (${disponibilidades}) OR disponibilidade = 'venda_e_aluguel')`;
     }
     if (precoVendaMin && precoVendaMax) {
         sqlQuery += ` AND preco_venda BETWEEN ${precoVendaMin} AND ${precoVendaMax}`

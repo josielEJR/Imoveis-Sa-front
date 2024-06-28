@@ -1,8 +1,7 @@
-import React, { useState} from 'react';
+import React, { useState} from 'react'
 import { useNavigate } from 'react-router-dom'
-import { Filtro, Bairros, Codigo, IconDrop, ListaCompra, Tipo, Comprar, Busca, ContainerFiltro, UlOptions, UlBairros, LiTipo, CheckBoxWrapper, CheckBox, CheckBoxLabel, ErroText } from './style';
-import { IoIosArrowDropdownCircle } from "react-icons/io";
-
+import { Filtro, Bairros, Codigo, IconDrop, ListaCompra, Tipo, Comprar, Busca, ContainerFiltro, UlOptions, UlBairros, LiTipo, CheckBoxWrapper, CheckBox, CheckBoxLabel, ErroText } from './style'
+import { IoIosArrowDropdownCircle } from "react-icons/io"
 
 const FiltroBusca = () => {
     const navigate = useNavigate()
@@ -15,8 +14,12 @@ const FiltroBusca = () => {
     const [selectedCompra, setSelectedCompra ] = useState([])
     const [codigo, setCodigo] = useState ('')
     const [error, setError] = useState('')
+    const [showErroMessage, setShowErroMessage] = useState(false)
 
-   
+    const handleError = (ErroText) => {
+      setError(ErroText)
+      setShowErroMessage(true)
+    }
 
     const handleMouseEnter = (setter) => () => {
         setter(true)
@@ -69,13 +72,27 @@ const FiltroBusca = () => {
   } */ }
 
 const filtrarImoveis = () => {
-    let disponibilidadeQuery = '';
+    let disponibilidadeQuery = ''
     let query = ''
     const imovelID  = codigo.trim()
 
     
-    if (query || imovelID) {
-      fetch(`http://localhost:3001/imoveis/${imovelID}?${query}`, { method: 'GET', redirect: 'follow' })
+    const filterCheck = selectedBairro.length > 0 || selectedCompra.length > 0 || selectedTipo.length > 0
+
+    
+
+    if (imovelID && filterCheck) {
+      if (!filterCheck){
+        setError('')
+        setShowErroMessage(false)
+      } else {
+        handleError(('Tipo de busca não permitida'))
+      }
+      return
+    }
+
+    if ( imovelID && !filterCheck ) {
+      fetch(`http://localhost:3001/imoveis/${imovelID}`, { method: 'GET', redirect: 'follow' })
         .then((response) => {
           if (!response.ok) {
             throw new Error('Erro na resposta da API');
@@ -83,22 +100,23 @@ const filtrarImoveis = () => {
           return response.json();
         })
         .then((data) => {
-          console.log('Resposta do servidor:', data);
-          setProdutos(data);
+          console.log('ID selecionado :', data)
+          setProdutos(data)
 
           if (data.length > 0) {
             navigate(`/imovel?id=${imovelID}`);
           } else {
-            console.log('Não foram encontrados imóveis com o código fornecido.');
+            console.log('Não foram encontrados imóveis com o código fornecido.')
           }
         })
         .catch((error) => {
-          console.error('Erro ao buscar imóvel por ID:', error);
+          console.error('Erro ao buscar imóvel por ID:', error)
           setError('Erro ao buscar imóvel por ID');
-        });
-      return;
+        })
+      return
     }
 
+    if ( !imovelID && filterCheck) {
     if (selectedCompra.includes('Alugar')) {
       disponibilidadeQuery = 'aluguel';
     } else if (selectedCompra.includes('Comprar')) {
@@ -114,34 +132,34 @@ const filtrarImoveis = () => {
     }
 
     if (selectedBairro.length) {
-      query += query ? `&bairro=${selectedBairro.join(',')}` : `?bairro=${selectedBairro.join(',')}`;
+      query += query ? `&bairro=${selectedBairro.join(',')}` : `?bairro=${selectedBairro.join(',')}`
     }
     
-    if (query) {
       fetch("http://localhost:3001/imoveis/busca" + query, { method: "GET", redirect: "follow" })
             .then((response) => response.json())
             .then((data) => {
-                console.log('Resposta do servidor:', data);
+                console.log('Filtros selecionado :', data)
                 setProdutos(data)
                 if (data.length > 0) {
                     navigate(`/imoveis${query}`); 
                 }else {
                   console.log('Não foram encontrados imóveis com os filtros selecionados.');
-              }
-                
+              }  
             })
             .catch((error) => {
                 console.error('Erro ao buscar imóveis:', error);
                 setError('Erro ao buscar imóveis');
             })
-    } else {
-      console.log('Por favor, selecione pelo menos um filtro.')
-      setError('Por favor, selecione pelo menos um filtro')
+      return
     } 
+    // Caso nenhum filtro for escolhido e nenhum id digitado 
+    console.log('Por favor, selecione pelo menos um filtro.')
+    setError('Por favor, selecione pelo menos um filtro')
+    
 }
 
 const getDisplayTextTipo = () => {
-  return selectedTipo.length === 0 ? 'Selecione o tipo' : selectedTipo.join(', ');
+  return selectedTipo.length === 0 ? 'Selecione o tipo' : selectedTipo.join(', ')
 }
 
 const getDisplayTextBairro = () => {
@@ -164,12 +182,14 @@ const getDisplayTextCompra = () => {
       <Filtro />
       <Busca
       onClick={filtrarImoveis}
+      error={error}
       >Buscar</Busca>
       <Codigo 
       placeholder='Código' 
       value={codigo} 
       onChange={(e) => setCodigo(e.target.value)}
       />
+      {showErroMessage && <ErroText error={error} />}
       <Bairros
         onMouseEnter={handleMouseEnter(setShowBairros)}
         onMouseLeave={handleMouseLeave(setShowBairros)}
@@ -249,9 +269,9 @@ const getDisplayTextCompra = () => {
         </ListaCompra>
       )}
       </Comprar>
-      
+      {error && <ErroText>{error}</ErroText>}
     </ContainerFiltro>
-  );
+  )
 }
 
 export default FiltroBusca;
