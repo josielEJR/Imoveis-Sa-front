@@ -5,7 +5,7 @@ import { useState, useEffect } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faAngleRight } from '@fortawesome/free-solid-svg-icons'
 
-import { Dropdown, Title, SideDropdown, DropdownContent, Li } from '../../style'
+import { Dropdown, Title, SideDropdown, DropdownContent, Li, Rotate } from '../../style'
 
 const Itens = ({ lista, redirect, right }) => {
 
@@ -39,14 +39,16 @@ const Itens = ({ lista, redirect, right }) => {
         if (lista) {
             return (
                 <Dropdown onMouseLeave={handleMouseLeave}>
+
                     <Title>Cidade</Title>
                     <ul>
                         {cidades.map(elem => (
                             <Li key={elem.cidade} onMouseEnter={() => handleMouseEnter(elem.cidade)} weight={selected === elem.cidade ? "bold" : ''}>
-                                <button>{elem.cidade}</button> {selected === elem.cidade ? <FontAwesomeIcon icon={faAngleRight} /> : ''}
+                                <button>{elem.cidade}</button> {selected === elem.cidade ? <Rotate><FontAwesomeIcon icon={faAngleRight} /></Rotate> : ''}
                             </Li>
                         ))}
                     </ul>
+
 
                     {selected &&
                         <SideDropdown right={right}>

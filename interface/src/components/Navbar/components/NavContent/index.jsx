@@ -7,7 +7,7 @@ import Login from './components/Login'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBars, faXmark } from '@fortawesome/free-solid-svg-icons'
 
-import { MenuButton, NavContent } from './style'
+import { MenuButton, CloseMenuButton, NavContent } from './style'
 
 const Content = () => {
 
@@ -24,9 +24,9 @@ const Content = () => {
             </MenuButton>
 
             <NavContent display={menuVisible}>
-                <MenuButton onClick={handleMenu}>
+                <CloseMenuButton onClick={handleMenu} visible={menuVisible}>
                     <FontAwesomeIcon icon={faXmark} />
-                </MenuButton>
+                </CloseMenuButton>
 
                 {window.innerWidth <= 375 && <Login />}
 

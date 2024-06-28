@@ -10,9 +10,9 @@ const navSectionResponsiveSlideReverse = keyframes`
 `
 
 const handleSectionSlide = (display) => {
-    if(display === "true"){
+    if (display === "true") {
         return navSectionResponsiveSlide
-    }else if(display === "false"){
+    } else if (display === "false") {
         return navSectionResponsiveSlideReverse
     }
 }
@@ -32,6 +32,27 @@ export const MenuButton = styled.div`
     }
 `
 
+const draw = keyframes`
+    from {transform: rotate(0deg)}
+    to {transform: rotate(360deg)}
+`
+
+export const CloseMenuButton = styled.div`
+    display: none;
+
+    @media (max-width: 375px) {
+        display: ${props => props.visible === "true" ? 'block' : 'none'};
+        width: 32px;
+        height: 42px;
+        text-align: center;
+        line-height: 42px;
+        margin: 28px 20px 28px 20px;
+        font-size: 40px;
+        color: #EEEEEE;
+        animation: ${draw} 1s;
+    }
+`
+
 export const NavContent = styled.div`
     margin-right: 50px;
 
@@ -42,7 +63,7 @@ export const NavContent = styled.div`
         background-color: #050505;
         left: ${props => props.display === "true" ? "20%" : "100%"};
         animation-name: ${props => handleSectionSlide(props.display)};
-        animation-duration: 0.5s;
+        animation-duration: 0.4s;
         overflow: scroll;
     }
 `
@@ -63,7 +84,7 @@ export const Dropdown = styled.div`
     width: 263px;
     right: ${props => props.right + "px"};
     font-size: 18px;
-    background-color: #050505;
+    background-color: #070707;
     box-sizing: border-box;
     padding: 29px;
     box-shadow: 0px 4px 8px 0px #00000026;
@@ -80,7 +101,7 @@ export const SideDropdown = styled.div`
     right: ${props => props.right + "px"};
     top: 0;
     font-size: 18px;
-    background-color: #050505;
+    background-color: #090909;
     box-sizing: border-box;
     padding: 29px;
     box-shadow: 0px 4px 8px 0px #00000026;
@@ -89,8 +110,7 @@ export const SideDropdown = styled.div`
 
     @media (max-width: 375px) {
         position: unset;
-        padding: 0px;
-        padding-top: 20px;
+        padding: 20px;
         width: 205px;
     }
 `
@@ -116,6 +136,16 @@ export const DropdownContent = styled.div`
         animation-name: ${textSlideTop};
         animation-duration: 0.4s;
     }
+`
+
+const rotateButton = keyframes`
+    0%{transform: rotate(0deg)}
+    100% {transform: rotate(90deg)}
+`
+
+export const Rotate = styled.div`
+    transform: rotate(90deg);
+    animation: ${rotateButton} 0.5s;
 `
 
 export const Title = styled.div`
