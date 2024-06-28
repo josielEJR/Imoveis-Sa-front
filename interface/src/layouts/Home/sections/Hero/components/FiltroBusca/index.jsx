@@ -72,14 +72,8 @@ const FiltroBusca = () => {
   } */ }
 
 const filtrarImoveis = () => {
-    let disponibilidadeQuery = ''
-    let query = ''
-    const imovelID  = codigo.trim()
-
-    
-    const filterCheck = selectedBairro.length > 0 || selectedCompra.length > 0 || selectedTipo.length > 0
-
-    
+  const imovelID  = codigo.trim()
+  const filterCheck = selectedBairro.length > 0 || selectedCompra.length > 0 || selectedTipo.length > 0
 
     if (imovelID && filterCheck) {
       if (!filterCheck){
@@ -116,46 +110,48 @@ const filtrarImoveis = () => {
       return
     }
 
-    if ( !imovelID && filterCheck) {
-    if (selectedCompra.includes('Alugar')) {
-      disponibilidadeQuery = 'aluguel';
-    } else if (selectedCompra.includes('Comprar')) {
-        disponibilidadeQuery = 'venda';
-    }
 
-    if (disponibilidadeQuery) {
-      query += `?disponibilidade=${disponibilidadeQuery}`
-    }
-
-    if (selectedTipo.length) {
-      query += query ? `&tipo=${selectedTipo.join(',')}` : `?tipo=${selectedTipo.join(',')}`
-    }
-
-    if (selectedBairro.length) {
-      query += query ? `&bairro=${selectedBairro.join(',')}` : `?bairro=${selectedBairro.join(',')}`
-    }
-    
+    if (!imovelID && filterCheck) {
+      let query = '';
+  
+      // Verifica as disponibilidades selecionadas
+      const disponibilidadesSelecionadas = [];
+      if (selectedCompra.includes('Alugar')) {
+          disponibilidadesSelecionadas.push('aluguel');
+      }
+      if (selectedCompra.includes('Comprar')) {
+          disponibilidadesSelecionadas.push('venda');
+      }
+  
+      if (disponibilidadesSelecionadas.length > 0) {
+          query += `?disponibilidade=${disponibilidadesSelecionadas.join(',')}`;
+      }
+  
+      if (selectedTipo.length) {
+          query += query ? `&tipo=${selectedTipo.join(',')}` : `?tipo=${selectedTipo.join(',')}`;
+      }
+  
+      if (selectedBairro.length) {
+          query += query ? `&bairro=${selectedBairro.join(',')}` : `?bairro=${selectedBairro.join(',')}`;
+      }
+  
       fetch("http://localhost:3001/imoveis/busca" + query, { method: "GET", redirect: "follow" })
-            .then((response) => response.json())
-            .then((data) => {
-                console.log('Filtros selecionado :', data)
-                setProdutos(data)
-                if (data.length > 0) {
-                    navigate(`/imoveis${query}`); 
-                }else {
+          .then((response) => response.json())
+          .then((data) => {
+              console.log('Filtros selecionados:', data);
+              setProdutos(data);
+              if (data.length > 0) {
+                  navigate(`/imoveis${query}`);
+              } else {
                   console.log('Não foram encontrados imóveis com os filtros selecionados.');
-              }  
-            })
-            .catch((error) => {
-                console.error('Erro ao buscar imóveis:', error);
-                setError('Erro ao buscar imóveis');
-            })
-      return
-    } 
-    // Caso nenhum filtro for escolhido e nenhum id digitado 
-    console.log('Por favor, selecione pelo menos um filtro.')
-    setError('Por favor, selecione pelo menos um filtro')
-    
+              }
+          })
+          .catch((error) => {
+              console.error('Erro ao buscar imóveis:', error);
+              setError('Erro ao buscar imóveis');
+          });
+      return;
+    }
 }
 
 const getDisplayTextTipo = () => {
