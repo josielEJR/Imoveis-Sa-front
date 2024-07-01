@@ -144,8 +144,10 @@ const rotateButton = keyframes`
 `
 
 export const Rotate = styled.div`
-    transform: rotate(90deg);
-    animation: ${rotateButton} 0.5s;
+    @media (max-width: 375px) {
+        transform: rotate(90deg);
+        animation: ${rotateButton} 0.5s;
+    }
 `
 
 export const Title = styled.div`
