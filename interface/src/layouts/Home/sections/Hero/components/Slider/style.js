@@ -1,23 +1,27 @@
 import styled from "styled-components"
 
 export const Container = styled.div`  
-    width: 1880px;
+    width: 1870px;
     height: 940px;
     position:  relative;
     display: flex;
+    background: #000000CC;
+    justify-content: center;
+    align-items: center;
 `
 export const ImageContainer = styled.img`
     display: flex;
     width: 100%;
     height: 100%;
     object-fit: cover;
-    position: absolute;
+    position: relative;
 `
 export const NavButton = styled.button`
     width: ${(props) => props.width}px;
     height: 19.58px;
     top: 757.22px;
     display: inline-flex;
+    align-items: center;
     left: ${(props) => props.left}px;
     outline: #FFFFFF;
     border: #FFFFFF;
@@ -48,7 +52,7 @@ export const ButtonPrice = styled.button`
     border-radius: 32px;
     width: 266.33px;
     height: 71.81px;
-    top: 651.44px;
+    top: 600.44px;
     left: 275.33px;
     border: 2px groove #ffffff;
     font: italic;

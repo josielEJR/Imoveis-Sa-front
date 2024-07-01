@@ -1,29 +1,28 @@
 import styled, { css } from "styled-components"
 
 export const ContainerFiltro = styled.div`
-    background: #000000CC;
-    max-width: 1566.67px;
-    max-height: 130.56px;
+    display: flex;
+    justify-content: center;
 `
 
 export const Filtro = styled.div`
-    width: 1566.67px;
-    height: 130.56px;
-    top: 975.15px;
-    left: 156.67px;
+    width: 1566px;
     border: 1px;
-    background-color: black;
-    position: absolute;
     display: flex;
+    justify-content: space-around;
+    align-items: center; 
+    height: 160px;
+    background-color: black;
+    padding: 0 20px; 
+    position: relative;
+    top: -50px;
     
 `
 export const Busca = styled.button`
     width: 163.19px;
     height: 65.28px;
-    top: 1008px;
-    left: 1527.5px;
     background-color: #212121;
-    position: absolute;
+    position: relative;
     display: flex;
     color: #FFFFFF;
     ${({ error }) => error && css`
@@ -38,12 +37,13 @@ export const Busca = styled.button`
 export const Codigo = styled.input`
     width: 326.3px;
     height: 65.28px;
-    top: 1008px;
-    left: 1168.47px;
     background-color: #FFFFFF;
-    position: absolute;
-    border: 1px solid #ccc;
+    position: relative;
     display: flex;
+    border: 2px solid ${props => (props.error ? 'red' : '#ccc')};
+    &:focus {
+    border-color: ${props => (props.error ? 'red' : '#888')};
+    }
     font-size: 20px;
     font-weight: 500px;
     line-height: 24.2px;
@@ -52,12 +52,10 @@ export const Codigo = styled.input`
     border-radius: 8px;
 `
 export const Bairros = styled.div`
-    left: 809.44px;
     width: 326.3px;
     height: 65.28px;
-    top: 1008px;
     background-color: #FFFFFF;
-    position: absolute;
+    position: relative;
     font-size: 20px;
     font-weight: 500px;
     line-height: 24.2px;
@@ -68,10 +66,8 @@ export const Bairros = styled.div`
 export const Tipo = styled.div`
     width: 326.3px;
     height: 65.28px;
-    top: 1008px;
-    left: 450.42px;
     background-color: #FFFFFF;
-    position: absolute;
+    position: relative;
     font-size: 20px;
     font-weight: 500px;
     line-height: 24.2px;
@@ -82,10 +78,8 @@ export const Tipo = styled.div`
 export const Comprar = styled.div`
     width: 228.47px;
     height: 65.28px;
-    top: 1008px;
-    left: 189.31px;
     background-color: #FFFFFF;
-    position: absolute;
+    position: relative;
     font-size: 20px;
     font-weight: 500px;
     line-height: 24.2px;
@@ -165,8 +159,7 @@ export const CheckBoxLabel = styled.label`
 export const ErroText = styled.p`
     position: absolute;
     height: auto;
-    top: 970px;
-    left: 700.47px;
+    top: 0px;
     display: flex;
     flex-direction: column;
     padding: 10px;

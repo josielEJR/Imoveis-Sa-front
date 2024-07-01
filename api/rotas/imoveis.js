@@ -18,7 +18,8 @@ router.get('/', (req, res) => {
 // Rota para buscar imóveis
 router.get('/busca', (req, res) => {
     // Parâmetros para a busca
-    const { tipo, bairro, cidade, quartos, banheiros, disponibilidade, precoVendaMin, precoVendaMax, precoAluguelMin, precoAluguelMax, qualidadeMax, qualidadeMin } = req.query
+    const { tipo, bairro, cidade, quartos, banheiros,  precoVendaMin, precoVendaMax, precoAluguelMin, precoAluguelMax, qualidadeMax, qualidadeMin } = req.query
+    const disponibilidade = req.query.disponibilidade ? req.query.disponibilidade.split(',') : []
 
     let sqlQuery = 'SELECT * FROM imoveis WHERE 1'
 
@@ -43,14 +44,11 @@ router.get('/busca', (req, res) => {
     if (banheiros) {
         sqlQuery += ` AND banheiros = '${banheiros}'`
     }
-    if (disponibilidade.includes('aluguel')) {
-        const disponibilidades = disponibilidade.split(',').map(t => `'${t.trim()}'`).join(',');
-        sqlQuery += ` AND (disponibilidade IN (${disponibilidades}) OR disponibilidade = 'venda_e_aluguel')`;
+    if (disponibilidade.length) {
+        const dispoConditions = disponibilidade.map(d => `(disponibilidade = '${d}' OR disponibilidade = 'venda_e_aluguel')`).join(' OR ');
+        sqlQuery += ` AND (${dispoConditions})`;
     }
-    if (disponibilidade.includes('venda')) {
-        const disponibilidades = disponibilidade.split(',').map(t => `'${t.trim()}'`).join(',');
-        sqlQuery += ` AND (disponibilidade IN (${disponibilidades}) OR disponibilidade = 'venda_e_aluguel')`;
-    }
+    
     if (precoVendaMin && precoVendaMax) {
         sqlQuery += ` AND preco_venda BETWEEN ${precoVendaMin} AND ${precoVendaMax}`
     } else if (precoVendaMin) {
