@@ -1,20 +1,35 @@
+import { useState } from 'react'
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faAngleRight } from '@fortawesome/free-solid-svg-icons'
 
-import { Wrapper, BackgroundImage, CardContent, Title, PriceArea, RedirectIndicator, HouseInfo } from "./style"
+import { Wrapper, BackgroundImage, CardContent, Gap, Title, PriceArea, RedirectIndicator, HouseInfo } from "./style"
 
-const Card = ({ bairro, cidade, tipo, preco, area, quartos, banheiros, vagas }) => {
+const Card = ({ imagem, bairro, cidade, tipo, preco, area, quartos, banheiros, vagas, redirect }) => {
+
+    const [hover, setHover] = useState("")
+
+    const handleMouseEnter = () => {
+        setHover("true")
+    }
+
+    const handleMouseLeave = () => {
+        setHover("false")
+    }
+
     return (
-        <Wrapper>
-            <BackgroundImage src="https://grupospimovel.s3.amazonaws.com/Imagens/Noticias/Sistema/mercado-imobiliario/0201_valor_venal_b.jpg" />
-            <CardContent>
+        <Wrapper onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} onClick={() => window.location.href = {redirect}}>
+            <BackgroundImage image={imagem} ></BackgroundImage>
+            <CardContent hover={hover}>
+                <Gap></Gap>
+
                 <Title>
-                    <div>JARDIM EUROPA</div>
-                    <div>SÃO PAULO - SP</div>
+                    <div>{bairro}</div>
+                    <div>{cidade}</div>
                 </Title>
 
                 <PriceArea>
-                    ALUGUEL | R$ 12.000
+                    {tipo} | R$ {preco}
                 </PriceArea>
 
                 <RedirectIndicator>
@@ -24,19 +39,19 @@ const Card = ({ bairro, cidade, tipo, preco, area, quartos, banheiros, vagas }) 
                 <HouseInfo>
                     <div>
                         <div>ÁREA</div>
-                        <div>100m²</div>
+                        <div>{area}m²</div>
                     </div>
                     <div>
                         <div>QUARTOS</div>
-                        <div>4</div>
+                        <div>{quartos}</div>
                     </div>
                     <div>
                         <div>BANHEIROS</div>
-                        <div>3</div>
+                        <div>{banheiros}</div>
                     </div>
                     <div>
                         <div>VAGAS</div>
-                        <div>2</div>
+                        <div>{vagas}</div>
                     </div>
                 </HouseInfo>
             </CardContent>
