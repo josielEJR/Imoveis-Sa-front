@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react'
-import {   ButtonPrice,  Container,  ImageContainer, NavButton,  TextArea,  Direita, Esquerda, Icon,  } from './style'
+import React, {  useState } from 'react'
+import {   ButtonPrice,  Container,  ImageContainer, NavButton,  TextArea,  Direita, Esquerda, Icon, Overlay, Wrapper,   } from './style'
 import { useNavigate } from 'react-router-dom'
 import { FaAngleLeft, FaAngleRight } from "react-icons/fa6"
-//import FiltroBusca from '../FiltroBusca'
+
 
 
 
@@ -58,11 +58,13 @@ const Slider = ({ config }) => {
   }) */ }
 
   return (
+  <Wrapper>
     <Container>
       <ImageContainer 
       src={config[ImageIndex].image}
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}  />
+      <Overlay />
       <Direita onClick={next} >
         <Icon>
           <FaAngleRight />
@@ -79,28 +81,28 @@ const Slider = ({ config }) => {
       <ButtonPrice onClick={handleNavigateToPage}>
         {config[ImageIndex].text} | R$ {config[ImageIndex].price}
       </ButtonPrice>
-      <NavButton
-        width={selectedButton === 1 ? 65.28 : 26.38}
-        left={ selectedButton === 2 ? 864.05 : 879.75}
-        selected={selectedButton === 1}
-        onClick={() => handleButtonClick(1)}
-      >  
-      </NavButton>
-      <NavButton
-        width={selectedButton === 2 ? 65.28 : 30.64}
-        left={selectedButton === 1 ? 933.98 : 919.08}
-        selected={selectedButton === 2}
-        onClick={() => handleButtonClick(2)}
-      >  
-      </NavButton>
-      <NavButton
-        width={selectedButton === 3 ? 65.28 : 39.17 }
-        left={selectedButton === 2 ? 978.20 : 975.78}
-        selected={selectedButton === 3}
-        onClick={() => handleButtonClick(3)}
-      >  
-      </NavButton>
-    </Container>
+      
+          <NavButton
+            style={{ width: selectedButton === 1 ? 70 : 26 }}
+            selected={selectedButton === 1}
+            onClick={() => handleButtonClick(1)}
+          >  
+          </NavButton>
+          <NavButton
+            style={{ width: selectedButton === 2 ? 70 : 30 }}
+            selected={selectedButton === 2}
+            onClick={() => handleButtonClick(2)}
+          >  
+          </NavButton>
+          <NavButton
+            style={{ width: selectedButton === 3 ? 70  : 39 }}
+            selected={selectedButton === 3}
+            onClick={() => handleButtonClick(3)}
+          >  
+          </NavButton>
+        
+      </Container>
+  </Wrapper>
   )
 }
 

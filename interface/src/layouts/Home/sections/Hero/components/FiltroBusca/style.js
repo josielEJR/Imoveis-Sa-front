@@ -1,91 +1,175 @@
 import styled, { css } from "styled-components"
 
-export const ContainerFiltro = styled.div`
+export const Wrapper = styled.div`
     display: flex;
     justify-content: center;
 `
-
-export const Filtro = styled.div`
+export const ContainerFiltro = styled.div`
     width: 1566px;
-    border: 1px;
     display: flex;
+    flex-direction: row;
+    align-items: center;
     justify-content: space-around;
-    align-items: center; 
     height: 160px;
     background-color: black;
-    padding: 0 20px; 
+    padding: 20px;
     position: relative;
     top: -50px;
+    gap: 32px;
     
+    @media (max-width: 1280px){
+        width: 1180px;
+        padding: 0 20px;
+        gap: 15px;
+    }
+
+    @media (max-width: 950px) {
+        width: 880px;
+        padding: 0 5px;
+        gap: 5px;
+    }
+    @media (max-width: 450px) {
+        width: 400px;
+        gap: 25px;
+        height: auto;
+        display: grid;
+        
+    }
+
+   
+`
+export const ContainerInput = styled.div`
+    display: flex;
+    justify-content: space-around;
+    gap: 32px;
+
+    @media (max-width: 1280px){
+        gap: 15px;
+    }
+    @media (max-width: 950px){
+        gap: 5px;
+    }
+    @media (max-width: 450px){
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+
 `
 export const Busca = styled.button`
-    width: 163.19px;
+    width: 163px;
     height: 65.28px;
     background-color: #212121;
-    position: relative;
     display: flex;
     color: #FFFFFF;
-    ${({ error }) => error && css`
-    border: 2px solid red; `}
-    font-size: 20px;
+    ${({ error }) => 
+        error && 
+        css`
+        border: 2px solid red; 
+    `}
+    font-size: 22px;
     font-style: italic;
     line-height: 24.2px;
     justify-content: center;
     align-items: center;
     border-radius: 8px;
+    position: relative;
+    padding: 10px;
+
+    @media (max-width: 450px){
+        width: 100%;
+        font-size: 32px;
+    }
+    
+
 `
 export const Codigo = styled.input`
-    width: 326.3px;
-    height: 65.28px;
+    width: 326px;
+    height: 65px;
     background-color: #FFFFFF;
     position: relative;
     display: flex;
-    border: 2px solid ${props => (props.error ? 'red' : '#ccc')};
+    border: 2px solid ${props => (props.error ? 'red' : '#888')};
     &:focus {
     border-color: ${props => (props.error ? 'red' : '#888')};
     }
     font-size: 20px;
-    font-weight: 500px;
     line-height: 24.2px;
     text-align:left;
     padding-left: 10px;
     border-radius: 8px;
+
+    @media (max-width: 1280px){
+        width: 250px;
+        justify-content: center;
+        align-items: center;
+    }
+
+    @media (max-width: 950px){
+        width: 174px;
+        
+    }
 `
 export const Bairros = styled.div`
-    width: 326.3px;
-    height: 65.28px;
+    width: 326px;
+    height: 65px;
     background-color: #FFFFFF;
     position: relative;
     font-size: 20px;
-    font-weight: 500px;
-    line-height: 24.2px;
+    line-height: 24px;
     text-align:left ;
     padding: 20px;
     border-radius: 8px;
+
+    @media (max-width: 1280px){
+        width: 250px;
+        
+    }
+
+    @media (max-width: 950px){
+        width: 174px;
+        
+    }
 `
 export const Tipo = styled.div`
-    width: 326.3px;
-    height: 65.28px;
+    width: 326px;
+    height: 65px;
     background-color: #FFFFFF;
     position: relative;
     font-size: 20px;
-    font-weight: 500px;
-    line-height: 24.2px;
-    text-align:left ;
+    line-height: 24px;
+    text-align: left;
     padding: 20px;
     border-radius: 8px;
+
+    @media (max-width: 1280px){
+        width: 250px;
+    }
+
+    @media (max-width: 950px){
+        width: 174px;
+        font-size: 19px;
+        line-height: 1.3;
+        padding-left: 8px;
+    }
 `
 export const Comprar = styled.div`
-    width: 228.47px;
-    height: 65.28px;
+    width: 228px;
+    height: 65px;
     background-color: #FFFFFF;
     position: relative;
     font-size: 20px;
-    font-weight: 500px;
-    line-height: 24.2px;
-    text-align:left ;
+    line-height: 24px;
+    text-align: left;
     padding: 20px;
     border-radius: 8px;
+    
+    @media (max-width: 950px){
+        width: 174px;
+        padding-left: 5px;
+        font-size: 19px;
+        line-height: 1.3;
+    }
 `
 export const SpanAlugar = styled.span`
     cursor: pointer;
@@ -101,7 +185,7 @@ export const IconDrop = styled.i`
     cursor: pointer;
 `
 export const ListaCompra = styled.ul`
-    width: 228.47px;
+    width: 228px;
     position: relative;
     padding: 20px;
     transition: opacity 0.5s ease, max-height 0.5s ease;
@@ -111,6 +195,17 @@ export const ListaCompra = styled.ul`
     right: 20px;
     border-radius: 8px;
     border: 2px solid #000;
+
+    @media (max-width: 950px){
+        width: 174px;
+        padding:  10px;
+        right: 5px;
+    }
+
+    @media (max-width: 450px){
+        z-index: 1;
+    }
+    
 `
 export const LiTipo = styled.li`
     right: 5px;
@@ -130,6 +225,19 @@ export const UlOptions = styled.ul`
     right: 20px;
     border-radius: 8px;
     border: 2px solid #000;
+
+    @media (max-width: 1280px){
+        width: 250px;
+    }
+
+    @media (max-width: 950px){
+        width: 174px;
+        right: 8px;
+        padding: 0 10px;
+    }
+    @media (max-width: 450px){
+        z-index: 1;
+    }
 `
 export const UlBairros = styled.ul`
     position: relative;
@@ -138,10 +246,25 @@ export const UlBairros = styled.ul`
     margin-top: 20px;
     background: #ffffff;
     flex-direction: column;
-    width: 326.3px;
+    width: 326px;
     right: 20px;
     border-radius: 8px;
     border: 2px solid #000;
+
+    @media (max-width: 1280px){
+        width: 250px;
+    }
+
+    @media (max-width: 950px){
+        width: 174px;
+        margin-top: 22px;
+        padding: 0 8px;
+    }
+
+    @media (max-width: 450px){
+        margin-top: 20px;
+        z-index: 1;
+    }
 `
 
 export const CheckBoxWrapper = styled.div`
@@ -161,8 +284,14 @@ export const ErroText = styled.p`
     height: auto;
     top: 0px;
     display: flex;
-    flex-direction: column;
     padding: 10px;
     color: red;
     font-size: large;
+
+    @media (max-width: 450px ) {
+        top: 58%;
+        padding-left: 30px;
+        font-weight: 700;
+        font-size: 18px;
+    }
 `

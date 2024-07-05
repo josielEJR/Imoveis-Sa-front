@@ -1,6 +1,6 @@
 import React, { useEffect, useState} from 'react'
 import { useNavigate } from 'react-router-dom'
-import { Filtro, Bairros, Codigo, IconDrop, ListaCompra, Tipo, Comprar, Busca, ContainerFiltro, UlOptions, UlBairros, LiTipo, CheckBoxWrapper, CheckBox, CheckBoxLabel, ErroText } from './style'
+import { ContainerInput, Bairros, Codigo, IconDrop, ListaCompra, Tipo, Comprar, Busca, Wrapper, UlOptions, UlBairros, LiTipo, CheckBoxWrapper, CheckBox, CheckBoxLabel, ErroText,  ContainerFiltro } from './style'
 import { IoIosArrowDropdownCircle } from "react-icons/io"
 
 const FiltroBusca = () => {
@@ -170,12 +170,12 @@ const FiltroBusca = () => {
 }
 
 const getDisplayTextTipo = () => {
-  return selectedTipo.length === 0 ? 'Selecione o tipo' : selectedTipo.join(', ')
+  return selectedTipo.length === 0 ? 'Tipo de imóveis' : selectedTipo.join(', ')
 }
 
 const getDisplayTextBairro = () => {
   if (selectedBairro.length === 0){
-    return 'Selecione os Bairros'
+    return 'Filtrar bairros'
   } else if (selectedBairro.length > 2) {
     return `${selectedBairro.slice(0, 2).join(', ')} ... ${selectedBairro.length - 2}`
   } else {
@@ -184,12 +184,13 @@ const getDisplayTextBairro = () => {
 }
 
 const getDisplayTextCompra = () => {
-  return selectedCompra.length === 0 ? 'Venda ou Aluguel' : selectedCompra.join(', ');
+  return selectedCompra.length === 0 ? 'Venda / Aluguel' : selectedCompra.join(', ');
 }
 
   return (
-    <ContainerFiltro>
-      <Filtro>
+    <Wrapper>
+      <ContainerFiltro>
+      <ContainerInput>
       {showErroMessage && <ErroText error={error} />}
       <Comprar
         onMouseEnter={handleMouseEnter(setShowCompra)}
@@ -276,14 +277,17 @@ const getDisplayTextCompra = () => {
       onChange={(e) => setCodigo(e.target.value)}
       error={inputErro}
       />
+      </ContainerInput>
       <Busca
       onClick={filtrarImoveis}
       error={buttonError}
-      >Buscar</Busca>
+      >Buscar
+      </Busca>
       {error && <ErroText>{error}</ErroText>}
-      </Filtro>
-    </ContainerFiltro>
+      </ContainerFiltro>
+      
+    </Wrapper>
   )
 }
 
-export default FiltroBusca;
+export default FiltroBusca

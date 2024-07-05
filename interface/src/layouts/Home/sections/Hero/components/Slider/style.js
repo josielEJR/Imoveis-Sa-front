@@ -1,68 +1,131 @@
 import styled from "styled-components"
 
-export const Container = styled.div`  
-    width: 1870px;
-    height: 940px;
-    position:  relative;
-    display: flex;
-    background: #000000CC;
+export const Wrapper = styled.div`
+    display: flex; 
     justify-content: center;
     align-items: center;
+`
+
+export const Container = styled.div`  
+    width: 100%;
+    height: 940px;
+    position:  relative;
+    
+    
+    @media (max-width: 1280px){
+        width: 100%;
+    
+    }
+
+    @media (max-width: 950px){
+        width: 100%;
+        height: 750px;
+    }
+
+    @media (max-width: 450px){
+        width: 100%;
+        height: 660px;
+    
+    }
+
 `
 export const ImageContainer = styled.img`
     display: flex;
     width: 100%;
     height: 100%;
     object-fit: cover;
-    position: relative;
-`
-export const NavButton = styled.button`
-    width: ${(props) => props.width}px;
-    height: 19.58px;
-    top: 757.22px;
-    display: inline-flex;
-    align-items: center;
-    left: ${(props) => props.left}px;
-    outline: #FFFFFF;
-    border: #FFFFFF;
-    background: #FFFFFF;
-    cursor: pointer;
-    padding: 0;
     position: absolute;
-    color: white;
+    
+`
+export const Overlay = styled.div`
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #000000CC;
+`
+
+export const NavButton = styled.button`
+    top: 80%;
+    position: relative;
+    left: 50%;
+    height: 19px;
+    margin: 0 5px;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    color: ${(props) => (props.selected ? 'white' : '#000')};
     background-color: ${(props) => (props.selected ? '#454545' : 'white')};
-    transform: translate(-50%);
-    transition: width 0.8s;
+    transition: all 0.8s;
+    
+    @media (max-width: 950px){
+        left: 45%;
+    } 
+
+    @media (max-width: 450px){
+        left: 30%;
+    }
+
 `
 export const TextArea = styled.div`
-    width: 652.78px;
-    height: 221.94px;
-    font-weight: 700px;
-    top: 334.22px;
-    left: 272.72px;
+    width: 652px;
+    height: auto;
+    font-weight: 600;
     position: absolute;
     background-color: transparent;
     text-align: left;
-    font: italic;
     font-size: 48px;
     line-height: 58.09px;
     color: white;
+    top: 25%;
+    left: 20%;
+    
+
+    @media (max-width: 950px){
+        width: 600px;
+        height: 100%;
+        top: 10%;
+        left: 15%;
+    }
+
+    @media (max-width: 450px){
+        width: 300px;
+        font-weight: 100;
+        font-size: 25px;
+        top: 0;
+        text-align: center;
+        line-height: 28.09px;
+    }
+
 `
 export const ButtonPrice = styled.button`
     border-radius: 32px;
-    width: 266.33px;
-    height: 71.81px;
-    top: 600.44px;
-    left: 275.33px;
+    width: 266px;
+    height: 71px;
+    top: 55%;
+    left: 20%;
     border: 2px groove #ffffff;
-    font: italic;
-    cursor: pointer;
     font-weight: 300;
     font-size: 20px;
     line-height: 24.2px;
     color: #FFFFFF;
     position: absolute;
     
+    @media (max-width: 950px){
+        width: 266px;
+        top: 50%;
+        left: 15%;
+    }
+
+    @media (max-width: 450px) {
+        width: 200px;
+        font-weight: 150;
+        font-size: 18px;
+        top: 25%;
+        left: 28%;
+    }
+
 `
 
 export const Direita = styled.button`
