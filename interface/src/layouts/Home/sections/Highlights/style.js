@@ -18,10 +18,31 @@ export const Title = styled.div`
     font-weight: 700;
 `
 
+const slideCardsLeft = keyframes`
+    0% {left: -120%}
+    100% {left: 0}
+`
+const slideCardsRight = keyframes`
+    0% {left: 120%}
+    100% {left: 0}
+`
+
+const handleCardSlideAnimation = (prev, current) => {
+    if(prev > current){
+        return slideCardsLeft
+    }else if(prev < current){
+        return slideCardsRight
+    }
+    return null
+}
+
 export const CardsWrapper = styled.div`
     margin: 56px auto;
     display: flex;
     justify-content: space-between;
+    position: relative;
+    left: 0;
+    animation: ${props => handleCardSlideAnimation(props.prev, props.current)} 0.6s;
 `
 
 export const SelectorWrapper = styled.div`
@@ -51,6 +72,6 @@ export const IndexSelector = styled.div`
     margin: 0 6px;
     background-color: ${props => props.grow === "true" ? "#454545" : "#000000"};
     flex-grow: ${props => props.grow === "true" ? 1 : 0};
-    animation: ${props => props.grow === "true" ? growSelector : shrinkSelector} 0.5s;
+    animation: ${props => props.grow === "true" ? growSelector : shrinkSelector} 0.6s;
     cursor: pointer;
 `

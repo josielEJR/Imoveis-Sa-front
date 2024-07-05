@@ -5,7 +5,7 @@ import { faAngleRight } from '@fortawesome/free-solid-svg-icons'
 
 import { Wrapper, BackgroundImage, CardContent, Gap, Title, PriceArea, RedirectIndicator, HouseInfo } from "./style"
 
-const Card = ({ imagem, bairro, cidade, tipo, preco, area, quartos, banheiros, vagas, redirect }) => {
+const Card = ({ imagem, bairro, cidade, tipo, preco, area, quartos, banheiros, vagas, id }) => {
 
     const [hover, setHover] = useState("")
 
@@ -17,8 +17,12 @@ const Card = ({ imagem, bairro, cidade, tipo, preco, area, quartos, banheiros, v
         setHover("false")
     }
 
+    const formatarPreco = (preco) => {
+        return new Intl.NumberFormat('de-DE', { currency: 'BRL' }).format(preco)
+    }
+
     return (
-        <Wrapper onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} onClick={() => window.location.href = {redirect}}>
+        <Wrapper onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} onClick={() => window.location.href = "/imovel?id="+id}>
             <BackgroundImage image={imagem} ></BackgroundImage>
             <CardContent hover={hover}>
                 <Gap></Gap>
@@ -29,7 +33,7 @@ const Card = ({ imagem, bairro, cidade, tipo, preco, area, quartos, banheiros, v
                 </Title>
 
                 <PriceArea>
-                    {tipo} | R$ {preco}
+                    {tipo} | R$ {formatarPreco(preco)}
                 </PriceArea>
 
                 <RedirectIndicator>
