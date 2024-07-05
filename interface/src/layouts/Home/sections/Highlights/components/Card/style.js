@@ -7,6 +7,14 @@ export const Wrapper = styled.div`
     position: relative;
     overflow: hidden;
     cursor: pointer;
+
+    @media (max-width: 950px){
+        width: 50%;
+    }
+
+    @media (max-width: 430px){
+        width: 100%;   
+    }
 `
 
 export const BackgroundImage = styled.div`
@@ -41,6 +49,11 @@ export const CardContent = styled.div`
     color: white;
     top: ${props => props.hover === "true" ? "0" : "48px"};
     animation: ${props => handleCardInfo(props.hover)} 0.5s;
+
+    @media (max-width: 950px){
+        top: 0;
+        animation: none;
+    }
 `
 
 export const Gap = styled.div`

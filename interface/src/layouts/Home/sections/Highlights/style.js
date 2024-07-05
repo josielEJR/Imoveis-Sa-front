@@ -6,6 +6,14 @@ export const Wrapper = styled.section`
     margin: 100px auto;
     width: 100%;
     height: 800px;
+
+    @media (max-width: 950px){
+        max-width: 950px;
+    }
+
+    @media (max-width: 430px){
+        max-width: 430px;
+    }
 `
 
 export const Container = styled.div`
@@ -16,6 +24,10 @@ export const Container = styled.div`
 export const Title = styled.div`
     font-size: 48px;
     font-weight: 700;
+
+    @media (max-width: 430px){
+        font-size: 36px;
+    }
 `
 
 const slideCardsLeft = keyframes`
@@ -43,6 +55,10 @@ export const CardsWrapper = styled.div`
     position: relative;
     left: 0;
     animation: ${props => handleCardSlideAnimation(props.prev, props.current)} 0.6s;
+
+    @media (max-width: 950px){
+        justify-content: center;
+    }
 `
 
 export const SelectorWrapper = styled.div`
@@ -54,6 +70,14 @@ export const SelectorContainer = styled.div`
     margin: auto;
     display: flex;
     justify-content: center;
+    
+    @media (max-width: 950px){
+        width:35%;
+    }
+
+    @media (max-width: 430px){
+        width: 70%;
+    }
 `
 
 const growSelector = keyframes`
@@ -74,4 +98,9 @@ export const IndexSelector = styled.div`
     flex-grow: ${props => props.grow === "true" ? 1 : 0};
     animation: ${props => props.grow === "true" ? growSelector : shrinkSelector} 0.6s;
     cursor: pointer;
+
+    @media (max-width: 950px){
+        width: 50px;
+        height: 30px;
+    }
 `
