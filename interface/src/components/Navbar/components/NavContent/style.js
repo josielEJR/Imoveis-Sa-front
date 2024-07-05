@@ -1,26 +1,9 @@
 import styled, { keyframes } from 'styled-components'
 
-const navSectionResponsiveSlide = keyframes`
-    0% {left: 100%;}
-    100% {left: 20%;}
-`
-const navSectionResponsiveSlideReverse = keyframes`
-    0% {left: 20%;}
-    100% {left: 100%;}
-`
-
-const handleSectionSlide = (display) => {
-    if (display === "true") {
-        return navSectionResponsiveSlide
-    } else if (display === "false") {
-        return navSectionResponsiveSlideReverse
-    }
-}
-
 export const MenuButton = styled.div`
     display: none;
 
-    @media (max-width: 375px) {
+    @media (max-width: 950px) {
         display: block;
         width: 32px;
         height: 42px;
@@ -40,7 +23,7 @@ const draw = keyframes`
 export const CloseMenuButton = styled.div`
     display: none;
 
-    @media (max-width: 375px) {
+    @media (max-width: 950px) {
         display: ${props => props.visible === "true" ? 'block' : 'none'};
         width: 32px;
         height: 42px;
@@ -53,18 +36,37 @@ export const CloseMenuButton = styled.div`
     }
 `
 
+const navSectionResponsiveSlide = keyframes`
+    0% {right: -100%;}
+    100% {right: 0;}
+`
+const navSectionResponsiveSlideReverse = keyframes`
+    0% {right: 0;}
+    100% {right: -100%;}
+`
+
+const handleSectionSlide = (display) => {
+    if (display === "true") {
+        return navSectionResponsiveSlide
+    } else if (display === "false") {
+        return navSectionResponsiveSlideReverse
+    }
+}
+
 export const NavContent = styled.div`
     margin-right: 50px;
 
-    @media (max-width: 375px) {
+    @media (max-width: 950px) {
         position: fixed;
         width: 300px;
         height: 100%;
         background-color: #050505;
-        left: ${props => props.display === "true" ? "20%" : "100%"};
+        right: ${props => props.display === "true" ? "0" : "-100%"};
+        margin: 0;
         animation-name: ${props => handleSectionSlide(props.display)};
-        animation-duration: 0.4s;
+        animation-duration: 0.6s;
         overflow: scroll;
+        overflow-x: hidden;
     }
 `
 
@@ -74,7 +76,7 @@ export const ContentLink = styled.span`
     margin: 28px 20px 26px 20px;
     font-weight: 300px;
     font-size: 20px;
-    @media (max-width: 375px) {
+    @media (max-width: 950px) {
         display: block;
     }
 `
@@ -90,7 +92,7 @@ export const Dropdown = styled.div`
     box-shadow: 0px 4px 8px 0px #00000026;
     border-radius: 0 0 3px 3px;
 
-    @media (max-width: 375px) {
+    @media (max-width: 950px) {
         position: unset;
     }
 `
@@ -108,7 +110,7 @@ export const SideDropdown = styled.div`
     overflow: hidden;
     border-radius: 3px;
 
-    @media (max-width: 375px) {
+    @media (max-width: 950px) {
         position: unset;
         padding: 20px;
         width: 205px;
@@ -131,7 +133,7 @@ export const DropdownContent = styled.div`
     animation-name: ${textSlideLeft};
     animation-duration: 0.4s;
 
-    @media (max-width: 375px) {
+    @media (max-width: 950px) {
         top: 0px;
         animation-name: ${textSlideTop};
         animation-duration: 0.4s;
@@ -144,7 +146,7 @@ const rotateButton = keyframes`
 `
 
 export const Rotate = styled.div`
-    @media (max-width: 375px) {
+    @media (max-width: 950px) {
         transform: rotate(90deg);
         animation: ${rotateButton} 0.5s;
     }

@@ -28,7 +28,7 @@ const Content = () => {
                     <FontAwesomeIcon icon={faXmark} />
                 </CloseMenuButton>
 
-                {window.innerWidth <= 375 && <Login />}
+                {window.innerWidth <= 950 && <Login />}
 
                 <NavOption tipo={"Venda"} url={"http://localhost:3001/imoveis/cidadesvenda"} right="-260" />
 
@@ -38,7 +38,7 @@ const Content = () => {
 
                 <NavOption tipo={"Ajuda"} />
 
-                {window.innerWidth > 375 && <Login />}
+                {window.innerWidth > 950 && <Login />}
             </NavContent>
         </>
     )
