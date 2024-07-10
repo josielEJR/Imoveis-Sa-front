@@ -2,6 +2,7 @@ import React from 'react'
 import Slider from './components/Slider/index'
 import FiltroBusca from './components/FiltroBusca'
 import { ContainerHero } from './style'
+import Depoimentos from './components/Depoimentos'
 
 const config = [
   {
@@ -26,6 +27,15 @@ const config = [
     url:'/imovel?id=2'
   },
   
+  
+]
+
+const configDep = [
+  {
+    title: 'image1' ,
+    image: 'https://images.pexels.com/photos/21958119/pexels-photo-21958119/free-photo-of-preto-e-branco-p-b-homem-jogando.jpeg',
+    
+  },
 ]
 
 const Hero = () => {
@@ -33,6 +43,7 @@ const Hero = () => {
       <ContainerHero>
       <Slider config={config} />
       <FiltroBusca />
+      <Depoimentos config={configDep} />
       </ContainerHero>
     
   )

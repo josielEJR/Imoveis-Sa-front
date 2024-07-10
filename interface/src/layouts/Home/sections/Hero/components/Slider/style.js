@@ -73,7 +73,6 @@ export const TextArea = styled.div`
     height: auto;
     font-weight: 600;
     position: absolute;
-    background-color: transparent;
     text-align: left;
     font-size: 48px;
     line-height: 58.09px;

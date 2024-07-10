@@ -3,6 +3,7 @@ import styled, { css } from "styled-components"
 export const Wrapper = styled.div`
     display: flex;
     justify-content: center;
+    
 `
 export const ContainerFiltro = styled.div`
     width: 1566px;
@@ -16,6 +17,7 @@ export const ContainerFiltro = styled.div`
     position: relative;
     top: -50px;
     gap: 32px;
+    z-index: 1;
     
     @media (max-width: 1280px){
         width: 1180px;
