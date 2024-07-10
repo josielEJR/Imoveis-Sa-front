@@ -15,7 +15,7 @@ export const MenuButton = styled.div`
     }
 `
 
-const draw = keyframes`
+const spin = keyframes`
     from {transform: rotate(0deg)}
     to {transform: rotate(360deg)}
 `
@@ -32,7 +32,7 @@ export const CloseMenuButton = styled.div`
         margin: 28px 20px 28px 20px;
         font-size: 40px;
         color: #EEEEEE;
-        animation: ${draw} 1s;
+        animation: ${spin} 1s;
     }
 `
 
@@ -61,10 +61,10 @@ export const NavContent = styled.div`
         width: 300px;
         height: 100%;
         background-color: #050505;
-        right: ${props => props.display === "true" ? "0" : "-100%"};
+        right: ${props => props.display === "true" ? "0" : "-300%"};
         margin: 0;
         animation-name: ${props => handleSectionSlide(props.display)};
-        animation-duration: 0.6s;
+        animation-duration: 0.7s;
         overflow: scroll;
         overflow-x: hidden;
     }
