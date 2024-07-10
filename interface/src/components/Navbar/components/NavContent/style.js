@@ -84,7 +84,7 @@ export const ContentLink = styled.span`
 export const Dropdown = styled.div`
     position: absolute;
     width: 263px;
-    right: ${props => props.right + "px"};
+    margin-left: ${props => `${props.margin || 0}px`};
     font-size: 18px;
     background-color: #070707;
     box-sizing: border-box;

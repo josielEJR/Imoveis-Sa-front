@@ -33,7 +33,7 @@ const Login = () => {
     const handleDropdown = () => {
         if (dropdownVisible || window.innerWidth <= 950) {
             return (
-                <Dropdown right={0}>
+                <Dropdown margin={-113}>
                     <ul>
                         {localStorage.length === 0 &&
                             <>
