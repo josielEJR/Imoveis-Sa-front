@@ -21,6 +21,7 @@ export const Container = styled.div`
     @media (max-width: 950px){
         width: 100%;
         height: 750px;
+        overflow: hidden;
     }
 
     @media (max-width: 450px){
@@ -54,15 +55,13 @@ export const ContainerNavButton = styled.div`
 
 `
 
-export const ImageContainer = styled.img`
+export const ImageContainer = styled.div`
     display: flex;
     width: 100%;
     height: 100%;
-    object-fit: cover;
     position: absolute;
     transition: transform 0.9s ease-in-out;
-    transform: ${({ isVisible }) => (isVisible ? 'translateX(0)' : 'translateX(100%)')};
-    
+    transform: translateX(${({ index, currentIndex }) => (index - currentIndex) * 100}%);
 `
 export const Overlay = styled.div`
     position: absolute;

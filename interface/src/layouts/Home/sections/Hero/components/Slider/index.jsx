@@ -4,20 +4,23 @@ import { useNavigate } from 'react-router-dom'
 import { FaAngleLeft, FaAngleRight } from "react-icons/fa6"
 
 const Slider = ({ config }) => {
-  const [ImageIndex, setImageIndex] = useState(0)
+  const [imageIndex, setImageIndex] = useState(0)
   const [selectedButton, setSelectedButton] = useState(1)
   const [paused, setPaused] = useState(false)
+  const [touchStart, setTouchStart] = useState(0)
+  const [touchEnd, setTouchEnd] = useState(0)
+  const [touchStartTime, setTouchStartTime] = useState(0)
   const navigate = useNavigate()
 
   const next = () => {
     setImageIndex((state) => (state += 1))
-    if (ImageIndex === config.length - 1) setImageIndex(0)
+    if (imageIndex === config.length - 1) setImageIndex(0)
     setSelectedButton((state) => (state += 1))
     if (selectedButton === config.length ) setSelectedButton(1)
     }
   const prev = () => {
     setImageIndex((state) => (state -= 1))
-    if (ImageIndex === 0) setImageIndex(config.length  - 1)
+    if (imageIndex === 0) setImageIndex(config.length  - 1)
     setSelectedButton((state) => (state -= 1))
     if (selectedButton === 1) setSelectedButton(config.length)
     }
@@ -28,14 +31,42 @@ const Slider = ({ config }) => {
   }
 
   const handleNavigateToPage = () => {
-    navigate(config[ImageIndex].url)
+    navigate(config[imageIndex].url)
+  }
+
+  const handleTouchStart = (e) => {
+    setTouchStart(e.touches[0].clientX)
+    setTouchStartTime(new Date().getTime())
+  }
+
+  const handleTouchMove = (e) => {
+    setTouchEnd(e.touches[0].clientX)
+  }
+
+  const handleTouchEnd = () => {
+    const touchEndTime = new Date().getTime()
+    const touchDuration = touchEndTime - touchStartTime
+
+    if (touchDuration > 100) {
+      if (touchStart - touchEnd > 50){
+      next()
+    }
+  
+    if (touchStart - touchEnd < -50) {
+      prev()
+    }
+  }
+
+    setTouchStart(0)
+    setTouchEnd(0)
+    setTouchStartTime(0)
   }
 
    {/*useEffect(() => {
     const interval = setInterval(() => {
       if(!paused){
         setImageIndex((prevIndex) => (prevIndex + 1) % config.length)}},
-        600)
+        6000)
         return()=>{
           if(interval){
             clearInterval(interval)
@@ -46,7 +77,7 @@ const Slider = ({ config }) => {
     const interval = setInterval(() => {
       if(!paused){
         setSelectedButton((prevIndex) => (prevIndex ) % config.length + 1)}},
-        600)
+        6000)
         return()=>{
           if(interval){
             clearInterval(interval)
@@ -56,13 +87,17 @@ const Slider = ({ config }) => {
 
   return (
   <Wrapper>
-    <Container>
-    {config.map((item, index) => (
+    <Container
+      onTouchStart={handleTouchStart}
+      onTouchMove={handleTouchMove}
+      onTouchEnd={handleTouchEnd}
+    >
+      {config.map((item, index) => (
           <ImageContainer
             key={index}
-            src={item.image}
-            isVisible={index === ImageIndex}
-      
+            style={{ backgroundImage: `url(${item.image})`, backgroundSize: 'cover', backgroundPosition: 'center' }}
+            index={index}
+            currentIndex={imageIndex}
           />
         ))}
       <Overlay
@@ -83,7 +118,7 @@ const Slider = ({ config }) => {
         Veja aqui alguns de nossos destaque, os melhores imóveis da região  
       </TextArea>
       <ButtonPrice onClick={handleNavigateToPage}>
-        {config[ImageIndex].text} | R$ {config[ImageIndex].price}
+        {config[imageIndex].text} | R$ {config[imageIndex].price}
       </ButtonPrice>
       <WrapperNavButton>
         <ContainerNavButton>
