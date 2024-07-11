@@ -3,6 +3,7 @@ import styled from "styled-components";
 export const Wrapper = styled.div `
     display: flex;
     justify-content: center;
+    overflow: hidden;
 
 `
 export const Container = styled.div `
@@ -20,6 +21,7 @@ export const Dp = styled.div `
     width: 100%;
     height: 793px;
     margin-left: 10%;
+    
 
 `
 export const Title = styled.div `
@@ -34,11 +36,18 @@ export const Title = styled.div `
 `
 export const Perfil = styled.div`
     width: 100%;
+    background-color: black;
 
 `
 
-export const Imagem = styled.img`
+export const ContainerImagem = styled.div`
     width: 709px;
     height: 499px;
+    position: relative;
+`
+
+export const Imagem = styled.img`
+    width: 100%;
+    height: 100%;
     object-fit: cover;
 `

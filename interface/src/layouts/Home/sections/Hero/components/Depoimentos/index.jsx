@@ -2,7 +2,9 @@ import React, { useState } from 'react'
 import { Container, Wrapper, Dp, Title, Imagem, Perfil } from './style'
 
 const Depoimentos = ({ configDep }) => {
-    const [ImageIndex, setImageIndex] = useState(0)
+    const [imageIndex, setImageIndex] = useState(0)
+
+   
   return (
     <Wrapper>
         <Container>
@@ -13,7 +15,7 @@ const Depoimentos = ({ configDep }) => {
                 </Title>
                 <Perfil >
                         <Imagem
-                            src={configDep[ImageIndex].image}
+                            
                         />
                 </Perfil>
                    

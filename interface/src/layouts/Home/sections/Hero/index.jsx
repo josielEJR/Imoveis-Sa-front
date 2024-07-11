@@ -43,7 +43,7 @@ const Hero = () => {
       <ContainerHero>
       <Slider config={config} />
       <FiltroBusca />
-      <Depoimentos config={configDep} />
+      <Depoimentos configDep={configDep} />
       </ContainerHero>
     
   )
