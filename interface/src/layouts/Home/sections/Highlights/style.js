@@ -7,12 +7,19 @@ export const Wrapper = styled.section`
     width: 100%;
     height: 800px;
 
-    @media (max-width: 950px){
-        max-width: 950px;
+    @media (max-width: 1281px) {
+        max-width: 1280px;
+        width: 80%;
+        margin: 100px auto;
     }
 
-    @media (max-width: 430px){
-        max-width: 430px;
+    @media (max-width: 951px){
+        max-width: 950px;
+        width: 100%;
+    }
+
+    @media (max-width: 451px){
+        max-width: 450px;
     }
 `
 
@@ -25,7 +32,7 @@ export const Title = styled.div`
     font-size: 48px;
     font-weight: 700;
 
-    @media (max-width: 430px){
+    @media (max-width: 451px){
         font-size: 36px;
     }
 `
@@ -56,7 +63,7 @@ export const CardsWrapper = styled.div`
     left: 0;
     animation: ${props => handleCardSlideAnimation(props.prev, props.current)} 0.6s;
 
-    @media (max-width: 950px){
+    @media (max-width: 951px){
         justify-content: center;
     }
 `
@@ -70,12 +77,16 @@ export const SelectorContainer = styled.div`
     margin: auto;
     display: flex;
     justify-content: center;
+
+    @media (max-width: 1281px) {
+        width: 20%;
+    }
     
-    @media (max-width: 950px){
+    @media (max-width: 951px){
         width:35%;
     }
 
-    @media (max-width: 430px){
+    @media (max-width: 451px){
         width: 70%;
     }
 `
@@ -99,7 +110,7 @@ export const IndexSelector = styled.div`
     animation: ${props => props.grow === "true" ? growSelector : shrinkSelector} 0.6s;
     cursor: pointer;
 
-    @media (max-width: 950px){
+    @media (max-width: 951px){
         width: 50px;
         height: 30px;
     }

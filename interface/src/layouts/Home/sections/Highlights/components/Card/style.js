@@ -8,11 +8,11 @@ export const Wrapper = styled.div`
     overflow: hidden;
     cursor: pointer;
 
-    @media (max-width: 950px){
+    @media (max-width: 951px){
         width: 50%;
     }
 
-    @media (max-width: 430px){
+    @media (max-width: 451px){
         width: 100%;   
     }
 `
@@ -50,7 +50,7 @@ export const CardContent = styled.div`
     top: ${props => props.hover === "true" ? "0" : "48px"};
     animation: ${props => handleCardInfo(props.hover)} 0.5s;
 
-    @media (max-width: 950px){
+    @media (max-width: 951px){
         top: 0;
         animation: none;
     }
@@ -59,12 +59,19 @@ export const CardContent = styled.div`
 export const Gap = styled.div`
     width: 100%;
     height: 135px;
+    @media (max-width: 1281px) {
+        height: 178px;
+    }
 `
 
 export const Title = styled.div`
     font-size: 24px;
     font-weight: 700;
     margin: 0 0 20px 35px;
+
+    @media (max-width: 1281px) {
+        margin: 0 0 10px 17px;
+    }
 `
 
 export const PriceArea = styled.div`
@@ -74,11 +81,19 @@ export const PriceArea = styled.div`
     width: 200px;
     border-radius: 32px;
     font-size: 11px;
+
+    @media (max-width: 1281px) {
+        margin: 0 0 15px 17px;
+    }
 `
 
 export const RedirectIndicator = styled.div`
     margin: 0 0 35px 35px;
     font-size: 10px;
+
+    @media (max-width: 1281px) {
+        margin: 0 0 17px 20px;
+    }
 `
 
 export const HouseInfo = styled.div`
