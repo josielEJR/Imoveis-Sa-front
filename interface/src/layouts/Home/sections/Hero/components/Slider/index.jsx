@@ -1,10 +1,7 @@
-import React, {  useState } from 'react'
-import {   ButtonPrice,  Container,  ImageContainer, NavButton,  TextArea,  Direita, Esquerda, Icon, Overlay, Wrapper,   } from './style'
+import React, {  useState, useEffect } from 'react'
+import {   ButtonPrice,  Container,  ImageContainer, NavButton,  TextArea,  Direita, Esquerda, Icon, Overlay, Wrapper, WrapperNavButton, ContainerNavButton,   } from './style'
 import { useNavigate } from 'react-router-dom'
 import { FaAngleLeft, FaAngleRight } from "react-icons/fa6"
-
-
-
 
 const Slider = ({ config }) => {
   const [ImageIndex, setImageIndex] = useState(0)
@@ -34,7 +31,7 @@ const Slider = ({ config }) => {
     navigate(config[ImageIndex].url)
   }
 
-{ /*   useEffect(() => {
+   {/*useEffect(() => {
     const interval = setInterval(() => {
       if(!paused){
         setImageIndex((prevIndex) => (prevIndex + 1) % config.length)}},
@@ -55,16 +52,23 @@ const Slider = ({ config }) => {
             clearInterval(interval)
           }
         }
-  }) */ }
+  }) */}
 
   return (
   <Wrapper>
     <Container>
-      <ImageContainer 
-      src={config[ImageIndex].image}
-      onMouseEnter={() => setPaused(true)}
-      onMouseLeave={() => setPaused(false)}  />
-      <Overlay />
+    {config.map((item, index) => (
+          <ImageContainer
+            key={index}
+            src={item.image}
+            isVisible={index === ImageIndex}
+      
+          />
+        ))}
+      <Overlay
+        onMouseEnter={() => setPaused(true)}
+        onMouseLeave={() => setPaused(false)}
+      />
       <Direita onClick={next} >
         <Icon>
           <FaAngleRight />
@@ -81,26 +85,28 @@ const Slider = ({ config }) => {
       <ButtonPrice onClick={handleNavigateToPage}>
         {config[ImageIndex].text} | R$ {config[ImageIndex].price}
       </ButtonPrice>
-      
+      <WrapperNavButton>
+        <ContainerNavButton>
           <NavButton
-            style={{ width: selectedButton === 1 ? 70 : 26 }}
-            selected={selectedButton === 1}
+            width={selectedButton === 1 ? 70 : 25}
+            selected={selectedButton === 1 ? "true" : "false"}
             onClick={() => handleButtonClick(1)}
           >  
           </NavButton>
           <NavButton
-            style={{ width: selectedButton === 2 ? 70 : 30 }}
-            selected={selectedButton === 2}
+            width={selectedButton === 2 ? 70 : 35}
+            selected={selectedButton === 2 ? "true" : "false"}
             onClick={() => handleButtonClick(2)}
           >  
           </NavButton>
           <NavButton
-            style={{ width: selectedButton === 3 ? 70  : 39 }}
-            selected={selectedButton === 3}
+            width={selectedButton === 3 ? 70 : 45 }
+            selected={selectedButton === 3 ? "true" : "false"}
             onClick={() => handleButtonClick(3)}
           >  
           </NavButton>
-        
+        </ContainerNavButton>
+      </WrapperNavButton>
       </Container>
   </Wrapper>
   )
