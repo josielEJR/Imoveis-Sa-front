@@ -21,13 +21,17 @@ const NavOption = ({ tipo, url, right }) => {
         setDropdownVisible(false)
     }
 
+    const handleClick = () => {
+        dropdownVisible ? setDropdownVisible(false) : setDropdownVisible(true)
+    }
+
     const redirect = tipo.toLowerCase()
 
     return (
         <ContentLink onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
-            <Link
-                to={`/${redirect}`}
-            ><span className='p-1'>{tipo}</span><FontAwesomeIcon icon={faAngleDown} /></Link>
+            <div onClick={handleClick}>
+                <span className='p-1'>{tipo}</span><FontAwesomeIcon icon={faAngleDown} />
+            </div>
 
             {dropdownVisible && <Itens lista={url} redirect={redirect} right={right} />}
             {/* <Itens lista={url} redirect={redirect} right={right} /> */}

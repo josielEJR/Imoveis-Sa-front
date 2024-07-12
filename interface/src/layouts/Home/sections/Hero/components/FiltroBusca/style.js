@@ -26,16 +26,17 @@ export const ContainerFiltro = styled.div`
     }
 
     @media (max-width: 950px) {
-        width: 880px;
-        padding: 0 5px;
+        width: 890px;
+        padding: 0 10px;
         gap: 5px;
     }
     @media (max-width: 450px) {
         width: 400px;
-        gap: 25px;
-        height: auto;
+        gap: 10px;
+        height: 300px;
         display: grid;
-        
+        padding-bottom: 0;
+
     }
 
    
@@ -49,7 +50,7 @@ export const ContainerInput = styled.div`
         gap: 15px;
     }
     @media (max-width: 950px){
-        gap: 5px;
+        gap: 10px;
     }
     @media (max-width: 450px){
         display: grid;
@@ -78,11 +79,17 @@ export const Busca = styled.button`
     position: relative;
     padding: 10px;
 
+    @media (max-width: 950px){
+        width: 130px;
+    }
+
     @media (max-width: 450px){
         width: 100%;
-        font-size: 32px;
+        font-size: 25px;
+        height: 60px;
+        
     }
-    
+
 
 `
 export const Codigo = styled.input`
@@ -111,6 +118,12 @@ export const Codigo = styled.input`
         width: 174px;
         
     }
+    
+    @media (max-width: 450px) {
+        width: 150px;
+        height: 60px;
+        font-size: 14px;
+    }
 `
 export const Bairros = styled.div`
     width: 326px;
@@ -131,6 +144,13 @@ export const Bairros = styled.div`
     @media (max-width: 950px){
         width: 174px;
         
+    }
+
+    @media (max-width: 450px) {
+        width: 150px;
+        height: 60px;
+        font-size: 18px;
+        padding: 14px;
     }
 `
 export const Tipo = styled.div`
@@ -154,6 +174,14 @@ export const Tipo = styled.div`
         line-height: 1.3;
         padding-left: 8px;
     }
+
+    @media (max-width: 450px) {
+        width: 150px;
+        height: 60px;
+        font-size: 17px;
+        line-height: 15px;
+        padding-left: 5px;
+    }
 `
 export const Comprar = styled.div`
     width: 228px;
@@ -172,12 +200,16 @@ export const Comprar = styled.div`
         font-size: 19px;
         line-height: 1.3;
     }
-`
-export const SpanAlugar = styled.span`
-    cursor: pointer;
-    margin-top: 40px;
 
+    @media (max-width: 450px) {
+        width: 150px;
+        height: 60px;
+        font-size: 17px;
+        line-height: 15px;
+        padding-left: 5px;
+    }
 `
+
 
 export const IconDrop = styled.i`
     position: absolute;
@@ -206,6 +238,9 @@ export const ListaCompra = styled.ul`
 
     @media (max-width: 450px){
         z-index: 1;
+        width: 150px;
+        margin-top: 25px;
+        right: 5px;
     }
     
 `
@@ -239,6 +274,9 @@ export const UlOptions = styled.ul`
     }
     @media (max-width: 450px){
         z-index: 1;
+        width: 150px;
+        margin-top: 25px;
+        right: 5px;
     }
 `
 export const UlBairros = styled.ul`
@@ -260,12 +298,16 @@ export const UlBairros = styled.ul`
     @media (max-width: 950px){
         width: 174px;
         margin-top: 22px;
-        padding: 0 8px;
+        padding: 0 5px;
     }
 
     @media (max-width: 450px){
         margin-top: 20px;
         z-index: 1;
+        width: 150px;
+        right: 15px;
+        padding: 15px;
+        line-height: normal;
     }
 `
 

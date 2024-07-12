@@ -27,10 +27,20 @@ const FiltroBusca = () => {
     }, [selectedBairro, selectedCompra, selectedTipo, codigo])
 
     const handleMouseEnter = (setter) => () => {
+      if (window.innerWidth > 950) {
         setter(true)
+      }
     }
+
     const handleMouseLeave = (setter) => () => {
+      if (window.innerWidth > 950) {
         setter(false)
+      }
+    }
+
+
+    const handleDropdownClick = (setter) => () => {
+      setter((prev) => !prev)
     }
 
     const handleBairroChange = (bairro) => {
@@ -163,7 +173,7 @@ const FiltroBusca = () => {
             })
       return
     } 
-    // Caso nenhum filtro for escolhido e nenhum id digitado 
+    
     console.log('Por favor, selecione pelo menos um filtro.')
     setError('Por favor, selecione pelo menos um filtro')
     
@@ -193,8 +203,9 @@ const getDisplayTextCompra = () => {
       <ContainerInput>
       {showErroMessage && <ErroText error={error} />}
       <Comprar
-        onMouseEnter={handleMouseEnter(setShowCompra)}
-        onMouseLeave={handleMouseLeave(setShowCompra)}
+        onMouseEnter={handleMouseEnter((setShowCompra))}
+        onMouseLeave={handleMouseLeave((setShowCompra))}
+        onClick={handleDropdownClick((setShowCompra))}
       >
         {getDisplayTextCompra()}
         <IconDrop>
@@ -219,8 +230,9 @@ const getDisplayTextCompra = () => {
       )}
       </Comprar>
       <Tipo 
-        onMouseEnter={handleMouseEnter(setShowTipo)}
-        onMouseLeave={handleMouseLeave(setShowTipo)}
+        onMouseEnter={handleMouseEnter((setShowTipo))}
+        onMouseLeave={handleMouseLeave((setShowTipo))}
+        onClick={handleDropdownClick((setShowTipo))}
       >
         {getDisplayTextTipo()}
         <IconDrop>
@@ -245,8 +257,9 @@ const getDisplayTextCompra = () => {
         )}
       </Tipo>
       <Bairros
-        onMouseEnter={handleMouseEnter(setShowBairros)}
-        onMouseLeave={handleMouseLeave(setShowBairros)}
+        onMouseEnter={handleMouseEnter((setShowBairros))}
+        onMouseLeave={handleMouseLeave((setShowBairros))}
+        onClick={handleDropdownClick((setShowBairros))}
       >
         {getDisplayTextBairro()}
         <IconDrop>

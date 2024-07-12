@@ -1,22 +1,46 @@
+import { useState } from 'react'
+
 import NavOption from './components/NavOption'
 import Anunciar from './components/Anunciar'
 import Login from './components/Login'
 
-import { NavContent } from './style'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faBars, faXmark } from '@fortawesome/free-solid-svg-icons'
+
+import { MenuButton, CloseMenuButton, NavContent } from './style'
 
 const Content = () => {
+
+    const [menuVisible, setMenuVisible] = useState("")
+
+    const handleMenu = () => {
+        menuVisible === "true" ? setMenuVisible("false") : setMenuVisible("true")
+    }
+
     return (
-        <NavContent>
-            <NavOption tipo={"Comprar"} url={"http://localhost:3001/imoveis/cidadesvenda"} right="-260" />
+        <>
+            <MenuButton onClick={handleMenu}>
+                <FontAwesomeIcon icon={faBars} />
+            </MenuButton>
 
-            <NavOption tipo={"Alugar"} url={"http://localhost:3001/imoveis/cidadesaluguel"} right="-260" />
+            <NavContent display={menuVisible}>
+                <CloseMenuButton onClick={handleMenu} visible={menuVisible}>
+                    <FontAwesomeIcon icon={faXmark} />
+                </CloseMenuButton>
 
-            <Anunciar />
+                {window.innerWidth <= 375 && <Login />}
 
-            <NavOption tipo={"Ajuda"}/>
+                <NavOption tipo={"Venda"} url={"http://localhost:3001/imoveis/cidadesvenda"} right="-260" />
 
-            <Login />
-        </NavContent>
+                <NavOption tipo={"Aluguel"} url={"http://localhost:3001/imoveis/cidadesaluguel"} right="-260" />
+
+                <Anunciar />
+
+                <NavOption tipo={"Ajuda"} />
+
+                {window.innerWidth > 375 && <Login />}
+            </NavContent>
+        </>
     )
 }
 

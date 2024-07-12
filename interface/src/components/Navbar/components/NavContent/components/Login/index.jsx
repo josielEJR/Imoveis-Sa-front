@@ -12,16 +12,18 @@ const Login = () => {
 
     const [dropdownVisible, setDropdownVisible] = useState(false)
 
+    const handleClick = () => {
+        dropdownVisible ? setDropdownVisible(false) : setDropdownVisible(true)
+    }
+
     const handleLogin = () => {
-        if (localStorage.length === 0) {
+        if (localStorage.length === 0 && window.innerWidth > 375) {
             return (
-                <NavLink
-                    to="/login"
-                >
+                <NavLink onClick={handleClick}>
                     <FontAwesomeIcon icon={faCircleUser} /> Entrar
                 </NavLink>
             )
-        } else {
+        } else if (localStorage.length !== 0) {
             return (
                 <button id='usuario'><FontAwesomeIcon icon={faCircleUser} style={{ fill: "white" }} /> {localStorage.currentUserNome}</button>
             )
@@ -29,7 +31,7 @@ const Login = () => {
     }
 
     const handleDropdown = () => {
-        if (dropdownVisible) {
+        if (dropdownVisible || window.innerWidth <= 375) {
             return (
                 <Dropdown right={0}>
                     <ul>
