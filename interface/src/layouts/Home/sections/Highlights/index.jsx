@@ -158,12 +158,6 @@ const Hightlights = () => {
 
     function handleResize() {
         console.log(window.outerWidth)
-
-        if(window.outerWidth <= 950){
-            console.log("layout mobile")
-        }else{
-            console.log("layout normal")
-        }
     }
 
     const setLayout = () => {
