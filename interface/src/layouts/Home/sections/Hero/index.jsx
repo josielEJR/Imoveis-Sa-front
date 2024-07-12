@@ -30,20 +30,13 @@ const config = [
   
 ]
 
-const configDep = [
-  {
-    title: 'image1' ,
-    image: 'https://images.pexels.com/photos/21958119/pexels-photo-21958119/free-photo-of-preto-e-branco-p-b-homem-jogando.jpeg',
-    
-  },
-]
 
 const Hero = () => {
   return (
       <ContainerHero>
       <Slider config={config} />
       <FiltroBusca />
-      <Depoimentos configDep={configDep} />
+      <Depoimentos />
       </ContainerHero>
     
   )

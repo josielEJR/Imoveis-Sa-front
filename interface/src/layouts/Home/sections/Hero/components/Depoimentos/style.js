@@ -4,46 +4,52 @@ export const Wrapper = styled.div `
     display: flex;
     justify-content: center;
     overflow: hidden;
+    background-color: white;
 
 `
 export const Container = styled.div `
-    width: 100%;
-    height: 940px;
+    width: 450px;
+    height: 993px;
     position:  relative;
-    background-color: #FFFFFF;
-    top: -50px;
+    background-color: black;
     display: flex;
     align-items: center;
+    justify-content: space-around;
     
 `
-export const Dp = styled.div `
+export const ContainerDepoimentos = styled.div `
     display: flex;
-    width: 100%;
+    width: 400px;
     height: 793px;
-    margin-left: 10%;
+    gap: 10px;
+    background-color: aliceblue;
     
 
 `
 export const Title = styled.div `
-    font-weight: 600;
-    font-size: 48px;
-    line-height: 58.09px;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 38px;
     height: auto;
     width: 600px;
     text-align: left;
     position: absolute;
     
 `
-export const Perfil = styled.div`
+export const ContainerPerfil = styled.div`
     width: 100%;
-    background-color: black;
+    height: 575px;
+    background-color: yellow;
+    margin-top: 218px;
+    position: relative;
 
 `
 
 export const ContainerImagem = styled.div`
-    width: 709px;
-    height: 499px;
+    width: 150px;
+    height: 200px;
     position: relative;
+    background-color: aqua;
 `
 
 export const Imagem = styled.img`

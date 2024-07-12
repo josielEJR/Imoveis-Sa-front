@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Container, Wrapper, Dp, Title, Imagem, Perfil } from './style'
+import { Container, Wrapper, ContainerDepoimentos, Title, Imagem, ContainerPerfil, ContainerImagem } from './style'
 
 const Depoimentos = ({ configDep }) => {
     const [imageIndex, setImageIndex] = useState(0)
@@ -8,18 +8,17 @@ const Depoimentos = ({ configDep }) => {
   return (
     <Wrapper>
         <Container>
-            <Dp>
-                <Title >
+            <ContainerDepoimentos>
+              <Title >
                  <p> O QUE DIZEM</p>
                  <p> NOSSOS CLIENTES</p>
-                </Title>
-                <Perfil >
-                        <Imagem
-                            
-                        />
-                </Perfil>
-                   
-            </Dp>
+              </Title>
+                  <ContainerPerfil>
+                    <ContainerImagem>
+
+                    </ContainerImagem>
+                  </ContainerPerfil> 
+            </ContainerDepoimentos>
             
         </Container>
     </Wrapper>
