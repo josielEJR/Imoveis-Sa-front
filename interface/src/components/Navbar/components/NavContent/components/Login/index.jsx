@@ -17,7 +17,7 @@ const Login = () => {
     }
 
     const handleLogin = () => {
-        if (localStorage.length === 0 && window.innerWidth > 950) {
+        if (localStorage.length === 0 && window.outerWidth > 950) {
             return (
                 <NavLink onClick={handleClick}>
                     <FontAwesomeIcon icon={faCircleUser} /> Entrar
@@ -31,7 +31,7 @@ const Login = () => {
     }
 
     const handleDropdown = () => {
-        if (dropdownVisible || window.innerWidth <= 950) {
+        if (dropdownVisible || window.outerWidth <= 950) {
             return (
                 <Dropdown margin={-113}>
                     <ul>

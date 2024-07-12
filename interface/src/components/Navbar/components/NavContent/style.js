@@ -94,6 +94,7 @@ export const Dropdown = styled.div`
 
     @media (max-width: 950px) {
         position: unset;
+        margin-left: 0;
     }
 `
 
