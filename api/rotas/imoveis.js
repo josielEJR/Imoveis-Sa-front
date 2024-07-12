@@ -18,16 +18,19 @@ router.get('/', (req, res) => {
 // Rota para buscar imóveis
 router.get('/busca', (req, res) => {
     // Parâmetros para a busca
-    const { tipo, bairro, cidade, quartos, banheiros, disponibilidade, precoVendaMin, precoVendaMax, precoAluguelMin, precoAluguelMax, qualidadeMax, qualidadeMin } = req.query
+    const { tipo, bairro, cidade, quartos, banheiros,  precoVendaMin, precoVendaMax, precoAluguelMin, precoAluguelMax, qualidadeMax, qualidadeMin } = req.query
+    const disponibilidade = req.query.disponibilidade ? req.query.disponibilidade.split(',') : []
 
     let sqlQuery = 'SELECT * FROM imoveis WHERE 1'
 
     if (tipo) {
-        sqlQuery += ` AND tipo = '${tipo}'`
+        const tipos = tipo.split(',').map(t => `'${t.trim()}'`).join(',')
+        sqlQuery += ` AND tipo IN (${tipos})`
     }
     
     if (bairro) {
-        sqlQuery += ` AND bairro = '${bairro}'`
+        const bairros = bairro.split(',').map(b => `'${b.trim()}'`).join(',');
+        sqlQuery += ` AND bairro IN (${bairros})`
     }
 
     if (cidade) {
@@ -41,14 +44,11 @@ router.get('/busca', (req, res) => {
     if (banheiros) {
         sqlQuery += ` AND banheiros = '${banheiros}'`
     }
-    if (disponibilidade === 'aluguel') {
-        sqlQuery += ` AND (disponibilidade = 'aluguel' OR disponibilidade = 'venda_e_aluguel') `
+    if (disponibilidade.length) {
+        const dispoConditions = disponibilidade.map(d => `(disponibilidade = '${d}' OR disponibilidade = 'venda_e_aluguel')`).join(' OR ');
+        sqlQuery += ` AND (${dispoConditions})`;
     }
-    if (disponibilidade === 'venda') {
-        sqlQuery += ` AND (disponibilidade = 'venda' OR disponibilidade = 'venda_e_aluguel') `
-    }
-
-
+    
     if (precoVendaMin && precoVendaMax) {
         sqlQuery += ` AND preco_venda BETWEEN ${precoVendaMin} AND ${precoVendaMax}`
     } else if (precoVendaMin) {
@@ -83,7 +83,7 @@ router.get('/busca', (req, res) => {
 })
 // rota para adicionar imoveis 
 router.post('/adicionar', authconsultor, (req, res) => {
-    const consultorId = req.consultorId; // Obtém o ID do cliente autenticado do token JWT
+    const consultorId = req.consultorId
 
     if (consultorId == undefined) {
         return { mensagem: "O usuário não tem permissão para cadastrar um imóvel" }
@@ -104,7 +104,7 @@ router.post('/adicionar', authconsultor, (req, res) => {
         cidade,
         cep,
         quartos: parseInt(quartos),
-        banheiros: parseInt(banheiros), // Converter para número inteiro
+        banheiros: parseInt(banheiros), 
         descricao,
         preco_aluguel: preco_aluguel === "null" || preco_aluguel === "0" ? null : parseFloat(preco_aluguel),
         preco_venda: preco_venda === "null" || preco_venda === "0" ? null : parseFloat(preco_venda),
