@@ -4,8 +4,9 @@ import ProdutoPreview from '../../components/ProdutoPreview.js'
 import Footer from '../../components/Footer.js'
 
 const Imoveis = () => {
-    
-    const [produtos, setProdutos] = useState([])
+
+    const [produtos, setProdutos] = useState([]);
+
     const [tipo, setTipo] = useState('')
     const [bairro, setBairro] = useState('')
     const [cidade, setCidade] = useState('')
@@ -21,33 +22,26 @@ const Imoveis = () => {
     };
 
     useEffect(() => {
-        
-        setTipo(tipo );
-        setBairro(bairro );
-        setCidade(cidade );
-        setQuartos(quartos );
-        setBanheiros(banheiros );
-        setQualidade(qualidade );
-        setPrecoAluguelMin(precoAluguelMin );
-        setPrecoAluguelMax(precoAluguelMax );
-    
-        
-        fetch(`http://localhost:3001/imoveis/busca${window.location.search}`, requestOptions)
-          .then(response => response.text())
-          .then(result => JSON.parse(result))
-          .then(produtos => setProdutos(produtos))
-          .catch(error => console.error(error));
-      }, []);
-    
-      const filtrarProdutos = () => {
-        let query = `?disponibilidade=aluguel&venda&venda_e_aluguel${tipo ? `tipo=${tipo}&` : ''}${bairro ? `bairro=${bairro}&` : ''}${cidade ? `cidade=${cidade}&` : ''}${quartos ? `quartos=${quartos}&` : ''}${banheiros ? `banheiros=${banheiros}&` : ''}${qualidade ? `qualidadeMin=${qualidade}&` : ''}${precoAluguelMin ? `precoAluguelMin=${precoAluguelMin}&` : ''}${precoAluguelMax ? `precoAluguelMax=${precoAluguelMax}&` : ''}`;
-    
-        fetch(`http://localhost:3001/imoveis/busca${query}`, requestOptions)
-          .then(response => response.text())
-          .then(result => JSON.parse(result))
-          .then(produtos => setProdutos(produtos))
-          .catch(error => console.error(error));
-      }
+
+        const query = `${decodeURIComponent(window.location.href)}`.replace('http://localhost:3000/imoveis', '');
+
+        fetch("http://localhost:3001/imoveis/busca" + query, requestOptions)
+            .then((response) => response.text())
+            .then((result) => JSON.parse(result))
+            .then((produtos) => setProdutos(produtos))
+            .catch((error) => console.error(error));
+    }, [])
+
+    const filtrarProdutos = () => {
+        let query = `?disponibilidade=aluguel&venda&venda_e_aluguel&${tipo ? `tipo=${tipo}&` : ''}${bairro ? `bairro=${bairro}&` : ''}${cidade ? `cidade=${cidade}&` : ''}${quartos ? `quartos=${quartos}&` : ''}${banheiros ? `banheiros=${banheiros}&` : ''}${qualidade ? `qualidadeMin=${qualidade}&` : ''}${precoAluguelMin ? `precoAluguelMin=${precoAluguelMin}&` : ''}${precoAluguelMax ? `precoAluguelMax=${precoAluguelMax}&` : ''}`
+
+        fetch("http://localhost:3001/imoveis/busca" + query, requestOptions)
+            .then((response) => response.text())
+            .then((result) => JSON.parse(result))
+            .then((produtos) => setProdutos(produtos))
+            .catch((error) => console.error(error));
+    }
+
     return (
         <>
             <main className='bg-gray-100 grid grid-cols-6'>
