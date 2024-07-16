@@ -196,5 +196,6 @@ export const Esquerda = styled.button`
 export const Icon = styled.i`
     padding-left: 12px;
     
+    
 `;
 

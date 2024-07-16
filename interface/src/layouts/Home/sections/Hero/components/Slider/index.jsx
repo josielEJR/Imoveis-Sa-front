@@ -47,7 +47,7 @@ const Slider = ({ config }) => {
     const touchEndTime = new Date().getTime()
     const touchDuration = touchEndTime - touchStartTime
 
-    if (touchDuration > 100) {
+    if (touchDuration > 500) {
       if (touchStart - touchEnd > 50){
       next()
     }
@@ -110,9 +110,9 @@ const Slider = ({ config }) => {
         </Icon>
       </Direita>
       <Esquerda onClick={prev} >
-      <Icon>
+        <Icon>
           <FaAngleLeft />
-      </Icon>
+        </Icon>
       </Esquerda>
       <TextArea>
         Veja aqui alguns de nossos destaque, os melhores imóveis da região  
