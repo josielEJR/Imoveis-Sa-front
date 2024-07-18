@@ -20,9 +20,9 @@ export const ContainerFiltro = styled.div`
     z-index: 1;
     
     @media (max-width: 1280px){
-        width: 1180px;
-        padding: 0 20px;
-        gap: 15px;
+        width: 940px;
+        padding: 0 10px;
+        gap: 5px;
     }
 
     @media (max-width: 950px) {
@@ -47,7 +47,7 @@ export const ContainerInput = styled.div`
     gap: 32px;
 
     @media (max-width: 1280px){
-        gap: 15px;
+        gap: 10px;
     }
     @media (max-width: 950px){
         gap: 10px;
@@ -60,7 +60,7 @@ export const ContainerInput = styled.div`
 
 `
 export const Busca = styled.button`
-    width: 163px;
+    width: 160px;
     height: 65.28px;
     background-color: #212121;
     display: flex;
@@ -78,6 +78,10 @@ export const Busca = styled.button`
     border-radius: 8px;
     position: relative;
     padding: 10px;
+
+    @media (max-width: 1280px){
+        width: 110px;
+    }
 
     @media (max-width: 950px){
         width: 130px;
@@ -109,7 +113,7 @@ export const Codigo = styled.input`
     border-radius: 8px;
 
     @media (max-width: 1280px){
-        width: 250px;
+        width: 190px;
         justify-content: center;
         align-items: center;
     }
@@ -137,7 +141,7 @@ export const Bairros = styled.div`
     border-radius: 8px;
 
     @media (max-width: 1280px){
-        width: 250px;
+        width: 190px;
         
     }
 
@@ -165,7 +169,7 @@ export const Tipo = styled.div`
     border-radius: 8px;
 
     @media (max-width: 1280px){
-        width: 250px;
+        width: 190px;
     }
 
     @media (max-width: 950px){
@@ -184,7 +188,7 @@ export const Tipo = styled.div`
     }
 `
 export const Comprar = styled.div`
-    width: 228px;
+    width: 320px;
     height: 65px;
     background-color: #FFFFFF;
     position: relative;
@@ -193,6 +197,10 @@ export const Comprar = styled.div`
     text-align: left;
     padding: 20px;
     border-radius: 8px;
+
+    @media (max-width: 1280px){
+        width: 190px;
+    }
     
     @media (max-width: 950px){
         width: 174px;
@@ -230,6 +238,11 @@ export const ListaCompra = styled.ul`
     border-radius: 8px;
     border: 2px solid #000;
 
+    @media (max-width: 1280px){
+        width: 190px;
+        
+    }
+
     @media (max-width: 950px){
         width: 174px;
         padding:  10px;
@@ -264,7 +277,8 @@ export const UlOptions = styled.ul`
     border: 2px solid #000;
 
     @media (max-width: 1280px){
-        width: 250px;
+        width: 190px;
+        
     }
 
     @media (max-width: 950px){
@@ -292,7 +306,8 @@ export const UlBairros = styled.ul`
     border: 2px solid #000;
 
     @media (max-width: 1280px){
-        width: 250px;
+        width: 190px;
+        
     }
 
     @media (max-width: 950px){

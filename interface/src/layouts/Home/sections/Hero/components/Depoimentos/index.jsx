@@ -33,11 +33,9 @@ const Depoimentos = () => {
                  <p> NOSSOS CLIENTES</p>
               </Title>
                   {clientes.length > 0 &&(
-                    <ContainerPerfil>     
+                    <ContainerPerfil>
                       <ContainerQuote>
-                        <Quote>
-                          <BiSolidQuoteLeft size={40} />
-                        </Quote>
+                          <BiSolidQuoteLeft size={60}  />
                       </ContainerQuote>
                         <Comentario>
                           <Texto>
@@ -55,22 +53,25 @@ const Depoimentos = () => {
                         <ContainerIcon>
                           <IoCaretDownSharp size={50} />
                         </ContainerIcon>
+                        <ContainerImagem>
+                          <Imagem src={`http://localhost:3001/${clientes[imageIndex].foto_perfil}`}  />
+                        </ContainerImagem> 
                           <WrapperNavButton>
                             <ContainerNavButton>
                               <NavButton
-                                width={sliderButton === 1 ? 70 : 25}
+                                width={sliderButton === 1 ? 50 : 25}
                                 selected={sliderButton === 1 ? "true" : "false"}
                                 onClick={() => handleButtonClick(1)}
                               >  
                               </NavButton>
                               <NavButton
-                                width={sliderButton === 2 ? 70 : 35}
+                                width={sliderButton === 2 ? 50 : 30}
                                 selected={sliderButton === 2 ? "true" : "false"}
                                 onClick={() => handleButtonClick(2)}
                               >  
                               </NavButton>
                               <NavButton
-                                width={sliderButton === 3 ? 70 : 45 }
+                                width={sliderButton === 3 ? 50 : 40 }
                                 selected={sliderButton === 3 ? "true" : "false"}
                                 onClick={() => handleButtonClick(3)}
                               >  
@@ -79,7 +80,6 @@ const Depoimentos = () => {
                           </WrapperNavButton>
                   </ContainerPerfil> )}
             </ContainerDepoimentos>
-            
         </Container>
     </Wrapper>
   )
