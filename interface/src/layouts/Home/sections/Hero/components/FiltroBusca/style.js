@@ -1,98 +1,213 @@
-import styled from "styled-components"
+import styled, { css } from "styled-components"
 
-export const ContainerFiltro = styled.div`
-    
-`
-
-export const Filtro = styled.div`
-    width: 1566.67px;
-    height: 130.56px;
-    top: 874.72px;
-    left: 156.67px;
-    border: 1px;
-    background-color: black;
-    position: absolute;
+export const Wrapper = styled.div`
     display: flex;
+    justify-content: center;
+`
+export const ContainerFiltro = styled.div`
+    width: 1566px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    height: 160px;
+    background-color: black;
+    padding: 20px;
+    position: relative;
+    top: -50px;
+    gap: 32px;
     
+    @media (max-width: 1280px){
+        width: 1180px;
+        padding: 0 20px;
+        gap: 15px;
+    }
+
+    @media (max-width: 950px) {
+        width: 890px;
+        padding: 0 10px;
+        gap: 5px;
+    }
+    @media (max-width: 450px) {
+        width: 400px;
+        gap: 10px;
+        height: 300px;
+        display: grid;
+        padding-bottom: 0;
+
+    }
+
+   
+`
+export const ContainerInput = styled.div`
+    display: flex;
+    justify-content: space-around;
+    gap: 32px;
+
+    @media (max-width: 1280px){
+        gap: 15px;
+    }
+    @media (max-width: 950px){
+        gap: 10px;
+    }
+    @media (max-width: 450px){
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+
 `
 export const Busca = styled.button`
-    width: 163.19px;
+    width: 163px;
     height: 65.28px;
-    top: 907.36px;
-    left: 1527.5px;
     background-color: #212121;
-    position: absolute;
     display: flex;
     color: #FFFFFF;
-    font-size: 20px;
+    ${({ error }) => 
+        error && 
+        css`
+        border: 2px solid red; 
+    `}
+    font-size: 22px;
     font-style: italic;
     line-height: 24.2px;
     justify-content: center;
     align-items: center;
     border-radius: 8px;
+    position: relative;
+    padding: 10px;
+
+    @media (max-width: 950px){
+        width: 130px;
+    }
+
+    @media (max-width: 450px){
+        width: 100%;
+        font-size: 25px;
+        height: 60px;
+        
+    }
+
+
 `
 export const Codigo = styled.input`
-    width: 326.3px;
-    height: 65.28px;
-    top: 907.36px;
-    left: 1168.47px;
+    width: 326px;
+    height: 65px;
     background-color: #FFFFFF;
-    position: absolute;
+    position: relative;
     display: flex;
+    border: 2px solid ${props => (props.error ? 'red' : '#888')};
+    &:focus {
+    border-color: ${props => (props.error ? 'red' : '#888')};
+    }
     font-size: 20px;
-    font-weight: 500px;
     line-height: 24.2px;
     text-align:left;
     padding-left: 10px;
     border-radius: 8px;
+
+    @media (max-width: 1280px){
+        width: 250px;
+        justify-content: center;
+        align-items: center;
+    }
+
+    @media (max-width: 950px){
+        width: 174px;
+        
+    }
+    
+    @media (max-width: 450px) {
+        width: 150px;
+        height: 60px;
+        font-size: 14px;
+    }
 `
 export const Bairros = styled.div`
-    left: 809.44px;
-    width: 326.3px;
-    height: 65.28px;
-    top: 907.36px;
+    width: 326px;
+    height: 65px;
     background-color: #FFFFFF;
-    position: absolute;
+    position: relative;
     font-size: 20px;
-    font-weight: 500px;
-    line-height: 24.2px;
+    line-height: 24px;
     text-align:left ;
     padding: 20px;
     border-radius: 8px;
+
+    @media (max-width: 1280px){
+        width: 250px;
+        
+    }
+
+    @media (max-width: 950px){
+        width: 174px;
+        
+    }
+
+    @media (max-width: 450px) {
+        width: 150px;
+        height: 60px;
+        font-size: 18px;
+        padding: 14px;
+    }
 `
 export const Tipo = styled.div`
-    width: 326.3px;
-    height: 65.28px;
-    top: 907.36px;
-    left: 450.42px;
+    width: 326px;
+    height: 65px;
     background-color: #FFFFFF;
-    position: absolute;
+    position: relative;
     font-size: 20px;
-    font-weight: 500px;
-    line-height: 24.2px;
-    text-align:left ;
+    line-height: 24px;
+    text-align: left;
     padding: 20px;
     border-radius: 8px;
+
+    @media (max-width: 1280px){
+        width: 250px;
+    }
+
+    @media (max-width: 950px){
+        width: 174px;
+        font-size: 19px;
+        line-height: 1.3;
+        padding-left: 8px;
+    }
+
+    @media (max-width: 450px) {
+        width: 150px;
+        height: 60px;
+        font-size: 17px;
+        line-height: 15px;
+        padding-left: 5px;
+    }
 `
 export const Comprar = styled.div`
-    width: 228.47px;
-    height: 65.28px;
-    top: 907.36px;
-    left: 189.31px;
+    width: 228px;
+    height: 65px;
     background-color: #FFFFFF;
-    position: absolute;
+    position: relative;
     font-size: 20px;
-    font-weight: 500px;
-    line-height: 24.2px;
-    text-align:left ;
+    line-height: 24px;
+    text-align: left;
     padding: 20px;
     border-radius: 8px;
-`
-export const SpanAlugar = styled.span`
-    cursor: pointer;
-    margin-top: 40px;
+    
+    @media (max-width: 950px){
+        width: 174px;
+        padding-left: 5px;
+        font-size: 19px;
+        line-height: 1.3;
+    }
 
+    @media (max-width: 450px) {
+        width: 150px;
+        height: 60px;
+        font-size: 17px;
+        line-height: 15px;
+        padding-left: 5px;
+    }
 `
+
 
 export const IconDrop = styled.i`
     position: absolute;
@@ -102,7 +217,7 @@ export const IconDrop = styled.i`
     cursor: pointer;
 `
 export const ListaCompra = styled.ul`
-    width: 228.47px;
+    width: 228px;
     position: relative;
     padding: 20px;
     transition: opacity 0.5s ease, max-height 0.5s ease;
@@ -112,6 +227,20 @@ export const ListaCompra = styled.ul`
     right: 20px;
     border-radius: 8px;
     border: 2px solid #000;
+
+    @media (max-width: 950px){
+        width: 174px;
+        padding:  10px;
+        right: 5px;
+    }
+
+    @media (max-width: 450px){
+        z-index: 1;
+        width: 150px;
+        margin-top: 25px;
+        right: 5px;
+    }
+    
 `
 export const LiTipo = styled.li`
     right: 5px;
@@ -131,6 +260,22 @@ export const UlOptions = styled.ul`
     right: 20px;
     border-radius: 8px;
     border: 2px solid #000;
+
+    @media (max-width: 1280px){
+        width: 250px;
+    }
+
+    @media (max-width: 950px){
+        width: 174px;
+        right: 8px;
+        padding: 0 10px;
+    }
+    @media (max-width: 450px){
+        z-index: 1;
+        width: 150px;
+        margin-top: 25px;
+        right: 5px;
+    }
 `
 export const UlBairros = styled.ul`
     position: relative;
@@ -139,10 +284,29 @@ export const UlBairros = styled.ul`
     margin-top: 20px;
     background: #ffffff;
     flex-direction: column;
-    width: 326.3px;
+    width: 326px;
     right: 20px;
     border-radius: 8px;
     border: 2px solid #000;
+
+    @media (max-width: 1280px){
+        width: 250px;
+    }
+
+    @media (max-width: 950px){
+        width: 174px;
+        margin-top: 22px;
+        padding: 0 5px;
+    }
+
+    @media (max-width: 450px){
+        margin-top: 20px;
+        z-index: 1;
+        width: 150px;
+        right: 15px;
+        padding: 15px;
+        line-height: normal;
+    }
 `
 
 export const CheckBoxWrapper = styled.div`
@@ -157,15 +321,19 @@ export const CheckBoxLabel = styled.label`
     cursor: pointer;
 
 `
-export const ErroText = styled.ul`
+export const ErroText = styled.p`
     position: absolute;
-    width: 163.19px;
     height: auto;
-    top: 707.36px;
-    left: 1527.5px;
-    background: #ffffff;
+    top: 0px;
     display: flex;
-    flex-direction: column;
     padding: 10px;
+    color: red;
+    font-size: large;
 
+    @media (max-width: 450px ) {
+        top: 58%;
+        padding-left: 30px;
+        font-weight: 700;
+        font-size: 18px;
+    }
 `

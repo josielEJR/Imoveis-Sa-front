@@ -1,6 +1,7 @@
 import React from 'react'
 import Slider from './components/Slider/index'
 import FiltroBusca from './components/FiltroBusca'
+import { ContainerHero } from './style'
 
 const config = [
   {
@@ -29,10 +30,11 @@ const config = [
 
 const Hero = () => {
   return (
-    <div>
+      <ContainerHero>
       <Slider config={config} />
       <FiltroBusca />
-    </div>
+      </ContainerHero>
+    
   )
 }
 
