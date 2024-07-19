@@ -61,7 +61,7 @@ export const ContainerInput = styled.div`
 `
 export const Busca = styled.button`
     width: 160px;
-    height: 65.28px;
+    height: 65px;
     background-color: #212121;
     display: flex;
     color: #FFFFFF;
@@ -188,7 +188,7 @@ export const Tipo = styled.div`
     }
 `
 export const Comprar = styled.div`
-    width: 320px;
+    width: 228px;
     height: 65px;
     background-color: #FFFFFF;
     position: relative;

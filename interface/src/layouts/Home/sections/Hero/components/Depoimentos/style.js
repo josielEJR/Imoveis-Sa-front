@@ -13,7 +13,6 @@ export const Container = styled.div `
     display: flex;
     align-items: center;
     justify-content: space-around;
-    background-color: aqua;
     
     @media (min-width: 450px) {
         width: 100%;
@@ -39,7 +38,6 @@ export const ContainerDepoimentos = styled.div `
     display: flex;
     width: 400px;
     height: 700px;
-    background-color: antiquewhite;
     
     @media (min-width: 450px)  {
         width: 100%;
