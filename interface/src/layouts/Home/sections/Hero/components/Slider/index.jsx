@@ -1,7 +1,8 @@
 import React, {  useState, useEffect } from 'react'
-import {   ButtonPrice,  Container,  ImageContainer, NavButton,  TextArea,  Direita, Esquerda, Icon, Overlay, Wrapper, WrapperNavButton, ContainerNavButton,   } from './style'
+import { ButtonPrice, Container, ImageContainer, NavButton, TextArea, Direita, Esquerda, Icon, Overlay, Wrapper, WrapperNavButton, ContainerNavButton, ContainerInfo, } from './style'
 import { useNavigate } from 'react-router-dom'
 import { FaAngleLeft, FaAngleRight } from "react-icons/fa6"
+import NavButtons from '../NavButtons'
 
 const Slider = ({ config }) => {
   const [imageIndex, setImageIndex] = useState(0)
@@ -18,6 +19,7 @@ const Slider = ({ config }) => {
     setSelectedButton((state) => (state += 1))
     if (selectedButton === config.length ) setSelectedButton(1)
     }
+  
   const prev = () => {
     setImageIndex((state) => (state -= 1))
     if (imageIndex === 0) setImageIndex(config.length  - 1)
@@ -55,14 +57,14 @@ const Slider = ({ config }) => {
     if (touchStart - touchEnd < -50) {
       prev()
     }
-  }
 
+  }
     setTouchStart(0)
     setTouchEnd(0)
     setTouchStartTime(0)
   }
 
-   {/*useEffect(() => {
+  useEffect(() => {
     const interval = setInterval(() => {
       if(!paused){
         setImageIndex((prevIndex) => (prevIndex + 1) % config.length)}},
@@ -73,6 +75,7 @@ const Slider = ({ config }) => {
           }
         }
   })
+
   useEffect(() => {
     const interval = setInterval(() => {
       if(!paused){
@@ -83,7 +86,7 @@ const Slider = ({ config }) => {
             clearInterval(interval)
           }
         }
-  }) */}
+  }) 
 
   return (
   <Wrapper>
@@ -114,34 +117,15 @@ const Slider = ({ config }) => {
           <FaAngleLeft />
         </Icon>
       </Esquerda>
+      <ContainerInfo>
       <TextArea>
         Veja aqui alguns de nossos destaque, os melhores imóveis da região  
       </TextArea>
       <ButtonPrice onClick={handleNavigateToPage}>
         {config[imageIndex].text} | R$ {config[imageIndex].price}
       </ButtonPrice>
-      <WrapperNavButton>
-        <ContainerNavButton>
-          <NavButton
-            width={selectedButton === 1 ? 70 : 25}
-            selected={selectedButton === 1 ? "true" : "false"}
-            onClick={() => handleButtonClick(1)}
-          >  
-          </NavButton>
-          <NavButton
-            width={selectedButton === 2 ? 70 : 35}
-            selected={selectedButton === 2 ? "true" : "false"}
-            onClick={() => handleButtonClick(2)}
-          >  
-          </NavButton>
-          <NavButton
-            width={selectedButton === 3 ? 70 : 45 }
-            selected={selectedButton === 3 ? "true" : "false"}
-            onClick={() => handleButtonClick(3)}
-          >  
-          </NavButton>
-        </ContainerNavButton>
-      </WrapperNavButton>
+      </ContainerInfo>
+        <NavButtons selectedButton={selectedButton} handleButtonClick={handleButtonClick}/>
       </Container>
   </Wrapper>
   )
