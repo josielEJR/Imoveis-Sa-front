@@ -4,6 +4,13 @@ export const Wrapper = styled.div`
     display: flex;
     justify-content: center;
     
+    @media (max-width: 950px){
+        padding: 20px;
+    }
+
+    @media (max-width: 450px){
+        padding: 0%;
+    }
 `
 export const ContainerFiltro = styled.div`
     width: 1566px;
@@ -26,7 +33,7 @@ export const ContainerFiltro = styled.div`
     }
 
     @media (max-width: 950px) {
-        width: 890px;
+        max-width: 840px;
         padding: 0 10px;
         gap: 5px;
     }
