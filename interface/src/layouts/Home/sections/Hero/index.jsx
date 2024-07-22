@@ -2,6 +2,7 @@ import React from 'react'
 import Slider from './components/Slider/index'
 import FiltroBusca from './components/FiltroBusca'
 import { ContainerHero } from './style'
+import Depoimentos from './components/Depoimentos'
 
 const config = [
   {
@@ -26,13 +27,16 @@ const config = [
     url:'/imovel?id=2'
   },
   
+  
 ]
+
 
 const Hero = () => {
   return (
       <ContainerHero>
       <Slider config={config} />
       <FiltroBusca />
+      <Depoimentos />
       </ContainerHero>
     
   )

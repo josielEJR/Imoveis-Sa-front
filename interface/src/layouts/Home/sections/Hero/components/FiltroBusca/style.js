@@ -3,6 +3,18 @@ import styled, { css } from "styled-components"
 export const Wrapper = styled.div`
     display: flex;
     justify-content: center;
+
+    @media (max-width: 1280px){
+        padding: 20px;
+    }
+    
+    @media (max-width: 950px){
+        padding: 20px;
+    }
+
+    @media (max-width: 450px){
+        padding: 0%;
+    }
 `
 export const ContainerFiltro = styled.div`
     width: 1566px;
@@ -16,15 +28,16 @@ export const ContainerFiltro = styled.div`
     position: relative;
     top: -50px;
     gap: 32px;
+    z-index: 1;
     
     @media (max-width: 1280px){
-        width: 1180px;
-        padding: 0 20px;
-        gap: 15px;
+        max-width: 1180px;
+        padding: 0 10px;
+        gap: 5px;
     }
 
     @media (max-width: 950px) {
-        width: 890px;
+        max-width: 840px;
         padding: 0 10px;
         gap: 5px;
     }
@@ -45,7 +58,7 @@ export const ContainerInput = styled.div`
     gap: 32px;
 
     @media (max-width: 1280px){
-        gap: 15px;
+        gap: 10px;
     }
     @media (max-width: 950px){
         gap: 10px;
@@ -58,8 +71,8 @@ export const ContainerInput = styled.div`
 
 `
 export const Busca = styled.button`
-    width: 163px;
-    height: 65.28px;
+    width: 160px;
+    height: 65px;
     background-color: #212121;
     display: flex;
     color: #FFFFFF;
@@ -76,6 +89,8 @@ export const Busca = styled.button`
     border-radius: 8px;
     position: relative;
     padding: 10px;
+
+    
 
     @media (max-width: 950px){
         width: 130px;
@@ -191,6 +206,10 @@ export const Comprar = styled.div`
     text-align: left;
     padding: 20px;
     border-radius: 8px;
+
+    @media (max-width: 1280px){
+        width: 250px;
+    }
     
     @media (max-width: 950px){
         width: 174px;
@@ -228,6 +247,11 @@ export const ListaCompra = styled.ul`
     border-radius: 8px;
     border: 2px solid #000;
 
+    @media (max-width: 1280px){
+        width: 250px;
+        
+    }
+
     @media (max-width: 950px){
         width: 174px;
         padding:  10px;
@@ -263,6 +287,7 @@ export const UlOptions = styled.ul`
 
     @media (max-width: 1280px){
         width: 250px;
+        
     }
 
     @media (max-width: 950px){
@@ -291,6 +316,7 @@ export const UlBairros = styled.ul`
 
     @media (max-width: 1280px){
         width: 250px;
+        
     }
 
     @media (max-width: 950px){
