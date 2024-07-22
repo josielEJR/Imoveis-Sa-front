@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 import NavOption from './components/NavOption'
 import Anunciar from './components/Anunciar'
@@ -12,6 +12,19 @@ import { MenuButton, CloseMenuButton, NavContent } from './style'
 const Content = () => {
 
     const [menuVisible, setMenuVisible] = useState("")
+    const [displayLogin, setDisplayLogin] = useState(window.outerWidth)
+
+    useEffect(() => {
+        const handleResize = () => {
+            setDisplayLogin(window.outerWidth)
+        }
+
+        window.addEventListener('resize', handleResize)
+
+        return _ => {
+            window.removeEventListener('resize', handleResize)
+        }
+    }, [])
 
     const handleMenu = () => {
         menuVisible === "true" ? setMenuVisible("false") : setMenuVisible("true")
@@ -28,7 +41,7 @@ const Content = () => {
                     <FontAwesomeIcon icon={faXmark} />
                 </CloseMenuButton>
 
-                {window.innerWidth <= 375 && <Login />}
+                {displayLogin <= 950 && <Login />}
 
                 <NavOption tipo={"Venda"} url={"http://localhost:3001/imoveis/cidadesvenda"} right="-260" />
 
@@ -38,7 +51,7 @@ const Content = () => {
 
                 <NavOption tipo={"Ajuda"} />
 
-                {window.innerWidth > 375 && <Login />}
+                {displayLogin > 950 && <Login />}
             </NavContent>
         </>
     )

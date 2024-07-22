@@ -3,7 +3,7 @@ import { useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faAngleRight } from '@fortawesome/free-solid-svg-icons'
 
-import { Wrapper, BackgroundImage, CardContent, Gap, Title, PriceArea, RedirectIndicator, HouseInfo } from "./style"
+import { Wrapper, BackgroundImage, CardContent, Title, PriceArea, RedirectIndicator, HouseInfo, Label, Value } from "./style"
 
 const Card = ({ imagem, bairro, cidade, tipo, preco, area, quartos, banheiros, vagas, id }) => {
 
@@ -25,7 +25,6 @@ const Card = ({ imagem, bairro, cidade, tipo, preco, area, quartos, banheiros, v
         <Wrapper onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} onClick={() => window.location.href = "/imovel?id="+id}>
             <BackgroundImage image={imagem} ></BackgroundImage>
             <CardContent hover={hover}>
-                <Gap></Gap>
 
                 <Title>
                     <div>{bairro}</div>
@@ -42,20 +41,20 @@ const Card = ({ imagem, bairro, cidade, tipo, preco, area, quartos, banheiros, v
 
                 <HouseInfo>
                     <div>
-                        <div>ÁREA</div>
-                        <div>{area}m²</div>
+                        <Label>ÁREA</Label>
+                        <Value>{area}m²</Value>
                     </div>
                     <div>
-                        <div>QUARTOS</div>
-                        <div>{quartos}</div>
+                        <Label>QUARTOS</Label>
+                        <Value>{quartos}</Value>
                     </div>
                     <div>
-                        <div>BANHEIROS</div>
-                        <div>{banheiros}</div>
+                        <Label>BANHEIROS</Label>
+                        <Value>{banheiros}</Value>
                     </div>
                     <div>
-                        <div>VAGAS</div>
-                        <div>{vagas}</div>
+                        <Label>VAGAS</Label>
+                        <Value>{vagas}</Value>
                     </div>
                 </HouseInfo>
             </CardContent>

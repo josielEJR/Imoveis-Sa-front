@@ -2,70 +2,27 @@ import styled, { keyframes } from "styled-components";
 
 export const Wrapper = styled.section`
     max-width: 1870px;
+    height: 865px;
     box-sizing: border-box;
-    margin: 100px auto;
+    margin: 200px auto 150px;
     width: 100%;
-    height: 800px;
-
-    @media (max-width: 1281px) {
-        max-width: 1280px;
-        width: 80%;
-        margin: 100px auto;
-    }
-
-    @media (max-width: 951px){
-        max-width: 950px;
-        width: 100%;
-    }
-
-    @media (max-width: 451px){
-        max-width: 450px;
-    }
 `
 
 export const Container = styled.div`
-    width: 80%;
+    width: 90%;
     margin: auto;
 `
 
 export const Title = styled.div`
     font-size: 48px;
     font-weight: 700;
-
-    @media (max-width: 451px){
-        font-size: 36px;
-    }
 `
-
-const slideCardsLeft = keyframes`
-    0% {left: -120%}
-    100% {left: 0}
-`
-const slideCardsRight = keyframes`
-    0% {left: 120%}
-    100% {left: 0}
-`
-
-const handleCardSlideAnimation = (prev, current) => {
-    if(prev > current){
-        return slideCardsLeft
-    }else if(prev < current){
-        return slideCardsRight
-    }
-    return null
-}
 
 export const CardsWrapper = styled.div`
-    margin: 56px auto;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     position: relative;
-    left: 0;
-    animation: ${props => handleCardSlideAnimation(props.prev, props.current)} 0.6s;
-
-    @media (max-width: 951px){
-        justify-content: center;
-    }
+    margin: auto;
 `
 
 export const SelectorWrapper = styled.div`
@@ -73,22 +30,11 @@ export const SelectorWrapper = styled.div`
 `
 
 export const SelectorContainer = styled.div`
-    width: 15%;
+    width: 175px;
+    height: 21px;
     margin: auto;
     display: flex;
     justify-content: center;
-
-    @media (max-width: 1281px) {
-        width: 20%;
-    }
-    
-    @media (max-width: 951px){
-        width:35%;
-    }
-
-    @media (max-width: 451px){
-        width: 70%;
-    }
 `
 
 const growSelector = keyframes`
@@ -102,16 +48,10 @@ const shrinkSelector = keyframes`
 `
 
 export const IndexSelector = styled.div`
-    width: 30px;
-    height: 20px;
+    width: 35px;
     margin: 0 6px;
     background-color: ${props => props.grow === "true" ? "#454545" : "#000000"};
     flex-grow: ${props => props.grow === "true" ? 1 : 0};
     animation: ${props => props.grow === "true" ? growSelector : shrinkSelector} 0.6s;
     cursor: pointer;
-
-    @media (max-width: 951px){
-        width: 50px;
-        height: 30px;
-    }
 `

@@ -31,6 +31,37 @@ export const Container = styled.div`
     }
 
 `
+
+
+export const ImageContainer = styled.div`
+    display: flex;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    transition: transform 0.9s ease-in-out;
+    transform: translateX(${({ index, currentIndex }) => (index - currentIndex) * 100}%);
+
+    
+`
+export const Overlay = styled.div`
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #000000CC;
+`
+
+const growSelctor = keyframes`
+    0% {flex-grow: 0}
+    100% {flex-grow: 1}
+`
+ 
+const shrinkSelector = keyframes`
+    0% {flex-grow: 1}
+    100% {flex-grow: 0}
+
+`
 export const WrapperNavButton = styled.div`
     width: 100%;
     top: 80%;
@@ -52,34 +83,6 @@ export const ContainerNavButton = styled.div`
     @media (max-width: 450px){
         width: 160px;
     }
-
-`
-
-export const ImageContainer = styled.div`
-    display: flex;
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    transition: transform 0.9s ease-in-out;
-    transform: translateX(${({ index, currentIndex }) => (index - currentIndex) * 100}%);
-`
-export const Overlay = styled.div`
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: #000000CC;
-`
-
-const growSelctor = keyframes`
-    0% {flex-grow: 0}
-    100% {flex-grow: 1}
-`
- 
-const shrinkSelector = keyframes`
-    0% {flex-grow: 1}
-    100% {flex-grow: 0}
 
 `
 export const NavButton = styled.button`
@@ -104,7 +107,6 @@ export const TextArea = styled.div`
     height: auto;
     font-weight: 600;
     position: absolute;
-    background-color: transparent;
     text-align: left;
     font-size: 48px;
     line-height: 58.09px;
@@ -116,7 +118,7 @@ export const TextArea = styled.div`
     @media (max-width: 950px){
         width: 600px;
         height: 100%;
-        top: 10%;
+        top: 12%;
         left: 15%;
     }
 
@@ -196,6 +198,7 @@ export const Esquerda = styled.button`
 
 export const Icon = styled.i`
     padding-left: 12px;
+    
     
 `;
 

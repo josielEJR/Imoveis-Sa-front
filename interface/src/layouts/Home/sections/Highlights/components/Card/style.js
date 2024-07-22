@@ -1,20 +1,13 @@
 import styled, { keyframes } from "styled-components"
 
 export const Wrapper = styled.div`
-    width: 30%;
-    height: 400px;
+    width: 458px;
+    height: 629px;
+    margin: 55px 17px;
     background-color: black;
     position: relative;
     overflow: hidden;
     cursor: pointer;
-
-    @media (max-width: 951px){
-        width: 50%;
-    }
-
-    @media (max-width: 451px){
-        width: 100%;   
-    }
 `
 
 export const BackgroundImage = styled.div`
@@ -28,18 +21,18 @@ export const BackgroundImage = styled.div`
 `
 
 const showInfo = keyframes`
-    0% {top: 48px}
-    100% {top: 0}
+    0% {top: 66%}
+    100% {top: 54%}
 `
 const hideInfo = keyframes`
-    0% {top: 0}
-    100% {top: 48px}
+    0% {top: 54%}
+    100% {top: 66%}
 `
 
 const handleCardInfo = (onHover) => {
-    if(onHover === "true"){
+    if (onHover === "true") {
         return showInfo
-    }else if(onHover === "false"){
+    } else if (onHover === "false") {
         return hideInfo
     }
 }
@@ -47,31 +40,14 @@ const handleCardInfo = (onHover) => {
 export const CardContent = styled.div`
     position: relative;
     color: white;
-    top: ${props => props.hover === "true" ? "0" : "48px"};
+    top: ${props => props.hover === "true" ? "54%" : "66%"};
     animation: ${props => handleCardInfo(props.hover)} 0.5s;
-
-    @media (max-width: 951px){
-        top: 0;
-        animation: none;
-    }
-`
-
-export const Gap = styled.div`
-    width: 100%;
-    height: 135px;
-    @media (max-width: 1281px) {
-        height: 178px;
-    }
 `
 
 export const Title = styled.div`
     font-size: 24px;
     font-weight: 700;
     margin: 0 0 20px 35px;
-
-    @media (max-width: 1281px) {
-        margin: 0 0 10px 17px;
-    }
 `
 
 export const PriceArea = styled.div`
@@ -81,27 +57,35 @@ export const PriceArea = styled.div`
     width: 200px;
     border-radius: 32px;
     font-size: 11px;
-
-    @media (max-width: 1281px) {
-        margin: 0 0 15px 17px;
-    }
+    font-weight: 300;
 `
 
 export const RedirectIndicator = styled.div`
     margin: 0 0 35px 35px;
     font-size: 10px;
-
-    @media (max-width: 1281px) {
-        margin: 0 0 17px 20px;
-    }
+    font-weight: 300;
 `
 
 export const HouseInfo = styled.div`
     font-size: 10px;
     display: grid;
+    height: 73px;
+    padding-top: 15px;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     text-align: center;
     background-color: #000000;
-    padding: 10px;
     position: relative;
+`
+
+export const Label = styled.div`
+    height: 21px;
+    font-size: 10px;
+    font-weight: 500;
+    margin-bottom: 11px;
+`
+
+export const Value = styled.div`
+    height: 21px;
+    font-size: 10px;
+    font-weight: 300;
 `

@@ -23,7 +23,7 @@ export const Logo = styled.div`
     width: 90px;
     margin: 28px 50px;
 
-    @media (max-width: 375px){
+    @media (max-width: 950px){
         margin: 28px 10px;
     }
 `
