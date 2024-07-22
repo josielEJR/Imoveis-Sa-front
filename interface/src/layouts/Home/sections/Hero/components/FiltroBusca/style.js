@@ -3,6 +3,10 @@ import styled, { css } from "styled-components"
 export const Wrapper = styled.div`
     display: flex;
     justify-content: center;
+
+    @media (max-width: 1280px){
+        padding: 20px;
+    }
     
     @media (max-width: 950px){
         padding: 20px;
@@ -27,7 +31,7 @@ export const ContainerFiltro = styled.div`
     z-index: 1;
     
     @media (max-width: 1280px){
-        width: 940px;
+        max-width: 1180px;
         padding: 0 10px;
         gap: 5px;
     }
@@ -86,9 +90,7 @@ export const Busca = styled.button`
     position: relative;
     padding: 10px;
 
-    @media (max-width: 1280px){
-        width: 110px;
-    }
+    
 
     @media (max-width: 950px){
         width: 130px;
@@ -120,7 +122,7 @@ export const Codigo = styled.input`
     border-radius: 8px;
 
     @media (max-width: 1280px){
-        width: 190px;
+        width: 250px;
         justify-content: center;
         align-items: center;
     }
@@ -148,7 +150,7 @@ export const Bairros = styled.div`
     border-radius: 8px;
 
     @media (max-width: 1280px){
-        width: 190px;
+        width: 250px;
         
     }
 
@@ -176,7 +178,7 @@ export const Tipo = styled.div`
     border-radius: 8px;
 
     @media (max-width: 1280px){
-        width: 190px;
+        width: 250px;
     }
 
     @media (max-width: 950px){
@@ -206,7 +208,7 @@ export const Comprar = styled.div`
     border-radius: 8px;
 
     @media (max-width: 1280px){
-        width: 190px;
+        width: 250px;
     }
     
     @media (max-width: 950px){
@@ -246,7 +248,7 @@ export const ListaCompra = styled.ul`
     border: 2px solid #000;
 
     @media (max-width: 1280px){
-        width: 190px;
+        width: 250px;
         
     }
 
@@ -284,7 +286,7 @@ export const UlOptions = styled.ul`
     border: 2px solid #000;
 
     @media (max-width: 1280px){
-        width: 190px;
+        width: 250px;
         
     }
 
@@ -313,7 +315,7 @@ export const UlBairros = styled.ul`
     border: 2px solid #000;
 
     @media (max-width: 1280px){
-        width: 190px;
+        width: 250px;
         
     }
 
