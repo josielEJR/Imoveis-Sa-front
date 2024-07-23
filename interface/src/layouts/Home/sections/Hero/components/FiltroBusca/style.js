@@ -28,7 +28,7 @@ export const ContainerFiltro = styled.div`
     position: relative;
     top: -50px;
     gap: 32px;
-    z-index: 1;
+    
     
     @media (max-width: 1280px){
         max-width: 1180px;

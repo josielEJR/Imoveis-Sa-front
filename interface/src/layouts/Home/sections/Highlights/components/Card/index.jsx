@@ -22,7 +22,7 @@ const Card = ({ imagem, bairro, cidade, tipo, preco, area, quartos, banheiros, v
     }
 
     return (
-        <Wrapper onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} onClick={() => window.location.href = "/imovel?id="+id}>
+        <Wrapper onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} onClick={() => window.location.href = "/imovel?id=" + id}>
             <BackgroundImage image={imagem} ></BackgroundImage>
             <CardContent hover={hover}>
 
