@@ -244,6 +244,7 @@ export const ListaCompra = styled.ul`
     right: 20px;
     border-radius: 8px;
     border: 2px solid #000;
+    z-index: 1;
 
     @media (max-width: 1280px){
         width: 250px;
@@ -257,7 +258,6 @@ export const ListaCompra = styled.ul`
     }
 
     @media (max-width: 450px){
-        z-index: 1;
         width: 150px;
         margin-top: 25px;
         right: 5px;
@@ -284,6 +284,7 @@ export const UlOptions = styled.ul`
     right: 20px;
     border-radius: 8px;
     border: 2px solid #000;
+    z-index: 1;
 
     @media (max-width: 1280px){
         width: 250px;
@@ -295,7 +296,6 @@ export const UlOptions = styled.ul`
         padding: 0 10px;
     }
     @media (max-width: 450px){
-        z-index: 1;
         width: 150px;
         margin-top: 25px;
         right: 5px;
@@ -313,6 +313,7 @@ export const UlBairros = styled.ul`
     right: 20px;
     border-radius: 8px;
     border: 2px solid #000;
+    z-index: 1;
 
     @media (max-width: 1280px){
         width: 250px;
@@ -326,7 +327,6 @@ export const UlBairros = styled.ul`
 
     @media (max-width: 450px){
         margin-top: 20px;
-        z-index: 1;
         width: 150px;
         right: 15px;
         padding: 15px;

@@ -1,21 +1,22 @@
 import React, { useEffect, useState} from 'react'
+
 import { useNavigate } from 'react-router-dom'
 import { ContainerInput, Bairros, Codigo, IconDrop, ListaCompra, Tipo, Comprar, Busca, Wrapper, UlOptions, UlBairros, LiTipo, CheckBoxWrapper, CheckBox, CheckBoxLabel, ErroText,  ContainerFiltro } from './style'
 import { IoIosArrowDropdownCircle } from "react-icons/io"
 
 const FiltroBusca = () => {
   const navigate = useNavigate()
-  const [produtos, setProdutos] = useState([])
-  const [showBairros, setShowBairros] = useState(false)
-  const [showTipo, setShowTipo] = useState(false)
-  const [showCompra, setShowCompra] = useState(false)
-  const [selectedBairro, setSelectedBairro ] = useState([])
-  const [selectedTipo, setSelectedTipo ] = useState([])
-  const [selectedCompra, setSelectedCompra ] = useState([])
-  const [codigo, setCodigo] = useState ('')
-  const [error, setError] = useState('')
-  const [showErroMessage, setShowErroMessage] = useState(false)
-  const [inputErro, setInputErro ] = useState(false)
+  const [ produtos, setProdutos ] = useState([])
+  const [ showBairros, setShowBairros ] = useState(false)
+  const [ showTipo, setShowTipo ] = useState(false)
+  const [ showCompra, setShowCompra ] = useState(false)
+  const [ selectedBairro, setSelectedBairro ] = useState([])
+  const [ selectedTipo, setSelectedTipo ] = useState([])
+  const [ selectedCompra, setSelectedCompra ] = useState([])
+  const [ codigo, setCodigo ] = useState ('')
+  const [ error, setError ] = useState('')
+  const [ showErroMessage, setShowErroMessage ] = useState(false)
+  const [ inputErro, setInputErro ] = useState(false)
   const [ buttonError, setButtonError ] = useState(false)
 
     useEffect(() => {
@@ -65,17 +66,21 @@ const FiltroBusca = () => {
     }
 
   const filtrarImoveis = () => {
+
     let disponibilidadeQuery = []
     let query = ''
+
     const imovelID  = codigo.trim()
 
     const filterCheck = selectedBairro.length > 0 || selectedCompra.length > 0 || selectedTipo.length > 0
+
     if (imovelID && filterCheck) {
       console.log('Tipo de busca não permitida')
       setError('Tipo de busca não permitida')
       setInputErro(true)
       return
     }
+
     if (!imovelID && !filterCheck) {
       console.log('Por favor, selecione pelo menos um filtro.')
       setError('Por favor, selecione pelo menos um filtro')
@@ -113,9 +118,11 @@ const FiltroBusca = () => {
     if (selectedCompra.includes('Alugar')) {
         disponibilidadeQuery.push('aluguel');
     }
+
     if (selectedCompra.includes('Comprar')) {
         disponibilidadeQuery.push('venda');
     }
+
     if (selectedCompra.includes('Alugar') && selectedCompra.includes('Comprar')) {
         disponibilidadeQuery.push('venda_e_aluguel');
     }
@@ -275,7 +282,6 @@ const getDisplayTextCompra = () => {
       </Busca>
         {error && <ErroText>{error}</ErroText>}
       </ContainerFiltro>
-      
     </Wrapper>
   )
 }

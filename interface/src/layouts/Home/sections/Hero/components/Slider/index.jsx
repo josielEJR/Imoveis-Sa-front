@@ -1,8 +1,8 @@
-import React, {  useState, useEffect } from 'react'
-import { ButtonPrice, Container, ImageContainer, NavButton, TextArea, Direita, Esquerda, Icon, Overlay, Wrapper, WrapperNavButton, ContainerNavButton, ContainerInfo, } from './style'
+import React, { useState, useEffect } from 'react'
+import { ButtonPrice, Container, ImageContainer, TextArea, Direita, Esquerda, Icon, Overlay, Wrapper, ContainerInfo, WrapperNavButton } from './style'
 import { useNavigate } from 'react-router-dom'
 import { FaAngleLeft, FaAngleRight } from "react-icons/fa6"
-import NavButtons from '../NavButtons'
+import NavButtons from './components/NavButtons'
 
 const Slider = ({ config }) => {
   const [imageIndex, setImageIndex] = useState(0)
@@ -17,18 +17,18 @@ const Slider = ({ config }) => {
     setImageIndex((state) => (state += 1))
     if (imageIndex === config.length - 1) setImageIndex(0)
     setSelectedButton((state) => (state += 1))
-    if (selectedButton === config.length ) setSelectedButton(1)
-    }
-  
+    if (selectedButton === config.length) setSelectedButton(1)
+  }
+
   const prev = () => {
     setImageIndex((state) => (state -= 1))
-    if (imageIndex === 0) setImageIndex(config.length  - 1)
+    if (imageIndex === 0) setImageIndex(config.length - 1)
     setSelectedButton((state) => (state -= 1))
     if (selectedButton === 1) setSelectedButton(config.length)
-    }
+  }
 
-  const handleButtonClick = (buttonIndex ) => {
-    setSelectedButton(buttonIndex  )
+  const handleButtonClick = (buttonIndex) => {
+    setSelectedButton(buttonIndex)
     setImageIndex(buttonIndex - 1)
   }
 
@@ -50,15 +50,15 @@ const Slider = ({ config }) => {
     const touchDuration = touchEndTime - touchStartTime
 
     if (touchDuration > 500) {
-      if (touchStart - touchEnd > 50){
-      next()
-    }
-  
-    if (touchStart - touchEnd < -50) {
-      prev()
-    }
+      if (touchStart - touchEnd > 50) {
+        next()
+      }
 
-  }
+      if (touchStart - touchEnd < -50) {
+        prev()
+      }
+
+    }
     setTouchStart(0)
     setTouchEnd(0)
     setTouchStartTime(0)
@@ -66,36 +66,41 @@ const Slider = ({ config }) => {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      if(!paused){
-        setImageIndex((prevIndex) => (prevIndex + 1) % config.length)}},
-        6000)
-        return()=>{
-          if(interval){
-            clearInterval(interval)
-          }
-        }
+      if (!paused) {
+        setImageIndex((prevIndex) => (prevIndex + 1) % config.length)
+      }
+    },
+      6000)
+    return () => {
+      if (interval) {
+        clearInterval(interval)
+      }
+    }
   })
+
 
   useEffect(() => {
     const interval = setInterval(() => {
-      if(!paused){
-        setSelectedButton((prevIndex) => (prevIndex ) % config.length + 1)}},
-        6000)
-        return()=>{
-          if(interval){
-            clearInterval(interval)
-          }
-        }
-  }) 
+      if (!paused) {
+        setSelectedButton((prevIndex) => (prevIndex) % config.length + 1)
+      }
+    },
+      6000)
+    return () => {
+      if (interval) {
+        clearInterval(interval)
+      }
+    }
+  })
 
   return (
-  <Wrapper>
-    <Container
-      onTouchStart={handleTouchStart}
-      onTouchMove={handleTouchMove}
-      onTouchEnd={handleTouchEnd}
-    >
-      {config.map((item, index) => (
+    <Wrapper>
+      <Container
+        onTouchStart={handleTouchStart}
+        onTouchMove={handleTouchMove}
+        onTouchEnd={handleTouchEnd}
+      >
+        {config.map((item, index) => (
           <ImageContainer
             key={index}
             style={{ backgroundImage: `url(${item.image})`, backgroundSize: 'cover', backgroundPosition: 'center' }}
@@ -103,31 +108,33 @@ const Slider = ({ config }) => {
             currentIndex={imageIndex}
           />
         ))}
-      <Overlay
-        onMouseEnter={() => setPaused(true)}
-        onMouseLeave={() => setPaused(false)}
-      />
-      <Direita onClick={next} >
-        <Icon>
-          <FaAngleRight />
-        </Icon>
-      </Direita>
-      <Esquerda onClick={prev} >
-        <Icon>
-          <FaAngleLeft />
-        </Icon>
-      </Esquerda>
-      <ContainerInfo>
-      <TextArea>
-        Veja aqui alguns de nossos destaque, os melhores imóveis da região  
-      </TextArea>
-      <ButtonPrice onClick={handleNavigateToPage}>
-        {config[imageIndex].text} | R$ {config[imageIndex].price}
-      </ButtonPrice>
-      </ContainerInfo>
-        <NavButtons selectedButton={selectedButton} handleButtonClick={handleButtonClick}/>
+        <Overlay
+          onMouseEnter={() => setPaused(true)}
+          onMouseLeave={() => setPaused(false)}
+        />
+        <Direita onClick={next} >
+          <Icon>
+            <FaAngleRight />
+          </Icon>
+        </Direita>
+        <Esquerda onClick={prev} >
+          <Icon>
+            <FaAngleLeft />
+          </Icon>
+        </Esquerda>
+        <ContainerInfo>
+          <TextArea>
+            Veja aqui alguns de nossos destaque, os melhores imóveis da região
+          </TextArea>
+          <ButtonPrice onClick={handleNavigateToPage}>
+            {config[imageIndex].text} | R$ {config[imageIndex].price}
+          </ButtonPrice>
+        </ContainerInfo>
+
+        <NavButtons selectedButton={selectedButton} handleButtonClick={handleButtonClick} />
+
       </Container>
-  </Wrapper>
+    </Wrapper>
   )
 }
 

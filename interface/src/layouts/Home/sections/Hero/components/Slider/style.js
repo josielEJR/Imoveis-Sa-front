@@ -28,6 +28,7 @@ export const Container = styled.div`
     }
 `
 
+
 export const ImageContainer = styled.div`
     display: flex;
     width: 100%;
@@ -36,6 +37,7 @@ export const ImageContainer = styled.div`
     transition: transform 0.9s ease-in-out;
     transform: translateX(${({ index, currentIndex }) => (index - currentIndex) * 100}%);
 `
+
 export const Overlay = styled.div`
     position: absolute;
     top: 0;
@@ -52,8 +54,6 @@ export const ContainerInfo = styled.div`
     gap: 50px;
     padding: 300px 200px ;
    
-    
-
     @media (max-width: 1280px){
         padding: 250px 250px;
         
@@ -144,7 +144,6 @@ export const Esquerda = styled.button`
     color: #f2f2f2;
     z-index: 1;
     
-
     @media (max-width: 450px) {
         display: none;
     }
