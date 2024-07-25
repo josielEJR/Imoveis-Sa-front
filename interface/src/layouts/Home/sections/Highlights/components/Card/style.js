@@ -42,6 +42,11 @@ export const CardContent = styled.div`
     color: white;
     top: ${props => props.hover === "true" ? "54%" : "66%"};
     animation: ${props => handleCardInfo(props.hover)} 0.5s;
+
+    @media (max-width: 950px){
+        top: 54%;
+        animation: none;
+    }
 `
 
 export const Title = styled.div`
@@ -74,7 +79,6 @@ export const HouseInfo = styled.div`
     grid-template-columns: 1fr 1fr 1fr 1fr;
     text-align: center;
     background-color: #000000;
-    position: relative;
 `
 
 export const Label = styled.div`

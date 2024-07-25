@@ -6,9 +6,12 @@ export const Container = styled.div`
     display: flex;
     flex-wrap: wrap;
     overflow: hidden;
+    scroll-behavior: smooth;
 `
 
 export const Title = styled.div`
+    width: 90%;
+    margin: auto;
     font-size: 48px;
     font-weight: 700;
 `
@@ -16,13 +19,7 @@ export const Title = styled.div`
 export const CardsWrapper = styled.div`
     display: flex;
     justify-content: center;
-    position: relative;
     margin: auto;
-    transform: translateX(4%);
-    transform: translateX(${props => props.position+"%"});
-    transition-property: transform;
-    transition-duration: 1s;
-    /* 4% -15.8% -35.9%*/
 `
 
 export const SelectorWrapper = styled.div`
@@ -35,6 +32,10 @@ export const SelectorContainer = styled.div`
     margin: auto;
     display: flex;
     justify-content: center;
+
+    @media (max-width: 1100px){
+        width: 270px;
+    }
 `
 
 const growSelector = keyframes`
