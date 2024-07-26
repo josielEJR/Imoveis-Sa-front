@@ -9,7 +9,7 @@ const CardsContainer = () => {
     const [selected, setSelected] = useState(0)
     const [prev, setPrev] = useState()
     const [position, setPosition] = useState(4)
-    const [pageLayout, setPageLayout] = useState(window.innerWidth)
+    const [pageLayout, setPageLayout] = useState(window.outerWidth)
     const [products, setProducts] = useState([])
 
     useEffect(() => {
@@ -39,7 +39,7 @@ const CardsContainer = () => {
 
     useEffect(() => {
         function handleResize() {
-            setPageLayout(window.innerWidth)
+            setPageLayout(window.outerWidth)
         }
 
         window.addEventListener('resize', handleResize)
@@ -59,6 +59,7 @@ const CardsContainer = () => {
 
     const selector = () => {
         if (pageLayout <= 1100) {
+            console.log(pageLayout)
             return <SelectorContainer>
                 {
                     products.map((elem, index) => (
@@ -72,7 +73,8 @@ const CardsContainer = () => {
                     ))
                 }
             </SelectorContainer>
-        } else {
+        } else if (pageLayout > 1100) {
+            console.log(pageLayout)
             return <SelectorContainer>
                 {
                     products && products.length > 3 ?

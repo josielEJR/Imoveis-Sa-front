@@ -5,7 +5,8 @@ export const Container = styled.div`
     margin: auto;
     display: flex;
     flex-wrap: wrap;
-    overflow: hidden;
+    overflow: scroll;
+    overflow-y: hidden;
     scroll-behavior: smooth;
 `
 
