@@ -1,5 +1,7 @@
 import styled, { keyframes } from "styled-components"
 
+export const Wrapper = styled.div``
+
 export const Container = styled.div`
     width: 90%;
     margin: auto;
@@ -8,13 +10,21 @@ export const Container = styled.div`
     overflow: scroll;
     overflow-y: hidden;
     scroll-behavior: smooth;
+
+    &::-webkit-scrollbar {
+        -webkit-appearance: none;
+    }
+`
+
+export const TitleWrapper = styled.div`
+    width: 90%;
+    margin: auto;
 `
 
 export const Title = styled.div`
-    width: 90%;
-    margin: auto;
     font-size: 48px;
     font-weight: 700;
+    height: 50px;
 `
 
 export const CardsWrapper = styled.div`
@@ -36,6 +46,10 @@ export const SelectorContainer = styled.div`
 
     @media (max-width: 1100px){
         width: 270px;
+    }
+
+    @media (max-width: 950px){
+        display: none;
     }
 `
 

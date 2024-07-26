@@ -3,7 +3,7 @@ import { useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faAngleRight } from '@fortawesome/free-solid-svg-icons'
 
-import { Wrapper, BackgroundImage, CardContent, Title, PriceArea, RedirectIndicator, HouseInfo, Label, Value } from "./style"
+import { Wrapper, BackgroundImage, CardContent, TitleWrapper, Title, PriceArea, RedirectIndicator, HouseInfo, InfoWrapper, Label, Value } from "./style"
 
 const Card = ({ imagem, bairro, cidade, tipo, preco, area, quartos, banheiros, vagas, id }) => {
 
@@ -26,10 +26,10 @@ const Card = ({ imagem, bairro, cidade, tipo, preco, area, quartos, banheiros, v
             <BackgroundImage image={imagem} ></BackgroundImage>
             <CardContent hover={hover}>
 
-                <Title>
-                    <div>{bairro}</div>
-                    <div>{cidade}</div>
-                </Title>
+                <TitleWrapper>
+                    <Title>{bairro}</Title>
+                    <Title>{cidade}</Title>
+                </TitleWrapper>
 
                 <PriceArea>
                     {tipo} | R$ {formatarPreco(preco)}
@@ -40,22 +40,22 @@ const Card = ({ imagem, bairro, cidade, tipo, preco, area, quartos, banheiros, v
                 </RedirectIndicator>
 
                 <HouseInfo>
-                    <div>
+                    <InfoWrapper>
                         <Label>ÁREA</Label>
                         <Value>{area}m²</Value>
-                    </div>
-                    <div>
+                    </InfoWrapper>
+                    <InfoWrapper>
                         <Label>QUARTOS</Label>
                         <Value>{quartos}</Value>
-                    </div>
-                    <div>
+                    </InfoWrapper>
+                    <InfoWrapper>
                         <Label>BANHEIROS</Label>
                         <Value>{banheiros}</Value>
-                    </div>
-                    <div>
+                    </InfoWrapper>
+                    <InfoWrapper>
                         <Label>VAGAS</Label>
                         <Value>{vagas}</Value>
-                    </div>
+                    </InfoWrapper>
                 </HouseInfo>
             </CardContent>
         </Wrapper>

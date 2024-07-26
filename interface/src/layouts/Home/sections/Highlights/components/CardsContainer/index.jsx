@@ -2,13 +2,11 @@ import { useState, useEffect } from 'react'
 
 import Card from '../Card'
 
-import { Container, Title, CardsWrapper, SelectorWrapper, SelectorContainer, IndexSelector } from './style'
+import { Wrapper, Container, TitleWrapper, Title, CardsWrapper, SelectorWrapper, SelectorContainer, IndexSelector } from './style'
 
 const CardsContainer = () => {
 
     const [selected, setSelected] = useState(0)
-    const [prev, setPrev] = useState()
-    const [position, setPosition] = useState(4)
     const [pageLayout, setPageLayout] = useState(window.outerWidth)
     const [products, setProducts] = useState([])
 
@@ -59,7 +57,6 @@ const CardsContainer = () => {
 
     const selector = () => {
         if (pageLayout <= 1100) {
-            console.log(pageLayout)
             return <SelectorContainer>
                 {
                     products.map((elem, index) => (
@@ -74,7 +71,6 @@ const CardsContainer = () => {
                 }
             </SelectorContainer>
         } else if (pageLayout > 1100) {
-            console.log(pageLayout)
             return <SelectorContainer>
                 {
                     products && products.length > 3 ?
@@ -110,11 +106,11 @@ const CardsContainer = () => {
     }
 
     return (
-        <>
-            <Title>
-                <div>CONFIRA NOSSOS</div>
-                <div>DESTAQUES</div>
-            </Title>
+        <Wrapper>
+            <TitleWrapper>
+                <Title>CONFIRA NOSSOS</Title>
+                <Title>DESTAQUES</Title>
+            </TitleWrapper>
             <Container id='scrollContainer'>
                 <CardsWrapper>
                     {products && products.length > 0 ?
@@ -139,7 +135,7 @@ const CardsContainer = () => {
             <SelectorWrapper>
                 {selector()}
             </SelectorWrapper>
-        </>
+        </Wrapper>
     )
 }
 

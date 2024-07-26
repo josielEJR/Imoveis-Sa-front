@@ -49,10 +49,13 @@ export const CardContent = styled.div`
     }
 `
 
+export const TitleWrapper = styled.div`
+    margin: 0 0 20px 35px;
+`
+
 export const Title = styled.div`
     font-size: 24px;
     font-weight: 700;
-    margin: 0 0 20px 35px;
 `
 
 export const PriceArea = styled.div`
@@ -80,6 +83,8 @@ export const HouseInfo = styled.div`
     text-align: center;
     background-color: #000000;
 `
+
+export const InfoWrapper = styled.div``
 
 export const Label = styled.div`
     height: 21px;
