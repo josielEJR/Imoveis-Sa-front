@@ -4,19 +4,19 @@ import { ContainerInput, Bairros, Codigo, IconDrop, ListaCompra, Tipo, Comprar, 
 import { IoIosArrowDropdownCircle } from "react-icons/io"
 
 const FiltroBusca = () => {
-    const navigate = useNavigate()
-    const [produtos, setProdutos] = useState([])
-    const [showBairros, setShowBairros] = useState(false)
-    const [showTipo, setShowTipo] = useState(false)
-    const [showCompra, setShowCompra] = useState(false)
-    const [selectedBairro, setSelectedBairro ] = useState([])
-    const [selectedTipo, setSelectedTipo ] = useState([])
-    const [selectedCompra, setSelectedCompra ] = useState([])
-    const [codigo, setCodigo] = useState ('')
-    const [error, setError] = useState('')
-    const [showErroMessage, setShowErroMessage] = useState(false)
-    const [inputErro, setInputErro ] = useState(false)
-    const [ buttonError, setButtonError ] = useState(false)
+  const navigate = useNavigate()
+  const [produtos, setProdutos] = useState([])
+  const [showBairros, setShowBairros] = useState(false)
+  const [showTipo, setShowTipo] = useState(false)
+  const [showCompra, setShowCompra] = useState(false)
+  const [selectedBairro, setSelectedBairro ] = useState([])
+  const [selectedTipo, setSelectedTipo ] = useState([])
+  const [selectedCompra, setSelectedCompra ] = useState([])
+  const [codigo, setCodigo] = useState ('')
+  const [error, setError] = useState('')
+  const [showErroMessage, setShowErroMessage] = useState(false)
+  const [inputErro, setInputErro ] = useState(false)
+  const [ buttonError, setButtonError ] = useState(false)
 
     useEffect(() => {
       if (error) {
@@ -37,7 +37,6 @@ const FiltroBusca = () => {
         setter(false)
       }
     }
-
 
     const handleDropdownClick = (setter) => () => {
       setter((prev) => !prev)
@@ -64,27 +63,6 @@ const FiltroBusca = () => {
         setSelectedCompra([...selectedCompra, disponibilidade])
       }
     }
-
-{ /*   const handleSearch = () => {
-      if (selectedCompra.length === 0 && selectedBairro.length === 0 && selectedTipo.length === 0 && codigo.length > 0) {
-        fetch (`http://localhost:3001/imoveis?id=${codigo}`, {method: "GET", redirect: "follow"})
-          .then((response) => response.json())
-          .then((data) => {
-            console.log('Dados recebidos:', data)
-            if (data.length === 1) {
-              navigate(`/imovel/${data[0].imoveisID}`);
-            } else {
-              setError('Imóvel não encontrado');
-            }
-          })
-        
-      }else if ( selectedCompra.length === 0 && selectedBairro.length === 0 && selectedTipo.length === 0 && codigo.length === 0){
-        console.log('Precisa selecionar pelo menos um filtro para fazer a busca')
-        setError('Precisa selecionar pelo menos um filtro para fazer a busca')
-      }else {
-      filtrarImoveis()
-    }
-  } */ }
 
   const filtrarImoveis = () => {
     let disponibilidadeQuery = []
@@ -173,7 +151,6 @@ const FiltroBusca = () => {
             })
       return
     } 
-    
     console.log('Por favor, selecione pelo menos um filtro.')
     setError('Por favor, selecione pelo menos um filtro')
     
@@ -285,18 +262,18 @@ const getDisplayTextCompra = () => {
         )}
       </Bairros>
       <Codigo 
-      placeholder='Código' 
-      value={codigo} 
-      onChange={(e) => setCodigo(e.target.value)}
-      error={inputErro}
+        placeholder='Código' 
+        value={codigo} 
+        onChange={(e) => setCodigo(e.target.value)}
+        error={inputErro}
       />
       </ContainerInput>
       <Busca
-      onClick={filtrarImoveis}
-      error={buttonError}
-      >Buscar
+        onClick={filtrarImoveis}
+        error={buttonError}
+      > Buscar
       </Busca>
-      {error && <ErroText>{error}</ErroText>}
+        {error && <ErroText>{error}</ErroText>}
       </ContainerFiltro>
       
     </Wrapper>

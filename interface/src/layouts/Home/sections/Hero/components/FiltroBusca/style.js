@@ -16,6 +16,7 @@ export const Wrapper = styled.div`
         padding: 0%;
     }
 `
+
 export const ContainerFiltro = styled.div`
     width: 1566px;
     display: flex;
@@ -28,7 +29,6 @@ export const ContainerFiltro = styled.div`
     position: relative;
     top: -50px;
     gap: 32px;
-    
     
     @media (max-width: 1280px){
         max-width: 1180px;
@@ -47,11 +47,10 @@ export const ContainerFiltro = styled.div`
         height: 300px;
         display: grid;
         padding-bottom: 0;
-
     }
 
-   
 `
+
 export const ContainerInput = styled.div`
     display: flex;
     justify-content: space-around;
@@ -70,6 +69,7 @@ export const ContainerInput = styled.div`
     }
 
 `
+
 export const Busca = styled.button`
     width: 160px;
     height: 65px;
@@ -90,8 +90,6 @@ export const Busca = styled.button`
     position: relative;
     padding: 10px;
 
-    
-
     @media (max-width: 950px){
         width: 130px;
     }
@@ -103,8 +101,8 @@ export const Busca = styled.button`
         
     }
 
-
 `
+
 export const Codigo = styled.input`
     width: 326px;
     height: 65px;
@@ -129,7 +127,6 @@ export const Codigo = styled.input`
 
     @media (max-width: 950px){
         width: 174px;
-        
     }
     
     @media (max-width: 450px) {
@@ -138,6 +135,7 @@ export const Codigo = styled.input`
         font-size: 14px;
     }
 `
+
 export const Bairros = styled.div`
     width: 326px;
     height: 65px;
@@ -151,12 +149,10 @@ export const Bairros = styled.div`
 
     @media (max-width: 1280px){
         width: 250px;
-        
     }
 
     @media (max-width: 950px){
         width: 174px;
-        
     }
 
     @media (max-width: 450px) {
@@ -166,6 +162,7 @@ export const Bairros = styled.div`
         padding: 14px;
     }
 `
+
 export const Tipo = styled.div`
     width: 326px;
     height: 65px;
@@ -196,6 +193,7 @@ export const Tipo = styled.div`
         padding-left: 5px;
     }
 `
+
 export const Comprar = styled.div`
     width: 228px;
     height: 65px;
@@ -227,7 +225,6 @@ export const Comprar = styled.div`
     }
 `
 
-
 export const IconDrop = styled.i`
     position: absolute;
     right: 0.5rem;
@@ -235,6 +232,7 @@ export const IconDrop = styled.i`
     transform: translateY(-50%);
     cursor: pointer;
 `
+
 export const ListaCompra = styled.ul`
     width: 228px;
     position: relative;
@@ -266,12 +264,14 @@ export const ListaCompra = styled.ul`
     }
     
 `
+
 export const LiTipo = styled.li`
     right: 5px;
     display: flex;
     cursor: pointer;
     height: 55px;
 `
+
 export const UlOptions = styled.ul`
     position: relative;
     padding: 20px;
@@ -287,7 +287,6 @@ export const UlOptions = styled.ul`
 
     @media (max-width: 1280px){
         width: 250px;
-        
     }
 
     @media (max-width: 950px){
@@ -302,6 +301,7 @@ export const UlOptions = styled.ul`
         right: 5px;
     }
 `
+
 export const UlBairros = styled.ul`
     position: relative;
     padding: 20px;
@@ -316,7 +316,6 @@ export const UlBairros = styled.ul`
 
     @media (max-width: 1280px){
         width: 250px;
-        
     }
 
     @media (max-width: 950px){
@@ -339,14 +338,15 @@ export const CheckBoxWrapper = styled.div`
     display: flex;
     align-items: center;
 `
+
 export const CheckBox = styled.input`
     margin-right: 10px;
-
 `
+
 export const CheckBoxLabel = styled.label`
     cursor: pointer;
-
 `
+
 export const ErroText = styled.p`
     position: absolute;
     height: auto;
