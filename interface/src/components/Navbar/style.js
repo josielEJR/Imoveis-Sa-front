@@ -3,8 +3,6 @@ import styled from 'styled-components'
 export const Wrapper = styled.div`
     width: 100%;
     background-color: #050505;
-    position: fixed;
-    z-index: 1;
 `
 
 export const Nav = styled.nav`

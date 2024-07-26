@@ -1,8 +1,7 @@
 import styled from "styled-components";
 
 export const  ContainerHero = styled.div`
-    width: 1870px;
-    height: 940px;
+    max-width: 1870px;
     margin: 0 auto; 
 `
 
