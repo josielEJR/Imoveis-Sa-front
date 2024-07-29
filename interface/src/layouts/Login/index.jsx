@@ -1,9 +1,11 @@
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 
-import LoginLayout from '../../layouts/Login'
+import Carrossel from './components/Carrossel'
+import config from './components/Carrossel/components/Images'
+import { Wrapper } from './style'
 
-const Login = () => {
+const LoginLayout = () => {
   const [email, setEmail] = useState("")
   const [senha, setSenha] = useState("")
   const [error, setError] = useState("")
@@ -59,9 +61,7 @@ const Login = () => {
             localStorage.setItem("currentUserCelular", userCelular)
           })
 
-        setTimeout(() => {
-          window.location.reload(false)
-        }, 500)
+        return window.location.reload()
 
       } else {
         setError("Usuario não cadastrado ")
@@ -71,11 +71,20 @@ const Login = () => {
     }
   }
 
+  let userID = null
+  const pegarIdUsuario = async () => {
+    try {
+      const data = await fetch('http://localhost:3001/')
+    } catch (err) {
+      throw err
+    }
+  }
+
   return (
-      <>
-        <LoginLayout />
-      </>
+    <Wrapper>
+      <Carrossel config={config} />
+    </Wrapper>
   )
 }
 
-export default Login
+export default LoginLayout
