@@ -1,22 +1,10 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 
-import { CardContent, Container, CardContainer, ImageCard, Title, Wrapper, CardImage } from './style'
+import { Title, Wrapper, Container, } from './style'
+import Card from './components/Card'
+import configTime from './components/Card/Imagens/imagens'
 
-const Time = ( {} ) => {
-  const [imageIndex, setImageIndex] = useState(0)
-  const [clientes, setClientes] = useState([])
-
-  useEffect(() => {
-    fetch('http://localhost:3001/clientes')
-      .then(response => {
-        if (!response.ok) {
-          throw new Error('Network response was not ok');
-        }
-        return response.json();
-      })
-      .then(data => setClientes(data))
-      .catch(error => console.error('Houve um problema com a operação de fetch:', error));
-  }, [])
+const Time = () => {
 
   return (
     <Wrapper>
@@ -24,13 +12,7 @@ const Time = ( {} ) => {
         <Title>
           Nosso Time
         </Title>
-        <CardContainer>
-          <CardContent>
-            <CardImage>
-              <ImageCard />
-            </CardImage>
-          </CardContent>
-        </CardContainer>
+        <Card configTime={configTime} />
       </Container>
     </Wrapper>
   )

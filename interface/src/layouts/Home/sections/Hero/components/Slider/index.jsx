@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { ButtonPrice, Container, ImageContainer, TextArea, Direita, Esquerda, Icon, Overlay, Wrapper, ContainerInfo, WrapperNavButton } from './style'
+import { ButtonPrice, Container, ImageContainer, TextArea, Direita, Esquerda, Icon, Overlay, Wrapper, ContainerInfo } from './style'
 import { useNavigate } from 'react-router-dom'
 import { FaAngleLeft, FaAngleRight } from "react-icons/fa6"
 import NavButtons from './components/NavButtons'

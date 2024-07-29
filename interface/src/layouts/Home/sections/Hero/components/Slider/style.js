@@ -35,7 +35,7 @@ export const ImageContainer = styled.div`
     height: 100%;
     position: absolute;
     transition: transform 0.9s ease-in-out;
-    transform: translateX(${({ index, currentIndex }) => (index - currentIndex) * 100}%);
+    transform: translateX(${({ index, currentIndex }) => (index - currentIndex)* 100}%);
 `
 
 export const Overlay = styled.div`

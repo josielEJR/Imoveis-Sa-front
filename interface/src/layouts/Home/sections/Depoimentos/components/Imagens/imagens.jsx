@@ -1,4 +1,4 @@
-const configImagens = [
+const configDepoimentos = [
     {
         title: 'img1',
         image: 'https://www.pexels.com/pt-br/foto/panorama-vista-paisagem-natureza-7790344/'
@@ -13,4 +13,4 @@ const configImagens = [
     }
 ]
 
-export default configImagens
+export default configDepoimentos

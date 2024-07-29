@@ -3,13 +3,13 @@ import Hero from '../../layouts/Home/sections/Hero/index.jsx'
 import Depoimentos from '../../layouts/Home/sections/Depoimentos/index.jsx'
 import { Wrapper } from './style'
 import Time from '../../layouts/Home/sections/Time/index.jsx'
-import configImagens from '../../layouts/Home/sections/Depoimentos/components/Imagens/imagens.jsx'
+import configDepoimentos from '../../layouts/Home/sections/Depoimentos/components/Imagens/imagens.jsx'
 
 const Home = () => {
   return (
     <Wrapper>
       <Hero />
-      <Depoimentos configImagens={configImagens} />
+      {/* <Depoimentos configDepoimentos={configDepoimentos} /> */}
       <Time />
     </Wrapper>
   )

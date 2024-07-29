@@ -1,15 +1,20 @@
-import styled, {keyframes} from "styled-components";
+import styled from "styled-components";
 
-export const Wrapper = styled.div `
+export const Wrapper = styled.div`
     display: flex;
     justify-content: center;
     overflow: hidden;
-    
+    margin-top: 200px;
+
+    @media (max-width: 950px){
+        margin-top: 10px;
+    }
 `
-export const Container = styled.div `
+
+export const Container = styled.div`
     display: flex;
     flex-direction: column;
-    
+    gap: 50px;
 
     @media (min-width: 450px) {
         width: 100%;
@@ -27,47 +32,50 @@ export const Improvisado = styled.div`
     gap: 50px;
 `
 
-export const ContainerDepoimentos = styled.div `
+export const ContainerDepoimentos = styled.div`
     display: flex;
     margin: 0;
+    gap: 20px;
     
-    
-    @media (min-width: 450px)  {
-        
-    }
-
     @media (min-width: 1280px){
         gap: 32px;
     }
 `
-export const Title = styled.div `
+
+export const ContainerTitle = styled.div`
+    display: flex;
+    flex-direction: column;
+`
+
+export const Title = styled.div`
     font-weight: 800;
     font-size: 30px;
-    line-height: 38px;
-    height: auto;
-    width: 100%;
 
     @media (max-width: 450px){
         font-size: 25px;
     }
 `
+
 export const ContainerPerfil = styled.div`
     display: flex;
     flex-direction: column;
 
-    @media (min-width: 1280px){
-        gap: 30px;
+    @media (max-width: 1280px){
+        gap: 10px;
     }
 `
+
 export const ContainerImagem = styled.div`
     display: none;
-
+     
     @media (min-width: 1280px){
         display: flex;
         width: 730px;
         height: 500px;
+        object-fit: cover;
     }
 `
+
 export const Imagem = styled.img`
     width: 100%;
     height: auto;
@@ -77,10 +85,6 @@ export const Imagem = styled.img`
 export const ContainerQuote = styled.div`
     justify-content: center;
     display: flex;
-
-    @media (min-width: 1870px){
-        
-    }
 `
 
 export const ContainerComentario = styled.div`
@@ -121,25 +125,17 @@ export const FotoPerfil = styled.div`
     flex-direction: row;
     gap: 15px;
     align-items: center;
-
-    @media (min-width: 450px){
-        
-    }
-
-    @media (min-width: 950px){
-    
-    }
-
-    @media (min-width: 1280px){
-    
-    }
 `
+
 export const Foto = styled.div`
     display: flex;
     width: 90px;
     height: 90px;
     border-radius: 50%;
     overflow: hidden;
+    background-image: url(${(props) => props.image});
+    background-size: cover; 
+    background-position: center;
 `
 
 export const Img = styled.img`
@@ -164,24 +160,7 @@ export const NomePerfil = styled.div`
 
 export const ContainerIcon = styled.div`
     position: relative;
-    width: 15px;
-    height: 15px;
+    top: -15px;
+    left: 15px;
 
-    @media (min-width: 450px){
-        
-    }
-
-    @media (min-width: 950px){
-        
-    }
-
-    @media (min-width: 1280px){
-        
-    }
-
-    @media (min-width: 1280px){
-        top: -15px;
-        left: 10px;
-    }
 `
-

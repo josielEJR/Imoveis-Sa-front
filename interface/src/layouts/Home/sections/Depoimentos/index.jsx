@@ -2,10 +2,10 @@ import React, { useEffect, useState } from 'react'
 
 import { BiSolidQuoteLeft } from "react-icons/bi"
 import { IoCaretDownSharp } from "react-icons/io5"
-import { Container, Wrapper, ContainerDepoimentos, Title, Imagem, ContainerPerfil, ContainerImagem, ContainerQuote, Comentario, FotoPerfil, ContainerIcon, Texto, NomePerfil, Foto, Img, ContainerComentario, Improvisado } from './style'
+import { Container, Wrapper, ContainerDepoimentos, Title, ContainerPerfil, ContainerImagem, ContainerQuote, Comentario, FotoPerfil, ContainerIcon, Texto, NomePerfil, Foto, Img, ContainerComentario, Improvisado, ContainerTitle } from './style'
 import NavButtons from './components/NavButtons'
 
-const Depoimentos = ( ) => {
+const Depoimentos = ({configDepoimentos}) => {
   const [imageIndex, setImageIndex] = useState(0)
   const [sliderButton, setSliderButton] = useState(1)
   const [clientes, setClientes] = useState([])
@@ -107,18 +107,20 @@ const Depoimentos = ( ) => {
         onTouchMove={handleTouchMove}
         onTouchEnd={handleTouchEnd}
       >
-        <Title >
-          <p> O QUE DIZEM</p>
-          <p> NOSSOS CLIENTES</p>
-        </Title>
+        <ContainerTitle>
+          <Title >
+            O QUE DIZEM
+          </Title>
+          <Title >
+            NOSSOS CLIENTES
+          </Title>
+        </ContainerTitle>
         <Improvisado>
           <ContainerDepoimentos
             onMouseEnter={() => setPaused(true)}
             onMouseLeave={() => setPaused(false)}
           >
-            <ContainerImagem>
-              <Imagem src={`http://localhost:3001/${clientes[imageIndex].foto_perfil}`} />
-            </ContainerImagem>
+            <ContainerImagem src={configDepoimentos[imageIndex].image}/>
             {clientes.length > 0 && (
               <ContainerPerfil>
                 <ContainerQuote>
@@ -146,7 +148,6 @@ const Depoimentos = ( ) => {
           </ContainerDepoimentos>
           <NavButtons sliderButton={sliderButton} handleButtonClick={handleButtonClick} />
         </Improvisado>
-
       </Container>
     </Wrapper>
   )

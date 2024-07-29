@@ -19,7 +19,7 @@ const config = [
       text: 'ALUGUEL',
       price: '20.000',
       url:'/imovel?id=2'
-    },
+    }
   ]
   
   export default config
