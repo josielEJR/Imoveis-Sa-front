@@ -16,7 +16,7 @@ export const Container = styled.div`
     }
 `
 
-export const TitleWrapper = styled.div`
+export const TitleSection = styled.div`
     width: 90%;
     margin: auto;
 `
@@ -25,19 +25,23 @@ export const Title = styled.div`
     font-size: 48px;
     font-weight: 700;
     height: 50px;
+
+    @media (max-width: 480px){
+        margin-top: 40px;
+    }
 `
 
-export const CardsWrapper = styled.div`
+export const CardsSection = styled.div`
     display: flex;
     justify-content: center;
     margin: auto;
 `
 
-export const SelectorWrapper = styled.div`
+export const SelectorSection = styled.div`
     width: 100%;
 `
 
-export const SelectorContainer = styled.div`
+export const Selectors = styled.div`
     width: 175px;
     height: 21px;
     margin: auto;

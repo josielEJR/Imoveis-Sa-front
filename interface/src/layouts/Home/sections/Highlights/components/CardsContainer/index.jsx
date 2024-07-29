@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 
 import Card from '../Card'
 
-import { Wrapper, Container, TitleWrapper, Title, CardsWrapper, SelectorWrapper, SelectorContainer, IndexSelector } from './style'
+import { Wrapper, Container, TitleSection, Title, CardsSection, SelectorSection, Selectors, IndexSelector } from './style'
 
 const CardsContainer = () => {
 
@@ -57,7 +57,7 @@ const CardsContainer = () => {
 
     const selector = () => {
         if (pageLayout <= 1100) {
-            return <SelectorContainer>
+            return <Selectors>
                 {
                     products.map((elem, index) => (
                         <IndexSelector
@@ -69,9 +69,9 @@ const CardsContainer = () => {
                         />
                     ))
                 }
-            </SelectorContainer>
+            </Selectors>
         } else if (pageLayout > 1100) {
-            return <SelectorContainer>
+            return <Selectors>
                 {
                     products && products.length > 3 ?
                         <>
@@ -101,18 +101,18 @@ const CardsContainer = () => {
                             grow={selected === 2 ? "true" : "false"}
                         /> : ''
                 }
-            </SelectorContainer>
+            </Selectors>
         }
     }
 
     return (
         <Wrapper>
-            <TitleWrapper>
+            <TitleSection>
                 <Title>CONFIRA NOSSOS</Title>
                 <Title>DESTAQUES</Title>
-            </TitleWrapper>
+            </TitleSection>
             <Container id='scrollContainer'>
-                <CardsWrapper>
+                <CardsSection>
                     {products && products.length > 0 ?
                         products.map((prod, index) => {
                             return <Card
@@ -130,11 +130,11 @@ const CardsContainer = () => {
                             />
                         }) : ''
                     }
-                </CardsWrapper>
+                </CardsSection>
             </Container>
-            <SelectorWrapper>
+            <SelectorSection>
                 {selector()}
-            </SelectorWrapper>
+            </SelectorSection>
         </Wrapper>
     )
 }

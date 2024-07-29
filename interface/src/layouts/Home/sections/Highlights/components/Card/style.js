@@ -49,7 +49,7 @@ export const CardContent = styled.div`
     }
 `
 
-export const TitleWrapper = styled.div`
+export const TitleSection = styled.div`
     margin: 0 0 20px 35px;
 `
 
@@ -84,7 +84,7 @@ export const HouseInfo = styled.div`
     background-color: #000000;
 `
 
-export const InfoWrapper = styled.div``
+export const InfoSection = styled.div``
 
 export const Label = styled.div`
     height: 21px;
