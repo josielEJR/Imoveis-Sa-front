@@ -32,7 +32,7 @@ const ImovelPrincipal = ({ imovelID }) => {
             redirect: "follow"
         };
 
-        fetch(`http://localhost:3001/imoveis/${imovelID}`, requestOptions)
+        fetch(`http://localhost:3001/imoveis/buscarimovelid?id=${imovelID}`, requestOptions)
             .then((response) => response.text())
             .then((result) => JSON.parse(result))
             .then((produto) => {

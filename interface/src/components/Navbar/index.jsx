@@ -1,7 +1,5 @@
 import { NavLink } from 'react-router-dom'
 
-import '../../Style/dropdown.css'
-
 import Content from './components/NavContent/index'
 
 import { Wrapper, Nav, Logo } from './style'
