@@ -3,13 +3,9 @@ import styled, { css } from "styled-components"
 export const Wrapper = styled.div`
     display: flex;
     justify-content: center;
-    max-width: 1450px;
+    max-width: 1500px;
     margin: 0 auto;
     padding: 20px;
-
-    @media (max-width: 450px){
-        padding: 0;
-    }
 `
 
 export const ContainerFiltro = styled.div`
@@ -28,7 +24,6 @@ export const ContainerFiltro = styled.div`
     }
 
     @media (max-width: 650px) {
-        width: 400px;
         height: 300px;
         display: grid;
     }
@@ -120,25 +115,27 @@ export const Codigo = styled.input`
 `
 
 export const Input = styled.div`
+    display: flex;
+    flex-direction: column;
+    padding: 18px;  
     width: 280px;
+    height: 65px;
     background-color: #FFFFFF;
     position: relative;
+    justify-content: center;
     font-size: 20px;
     line-height: 24px;
     text-align:left ;
-    padding: 20px;
     border-radius: 8px;
 
     @media (max-width: 1050px){
-        width: 174px;
         font-size: 16px;
     }
 
     @media (max-width: 650px) {
+        display: block;
         width: 100%;
         height: 60px;
-        padding: 10px;
-        line-height: 40px;
     }
 `
 
@@ -150,38 +147,6 @@ export const IconDrop = styled.i`
     cursor: pointer;
 `
 
-export const ListaCompra = styled.ul`
-    width: 228px;
-    position: relative;
-    padding: 20px;
-    transition: opacity 0.5s ease, max-height 0.5s ease;
-    margin-top: 20px;
-    background: #ffffff;
-    flex-direction: column;
-    right: 20px;
-    border-radius: 8px;
-    border: 2px solid #000;
-
-    @media (max-width: 1280px){
-        width: 250px;
-        
-    }
-
-    @media (max-width: 950px){
-        width: 174px;
-        padding:  10px;
-        right: 5px;
-    }
-
-    @media (max-width: 450px){
-        z-index: 1;
-        width: 150px;
-        margin-top: 25px;
-        right: 5px;
-    }
-    
-`
-
 export const LiTipo = styled.li`
     right: 5px;
     display: flex;
@@ -190,17 +155,15 @@ export const LiTipo = styled.li`
 `
 
 export const UlOptions = styled.ul`
+    width: 280px;
     position: relative;
     padding: 20px;
-    margin-top: 20px;
-    transition: opacity 0.1s ease, max-height 0.1s ease;
+    transition: opacity 0.5s ease, max-height 0.5s ease;
     background: #ffffff;
-    display: flex;
     flex-direction: column;
-    width: 326.3px;
-    right: 20px;
     border-radius: 8px;
     border: 2px solid #000;
+    z-index: 1;
 
     @media (max-width: 1280px){
         width: 250px;
@@ -208,14 +171,13 @@ export const UlOptions = styled.ul`
 
     @media (max-width: 950px){
         width: 174px;
-        right: 8px;
         padding: 0 10px;
     }
     @media (max-width: 450px){
-        z-index: 1;
-        width: 150px;
-        margin-top: 25px;
-        right: 5px;
+        width: 176px;
+        margin-top: 19px;
+        right: 19px;
+        padding: 0 10px;
     }
 `
 
