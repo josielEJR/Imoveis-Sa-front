@@ -1,5 +1,4 @@
 import { NavLink } from 'react-router-dom'
-import '../Style/dropdown.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCircleUser } from '@fortawesome/free-solid-svg-icons'
 
