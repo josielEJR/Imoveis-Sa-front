@@ -3,58 +3,40 @@ import styled, { css } from "styled-components"
 export const Wrapper = styled.div`
     display: flex;
     justify-content: center;
-
-    @media (max-width: 1280px){
-        padding: 20px;
-    }
-    
-    @media (max-width: 950px){
-        padding: 20px;
-    }
+    max-width: 1450px;
+    margin: 0 auto;
+    padding: 20px;
 
     @media (max-width: 450px){
-        padding: 0%;
+        padding: 0;
     }
 `
+
 export const ContainerFiltro = styled.div`
-    width: 1566px;
     display: flex;
-    flex-direction: row;
     align-items: center;
-    justify-content: space-around;
+    width: 100%;
     height: 160px;
     background-color: black;
     padding: 20px;
     position: relative;
-    top: -50px;
+    top: -100px;
     gap: 32px;
     
-    
     @media (max-width: 1280px){
-        max-width: 1180px;
-        padding: 0 10px;
-        gap: 5px;
+        gap: 10px;
     }
 
-    @media (max-width: 950px) {
-        max-width: 840px;
-        padding: 0 10px;
-        gap: 5px;
-    }
-    @media (max-width: 450px) {
+    @media (max-width: 650px) {
         width: 400px;
-        gap: 10px;
         height: 300px;
         display: grid;
-        padding-bottom: 0;
-
     }
-
-   
 `
+
 export const ContainerInput = styled.div`
+    width: 100%;
     display: flex;
-    justify-content: space-around;
     gap: 32px;
 
     @media (max-width: 1280px){
@@ -63,16 +45,16 @@ export const ContainerInput = styled.div`
     @media (max-width: 950px){
         gap: 10px;
     }
-    @media (max-width: 450px){
+    @media (max-width: 650px){
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         gap: 20px;
     }
 
 `
-export const Busca = styled.button`
-    width: 160px;
-    height: 65px;
+
+export const Button = styled.button`
+    width: 200px;
     background-color: #212121;
     display: flex;
     color: #FFFFFF;
@@ -81,7 +63,7 @@ export const Busca = styled.button`
         css`
         border: 2px solid red; 
     `}
-    font-size: 22px;
+    font-size: 20px;
     font-style: italic;
     line-height: 24.2px;
     justify-content: center;
@@ -90,24 +72,22 @@ export const Busca = styled.button`
     position: relative;
     padding: 10px;
 
-    
-
     @media (max-width: 950px){
         width: 130px;
+        font-size: 16px;
     }
 
-    @media (max-width: 450px){
+    @media (max-width: 650px){
         width: 100%;
+        grid-column: 1 / span 2;
         font-size: 25px;
         height: 60px;
         
     }
-
-
 `
+
 export const Codigo = styled.input`
-    width: 326px;
-    height: 65px;
+    width: 250px;
     background-color: #FFFFFF;
     position: relative;
     display: flex;
@@ -120,27 +100,27 @@ export const Codigo = styled.input`
     text-align:left;
     padding-left: 10px;
     border-radius: 8px;
-
-    @media (max-width: 1280px){
-        width: 250px;
-        justify-content: center;
-        align-items: center;
-    }
-
-    @media (max-width: 950px){
-        width: 174px;
-        
-    }
     
-    @media (max-width: 450px) {
-        width: 150px;
+    @media (max-width: 1050px){
+        width: 174px;
+        font-size: 16px;
+    }
+
+    @media (max-width: 980px){
+        width: 110px;
+        font-size: 16px;
+    }
+
+    @media (max-width: 650px) {
+        width: 100%;
         height: 60px;
-        font-size: 14px;
+        padding: 10px;
+        line-height: 40px;
     }
 `
-export const Bairros = styled.div`
-    width: 326px;
-    height: 65px;
+
+export const Input = styled.div`
+    width: 280px;
     background-color: #FFFFFF;
     position: relative;
     font-size: 20px;
@@ -149,84 +129,18 @@ export const Bairros = styled.div`
     padding: 20px;
     border-radius: 8px;
 
-    @media (max-width: 1280px){
-        width: 250px;
-        
-    }
-
-    @media (max-width: 950px){
+    @media (max-width: 1050px){
         width: 174px;
-        
+        font-size: 16px;
     }
 
-    @media (max-width: 450px) {
-        width: 150px;
+    @media (max-width: 650px) {
+        width: 100%;
         height: 60px;
-        font-size: 18px;
-        padding: 14px;
+        padding: 10px;
+        line-height: 40px;
     }
 `
-export const Tipo = styled.div`
-    width: 326px;
-    height: 65px;
-    background-color: #FFFFFF;
-    position: relative;
-    font-size: 20px;
-    line-height: 24px;
-    text-align: left;
-    padding: 20px;
-    border-radius: 8px;
-
-    @media (max-width: 1280px){
-        width: 250px;
-    }
-
-    @media (max-width: 950px){
-        width: 174px;
-        font-size: 19px;
-        line-height: 1.3;
-        padding-left: 8px;
-    }
-
-    @media (max-width: 450px) {
-        width: 150px;
-        height: 60px;
-        font-size: 17px;
-        line-height: 15px;
-        padding-left: 5px;
-    }
-`
-export const Comprar = styled.div`
-    width: 228px;
-    height: 65px;
-    background-color: #FFFFFF;
-    position: relative;
-    font-size: 20px;
-    line-height: 24px;
-    text-align: left;
-    padding: 20px;
-    border-radius: 8px;
-
-    @media (max-width: 1280px){
-        width: 250px;
-    }
-    
-    @media (max-width: 950px){
-        width: 174px;
-        padding-left: 5px;
-        font-size: 19px;
-        line-height: 1.3;
-    }
-
-    @media (max-width: 450px) {
-        width: 150px;
-        height: 60px;
-        font-size: 17px;
-        line-height: 15px;
-        padding-left: 5px;
-    }
-`
-
 
 export const IconDrop = styled.i`
     position: absolute;
@@ -235,6 +149,7 @@ export const IconDrop = styled.i`
     transform: translateY(-50%);
     cursor: pointer;
 `
+
 export const ListaCompra = styled.ul`
     width: 228px;
     position: relative;
@@ -266,12 +181,14 @@ export const ListaCompra = styled.ul`
     }
     
 `
+
 export const LiTipo = styled.li`
     right: 5px;
     display: flex;
     cursor: pointer;
     height: 55px;
 `
+
 export const UlOptions = styled.ul`
     position: relative;
     padding: 20px;
@@ -287,7 +204,6 @@ export const UlOptions = styled.ul`
 
     @media (max-width: 1280px){
         width: 250px;
-        
     }
 
     @media (max-width: 950px){
@@ -302,6 +218,7 @@ export const UlOptions = styled.ul`
         right: 5px;
     }
 `
+
 export const UlBairros = styled.ul`
     position: relative;
     padding: 20px;
@@ -316,7 +233,6 @@ export const UlBairros = styled.ul`
 
     @media (max-width: 1280px){
         width: 250px;
-        
     }
 
     @media (max-width: 950px){
@@ -339,14 +255,15 @@ export const CheckBoxWrapper = styled.div`
     display: flex;
     align-items: center;
 `
+
 export const CheckBox = styled.input`
     margin-right: 10px;
-
 `
+
 export const CheckBoxLabel = styled.label`
     cursor: pointer;
-
 `
+
 export const ErroText = styled.p`
     position: absolute;
     height: auto;

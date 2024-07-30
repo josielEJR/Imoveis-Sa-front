@@ -19,20 +19,9 @@ export const Container = styled.div `
         padding: 40px;
     }
 
-    @media (min-width: 950px){
-        width: 100%;
-    }
-    
-    @media (min-width: 1280px){
-        width: 100%;
-    }
-
     @media (min-width: 1870px){
-        width: 100%;
         height: 900px;
     }
-
-    
 `
 export const ContainerDepoimentos = styled.div `
     display: flex;
@@ -43,20 +32,10 @@ export const ContainerDepoimentos = styled.div `
         width: 100%;
     }
 
-    @media (min-width: 950px){
-        width: 100%;
-    }
-
-    @media (min-width: 1280px){
-        width: 100%;
-    }
-
     @media (min-width: 1870px){
         width: 1450px;
         height: 800px;
     }
-
-    
 `
 export const Title = styled.div `
     font-weight: 800;
@@ -69,7 +48,6 @@ export const Title = styled.div `
     @media (max-width: 450px){
         font-size: 25px;
     }
-    
 `
 export const ContainerPerfil = styled.div`
     width: 100%;
@@ -80,8 +58,6 @@ export const ContainerPerfil = styled.div`
     @media (min-width: 1870px){
         top: 16.5%;
     }
-
-
 `
 export const ContainerImagem = styled.div`
     display: none;
@@ -92,17 +68,13 @@ export const ContainerImagem = styled.div`
         width: 730px;
         height: 500px;
         top: -64%;
-    
     }
-
 `
 export const Imagem = styled.img`
     width: 100%;
     height: auto;
     object-fit: fill;
     border-radius: 10px;
-    
-    
 `
 
 export const ContainerQuote = styled.div`
@@ -116,7 +88,6 @@ export const ContainerQuote = styled.div`
     }
 `
 
-
 export const Comentario = styled.div`
     width: 100%;
     height: 300px;
@@ -129,17 +100,13 @@ export const Comentario = styled.div`
     text-align: center;
     padding: 10px;
 
-    
     @media (min-width: 1870px){
         width: 700px;
         height: 250px;
         left: 750px;
-        
-        
     }
-    
-
 `
+
 export const Texto = styled.div`
     font-size: 25px;
     color: white;
@@ -149,7 +116,6 @@ export const Texto = styled.div`
     @media (max-width: 450px){
         font-size: 20px;
     }
-    
 `
 
 export const FotoPerfil = styled.div`
@@ -174,9 +140,6 @@ export const FotoPerfil = styled.div`
         height: 90px;
         left: 54%;
     }
-
-    
-
 `
 export const Foto = styled.div`
     display: flex;
@@ -185,13 +148,14 @@ export const Foto = styled.div`
     position: absolute;
     border-radius: 50%;
     overflow: hidden;
-
 `
+
 export const Img = styled.img`
     width: 100%;
     height: 100%;
     object-fit: cover;
 `
+
 export const NomePerfil = styled.div`
     width: auto;
     height: auto;
@@ -212,7 +176,6 @@ export const NomePerfil = styled.div`
         top: 40%;
     }
 `
-
 
 export const ContainerIcon = styled.div`
     position: relative;
@@ -249,7 +212,6 @@ const growSelctor = keyframes`
 const shrinkSelector = keyframes`
     0% {flex-grow: 1}
     100% {flex-grow: 0}
-
 `
 export const NavButton = styled.button`
     flex-grow: ${props => props.selected === "true" ? 1 : 0};
@@ -258,8 +220,6 @@ export const NavButton = styled.button`
     width: ${(props) => props.width}px;
     margin: 0 5px;
     height: 20px;
-
-   
 `
 
 export const WrapperNavButton = styled.div`
@@ -280,7 +240,6 @@ export const WrapperNavButton = styled.div`
         top: 95%;
         position: absolute;
     }
-    
 `
 
 export const ContainerNavButton = styled.div`
