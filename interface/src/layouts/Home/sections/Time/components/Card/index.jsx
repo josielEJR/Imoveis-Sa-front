@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 
-import { CardContent, CardContainer, Article, Nome, Telefone, Email, Wrapper, Container } from './style'
+import { CardContent, CardContainer, Article, Nome, Telefone, Email, Wrapper, Container, Overlay } from './style'
 import NavButtons from '../../../Time/components/NavButtons/index'
 
 const Card = ({ configTime }) => {
@@ -14,7 +14,6 @@ const Card = ({ configTime }) => {
     const [paused, setPaused] = useState(false)
 
     const handleButtonClick = (buttonIndex) => {
-        setSelectedButton(buttonIndex)
         setImageIndex(buttonIndex - 1)
     }
 
@@ -47,17 +46,11 @@ const Card = ({ configTime }) => {
     }
 
     const next = () => {
-        setImageIndex((state) => (state += 1))
-        if (imageIndex === configTime.length - 1) setImageIndex(0)
-        setSelectedButton((state) => (state += 1))
-        if (selectedButton === configTime.length) setSelectedButton(1)
+        setImageIndex((prevIndex) => (prevIndex + 1) % configTime.length)
     }
 
     const prev = () => {
-        setImageIndex((state) => (state -= 1))
-        if (imageIndex === 0) setImageIndex(configTime.length - 1)
-        setSelectedButton((state) => (state -= 1))
-        if (selectedButton === 1) setSelectedButton(configTime.length)
+        setImageIndex((prevIndex) => (prevIndex - 1 + configTime.length) % configTime.length)
     }
 
     // useEffect(() => {
@@ -92,31 +85,21 @@ const Card = ({ configTime }) => {
     useEffect(() => {
         const interval = setInterval(() => {
             if (!paused) {
-                setImageIndex((prevIndex) => (prevIndex + 1) % configTime.length)
+                next()
             }
-        },
-            6000)
-        return () => {
-            if (interval) {
-                clearInterval(interval)
-            }
-        }
-    })
+        }, 6000)
+        return () => clearInterval(interval)
+    }, [paused])
 
+    
 
-    useEffect(() => {
-        const interval = setInterval(() => {
-            if (!paused) {
-                setSelectedButton((prevIndex) => (prevIndex) % configTime.length + 1)
-            }
-        },
-            6000)
-        return () => {
-            if (interval) {
-                clearInterval(interval)
-            }
+    const getCardsToRender = () => {
+        if (imageIndex + visibleCards <= configTime.length) {
+            return configTime.slice(imageIndex, imageIndex + visibleCards)
+        } else {
+            return [...configTime.slice(imageIndex), ...configTime.slice(0, (imageIndex + visibleCards) % configTime.length)]
         }
-    })
+    }
 
     return (
         <Wrapper>
@@ -125,7 +108,7 @@ const Card = ({ configTime }) => {
                 onTouchMove={handleTouchMove}
                 onTouchEnd={handleTouchEnd}
             >
-                {configTime.slice(imageIndex, imageIndex + visibleCards).map((item, index) => (
+                {getCardsToRender().map((item, index) => (
                     <CardContainer
                         key={index}
                         style={{
@@ -136,23 +119,24 @@ const Card = ({ configTime }) => {
                         index={index}
                         currentIndex={imageIndex}
                     >
-                        <CardContent >
+                        <Overlay />
+                        <CardContent>
                             <Nome>
-
+                                {item.nome}
                             </Nome>
                             <Article>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce quis dolor aliquet, finibus diam vel, vehicula est.
+                                {item.sobre}
                             </Article>
                             <Telefone>
-
+                                {item.telefone}
                             </Telefone>
                             <Email>
-
+                                {item.email}
                             </Email>
                         </CardContent>
                     </CardContainer>
                 ))}
-                <NavButtons selectedButton={selectedButton} handleButtonClick={handleButtonClick} />
+                <NavButtons selectedButton={(imageIndex % configTime.length) + 1} handleButtonClick={handleButtonClick} />
             </Container>
         </Wrapper>
     )

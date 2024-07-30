@@ -3,6 +3,7 @@ import styled, {keyframes} from "styled-components"
 const growSelctor = keyframes`
     0% {flex-grow: 0}
     100% {flex-grow: 1}
+    
 `
 
 const shrinkSelector = keyframes`
@@ -10,6 +11,7 @@ const shrinkSelector = keyframes`
     100% {flex-grow: 0}
 
 `
+
 export const WrapperNavButton = styled.div`
     width: 100%;
     height: 20px;
