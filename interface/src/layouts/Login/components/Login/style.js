@@ -33,8 +33,8 @@ export const InnerWrapper = styled.div`
     align-items: center;
     width: 100%;
 
-      @media (max-width: 900px ) {
-      }
+    @media (max-width: 900px ) {
+    }
 `
 
 export const Title = styled.h2`
@@ -92,11 +92,11 @@ export const RememberMe = styled.label`
     align-items: center;
     font-size: 20px;
     color: white;
-    `
+`
 
 export const Checkbox = styled.input`
     margin-right: 8px;
-    `
+`
 
 export const ForgotPassword = styled.a`
     font-size: 20px;
@@ -105,7 +105,7 @@ export const ForgotPassword = styled.a`
     
 &:hover {
     text-decoration: underline;
-}
+  }
 `
 
 const clickAnimation = keyframes`

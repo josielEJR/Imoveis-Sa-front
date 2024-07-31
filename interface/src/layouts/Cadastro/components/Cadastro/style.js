@@ -20,7 +20,7 @@ export const Container = styled.div`
     padding: 100px;
     border-radius: 10px;
     
-      @media (max-width: 910px) {
+    @media (max-width: 910px) {
         width: 90%;
         height: 900px;
         padding: 50px;        
@@ -59,20 +59,20 @@ export const Input = styled.input`
 `
 
 export const PasswordWrapper = styled.div`
-position: relative;
-width: 100%;
-display: flex;
-align-items: center;
+    position: relative;
+    width: 100%;
+    display: flex;
+    align-items: center;
 `
 
 export const EyeIcon = styled.span`
-position: absolute;
-top: -55px;
-right: 30px;
-cursor: pointer;
-user-select: none;
-opacity: 0.4;
-transition: opacity 0.3s;
+    position: absolute;
+    top: -55px;
+    right: 30px;
+    cursor: pointer;
+    user-select: none;
+    opacity: 0.4;
+    transition: opacity 0.3s;
 `
 
 const clickAnimation = keyframes`
@@ -107,7 +107,7 @@ export const TextContainer = styled.p`
     margin-top: 10px;
     font-size: 20px;
     color: white;
-`;
+`
 
 export const HighlightedLink = styled.a`
     color: #007bff;
