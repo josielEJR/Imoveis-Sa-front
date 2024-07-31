@@ -14,7 +14,6 @@ const Login = () => {
     const handleLoginClick = () => {
         setAnimate(true);
         setTimeout(() => setAnimate(false), 300);
-        handleSubmit()
     }
 
     const handleEmailChange = (e) => {
@@ -46,26 +45,30 @@ const Login = () => {
         }
     }, [])
 
-    const handleSubmit = async (e) => {
-        // e.preventDefault()
-
+    const handleSubmit = async () => {
         try {
-            const response = await fetch('http://localhost:3001/clientes/login', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ email, password })
-            })
+            const myHeaders = new Headers();
+            myHeaders.append("Content-Type", "application/json");
 
-            if (!response.ok) {
-                throw new Error('Erro ao fazer login')
-            }
+            const raw = JSON.stringify({
+                "email": email,
+                "senha": password
+            });
 
-            const data = await response.json()
+            const requestOptions = {
+                method: "POST",
+                headers: myHeaders,
+                body: raw,
+                redirect: "follow"
+            };
 
-            if (data) {
+            const loginValid = await fetch("http://localhost:3001/clientes/login", requestOptions)
+                .then((response) => response.text())
+                .then((result) => JSON.parse(result))
+                .then((result) => result.token)
+                .catch((error) => console.error(error));
 
+            if (loginValid) {
                 const myHeaders = new Headers();
                 myHeaders.append("Content-Type", "application/json");
 
@@ -83,20 +86,74 @@ const Login = () => {
                         const userNome = result.nome
                         const userEmail = result.email
                         const userCelular = result.celular
-                        localStorage.setItem("token", data.token)
+                        localStorage.setItem("token", loginValid)
                         localStorage.setItem("currentUserNome", userNome)
                         localStorage.setItem("currentUserEmail", userEmail)
                         localStorage.setItem("currentUserCelular", userCelular)
                     })
 
-                return window.location.reload()
-
+                setTimeout(() => {
+                    return window.location.reload()
+                }, 500)
             } else {
-                setLoginError("Usuario não cadastrado")
-                console.log(data)
+                const myHeaders = new Headers();
+                myHeaders.append("Content-Type", "application/json");
+
+                const raw = JSON.stringify({
+                    "consultor_email": "ralves@gmail.com",
+                    "senha": "123456"
+                });
+
+                const requestOptions = {
+                    method: "POST",
+                    headers: myHeaders,
+                    body: raw,
+                    redirect: "follow"
+                };
+
+                const consultorLoginValid = await fetch("http://localhost:3001/consultores/login", requestOptions)
+                    .then((response) => response.text())
+                    .then((result) => JSON.parse(result))
+                    .then((result) => result.token)
+                    .catch((error) => console.error(error));
+
+                if (consultorLoginValid) {
+                    const myHeaders = new Headers();
+                    myHeaders.append("Content-Type", "application/json");
+
+                    const requestOptions = {
+                        method: "GET",
+                        headers: myHeaders,
+                        redirect: "follow"
+                    }
+
+                    fetch(`http://localhost:3001/consultores/busca?consultor_email=${email}`, requestOptions)
+                        .then(data => data.text())
+                        .then(response => JSON.parse(response))
+                        .then(result => result[0])
+                        .then(result => {
+                            const userNome = result.nome
+                            const userEmail = result.consultor_email
+                            const userCelular = result.celular
+                            const userTipo = result.tipo
+                            const userId = result.consultorId
+                            localStorage.setItem("tipo", userTipo)
+                            localStorage.setItem("id", userId)
+                            localStorage.setItem("currentUserNome", userNome)
+                            localStorage.setItem("currentUserEmail", userEmail)
+                            localStorage.setItem("currentUserCelular", userCelular)
+                            localStorage.setItem("token", consultorLoginValid)
+                        })
+
+                    setTimeout(() => {
+                        return window.location.reload()
+                    }, 500)
+                } else {
+                    setLoginError("Usuário não cadastrado")
+                }
             }
-        } catch (error) {
-            setLoginError("Usuario não cadastrado ")
+        } catch (e) {
+            setLoginError("Usuário não cadastrado")
         }
     }
 
@@ -127,7 +184,10 @@ const Login = () => {
                         </RememberMe>
                         <ForgotPassword href="#">Esqueceu a Senha?</ForgotPassword>
                     </OptionsContainer>
-                    <LoginButton animate={animate} onClick={handleLoginClick}>
+                    <LoginButton animate={animate} onClick={(e) => {
+                        handleLoginClick()
+                        handleSubmit(e)
+                    }}>
                         Entrar
                     </LoginButton>
                     <LoginError>{loginError}</LoginError>
