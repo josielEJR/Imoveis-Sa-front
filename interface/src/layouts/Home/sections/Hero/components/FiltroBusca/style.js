@@ -115,8 +115,6 @@ export const Codigo = styled.input`
 `
 
 export const Input = styled.div`
-    display: flex;
-    flex-direction: column;
     padding: 18px;  
     width: 280px;
     height: 65px;
@@ -155,28 +153,25 @@ export const LiTipo = styled.li`
 `
 
 export const UlOptions = styled.ul`
-    width: 280px;
     position: relative;
+    width: 280px;
     padding: 20px;
+    right: 20px;
     transition: opacity 0.5s ease, max-height 0.5s ease;
     background: #ffffff;
-    flex-direction: column;
     border-radius: 8px;
     border: 2px solid #000;
     z-index: 1;
-
-    @media (max-width: 1280px){
-        width: 250px;
-    }
+    margin-top: 25px;
 
     @media (max-width: 950px){
-        width: 174px;
+        position: absolute;
+        width: 100%;
+        right: 0;
         padding: 0 10px;
     }
     @media (max-width: 450px){
-        width: 176px;
         margin-top: 19px;
-        right: 19px;
         padding: 0 10px;
     }
 `
