@@ -11,7 +11,7 @@ export const Container = styled.div`
     justify-content: space-between;
     flex-wrap: wrap;
     width: 100%;
-    gap: 20px;
+    gap: 40px;
 
     @media (max-width: 450px) {
         gap: 0;
@@ -52,8 +52,8 @@ export const CardContainer = styled.div`
     height: 630px;
     padding: 20px;
     display: flex;
-    transition: transform 0.9s ease-in-out, opacity 0.3s ease;
-    transform: translateX(${({ index, currentIndex }) => (index - currentIndex) * 1.5}%);;
+    transition: transform 0.9s ease-in-out;
+    transform: translateX(${({ index, currentIndex }) => (index - currentIndex)* 1.5}%);
     
     &:hover ${CardContent}, &:hover ${Overlay} {
         opacity: 1;

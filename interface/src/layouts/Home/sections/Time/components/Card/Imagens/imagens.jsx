@@ -25,7 +25,7 @@ const configTime = [
     },
     {
       title: 'image4' ,
-      image:'https://img.freepik.com/fotos-gratis/homem-senior-com-o-polegar-para-cima_1187-829.jpg?size=626&ext=jpg&ga=GA1.1.370512319.1722003464&semt=sph',
+      image:'https://metodosupera.com.br/wp-content/uploads/2023/09/20-anos-do-estatuto-da-pessoa-idosa-e-dia-internacional-do-idoso-supera-ginastica-para-o-cerebro-1.jpg',
       nome:'Miguel',
       sobre:'Especialista em gestão de riscos, auxiliando empresas a identificar e mitigar riscos em suas operações.',
       email:'leugim@gmail.com',

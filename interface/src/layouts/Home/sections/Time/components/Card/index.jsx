@@ -5,12 +5,10 @@ import NavButtons from '../../../Time/components/NavButtons/index'
 
 const Card = ({ configTime }) => {
     const [imageIndex, setImageIndex] = useState(0)
-    const [consultores, setConsultores] = useState([])
     const [visibleCards, setVisibleCards] = useState(1)
     const [touchStart, setTouchStart] = useState(0)
     const [touchEnd, setTouchEnd] = useState(0)
     const [touchStartTime, setTouchStartTime] = useState(0)
-    const [selectedButton, setSelectedButton] = useState(1)
     const [paused, setPaused] = useState(false)
 
     const handleButtonClick = (buttonIndex) => {
@@ -46,24 +44,19 @@ const Card = ({ configTime }) => {
     }
 
     const next = () => {
-        setImageIndex((prevIndex) => (prevIndex + 1) % configTime.length)
+        setImageIndex((prevIndex) => {
+            const maxIndex = visibleCards === 3 ? 3 : (visibleCards === 2 ? 4 : 5)
+            const nextIndex = (prevIndex + 1) % configTime.length;
+            if (nextIndex >= maxIndex) {
+                return 0
+            }
+            return nextIndex;
+        })
     }
 
     const prev = () => {
         setImageIndex((prevIndex) => (prevIndex - 1 + configTime.length) % configTime.length)
     }
-
-    // useEffect(() => {
-    //     fetch('http://localhost:3001/consultores')
-    //         .then(response => {
-    //             if (!response.ok) {
-    //                 throw new Error('Network response was not ok');
-    //             }
-    //             return response.json();
-    //         })
-    //         .then(data => setConsultores(data))
-    //         .catch(error => console.error('Houve um problema com a operação de fetch:', error));
-    // }, [])
 
     useEffect(() => {
         const updateCardCount = () => {
@@ -89,9 +82,7 @@ const Card = ({ configTime }) => {
             }
         }, 6000)
         return () => clearInterval(interval)
-    }, [paused])
-
-    
+    }, [paused, visibleCards])
 
     const getCardsToRender = () => {
         if (imageIndex + visibleCards <= configTime.length) {
