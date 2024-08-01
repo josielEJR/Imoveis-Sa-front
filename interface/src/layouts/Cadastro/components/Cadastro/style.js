@@ -9,7 +9,7 @@ export const Container = styled.div`
     top: 50%;
     left: 50%;
     width: 800px;
-    height: 600px;
+    height: 900px;
     background: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(10px);
     border: 1px solid white;
@@ -20,12 +20,12 @@ export const Container = styled.div`
     padding: 100px;
     border-radius: 10px;
     
-    @media (max-width: 900px) {
+    @media (max-width: 910px) {
         width: 90%;
-        height: 650px;
-        padding: 50px;  
-    }
-`
+        height: 900px;
+        padding: 50px;        
+ }
+    `
 
 export const InnerWrapper = styled.div`
     display: flex;
@@ -33,15 +33,15 @@ export const InnerWrapper = styled.div`
     align-items: center;
     width: 100%;
 
-    @media (max-width: 900px ) {
+    @media (max-width: 900px ) {       
     }
 `
 
 export const Title = styled.h2`
-    margin-bottom: 20px;
-    font-size: 30px;
+    margin-bottom: 10px;
+    font-size: 40px;
     color: white;
-`
+    `
 
 export const Input = styled.input`
     width: 100%;
@@ -53,18 +53,19 @@ export const Input = styled.input`
     box-sizing: border-box;
     font-size: 15px;
 
-    @media (max-width: 900px ) {
+    @media (max-width: 910px ) {  
+        width: 100%;
     }
 `
 
-  export const PasswordWrapper = styled.div`
+export const PasswordWrapper = styled.div`
     position: relative;
     width: 100%;
     display: flex;
     align-items: center;
 `
 
-  export const EyeIcon = styled.span`
+export const EyeIcon = styled.span`
     position: absolute;
     top: -55px;
     right: 30px;
@@ -72,40 +73,6 @@ export const Input = styled.input`
     user-select: none;
     opacity: 0.4;
     transition: opacity 0.3s;
-`
-
-export const OptionsContainer = styled.div`
-    display: flex;
-    justify-content: space-between;
-    width: 80%;
-    margin-top: 40px;
-
-    @media (max-width: 540px ) {
-        flex-direction: column;
-        gap: 20px;
-        align-items: center;
-    }
-`
-
-export const RememberMe = styled.label`
-    display: flex;
-    align-items: center;
-    font-size: 20px;
-    color: white;
-`
-
-export const Checkbox = styled.input`
-    margin-right: 8px;
-`
-
-export const ForgotPassword = styled.a`
-    font-size: 20px;
-    color: white;
-    cursor: pointer;
-    
-&:hover {
-    text-decoration: underline;
-  }
 `
 
 const clickAnimation = keyframes`
@@ -119,29 +86,35 @@ const clickAnimation = keyframes`
     transform: scale(1);
   }
 `
-export const LoginButton = styled.button`
+
+export const CadastroButton = styled.button`
     width: 100%;
     padding: 10px;
     margin-top: 40px;
     border-radius: 20px;
     background-color: black;
     color: white;
-    font-size: 18px;
+    font-size: 20px;
     cursor: pointer;
     animation: ${({ animate }) => animate ? clickAnimation: 'none'} 0.3s ease-in-out;
 
-    @media (max-width: 900px) {
+    @media (max-width: 910px) {
         width: 100%;
     }
 `
 
-export const Signup = styled.a`
+export const TextContainer = styled.p`
+    margin-top: 10px;
     font-size: 20px;
     color: white;
+`
+
+export const HighlightedLink = styled.a`
+    color: #007bff;
+    font-weight: bold;
     cursor: pointer;
-    margin-top: 50px;
-  
-  &:hover {
-    text-decoration: underline;
-  }
+
+    &:hover {
+        text-decoration: underline;
+    }
 `

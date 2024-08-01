@@ -1,20 +1,35 @@
 import React, { useState } from 'react'
 
-import { Container, Wrapper, InnerWrapper, Title, Input, OptionsContainer, RememberMe, Checkbox, ForgotPassword, LoginButton, Signup, PasswordWrapper, EyeIcon } from './style'
+import { Container, Wrapper, InnerWrapper, Title, TextContainer, HighlightedLink, Input, CadastroButton, PasswordWrapper, EyeIcon } from './style'
 
 import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai';
 
-const Login = () => {
+const Cadastro = () => {
 
     const [animate, setAnimate] = useState(false);
+    const [name, setName] = useState('');
     const [email, setEmail] = useState('');
+    const [cpf, setCpf] = useState('');
+    const [celular, setCelular] = useState('');
     const [password, setPassword] = useState('');
     const [showPassword, setShowPassword] = useState(false);
     const [emailError, setEmailError] = useState(false);
 
-    const handleLoginClick = () => {
+    const handleCadastroClick = () => {
         setAnimate(true);
         setTimeout(() => setAnimate(false), 300);
+    }
+
+    const handleNameChange = (e) => {
+        const value = e.target.value;
+        const sanitizedValue = value.replace(/[^a-zA-Z\s]/g, '');
+        setName(sanitizedValue);
+    }
+
+    const handleCpfChange = (e) => {
+        const value = e.target.value;
+        const sanitizedValue = value.replace(/[^0-9]/g, '').slice(0, 11);
+        setCpf(sanitizedValue);
     }
 
     const handleEmailChange = (e) => {
@@ -32,6 +47,12 @@ const Login = () => {
         }
     }
 
+    const handleCelularChange = (e) => {
+        const value = e.target.value;
+        const sanitizedValue = value.replace(/[^0-9]/g, '').slice(0, 11);
+        setCelular(sanitizedValue);
+    }
+
     const handlePasswordChange = (e) => {
         const value = e.target.value;
         const sanitizedValue = value.replace(/[^a-zA-Z0-9@._-]/g, '');
@@ -46,16 +67,37 @@ const Login = () => {
         <Wrapper>
             <Container>
                 <InnerWrapper>
-                    <Title>LOGIN</Title>
+                    <Title>Crie sua Conta</Title>
+                    <TextContainer>
+                        Já possui Cadastro? <HighlightedLink href="#">Entre aqui!</HighlightedLink>
+                    </TextContainer>
                     <Input
-                        type="email"
+                        type="text"
+                        placeholder="Nome"
+                        value={name}
+                        onChange={handleNameChange}
+                    />
+                    <Input
+                        type="text"
+                        placeholder="CPF"
+                        value={cpf}
+                        onChange={handleCpfChange}
+                    />
+                    <Input
+                        type="text"
                         placeholder="E-mail"
                         value={email}
                         onChange={handleEmailChange}
                         onBlur={handleEmailBlur}
                         error={emailError}
                     />
-                    {emailError && <p style={{ color: 'red' }}>E-mail Inválido</p>}
+                    {emailError && <p style={{ color: 'red' }}>E-mail inválido</p>}
+                    <Input
+                        type="text"
+                        placeholder="Celular"
+                        value={celular}
+                        onChange={handleCelularChange}
+                    />
                     <Input
                         type={showPassword ? "text" : "password"}
                         placeholder="Senha"
@@ -67,21 +109,13 @@ const Login = () => {
                             {showPassword ? <AiOutlineEye /> : <AiOutlineEyeInvisible />}
                         </EyeIcon>
                     </PasswordWrapper>
-                    <OptionsContainer>
-                        <RememberMe>
-                            <Checkbox type="checkbox" />
-                            Lembre de Mim
-                        </RememberMe>
-                        <ForgotPassword href="#">Esqueceu a Senha?</ForgotPassword>
-                    </OptionsContainer>
-                    <LoginButton animate={animate} onClick={handleLoginClick}>
-                        Entrar
-                    </LoginButton>
-                    <Signup href="#">Cadastre-se</Signup>
+                    <CadastroButton animate={animate} onClick={handleCadastroClick}>
+                        Cadastre-se
+                    </CadastroButton>
                 </InnerWrapper>
             </Container>
-        </Wrapper>
+        </Wrapper >
     )
 }
 
-export default Login
+export default Cadastro
