@@ -8,6 +8,7 @@ const Login = () => {
     const [animate, setAnimate] = useState(false);
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [showPassword, setShowPassword] = useState(false);
     const [emailError, setEmailError] = useState(false);
     const [loginError, setLoginError] = useState('')
 
@@ -177,6 +178,11 @@ const Login = () => {
                         value={password}
                         onChange={handlePasswordChange}
                     />
+                    <PasswordWrapper>
+                        <EyeIcon onClick={toggleShowPassword}>
+                            {showPassword ? <AiOutlineEye /> : <AiOutlineEyeInvisible />}
+                        </EyeIcon>
+                    </PasswordWrapper>
                     <OptionsContainer>
                         <RememberMe>
                             <Checkbox type="checkbox" />

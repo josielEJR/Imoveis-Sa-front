@@ -189,7 +189,7 @@ const FiltroBusca = () => {
               <IoIosArrowDropdownCircle />
             </IconDrop>
             {showCompra && (
-              <ListaCompra>
+              <UlOptions>
                 {['Alugar', 'Comprar'].map(disponibilidade => (
                   <LiTipo key={disponibilidade}>
                     <CheckBoxWrapper>
@@ -203,7 +203,7 @@ const FiltroBusca = () => {
                     </CheckBoxWrapper>
                   </LiTipo>
                 ))}
-              </ListaCompra>
+              </UlOptions>
             )}
           </Input>
           <Input
@@ -243,7 +243,7 @@ const FiltroBusca = () => {
               <IoIosArrowDropdownCircle />
             </IconDrop>
             {showBairros && (
-              <UlBairros>
+              <UlOptions>
                 {['Bela Vista', 'Copacabana', 'Centro', 'Pinheiros', 'Botafogo', 'Barra da Tijuca'].map(bairro => (
                   <LiTipo key={bairro}>
                     <CheckBoxWrapper>
@@ -258,7 +258,7 @@ const FiltroBusca = () => {
                     </CheckBoxWrapper>
                   </LiTipo>
                 ))}
-              </UlBairros>
+              </UlOptions>
             )}
           </Input>
           <Codigo
