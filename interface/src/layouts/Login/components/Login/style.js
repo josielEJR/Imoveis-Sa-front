@@ -145,3 +145,9 @@ export const Signup = styled.a`
     text-decoration: underline;
   }
 `
+
+export const LoginError = styled.div`
+  color: red;
+  height: 20px;
+  margin-top: 10px;
+`
