@@ -5,11 +5,6 @@ export const Wrapper = styled.div`
     justify-content: center;
     overflow: hidden;
     margin-top: 100px;
-    
-
-    @media (max-width: 950px) {
-        margin-top: 50px;
-    }
 `
 
 export const Container = styled.div`
@@ -24,6 +19,3 @@ export const Title = styled.div`
     font-weight: 800;
     font-size: 38px;
 `
-
-
-

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 
-import { CardContent, CardContainer, Article, Nome, Telefone, Email, Wrapper, Container, Overlay } from './style'
+import { CardContent, CardContainer, Article, Nome, Telefone, Email, Wrapper, Container, Overlay, Direita, Esquerda, Icon, ContainerIcon, } from './style'
+import { FaAngleLeft, FaAngleRight } from "react-icons/fa6"
 import NavButtons from '../../../Time/components/NavButtons/index'
 
 const Card = ({ configTime }) => {
@@ -60,9 +61,9 @@ const Card = ({ configTime }) => {
 
     useEffect(() => {
         const updateCardCount = () => {
-            if (window.innerWidth >= 1280) {
+            if (window.innerWidth >= 1510) {
                 setVisibleCards(3)
-            } else if (window.innerWidth >= 950) {
+            } else if (window.innerWidth >= 1000) {
                 setVisibleCards(2)
             } else {
                 setVisibleCards(1)
@@ -94,6 +95,18 @@ const Card = ({ configTime }) => {
 
     return (
         <Wrapper>
+            <ContainerIcon>
+            <Direita onClick={prev} >
+                <Icon>
+                    <FaAngleLeft />
+                </Icon>
+            </Direita>
+            <Esquerda onClick={next} >
+                <Icon>
+                    <FaAngleRight />
+                </Icon>
+            </Esquerda>
+            </ContainerIcon>
             <Container
                 onTouchStart={handleTouchStart}
                 onTouchMove={handleTouchMove}
@@ -127,7 +140,10 @@ const Card = ({ configTime }) => {
                         </CardContent>
                     </CardContainer>
                 ))}
-                <NavButtons selectedButton={(imageIndex % configTime.length) + 1} handleButtonClick={handleButtonClick} />
+                {visibleCards === 3 && (
+                    <NavButtons selectedButton={(imageIndex % configTime.length) + 1} handleButtonClick={handleButtonClick} />
+                )}
+
             </Container>
         </Wrapper>
     )

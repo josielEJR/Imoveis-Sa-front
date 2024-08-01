@@ -8,7 +8,7 @@ import configDepoimentos from '../../layouts/Home/sections/Depoimentos/component
 const Home = () => {
   return (
     <Wrapper>
-      <Hero />
+      {/* <Hero /> */}
       {/* <Depoimentos configDepoimentos={configDepoimentos} /> */}
       <Time />
     </Wrapper>

@@ -1,4 +1,16 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
+
+export const slideIn = keyframes`
+  0% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+`
 
 export const Wrapper = styled.div`
     display: flex;
@@ -8,7 +20,7 @@ export const Wrapper = styled.div`
 
 export const Container = styled.div`
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     flex-wrap: wrap;
     width: 100%;
     gap: 40px;
@@ -43,7 +55,7 @@ export const CardContent = styled.div`
     visibility: hidden;
     transition: opacity 0.3s ease, visibility 0.3s ease;
 `
-// aqui vai ficar a imagen 
+ 
 export const CardContainer = styled.div`
     position: relative;
     color: white;
@@ -52,8 +64,12 @@ export const CardContainer = styled.div`
     height: 630px;
     padding: 20px;
     display: flex;
-    transition: transform 0.9s ease-in-out;
-    transform: translateX(${({ index, currentIndex }) => (index - currentIndex)* 1.5}%);
+    animation: ${slideIn} 0.5s ease-out;
+    transition: transform 0.5s, opacity 0.5s;
+
+    &:not(:first-child) {
+    margin-left: 20px;
+    }
     
     &:hover ${CardContent}, &:hover ${Overlay} {
         opacity: 1;
@@ -64,23 +80,20 @@ export const CardContainer = styled.div`
         width: 100%;
     }
 
-    @media (min-width: 950px) {
+    @media (min-width: 1000px) {
         width: 50%;
     }
 
-    @media (min-width: 1280px) {
+    @media (min-width: 1510px) {
         width: 33.33%;
     }
 `
-
-
 
 export const Article = styled.div`
     padding: 10px;
     font-size: 20px;
     font-weight: 300;
     line-height: 26px;
-    
 `
 
 export const Nome = styled.div`
@@ -102,4 +115,49 @@ export const Email = styled.div`
     font-weight: 700;
     line-height: 16px;
     padding: 10px;
+`
+
+export const ContainerIcon = styled.div`
+    display: flex;
+    position: absolute;
+`
+
+export const Direita = styled.button`
+    position: relative;
+    width: 45px;
+    height: 45px;
+    display: none;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+    border-radius: 50%;
+    color: #f2f2f2;
+    z-index: 1;
+
+    @media (max-width: 1510px) {
+        display: flex;
+        justify-content: space-between;
+    }
+`
+
+export const Esquerda = styled.button`
+    position: relative;
+    width: 45px;
+    height: 45px;
+    display: none;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+    border-radius: 50%;
+    color: #f2f2f2;
+    z-index: 1;
+    
+    @media (max-width: 1510px) {
+        display: flex;
+        justify-content: space-between;
+    }
+`
+
+export const Icon = styled.i`
+    padding-left: 12px;  
 `

@@ -4,7 +4,7 @@ const configTime = [
       image:'https://img.freepik.com/fotos-gratis/close-no-homem-sorrindo-na-natureza_23-2150771075.jpg?size=626&ext=jpg&ga=GA1.1.370512319.1722003464&semt=sph',
       nome:'Roberto',
       sobre:'Especialista em marketing de conteúdo, com paixão por storytelling e criação de conteúdo de alta qualidade.',
-      email:'ralves@gmail.com',
+      email:'otrebor@gmail.com',
       telefone:'11953486834',
     },
     {
@@ -12,7 +12,7 @@ const configTime = [
       image:'https://img.freepik.com/fotos-gratis/retrato-de-pessoa-excitada-em-close-up_23-2151186682.jpg?size=626&ext=jpg&ga=GA1.1.370512319.1722003464&semt=sph',
       nome:'José',
       sobre:'Especialista em transformação digital, auxiliando empresas a otimizarem seus processos e adotarem novas tecnologias',
-      email:'rogi@gmail.com',
+      email:'esoj@gmail.com',
       telefone:'11948695738',
     },
     {
@@ -25,10 +25,10 @@ const configTime = [
     },
     {
       title: 'image4' ,
-      image:'https://metodosupera.com.br/wp-content/uploads/2023/09/20-anos-do-estatuto-da-pessoa-idosa-e-dia-internacional-do-idoso-supera-ginastica-para-o-cerebro-1.jpg',
-      nome:'Miguel',
+      image:'https://cdn.discordapp.com/attachments/352175756278759425/1268645350290227270/Sem_Titulo-1.png?ex=66ad2d8d&is=66abdc0d&hm=83174fb3f22896eb2bff4e3d9f2020febb1eb06d58ea76b09305085ca320ae56&',
+      nome:'Milton',
       sobre:'Especialista em gestão de riscos, auxiliando empresas a identificar e mitigar riscos em suas operações.',
-      email:'leugim@gmail.com',
+      email:'notlim@gmail.com',
       telefone:'11936547826',
     },
     {
