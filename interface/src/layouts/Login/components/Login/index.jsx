@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 
-import { Container, Wrapper, InnerWrapper, Title, Input, OptionsContainer, RememberMe, Checkbox, ForgotPassword, LoginButton, LoginError, Signup } from './style'
+import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai';
+
+import { Container, Wrapper, InnerWrapper, Title, Input, OptionsContainer, RememberMe, Checkbox, ForgotPassword, LoginButton, LoginError, Signup, PasswordWrapper, EyeIcon } from './style'
 
 const Login = () => {
 
@@ -11,6 +13,10 @@ const Login = () => {
     const [showPassword, setShowPassword] = useState(false);
     const [emailError, setEmailError] = useState(false);
     const [loginError, setLoginError] = useState('')
+
+    const toggleShowPassword = () => {
+        setShowPassword(currentPass => !currentPass);
+    }
 
     const handleLoginClick = () => {
         setAnimate(true);
@@ -173,7 +179,7 @@ const Login = () => {
                     />
                     {emailError && <p style={{ color: 'red' }}>E-mail Inválido</p>}
                     <Input
-                        type="password"
+                        type={showPassword ? "text" : "password"}
                         placeholder="Senha"
                         value={password}
                         onChange={handlePasswordChange}
