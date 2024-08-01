@@ -103,6 +103,18 @@ export const CadastroButton = styled.button`
     }
 `
 
+export const ErroCadastro = styled.div`
+    height: 10px;
+    color: red;
+    font-size: 18px;
+    font-weight: 700;
+
+    @media (max-width: 450px ) {  
+        font-size: 16px;
+    }
+
+`
+
 export const TextContainer = styled.p`
     margin-top: 10px;
     font-size: 20px;
