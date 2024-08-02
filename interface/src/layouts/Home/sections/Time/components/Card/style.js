@@ -9,14 +9,15 @@ export const Wrapper = styled.div`
 
 export const Container = styled.div`
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     flex-wrap: wrap;
     width: 100%;
-    gap: 50px;
+    gap: 20px;
+    padding: 40px;
 
-    @media (max-width: 1540px) {
-        gap: 0;
-        padding: 40px;
+    @media (min-width: 1575px) {
+        gap: 50px;
+        padding  : 0;
     }
 `
 
@@ -80,9 +81,6 @@ export const CardContainer = styled.div`
     animation: ${slideIn} 0.5s ease-out;
     transition: transform 0.5s, opacity 0.5s;
 
-    &:not(:first-child) {
-        margin-left: 20px;
-    }
     
     &:hover ${CardContent}, &:hover ${Overlay} {
         opacity: 1;
