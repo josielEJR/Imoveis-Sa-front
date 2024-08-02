@@ -1,21 +1,10 @@
 import styled, { keyframes } from "styled-components";
 
-export const slideIn = keyframes`
-  0% {
-    transform: translateX(100%);
-    opacity: 0;
-  }
-
-  100% {
-    transform: translateX(0);
-    opacity: 1;
-  }
-`
-
 export const Wrapper = styled.div`
     display: flex;
     justify-content: center;
     flex-direction: column;
+    position: relative;
 `
 
 export const Container = styled.div`
@@ -23,10 +12,11 @@ export const Container = styled.div`
     justify-content: space-around;
     flex-wrap: wrap;
     width: 100%;
-    gap: 40px;
+    gap: 50px;
 
-    @media (max-width: 450px) {
+    @media (max-width: 1540px) {
         gap: 0;
+        padding: 40px;
     }
 `
 
@@ -41,10 +31,16 @@ export const Overlay = styled.div`
     visibility: hidden;
     transition: opacity 0.3s ease, visibility 0.3s ease;
     background: #000000CC;
+
+    @media (max-width: 1540px) {
+        opacity: 1;
+        visibility: visible;
+    }
 `
 
 export const CardContent = styled.div`
     max-width: 460px;
+    color: #FFFFFF;
     display: flex;
     flex-direction: column;
     gap: 45px;
@@ -54,11 +50,28 @@ export const CardContent = styled.div`
     z-index: 2;
     visibility: hidden;
     transition: opacity 0.3s ease, visibility 0.3s ease;
+
+    @media (max-width: 1540px) {
+        opacity: 1;
+        visibility: visible;
+    }
+`
+
+export const slideIn = keyframes`
+
+    0% {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
 `
  
 export const CardContainer = styled.div`
     position: relative;
-    color: white;
     width: 100%;
     max-width: 450px;
     height: 630px;
@@ -68,7 +81,7 @@ export const CardContainer = styled.div`
     transition: transform 0.5s, opacity 0.5s;
 
     &:not(:first-child) {
-    margin-left: 20px;
+        margin-left: 20px;
     }
     
     &:hover ${CardContent}, &:hover ${Overlay} {
@@ -76,22 +89,22 @@ export const CardContainer = styled.div`
         visibility: visible;
     }
 
-    @media (min-width: 949px) {
+    @media (min-width: 1000px) {
         width: 100%;
     }
 
-    @media (min-width: 1000px) {
+    @media (min-width: 1100px) {
         width: 50%;
     }
 
-    @media (min-width: 1510px) {
+    @media (min-width: 1540px) {
         width: 33.33%;
     }
 `
 
 export const Article = styled.div`
     padding: 10px;
-    font-size: 20px;
+    font-size: 16px;
     font-weight: 300;
     line-height: 26px;
 `
@@ -99,65 +112,70 @@ export const Article = styled.div`
 export const Nome = styled.div`
     font-size: 36px;
     font-weight: 700;
-    line-height: 43.57px;
+    line-height: 43px;
     padding: 10px;
+    
 `
 
 export const Telefone = styled.div`
-    font-size: 20px;
-    font-weight: 700;
+    font-size: 16px;
+    font-weight: 300;
     line-height: 16px;
     padding: 10px;
 `
 
 export const Email = styled.div`
-    font-size: 20px;
-    font-weight: 700;
+    font-size: 16px;
+    font-weight: 300;
     line-height: 16px;
     padding: 10px;
 `
 
 export const ContainerIcon = styled.div`
-    display: flex;
+    display: none;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 100%;  
     position: absolute;
+
+    @media (max-width: 1540px) {
+        display: flex;
+
+    }
+
 `
 
 export const Direita = styled.button`
-    position: relative;
-    width: 45px;
-    height: 45px;
     display: none;
     align-items: center;
-    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
     cursor: pointer;
-    border-radius: 50%;
     color: #f2f2f2;
-    z-index: 1;
+    z-index: 2;
+    color: black;
 
-    @media (max-width: 1510px) {
+    @media (max-width: 1540px) {
         display: flex;
         justify-content: space-between;
     }
 `
 
 export const Esquerda = styled.button`
-    position: relative;
-    width: 45px;
-    height: 45px;
     display: none;
     align-items: center;
-    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
     cursor: pointer;
-    border-radius: 50%;
     color: #f2f2f2;
-    z-index: 1;
+    z-index: 2;
+    color: black;
     
-    @media (max-width: 1510px) {
+    @media (max-width: 1540px) {
         display: flex;
         justify-content: space-between;
     }
 `
 
 export const Icon = styled.i`
-    padding-left: 12px;  
+     
 `

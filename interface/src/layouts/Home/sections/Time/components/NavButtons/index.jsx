@@ -7,19 +7,19 @@ const NavButtons = ({ selectedButton, handleButtonClick }) => {
     <WrapperNavButton>
       <ContainerNavButton>
         <NavButton
-          width={selectedButton === 1 ? 50 : 25}
+          width={selectedButton === 1 ? 70 : 25}
           selected={selectedButton === 1 ? "true" : "false"}
           onClick={() => handleButtonClick(1)}
         >  
         </NavButton>
         <NavButton
-          width={selectedButton === 2 ? 50 : 30}
+          width={selectedButton === 2 ? 70 : 30}
           selected={selectedButton === 2 ? "true" : "false"}
           onClick={() => handleButtonClick(2)}
         >  
         </NavButton>
         <NavButton
-          width={selectedButton === 3 ? 50 : 40 }
+          width={selectedButton === 3 ? 70 : 40 }
           selected={selectedButton === 3 ? "true" : "false"}
           onClick={() => handleButtonClick(3)}
         >  

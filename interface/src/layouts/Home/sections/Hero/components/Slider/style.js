@@ -112,16 +112,12 @@ export const ButtonPrice = styled.button`
 `
 
 export const Direita = styled.button`
-    width: 45px;
-    height: 45px;
     display: flex;
     align-items: center;
-    background-color: rgba(0, 0, 0, 0.5);
     cursor: pointer;
     right: 30px;
     position: absolute;
     top: 50%;
-    border-radius: 50%;
     color: #f2f2f2;
     z-index: 1;
 
@@ -131,16 +127,12 @@ export const Direita = styled.button`
 `
 
 export const Esquerda = styled.button`
-    width: 45px;
-    height: 45px;
     display: flex;
     align-items: center;
-    background-color: rgba(0, 0, 0, 0.5);
     cursor: pointer;
     left: 30px;
     position: absolute;
     top: 50%;
-    border-radius: 50%;
     color: #f2f2f2;
     z-index: 1;
     
@@ -150,6 +142,6 @@ export const Esquerda = styled.button`
 `
 
 export const Icon = styled.i`
-    padding-left: 12px;  
+    
 `
 

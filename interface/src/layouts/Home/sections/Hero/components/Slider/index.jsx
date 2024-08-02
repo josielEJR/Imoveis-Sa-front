@@ -114,12 +114,12 @@ const Slider = ({ config }) => {
         />
         <Direita onClick={next} >
           <Icon>
-            <FaAngleRight />
+            <FaAngleRight size={20} />
           </Icon>
         </Direita>
         <Esquerda onClick={prev} >
           <Icon>
-            <FaAngleLeft />
+            <FaAngleLeft size={20} />
           </Icon>
         </Esquerda>
         <ContainerInfo>

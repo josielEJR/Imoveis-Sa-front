@@ -10,7 +10,7 @@ const Card = ({ configTime }) => {
     const [touchStart, setTouchStart] = useState(0)
     const [touchEnd, setTouchEnd] = useState(0)
     const [touchStartTime, setTouchStartTime] = useState(0)
-    const [paused, setPaused] = useState(false)
+    const [paused] = useState(false)
 
     const handleButtonClick = (buttonIndex) => {
         setImageIndex(buttonIndex - 1)
@@ -29,12 +29,12 @@ const Card = ({ configTime }) => {
         const touchEndTime = new Date().getTime()
         const touchDuration = touchEndTime - touchStartTime
 
-        if (touchDuration > 500) {
-            if (touchStart - touchEnd > 50) {
+        if (touchDuration > 200) {
+            if (touchStart - touchEnd > 10) {
                 next()
             }
 
-            if (touchStart - touchEnd < -50) {
+            if (touchStart - touchEnd < -10) {
                 prev()
             }
 
@@ -61,9 +61,9 @@ const Card = ({ configTime }) => {
 
     useEffect(() => {
         const updateCardCount = () => {
-            if (window.innerWidth >= 1510) {
+            if (window.innerWidth >= 1540) {
                 setVisibleCards(3)
-            } else if (window.innerWidth >= 1000) {
+            } else if (window.innerWidth >= 1100) {
                 setVisibleCards(2)
             } else {
                 setVisibleCards(1)
@@ -95,18 +95,7 @@ const Card = ({ configTime }) => {
 
     return (
         <Wrapper>
-            <ContainerIcon>
-            <Direita onClick={prev} >
-                <Icon>
-                    <FaAngleLeft />
-                </Icon>
-            </Direita>
-            <Esquerda onClick={next} >
-                <Icon>
-                    <FaAngleRight />
-                </Icon>
-            </Esquerda>
-            </ContainerIcon>
+
             <Container
                 onTouchStart={handleTouchStart}
                 onTouchMove={handleTouchMove}
@@ -132,10 +121,10 @@ const Card = ({ configTime }) => {
                                 {item.sobre}
                             </Article>
                             <Telefone>
-                                {item.telefone}
+                                Tel: {item.telefone}
                             </Telefone>
                             <Email>
-                                {item.email}
+                                E-mail: {item.email}
                             </Email>
                         </CardContent>
                     </CardContainer>
@@ -143,8 +132,19 @@ const Card = ({ configTime }) => {
                 {visibleCards === 3 && (
                     <NavButtons selectedButton={(imageIndex % configTime.length) + 1} handleButtonClick={handleButtonClick} />
                 )}
-
             </Container>
+            <ContainerIcon>
+                <Direita onClick={prev} >
+                    <Icon>
+                        <FaAngleLeft size={25} />
+                    </Icon>
+                </Direita>
+                <Esquerda onClick={next} >
+                    <Icon>
+                        <FaAngleRight size={25} />
+                    </Icon>
+                </Esquerda>
+            </ContainerIcon>
         </Wrapper>
     )
 }

@@ -5,7 +5,7 @@ const configTime = [
       nome:'Roberto',
       sobre:'Especialista em marketing de conteúdo, com paixão por storytelling e criação de conteúdo de alta qualidade.',
       email:'otrebor@gmail.com',
-      telefone:'11953486834',
+      telefone:'(11) 95348-6834',
     },
     {
       title: 'image2' ,
@@ -13,7 +13,7 @@ const configTime = [
       nome:'José',
       sobre:'Especialista em transformação digital, auxiliando empresas a otimizarem seus processos e adotarem novas tecnologias',
       email:'esoj@gmail.com',
-      telefone:'11948695738',
+      telefone:'(11) 94869-5738',
     },
     {
       title: 'image3' ,
@@ -21,7 +21,7 @@ const configTime = [
       nome:'Alana',
       sobre:'Especialista em gestão de talentos, auxiliando empresas a atrair, desenvolver e reter os melhores profissionais.',
       email:'anala@gmail.com',
-      telefone:'11967896547',
+      telefone:'(11) 96789-6547',
     },
     {
       title: 'image4' ,
@@ -29,15 +29,15 @@ const configTime = [
       nome:'Milton',
       sobre:'Especialista em gestão de riscos, auxiliando empresas a identificar e mitigar riscos em suas operações.',
       email:'notlim@gmail.com',
-      telefone:'11936547826',
+      telefone:'(11) 93654-7826',
     },
     {
       title: 'image5' ,
       image:'https://img.freepik.com/fotos-premium/jovem-mulher-latina-tirando-selfies-em-pe-ao-ar-livre-na-rua-conceito-urbano_58466-16058.jpg?size=626&ext=jpg&ga=GA1.1.370512319.1722003464&semt=sph',
-      nome:'Ana',
+      nome:'Larissa',
       sobre:'Consultora de recursos humanos com foco em desenvolvimento de pessoas e cultura organizacional. Possui experiência em recrutamento, seleção, treinamento e avaliação de desempenho.',
-      email:'leu@gmail.com',
-      telefone:'21985867432',
+      email:'assiral@gmail.com',
+      telefone:'(21) 98586-7432',
     }
   ]
   

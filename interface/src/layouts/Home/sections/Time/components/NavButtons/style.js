@@ -19,13 +19,10 @@ export const WrapperNavButton = styled.div`
 
 export const ContainerNavButton = styled.div`
     display: flex;
-    width: 160px;
+    width: 200px;
     height: 100%;
     margin: auto;
 
-    @media (min-width: 450px){
-        width: 180px;
-    }
 `
 
 export const NavButton = styled.button`
