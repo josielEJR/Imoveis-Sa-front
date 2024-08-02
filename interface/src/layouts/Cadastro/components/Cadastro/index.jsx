@@ -117,7 +117,7 @@ const Cadastro = () => {
                 <InnerWrapper>
                     <Title>Crie sua Conta</Title>
                     <TextContainer>
-                        Já possui Cadastro? <HighlightedLink href="#">Entre aqui!</HighlightedLink>
+                        Já possui Cadastro? <HighlightedLink href="/login">Entre aqui!</HighlightedLink>
                     </TextContainer>
                     <Input
                         type="text"
