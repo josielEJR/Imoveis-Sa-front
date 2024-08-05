@@ -11,6 +11,7 @@ import Imoveis from './Pages/Imoveis/Imoveis.js'
 import SobreNos from './Pages/SobreNos/SobreNos.js'
 import AnunciarImovel from './Pages/Anunciar/AnunciarImovel.js'
 import Imovel from './Pages/Imovel/Imovel.js'
+import PageCorretor from './Pages/Corretor/index.jsx';
 
 const App = () => {
   return (
@@ -19,6 +20,7 @@ const App = () => {
       <NavBar />
         <Routes>
           <Route path='/imoveis' element={<Imoveis />} />
+          <Route path='/corretores' element={<PageCorretor />} />
           <Route path='/sobrenos' element={<SobreNos />} />
           <Route path='/anunciarimovel' element={<AnunciarImovel />} />
           <Route path='/imovel' element={<Imovel />} />
