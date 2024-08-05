@@ -2,13 +2,15 @@ import { useState, useEffect } from 'react'
 
 import Card from '../Card'
 
-import { Wrapper, Container, TitleSection, Title, CardsSection, SelectorSection, Selectors, IndexSelector } from './style'
+import { FaAngleLeft, FaAngleRight } from "react-icons/fa6"
+
+import { Wrapper, Container, Arrows, Icon, TitleSection, Title, CardsSection, SelectorSection, Selectors, IndexSelector } from './style'
 
 const CardsContainer = () => {
 
     const [selected, setSelected] = useState(0)
-    const [pageLayout, setPageLayout] = useState(window.outerWidth)
     const [products, setProducts] = useState([])
+    const [visibleCards, setVisibleCards] = useState()
 
     useEffect(() => {
         const myHeaders = new Headers();
@@ -36,8 +38,35 @@ const CardsContainer = () => {
     }, [])
 
     useEffect(() => {
+
+        if (window.outerWidth >= 1620 || window.innerWidth >= 1620) {
+            if (!(visibleCards === 3)) {
+                setVisibleCards(3)
+            }
+        } else if (window.outerWidth < 1620 && window.outerWidth >= 1080 || window.innerWidth < 1620 && window.innerWidth >= 1080) {
+            if (!(visibleCards === 2)) {
+                setVisibleCards(2)
+            }
+        } else if (window.outerWidth < 1080 || window.innerWidth < 1080) {
+            if (visibleCards !== 1) {
+                setVisibleCards(1)
+            }
+        }
+
         function handleResize() {
-            setPageLayout(window.outerWidth)
+            if (window.outerWidth <= 1080 || window.innerWidth <= 1080) {
+                if (visibleCards !== 1) {
+                    setVisibleCards(1)
+                }
+            } else if (window.outerWidth < 1620 && window.innerWidth < 1620) {
+                if (!(visibleCards === 2)) {
+                    setVisibleCards(2)
+                }
+            } else {
+                if (!(visibleCards === 3)) {
+                    setVisibleCards(3)
+                }
+            }
         }
 
         window.addEventListener('resize', handleResize)
@@ -47,93 +76,136 @@ const CardsContainer = () => {
         }
     }, [])
 
-    function scrollToPercentage(percentage) {
-        const container = document.getElementById('scrollContainer');
-        const contentWidth = container.scrollWidth;
-        const containerWidth = container.clientWidth;
-        const scrollAmount = (contentWidth - containerWidth) * (percentage / 100);
-        container.scrollLeft = scrollAmount;
+    const cardsLayout = () => {
+        if (products && products.length > 0) {
+            if (visibleCards === 3) {
+                return products.map((prod, index) => {
+                    if (index >= selected && index <= selected + 2) {
+                        return <Card
+                            key={index}
+                            imagem={"https://queroficarrico.com/blog/wp-content/uploads/2017/06/como_investir_em_imoveis.jpg"}
+                            bairro={prod.bairro.toUpperCase()}
+                            cidade={prod.cidade.toUpperCase()}
+                            tipo={prod.tipo.toUpperCase()}
+                            preco={prod.preco_venda || prod.preco_aluguel}
+                            area={prod.tamanho}
+                            quartos={prod.quartos}
+                            banheiros={prod.banheiros}
+                            vagas={prod.vagas}
+                            id={prod.imoveisID}
+                        />
+                    }
+                })
+            } else if (visibleCards === 2) {
+                return products.map((prod, index) => {
+                    if (index >= selected && index <= selected + 1) {
+                        return <Card
+                            key={index}
+                            imagem={"https://queroficarrico.com/blog/wp-content/uploads/2017/06/como_investir_em_imoveis.jpg"}
+                            bairro={prod.bairro.toUpperCase()}
+                            cidade={prod.cidade.toUpperCase()}
+                            tipo={prod.tipo.toUpperCase()}
+                            preco={prod.preco_venda || prod.preco_aluguel}
+                            area={prod.tamanho}
+                            quartos={prod.quartos}
+                            banheiros={prod.banheiros}
+                            vagas={prod.vagas}
+                            id={prod.imoveisID}
+                        />
+                    }
+                })
+            } else if (visibleCards === 1) {
+                return products.map((prod, index) => {
+                    if (index === selected) {
+                        return <Card
+                            key={index}
+                            imagem={"https://queroficarrico.com/blog/wp-content/uploads/2017/06/como_investir_em_imoveis.jpg"}
+                            bairro={prod.bairro.toUpperCase()}
+                            cidade={prod.cidade.toUpperCase()}
+                            tipo={prod.tipo.toUpperCase()}
+                            preco={prod.preco_venda || prod.preco_aluguel}
+                            area={prod.tamanho}
+                            quartos={prod.quartos}
+                            banheiros={prod.banheiros}
+                            vagas={prod.vagas}
+                            id={prod.imoveisID}
+                        />
+                    }
+                })
+            }
+        }
     }
 
-    const selector = () => {
-        if (pageLayout <= 1100) {
-            return <Selectors>
-                {
-                    products.map((elem, index) => (
-                        <IndexSelector
-                            onClick={() => {
-                                setSelected(index)
-                                scrollToPercentage(index * 25)
-                            }}
-                            grow={selected === index ? "true" : "false"}
-                        />
-                    ))
-                }
-            </Selectors>
-        } else if (pageLayout > 1100) {
-            return <Selectors>
-                {
-                    products && products.length > 3 ?
-                        <>
-                            <IndexSelector
-                                onClick={() => {
-                                    setSelected(0)
-                                    scrollToPercentage(0)
-                                }}
-                                grow={selected === 0 ? "true" : "false"}
-                            />
-                            <IndexSelector
-                                onClick={() => {
-                                    setSelected(1)
-                                    scrollToPercentage(50)
-                                }}
-                                grow={selected === 1 ? "true" : "false"}
-                            />
-                        </> : ''
-                }
-                {
-                    products && products.length > 4 ?
-                        <IndexSelector
-                            onClick={() => {
-                                setSelected(2)
-                                scrollToPercentage(100)
-                            }}
-                            grow={selected === 2 ? "true" : "false"}
-                        /> : ''
-                }
-            </Selectors>
-        }
+    const nextCard = () => {
+        setSelected(current => (
+            current + 1 > 2 ? 0 : current + 1
+        ))
+    }
+
+    const prevCard = () => {
+        setSelected(current => (
+            current - 1 < 0 ? 2 : current - 1
+        ))
     }
 
     return (
         <Wrapper>
+            <Arrows>
+                <Icon>
+                    <FaAngleLeft
+                        style={{
+                            height: "45px"
+                        }}
+                        onClick={prevCard}
+                    />
+                </Icon>
+                <Icon>
+                    <FaAngleRight
+                        style={{
+                            height: "45px"
+                        }}
+                        onClick={nextCard}
+                    />
+                </Icon>
+            </Arrows>
             <TitleSection>
                 <Title>CONFIRA NOSSOS</Title>
                 <Title>DESTAQUES</Title>
             </TitleSection>
-            <Container id='scrollContainer'>
+            <Container>
                 <CardsSection>
-                    {products && products.length > 0 ?
-                        products.map((prod, index) => {
-                            return <Card
-                                key={index}
-                                imagem={"https://queroficarrico.com/blog/wp-content/uploads/2017/06/como_investir_em_imoveis.jpg"}
-                                bairro={prod.bairro.toUpperCase()}
-                                cidade={prod.cidade.toUpperCase()}
-                                tipo={prod.tipo.toUpperCase()}
-                                preco={prod.preco_venda || prod.preco_aluguel}
-                                area={prod.tamanho}
-                                quartos={prod.quartos}
-                                banheiros={prod.banheiros}
-                                vagas={prod.vagas}
-                                id={prod.imoveisID}
-                            />
-                        }) : ''
-                    }
+                    {cardsLayout()}
                 </CardsSection>
             </Container>
             <SelectorSection>
-                {selector()}
+                <Selectors>
+                    {
+                        products && products.length > 3 ?
+                            <>
+                                <IndexSelector
+                                    onClick={() => {
+                                        setSelected(0)
+                                    }}
+                                    grow={selected === 0 ? "true" : "false"}
+                                />
+                                <IndexSelector
+                                    onClick={() => {
+                                        setSelected(1)
+                                    }}
+                                    grow={selected === 1 ? "true" : "false"}
+                                />
+                            </> : ''
+                    }
+                    {
+                        products && products.length > 4 ?
+                            <IndexSelector
+                                onClick={() => {
+                                    setSelected(2)
+                                }}
+                                grow={selected === 2 ? "true" : "false"}
+                            /> : ''
+                    }
+                </Selectors>
             </SelectorSection>
         </Wrapper>
     )

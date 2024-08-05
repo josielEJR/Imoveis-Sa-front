@@ -7,12 +7,39 @@ export const Container = styled.div`
     margin: auto;
     display: flex;
     flex-wrap: wrap;
-    overflow: scroll;
-    overflow-y: hidden;
-    scroll-behavior: smooth;
+    overflow: hidden;
+`
 
-    &::-webkit-scrollbar {
-        -webkit-appearance: none;
+export const Arrows = styled.div`
+    display: none;
+
+    @media (max-width: 1080px){
+        max-width: 1870px;
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        position: absolute;
+        margin-top: 430px;
+        padding: 0 50px;
+    }
+
+    @media (max-width: 700px){
+        padding: 0;
+    }
+
+    @media (max-width: 482px){
+        margin-top: 502px;
+    }
+`
+
+export const Icon = styled.button`
+    width: 45px;
+    height: 45px;
+    display: flex;
+    justify-content: center;
+
+    @media (max-width: 560px){
+        padding: 0 10px;
     }
 `
 
@@ -26,8 +53,8 @@ export const Title = styled.div`
     font-weight: 700;
     height: 50px;
 
-    @media (max-width: 480px){
-        margin-top: 40px;
+    @media (max-width: 482px){
+        height: unset;
     }
 `
 
@@ -48,11 +75,7 @@ export const Selectors = styled.div`
     display: flex;
     justify-content: center;
 
-    @media (max-width: 1100px){
-        width: 270px;
-    }
-
-    @media (max-width: 950px){
+    @media (max-width: 1080px){
         display: none;
     }
 `
