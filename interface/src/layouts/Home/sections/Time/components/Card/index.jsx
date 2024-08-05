@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react'
 import { CardContent, CardContainer, Article, Nome, Telefone, Email, Wrapper, Container, Overlay, Direita, Esquerda, Icon, ContainerIcon, } from './style'
 import { FaAngleLeft, FaAngleRight } from "react-icons/fa6"
 import NavButtons from '../../../Time/components/NavButtons/index'
+import { useNavigate } from 'react-router-dom'
 
 const Card = ({ configTime }) => {
     const [imageIndex, setImageIndex] = useState(0)
@@ -11,6 +12,7 @@ const Card = ({ configTime }) => {
     const [touchEnd, setTouchEnd] = useState(0)
     const [touchStartTime, setTouchStartTime] = useState(0)
     const [paused] = useState(false)
+    const navigate = useNavigate()
 
     const handleButtonClick = (buttonIndex) => {
         setImageIndex(buttonIndex - 1)
@@ -23,6 +25,11 @@ const Card = ({ configTime }) => {
 
     const handleTouchMove = (e) => {
         setTouchEnd(e.touches[0].clientX)
+    }
+
+    const handleCardClick = (item) => {
+        console.log('Navigating with data:', item)
+        navigate('/consultores', { state: { data: item } })
     }
 
     const handleTouchEnd = () => {
@@ -95,7 +102,6 @@ const Card = ({ configTime }) => {
 
     return (
         <Wrapper>
-
             <Container
                 onTouchStart={handleTouchStart}
                 onTouchMove={handleTouchMove}
@@ -111,6 +117,7 @@ const Card = ({ configTime }) => {
                         }}
                         index={index}
                         currentIndex={imageIndex}
+                        onClick={() => handleCardClick(item)}
                     >
                         <Overlay />
                         <CardContent>
@@ -130,19 +137,17 @@ const Card = ({ configTime }) => {
                     </CardContainer>
                 ))}
                 {visibleCards === 3 && (
-                    <NavButtons selectedButton={(imageIndex % configTime.length) + 1} handleButtonClick={handleButtonClick} />
+                    <NavButtons 
+                    selectedButton={(imageIndex % configTime.length) + 1} 
+                    handleButtonClick={handleButtonClick} />
                 )}
             </Container>
             <ContainerIcon>
                 <Direita onClick={prev} >
-                    <Icon>
-                        <FaAngleLeft size={25} />
-                    </Icon>
+                    <FaAngleLeft size={25} />
                 </Direita>
                 <Esquerda onClick={next} >
-                    <Icon>
-                        <FaAngleRight size={25} />
-                    </Icon>
+                    <FaAngleRight size={25} />
                 </Esquerda>
             </ContainerIcon>
         </Wrapper>

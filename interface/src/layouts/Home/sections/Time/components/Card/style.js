@@ -173,7 +173,3 @@ export const Esquerda = styled.button`
         justify-content: space-between;
     }
 `
-
-export const Icon = styled.i`
-     
-`
