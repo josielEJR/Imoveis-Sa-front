@@ -9,7 +9,7 @@ export const Wrapper = styled.div`
 `
 
 export const Nav = styled.nav`
-    max-width: 1680px;
+    max-width: 1870px;
     margin: 0 auto;
     height: 95px;
     width: 100%;
