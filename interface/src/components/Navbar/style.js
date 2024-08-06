@@ -3,7 +3,8 @@ import styled from 'styled-components'
 export const Wrapper = styled.div`
     width: 100%;
     background-color: #050505;
-    position: fixed;
+    position: sticky;
+    top: 0;
     z-index: 1;
 `
 

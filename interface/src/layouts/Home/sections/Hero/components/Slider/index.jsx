@@ -130,9 +130,7 @@ const Slider = ({ config }) => {
             {config[imageIndex].text} | R$ {config[imageIndex].price}
           </ButtonPrice>
         </ContainerInfo>
-
         <NavButtons selectedButton={selectedButton} handleButtonClick={handleButtonClick} />
-
       </Container>
     </Wrapper>
   )

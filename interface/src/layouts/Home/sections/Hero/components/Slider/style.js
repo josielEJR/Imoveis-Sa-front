@@ -9,7 +9,6 @@ export const Wrapper = styled.div`
 
 export const Container = styled.div`  
     width: 100%;
-    height: 940px;
     position:  relative;
     
     @media (max-width: 1280px){
@@ -53,18 +52,15 @@ export const ContainerInfo = styled.div`
     position: relative;
     gap: 50px;
     padding: 300px 200px ;
-   
+
     @media (max-width: 1280px){
         padding: 250px 250px;
         
     }
 
     @media (max-width: 950px){
-        padding: 150px 150px;
-        
-    }
-    @media (max-width: 450px){
         padding: 150px 50px;
+        
     }
 `
 
@@ -74,15 +70,10 @@ export const TextArea = styled.div`
     font-weight: 600;
     text-align: left;
     font-size: 48px;
-    line-height: 58.09px;
+    line-height: 58px;
     color: white;
-    
-    @media (max-width: 950px){
-        width: 600px;
-        height: 100%;
-    }
 
-    @media (max-width: 450px){
+    @media (max-width: 950px){
         width: 350px;
         font-weight: 100;
         font-size: 32px;
@@ -121,7 +112,7 @@ export const Direita = styled.button`
     color: #f2f2f2;
     z-index: 1;
 
-    @media (max-width: 450px) {
+    @media (max-width: 950px) {
         display: none;
     }
 `

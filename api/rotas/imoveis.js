@@ -273,7 +273,15 @@ router.get('/buscarimovelid', (req, res) => {
     })
 })
 
-// está acontecendo algum conflito desta linha para baixo, provavelmente relacionado a rota acima
-// nenhuma rota que está abaixo da rota de cima funciona
+router.get('/ordenarimovelqualidade', (req, res) => {
+    let sqlQuery = 'SELECT * FROM imoveis ORDER BY qualidade DESC'
+    connection.query(sqlQuery, (err, results) => {
+        if(err){
+            return res.status(500).json({ error: 'Erro ao buscar imóveis por qualidade '})
+        }
+
+        res.json(results)
+    })
+})
 
 module.exports = router

@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react"
 import { useNavigate } from "react-router-dom"
+import Cadastro from "../../layouts/Cadastro"
 
 const Cadastrar = () => {
   const [nome, setNome] = useState("")
@@ -187,96 +188,9 @@ const Cadastrar = () => {
   }
 
   return (
-    <div className="min-h-screen bg-white flex">
-      <div className="hidden lg:block relative w-0 flex-1 bg-gray-900">
-        <div className="flex h-full justify-center items-center">
-          <img src="logo.svg" alt="" />
-        </div>
-      </div>
-      <div className="flex flex-1 flex-col justify-center px-4 py-12 sm:px-6 lg:flex-none lg:px-20 xl:px-24">
-        <div className="mx-auto w-full max-w-sm">
-          <div>
-            <img src="logo.svg" alt="" className="lg:hidden h-20 w-auto" />
-            <h2 className="mt-6 text-3x1 font-semibold text-red-600">Crie sua conta</h2>
-            <p className='mt-w text-sm text-gray-600 max-w'>Já possui Cadastro?
-              <a href="Login" className='font-medium text-blue-600'>Entre aqui!</a>
-            </p>
-          </div>
-          <div className="mt-6">
-            <form
-              onSubmit={handleSubmit}
-            >
-              <div className="mb-4">
-                <input
-                  type="text"
-                  placeholder="Nome "
-                  className="apparance-none block w-full py-1 px-2 leading-tight text-gray-700 bg-gray-50 focus:bg-white border border-gray-200 focus:border-gray-500 roudend focus: outline-none "
-                  value={nome}
-                  onChange={(e) => setNome(e.target.value)}
-                />
-                <div className="text-red-700">{nomeCorreto}</div>
-              </div>
-              <div className="mt-5">
-                <input
-                  type="email"
-                  placeholder="Email"
-                  className="apparance-none block w-full py-1 px-2 leading-tight text-gray-700 bg-gray-50 focus:bg-white border border-gray-200 focus:border-gray-500 roudend focus: outline-none "
-                  required
-                  value={email}
-                  onChange={(e) => {
-                    setEmail(e.target.value)
-                    checkEmail()
-                  }}
-                />
-                <div className="text-red-700">{emailCorreto}</div>
-              </div>
-              <div className="mt-5">
-                <input
-                  type="text"
-                  placeholder="CPF"
-                  className="appearance-none block w-full py-1 px-2 leading-tight text-gray-700 bg-gray-50 focus:bg-white border border-gray-200 focus:border-gray-500 rounded focus:outline-none"
-                  required
-                  value={cpf}
-                  onChange={handleCpfChange}
-                />
-                <div className="text-red-700">{cpfCorreto}</div>
-              </div>
-              <div className="mt-5">
-                <input
-                  type="password"
-                  placeholder="Senha"
-                  className="apparance-none block w-full py-1 px-2 leading-tight text-gray-700 bg-gray-50 focus:bg-white border border-gray-200 focus:border-gray-500 roudend focus: outline-none "
-                  required
-                  value={senha}
-                  onChange={(e) => {
-                    setSenha(e.target.value)
-                    checkPassword()
-                  }}
-                />
-                <div className="text-red-700">{senhaCorreta}</div>
-              </div>
-              <div className="mt-5">
-                <input
-                  type="tel"
-                  placeholder="11951481911"
-                  className="apparance-none block w-full py-1 px-2 leading-tight text-gray-700 bg-gray-50 focus:bg-white border border-gray-200 focus:border-gray-500 roudend focus: outline-none "
-                  pattern="[0-9]{2}[0-9]{5}[0-9]{4}"
-                  required
-                  onChange={(e) => {
-                    handleCelularChange(e.target.value)
-                  }}
-                />
-                <div className="text-red-700">{celularCorreto}</div>
-              </div>
-              <div className="mt-5">
-                <button className=" inline-block w-full py-3 px-5 lenading-none text-white bg-red-600 hover:bg-red-900 font-semibold rounded shadow"> Cadastre-se </button>
-                {error && <p className="text-3x1 font-semibold text-red-600">{error}</p>}
-              </div>
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
+  <div>
+    <Cadastro />
+  </div>
   )
 }
 
