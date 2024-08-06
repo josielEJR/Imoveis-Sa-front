@@ -145,6 +145,38 @@ export const IconDrop = styled.i`
     cursor: pointer;
 `
 
+export const ListaCompra = styled.ul`
+    width: 228px;
+    position: relative;
+    padding: 20px;
+    transition: opacity 0.5s ease, max-height 0.5s ease;
+    margin-top: 20px;
+    background: #ffffff;
+    flex-direction: column;
+    right: 20px;
+    border-radius: 8px;
+    border: 2px solid #000;
+    z-index: 1;
+
+    @media (max-width: 1280px){
+        width: 250px;
+        
+    }
+
+    @media (max-width: 950px){
+        width: 174px;
+        padding:  10px;
+        right: 5px;
+    }
+
+    @media (max-width: 450px){
+        width: 150px;
+        margin-top: 25px;
+        right: 5px;
+    }
+    
+`
+
 export const LiTipo = styled.li`
     right: 5px;
     display: flex;
@@ -162,7 +194,10 @@ export const UlOptions = styled.ul`
     border-radius: 8px;
     border: 2px solid #000;
     z-index: 1;
-    margin-top: 25px;
+
+    @media (max-width: 1280px){
+        width: 250px;
+    }
 
     @media (max-width: 950px){
         position: absolute;
@@ -171,8 +206,9 @@ export const UlOptions = styled.ul`
         padding: 0 10px;
     }
     @media (max-width: 450px){
-        margin-top: 19px;
-        padding: 0 10px;
+        width: 150px;
+        margin-top: 25px;
+        right: 5px;
     }
 `
 
@@ -187,6 +223,7 @@ export const UlBairros = styled.ul`
     right: 20px;
     border-radius: 8px;
     border: 2px solid #000;
+    z-index: 1;
 
     @media (max-width: 1280px){
         width: 250px;
@@ -200,7 +237,6 @@ export const UlBairros = styled.ul`
 
     @media (max-width: 450px){
         margin-top: 20px;
-        z-index: 1;
         width: 150px;
         right: 15px;
         padding: 15px;
