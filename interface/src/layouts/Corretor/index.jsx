@@ -1,15 +1,17 @@
 import React from 'react'
-import { Wrapper, Container, Titulo } from './style'
+import { Wrapper, Container, Nome } from './style'
 import About from './components/About'
+import Imoveis from './components/Imoveis'
 
 const Corretor = () => {
   return (
     <Wrapper>
       <Container>
-        <Titulo>
+        <Nome>
           Margaret Stone
-        </Titulo>
+        </Nome>
         <About />
+        <Imoveis />
       </Container>
     </Wrapper>
   )

@@ -10,7 +10,7 @@ export const Wrapper = styled.div`
 
 export const Container = styled.div`
     display: flex;
-    width: 100%;
+    width: 1445px;
 `
 
 export const CardContent = styled.div`
@@ -34,6 +34,7 @@ export const Titulo = styled.h1`
 
 export const CardContainer = styled.div`
     max-width: 450px;
+    width: 450px;
     height: 630px;
     padding: 20px;
     display: flex;
@@ -54,21 +55,18 @@ export const Sobre = styled.div`
 `
 
 export const Telefone = styled.div`
-    font-size: 16px;
-    font-weight: 300;
-    line-height: 16px;
-    padding: 10px;
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 38px;
 `
 export const Whatsapp = styled.div`
-    font-size: 16px;
-    font-weight: 300;
-    line-height: 16px;
-    padding: 10px;
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 38px;
 `
 
 export const Email = styled.div`
-    font-size: 16px;
-    font-weight: 300;
-    line-height: 16px;
-    padding: 10px;
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 38px;
 `
