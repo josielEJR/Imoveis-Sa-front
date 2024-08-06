@@ -202,8 +202,7 @@ const Login = () => {
                     }}>
                         Entrar
                     </LoginButton>
-                    <LoginError>{loginError}</LoginError>
-                    <Signup href="#">Cadastre-se</Signup>
+                    <Signup href="/cadastro">Cadastre-se</Signup>
                 </InnerWrapper>
             </Container>
         </Wrapper>
