@@ -64,19 +64,28 @@ const LoginConsultor = () => {
         return window.location.reload()
 
       } else {
-        setError("Usuario não cadastrado ")
+        const myHeaders = new Headers();
+        myHeaders.append("Content-Type", "application/json");
+
+        const raw = JSON.stringify({
+          "consultor_email": "ralves@gmail.com",
+          "senha": "123456"
+        });
+
+        const requestOptions = {
+          method: "POST",
+          headers: myHeaders,
+          body: raw,
+          redirect: "follow"
+        };
+
+        fetch("http://localhost:3001/consultores/login", requestOptions)
+          .then((response) => response.text())
+          .then((result) => console.log(result))
+          .catch((error) => console.error(error));
       }
     } catch (error) {
-      setError("Usuario não cadastrado ")
-    }
-  }
-
-  let userID = null
-  const pegarIdUsuario = async () => {
-    try {
-      const data = await fetch('http://localhost:3001/')
-    } catch (err) {
-      throw err
+      setError("Usuario não cadastrado hgfhjdsfgjsda")
     }
   }
 
