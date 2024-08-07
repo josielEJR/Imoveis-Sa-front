@@ -6,7 +6,6 @@ export const Wrapper = styled.div`
 
 export const Container = styled.div`
     display: flex;
-    background-color: pink;
     flex-wrap: wrap;
     max-width: 1445px;
     margin: 0 auto;
@@ -19,7 +18,6 @@ export const Nome = styled.h1`
     margin-bottom: 50px;
     display: flex;
     align-items: center;
-    background-color: green;
 
     &::before {
     content: '';
@@ -28,5 +26,5 @@ export const Nome = styled.h1`
     height: 60px;
     background-color: #454545;
     margin-right: 10px;
-  }
+    }
 `

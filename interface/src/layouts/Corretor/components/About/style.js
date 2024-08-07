@@ -18,7 +18,6 @@ export const CardContent = styled.div`
     height: 100%;
     max-width: 1000px;
     display: flex;
-    background-color: yellow;
     margin-top: auto;
     padding: 30px;
     gap: 40px;
@@ -28,17 +27,13 @@ export const Titulo = styled.h1`
     font-size: 32px;
     font-weight: 600;
     line-height: 38px;
-    text-align: left;
-    background-color: red;
 `
 
 export const CardContainer = styled.div`
     max-width: 450px;
     width: 450px;
     height: 630px;
-    padding: 20px;
     display: flex;
-    background-color: blue;
 `
 
 export const Article = styled.div`

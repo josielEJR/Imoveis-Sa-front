@@ -17,8 +17,8 @@ router.get('/', (req, res) => {
 })
 // Rota para buscar imóveis
 router.get('/busca', (req, res) => {
-    // Parâmetros para a busca
-    const { tipo, bairro, cidade, quartos, banheiros,  precoVendaMin, precoVendaMax, precoAluguelMin, precoAluguelMax, qualidadeMax, qualidadeMin } = req.query
+
+    const { tipo, bairro, cidade, quartos, banheiros, precoVendaMin, precoVendaMax, precoAluguelMin, precoAluguelMax, qualidadeMax, qualidadeMin } = req.query
     const disponibilidade = req.query.disponibilidade ? req.query.disponibilidade.split(',') : []
 
     let sqlQuery = 'SELECT * FROM imoveis WHERE 1'
@@ -27,7 +27,7 @@ router.get('/busca', (req, res) => {
         const tipos = tipo.split(',').map(t => `'${t.trim()}'`).join(',')
         sqlQuery += ` AND tipo IN (${tipos})`
     }
-    
+
     if (bairro) {
         const bairros = bairro.split(',').map(b => `'${b.trim()}'`).join(',');
         sqlQuery += ` AND bairro IN (${bairros})`
@@ -48,7 +48,7 @@ router.get('/busca', (req, res) => {
         const dispoConditions = disponibilidade.map(d => `(disponibilidade = '${d}' OR disponibilidade = 'venda_e_aluguel')`).join(' OR ');
         sqlQuery += ` AND (${dispoConditions})`;
     }
-    
+
     if (precoVendaMin && precoVendaMax) {
         sqlQuery += ` AND preco_venda BETWEEN ${precoVendaMin} AND ${precoVendaMax}`
     } else if (precoVendaMin) {
@@ -104,7 +104,7 @@ router.post('/adicionar', authconsultor, (req, res) => {
         cidade,
         cep,
         quartos: parseInt(quartos),
-        banheiros: parseInt(banheiros), 
+        banheiros: parseInt(banheiros),
         descricao,
         preco_aluguel: preco_aluguel === "null" || preco_aluguel === "0" ? null : parseFloat(preco_aluguel),
         preco_venda: preco_venda === "null" || preco_venda === "0" ? null : parseFloat(preco_venda),
@@ -241,9 +241,9 @@ router.get('/aluguel', (req, res) => {
 router.get('/cidadesvenda', (req, res) => {
     let sqlQuery = 'SELECT DISTINCT cidade FROM imoveis WHERE disponibilidade = "venda" OR disponibilidade = "venda_e_aluguel" ORDER BY cidade ASC'
     connection.query(sqlQuery, (err, results) => {
-        if(err){
+        if (err) {
             console.error('Erro ao buscar cidades disponíveis: ', err)
-            return res.status(500).json({ error: 'Erro ao buscar cidades disponíveis'})
+            return res.status(500).json({ error: 'Erro ao buscar cidades disponíveis' })
         }
         res.json(results)
     })
@@ -252,9 +252,9 @@ router.get('/cidadesvenda', (req, res) => {
 router.get('/cidadesaluguel', (req, res) => {
     let sqlQuery = 'SELECT DISTINCT cidade FROM imoveis WHERE disponibilidade = "aluguel" OR disponibilidade = "venda_e_aluguel" ORDER BY cidade ASC'
     connection.query(sqlQuery, (err, results) => {
-        if(err){
+        if (err) {
             console.error('Erro ao buscar cidades disponíveis: ', err)
-            return res.status(500).json({ error: 'Erro ao buscar cidades disponíveis'})
+            return res.status(500).json({ error: 'Erro ao buscar cidades disponíveis' })
         }
         res.json(results)
     })
@@ -276,8 +276,26 @@ router.get('/buscarimovelid', (req, res) => {
 router.get('/ordenarimovelqualidade', (req, res) => {
     let sqlQuery = 'SELECT * FROM imoveis ORDER BY qualidade DESC'
     connection.query(sqlQuery, (err, results) => {
-        if(err){
-            return res.status(500).json({ error: 'Erro ao buscar imóveis por qualidade '})
+        if (err) {
+            return res.status(500).json({ error: 'Erro ao buscar imóveis por qualidade ' })
+        }
+
+        res.json(results)
+    })
+})
+
+router.get('/porConsultor', (req, res) => {
+    const { consultorId } = req.query
+
+    if (!consultorId) {
+        return res.status(400).json({ error: 'ConsultorId é obrigatório' });
+    }
+
+    const sqlQuery = 'SELECT * FROM imoveis WHERE consultorId = ?'
+    connection.query(sqlQuery, [consultorId], (err, results) => {
+        if (err) {
+            console.error('Erro ao buscar imóveis:', err);
+            return res.status(500).json({ error: 'Erro ao buscar imóveis' })
         }
 
         res.json(results)

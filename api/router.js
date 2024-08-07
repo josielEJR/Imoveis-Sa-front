@@ -8,5 +8,6 @@ app.use('/consultores', require('./rotas/consultores'))
 app.use('/clientes', require('./rotas/clientes'))
 
 app.use('/imagens', express.static(path.join(__dirname, 'imagens')))
+app.use('/imagensimoveis', express.static(path.join(__dirname, 'imagens-imovel')))
 
 module.exports = app

@@ -3,6 +3,7 @@ version: '3.8'
 networks:
   minha_rede:
 
+
 services:
   mysql:
     image: mysql:5.7
@@ -13,7 +14,7 @@ services:
       MYSQL_USER: database
       MYSQL_PASSWORD: senha123
     healthcheck:
-      test: ["CMD-SHELL", "mysqladmin -uroot -proot ping"]
+      test: [ "CMD-SHELL", "mysqladmin -uroot -proot ping" ]
       interval: 30s
       timeout: 10s
       retries: 5
@@ -27,7 +28,7 @@ services:
       - ./my_custom.cnf:/etc/mysql/conf.d/my_custom.cnf
     networks:
       - minha_rede
-    
+
   api:
     build: .
     container_name: node-api

@@ -5,7 +5,9 @@ const configTime = [
       nome:'Roberto',
       sobre:'Especialista em marketing de conteúdo, com paixão por storytelling e criação de conteúdo de alta qualidade.',
       email:'otrebor@gmail.com',
-      telefone:'(11) 95348-6834',
+      whatsapp:'(11) 95348-6834',
+      telefone: '(11) 3569-4523',
+      consultorid:'1'
     },
     {
       title: 'image2' ,
@@ -13,7 +15,9 @@ const configTime = [
       nome:'José',
       sobre:'Especialista em transformação digital, auxiliando empresas a otimizarem seus processos e adotarem novas tecnologias',
       email:'esoj@gmail.com',
-      telefone:'(11) 94869-5738',
+      whatsapp:'(11) 94869-5738',
+      telefone: '(11) 2545-9687',
+      consultorid:'2'
     },
     {
       title: 'image3' ,
@@ -21,7 +25,9 @@ const configTime = [
       nome:'Alana',
       sobre:'Especialista em gestão de talentos, auxiliando empresas a atrair, desenvolver e reter os melhores profissionais.',
       email:'anala@gmail.com',
-      telefone:'(11) 96789-6547',
+      whatsapp:'(11) 96789-6547',
+      telefone: '(11) 4589-7563',
+      consultorid:'3'
     },
     {
       title: 'image4' ,
@@ -29,7 +35,9 @@ const configTime = [
       nome:'Milton',
       sobre:'Especialista em gestão de riscos, auxiliando empresas a identificar e mitigar riscos em suas operações.',
       email:'notlim@gmail.com',
-      telefone:'(11) 93654-7826',
+      whatsapp:'(11) 93654-7826',
+      telefone: '(11) 3654-8978',
+      consultorid:'4'
     },
     {
       title: 'image5' ,
@@ -37,7 +45,9 @@ const configTime = [
       nome:'Larissa',
       sobre:'Consultora de recursos humanos com foco em desenvolvimento de pessoas e cultura organizacional. Possui experiência em recrutamento, seleção, treinamento e avaliação de desempenho.',
       email:'assiral@gmail.com',
-      telefone:'(21) 98586-7432',
+      whatsapp:'(21) 98586-7432',
+      telefone: '(21) 4563-2675',
+      consultorid:'5'
     }
   ]
   

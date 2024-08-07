@@ -12,7 +12,7 @@ const Home = () => {
   return (
     <Wrapper>
       <Hero />
-      <Depoimentos configDepoimentos={configDepoimentos} />
+      {/* <Depoimentos configDepoimentos={configDepoimentos} /> */}
       <Time />
     </Wrapper>
   )

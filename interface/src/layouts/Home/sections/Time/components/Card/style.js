@@ -38,6 +38,19 @@ export const Overlay = styled.div`
         visibility: visible;
     }
 `
+export const InfoIcon = styled.div`
+    position: absolute;
+    z-index: 3;
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+
+    @media (max-width: 1540px) {
+        opacity: 1;
+        visibility: visible;
+    }
+`
 
 export const CardContent = styled.div`
     max-width: 460px;
@@ -82,7 +95,7 @@ export const CardContainer = styled.div`
     transition: transform 0.5s, opacity 0.5s;
 
     
-    &:hover ${CardContent}, &:hover ${Overlay} {
+    &:hover ${CardContent}, &:hover ${Overlay}, &:hover ${InfoIcon} {
         opacity: 1;
         visibility: visible;
     }

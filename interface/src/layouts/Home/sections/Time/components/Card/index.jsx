@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react'
 
-import { CardContent, CardContainer, Article, Nome, Telefone, Email, Wrapper, Container, Overlay, Direita, Esquerda, Icon, ContainerIcon, } from './style'
+import { CardContent, CardContainer, Article, Nome, Telefone, Email, Wrapper, Container, Overlay, Direita, Esquerda, Icon, ContainerIcon, InfoIcon, } from './style'
 import { FaAngleLeft, FaAngleRight } from "react-icons/fa6"
 import NavButtons from '../../../Time/components/NavButtons/index'
 import { useNavigate } from 'react-router-dom'
+import { LuBadgeInfo } from "react-icons/lu"
 
 const Card = ({ configTime }) => {
     const [imageIndex, setImageIndex] = useState(0)
@@ -29,7 +30,7 @@ const Card = ({ configTime }) => {
 
     const handleCardClick = (item) => {
         console.log('Navigating with data:', item)
-        navigate('/consultores', { state: { data: item } })
+        navigate('/corretores', { state: { data: item } })
     }
 
     const handleTouchEnd = () => {
@@ -58,7 +59,7 @@ const Card = ({ configTime }) => {
             if (nextIndex >= maxIndex) {
                 return 0
             }
-            return nextIndex;
+            return nextIndex
         })
     }
 
@@ -117,8 +118,15 @@ const Card = ({ configTime }) => {
                         }}
                         index={index}
                         currentIndex={imageIndex}
-                        onClick={() => handleCardClick(item)}
+                        
                     >
+                        <InfoIcon >
+                            <LuBadgeInfo  
+                            size={30}
+                            onClick={() => handleCardClick(item)}
+                            color='white'
+                            />
+                        </InfoIcon>
                         <Overlay />
                         <CardContent>
                             <Nome>
