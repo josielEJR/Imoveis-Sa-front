@@ -13,10 +13,10 @@ export const Container = styled.div`
     flex-direction: column;
     display: flex;
 `
+
 export const CardContainer = styled.div`
     width: 1444px;
     height: 1260px;
-    
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
@@ -47,11 +47,10 @@ export const Card = styled.div`
     width: 100%;
     max-width: 450px;
     height: 630px;
-    padding: 20px;
     display: flex;
-    background-color: pink;
+    background-color: aqua;
     flex-direction: column;
-    padding-bottom: 73px;
+    overflow: hidden; 
 
     @media (min-width: 1000px) {
         width: 100%;
@@ -66,6 +65,34 @@ export const Card = styled.div`
     }
 `
 
+export const DropInfo = styled.div`
+    width: 100%;
+    height: 73px;
+    background-color: black;
+    position: relative;
+    bottom: 0;
+    left: 0;
+    margin-bottom: 0;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+
+    @media (max-width: 1000px) {
+        position: relative;
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    @media (min-width: 1000px) {
+        position: absolute;
+        transform: translateY(100%);
+        opacity: 0;
+
+        ${Card}:hover & {
+            transform: translateY(0);
+            opacity: 1;
+        }
+    }
+`
+
 export const CardContent = styled.div`
     max-width: 460px;
     width: 100%;
@@ -75,20 +102,29 @@ export const CardContent = styled.div`
     gap: 45px;
     margin-top: auto;
     position: relative;
+
+    @media (min-width: 1000px) {
+        ${Card}:hover & {
+            margin-bottom: 73px; 
+        }
+    }
 `
 
 export const Atributos = styled.div`
-    font-size: 24px;
-    font-weight: 700;
-    line-height: 29px;
+    margin: 0 0 20px 35px;
 `
 
-export const DropInfo = styled.div`
-    width: 100%;
-    height: 73px;
-    background-color: black;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    margin-bottom: 0;
+export const Title = styled.div`
+    font-size: 24px;
+    font-weight: 700;
+`
+
+export const PriceArea = styled.div`
+    border: 1px solid #FFFFFF;
+    padding: 13px;
+    margin: 0 0 30px 35px;
+    width: 200px;
+    border-radius: 32px;
+    font-size: 11px;
+    font-weight: 300;
 `
