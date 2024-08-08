@@ -5,6 +5,25 @@ export const Wrapper = styled.div`
     justify-content: center;
     max-width: 1444px;
     margin: 0 auto;
+
+    @media (max-width: 1464px){
+        max-width: 1198px;
+        margin: 0;
+    }
+
+    @media (max-width: 1220px){
+        max-width: 900px;
+    }
+
+    @media (max-width: 900px){
+        max-width: 600px;
+        margin: 0 auto;
+    }
+
+    @media (max-width: 600px){
+        margin: 0;
+        max-width: 300px;
+    }
 `
 
 export const ContainerFiltro = styled.div`

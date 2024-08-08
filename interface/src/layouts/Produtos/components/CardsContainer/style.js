@@ -1,14 +1,44 @@
 import styled, { keyframes } from "styled-components"
 
-export const Wrapper = styled.div``
+export const Wrapper = styled.div`
+    width: 1198px;
 
-export const Container = styled.div``
+    @media (max-width: 600px){
+        width: 100%;
+    }
+`
+
+export const Container = styled.div`
+    width: 1434px;
+    margin: 0 5px;
+
+    @media (max-width: 1464px){
+        max-width: 946px;
+        margin: 0 auto;
+    }
+
+    @media (max-width: 1220px){
+        max-width: 850px;
+    }
+
+    @media (max-width: 900px){
+        max-width: 410px;
+    }
+
+    @media (max-width: 600px){
+        width: 300px;
+        margin: 0 auto;
+    }
+
+    @media (max-width: 600px){
+        width: 260px;
+    }
+`
 
 export const CardsSection = styled.div`
     display: flex;
     flex-wrap: wrap;
     gap: 50px 30px;
-    justify-content: center;
 `
 
 export const SelectorSection = styled.div`

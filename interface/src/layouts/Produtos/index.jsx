@@ -11,6 +11,8 @@ const Produtos = () => {
 
     const [location, setLocation] = useState("")
 
+    const filters = decodeURIComponent(window.location.href.replace("http://localhost:3000/imoveis", ""))
+
     return (
         <Wrapper>
             <Container>
@@ -20,10 +22,7 @@ const Produtos = () => {
                     </LocationText>
                     <LocationLabel>
                         <LocationIcon>
-                            <GrMap style={{
-                                width: "35px",
-                                height: "35px",
-                            }} />
+                            <GrMap />
                         </LocationIcon>
                         <LocationInput
                             placeholder='Qual localização?'
@@ -34,7 +33,7 @@ const Produtos = () => {
 
                 <FiltroBusca />
 
-                <CardsContainer />
+                <CardsContainer filters={filters} />
             </Container>
         </Wrapper>
     )

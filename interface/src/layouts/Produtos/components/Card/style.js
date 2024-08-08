@@ -7,6 +7,10 @@ export const Wrapper = styled.div`
     position: relative;
     overflow: hidden;
     cursor: pointer;
+
+    @media (max-width: 1220px){
+        width: 408px;
+    }
 `
 
 export const BackgroundImage = styled.div`

@@ -4,7 +4,7 @@ import Card from '../Card'
 
 import { Wrapper, Container, CardsSection, SelectorSection, Selectors, IndexSelector } from './style'
 
-const CardsContainer = ({ filtros }) => {
+const CardsContainer = ({ filters }) => {
 
     const [selected, setSelected] = useState(0)
     const [pageLayout, setPageLayout] = useState(window.outerWidth)
@@ -20,7 +20,7 @@ const CardsContainer = ({ filtros }) => {
             redirect: "follow"
         };
 
-        fetch("http://localhost:3001/imoveis/busca", requestOptions)
+        fetch(`http://localhost:3001/imoveis/busca${filters}`, requestOptions)
             .then((response) => response.text())
             .then((result) => JSON.parse(result))
             .then((result) => {
