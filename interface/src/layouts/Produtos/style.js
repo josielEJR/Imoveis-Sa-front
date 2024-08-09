@@ -33,7 +33,7 @@ export const Container = styled.div`
 
 export const LocationSection = styled.section`
     width: 1444px;
-    height: 63px;
+    height: 103px;
     border-left: 5px solid #454545;
     display: flex;
     padding: 12px 25px;
@@ -65,14 +65,10 @@ export const LocationSection = styled.section`
 
 export const LocationText = styled.div`
     width: 492px;
-    height: 39px;
+    height: 49px;
     font-size: 32px;
     font-weight: 600;
     line-height: 38px;
-
-    @media (max-width: 1464px){
-        font-size: 23px;
-    }
 
     @media (max-width: 1220px){
         font-size: 23px;
@@ -86,7 +82,8 @@ export const LocationText = styled.div`
 export const LocationLabel = styled.div`
     width: 500px;
     height: 39px;
-    padding: 0 10px;
+    padding: 5px 10px;
+    box-sizing: content-box;
     border-radius: 8px;
     background-color: #D9D9D9;
     display: flex;
@@ -116,7 +113,7 @@ export const LocationInput = styled.input`
     line-height: 29px;
     padding: 5px;
     box-sizing: content-box;
-    background-color: #D9D9D9;
+    background-color: transparent;
 
     @media (max-width: 900px){
         font-size: 14px;
