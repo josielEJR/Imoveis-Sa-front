@@ -138,7 +138,7 @@ const Depoimentos = ({ configDepoimentos }) => {
                 </ContainerComentario>
                 <FotoPerfil>
                   <Foto>
-                    <Img src={`http://localhost:3001/${clientes[imageIndex].foto_perfil}`} />
+                    <Img src={`http://localhost:3001/clientes/imagensclientes/${clientes[imageIndex].clienteId}`} />
                   </Foto>
                   <NomePerfil>
                     {clientes[imageIndex].nome}
