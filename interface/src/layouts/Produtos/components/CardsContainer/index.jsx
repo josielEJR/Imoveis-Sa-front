@@ -2,12 +2,14 @@ import { useState, useEffect } from 'react'
 
 import Card from '../Card'
 
+import { FaAngleLeft, FaAngleRight } from "react-icons/fa6"
+
 import { Wrapper, Container, CardsSection, SelectorSection, Selectors, IndexSelector } from './style'
 
 const CardsContainer = ({ filters }) => {
 
     const [selected, setSelected] = useState(0)
-    const [pageLayout, setPageLayout] = useState(window.outerWidth)
+    const [indexes, setIndexes] = useState([])
     const [products, setProducts] = useState([])
 
     useEffect(() => {
@@ -34,19 +36,55 @@ const CardsContainer = ({ filters }) => {
     }, [])
 
     useEffect(() => {
-        function handleResize() {
-            setPageLayout(window.outerWidth)
+        const auxArray = []
+
+        if (products) {
+            const maxPages = Math.ceil(products.length / 6)
+            for (let i = 0; i < maxPages; i++) {
+                auxArray.push(i + 1)
+            }
         }
 
-        window.addEventListener('resize', handleResize)
-
-        return _ => {
-            window.removeEventListener('resize', handleResize)
+        if (auxArray.length > 0) {
+            setSelected(auxArray[0])
+            setIndexes(auxArray)
         }
-    }, [])
+    }, [products])
+
+    function scrollToTop() {
+        document.body.scrollTop = 100; // Safari
+        document.documentElement.scrollTop = 100; // Chrome, Firefox, IE e Opera
+    }
 
     const selector = () => {
-
+        return <Selectors>
+            <IndexSelector><FaAngleLeft onClick={() => {
+                setSelected(current => {
+                    if(current - 1 < 1){
+                        return 1
+                    }else{
+                        scrollToTop()
+                        return current - 1
+                    }
+                })
+            }} /></IndexSelector>
+            {
+                indexes.map((elem, index) => {
+                    return <IndexSelector onClick={() => {
+                        setSelected(elem)
+                        scrollToTop()
+                    }} >{elem}</IndexSelector>
+                })
+            }
+            <IndexSelector><FaAngleRight onClick={() => setSelected(current => {
+                if(current + 1 > indexes.length){
+                    return indexes.length
+                }else{
+                    scrollToTop()
+                    return current + 1
+                }
+            })} /></IndexSelector>
+        </Selectors>
     }
 
     return (
@@ -55,19 +93,25 @@ const CardsContainer = ({ filters }) => {
                 <CardsSection>
                     {products && products.length > 0 ?
                         products.map((prod, index) => {
-                            return <Card
-                                key={index}
-                                imagem={"https://queroficarrico.com/blog/wp-content/uploads/2017/06/como_investir_em_imoveis.jpg"}
-                                bairro={prod.bairro.toUpperCase()}
-                                cidade={prod.cidade.toUpperCase()}
-                                tipo={prod.tipo.toUpperCase()}
-                                preco={prod.preco_venda || prod.preco_aluguel}
-                                area={prod.tamanho}
-                                quartos={prod.quartos}
-                                banheiros={prod.banheiros}
-                                vagas={prod.vagas}
-                                id={prod.imoveisID}
-                            />
+
+                            const indexMin = (selected * 6) - 6
+                            const indexMax = selected * 6
+
+                            if (index >= indexMin && index < indexMax) {
+                                return <Card
+                                    key={index}
+                                    imagem={"https://queroficarrico.com/blog/wp-content/uploads/2017/06/como_investir_em_imoveis.jpg"}
+                                    bairro={prod.bairro.toUpperCase()}
+                                    cidade={prod.cidade.toUpperCase()}
+                                    tipo={prod.tipo.toUpperCase()}
+                                    preco={prod.preco_venda || prod.preco_aluguel}
+                                    area={prod.tamanho}
+                                    quartos={prod.quartos}
+                                    banheiros={prod.banheiros}
+                                    vagas={prod.vagas}
+                                    id={prod.imoveisID}
+                                />
+                            }
                         }) : ''
                     }
                 </CardsSection>

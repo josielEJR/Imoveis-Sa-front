@@ -16,13 +16,8 @@ export const Wrapper = styled.div`
     }
 
     @media (max-width: 900px){
-        max-width: 600px;
+        max-width: 650px;
         margin: 0 auto;
-    }
-
-    @media (max-width: 600px){
-        margin: 0;
-        max-width: 300px;
     }
 `
 

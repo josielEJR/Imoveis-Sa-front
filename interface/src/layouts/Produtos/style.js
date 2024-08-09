@@ -4,26 +4,6 @@ export const Wrapper = styled.main`
     width: 100%;
     max-width: 1870px;
     margin: auto;
-
-    @media (max-width: 1464px){
-        max-width: 1200px;
-    }
-
-    @media (max-width: 1220px){
-        max-width: 900px;
-    }
-
-    @media (max-width: 900px){
-        max-width: 600px;
-    }
-
-    @media (max-width: 600px){
-        max-width: 300px;
-    }
-
-    @media (max-width: 280px){
-        max-width: 260px;
-    }
 `
 
 export const Container = styled.div`
@@ -34,7 +14,8 @@ export const Container = styled.div`
     gap: 100px;
 
     @media (max-width: 1464px){
-        width: 1200px;
+        max-width: 1200px;
+        width: 100%;
     }
 
     @media (max-width: 1220px){
@@ -42,16 +23,11 @@ export const Container = styled.div`
     }
 
     @media (max-width: 900px){
-        max-width: 600px;
+        max-width: 800px;
     }
 
     @media (max-width: 600px){
-        max-width: 300px;
-    }
-
-    @media (max-width: 280px){
-        max-width: 260px;
-        margin: 100px auto 150px;
+        max-width: 450px;
     }
 `
 
@@ -73,19 +49,17 @@ export const LocationSection = styled.section`
     }
 
     @media (max-width: 900px){
-        max-width: 596px;
+        width: 90%;
+        margin: 0 auto;
         height: 100px;
-        display: flex;
         align-items: center;
     }
 
     @media (max-width: 600px){
         gap: 0;
-        display: flex;
         flex-wrap: wrap;
         height: 170px;
-        width: 300px;
-        margin: 0;
+        margin: 0 auto;
     }
 `
 
@@ -146,9 +120,5 @@ export const LocationInput = styled.input`
 
     @media (max-width: 900px){
         font-size: 14px;
-    }
-
-    @media (max-width: 280px){
-        width: 70%;
     }
 `

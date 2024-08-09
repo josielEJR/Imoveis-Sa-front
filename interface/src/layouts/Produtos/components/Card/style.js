@@ -11,6 +11,16 @@ export const Wrapper = styled.div`
     @media (max-width: 1220px){
         width: 408px;
     }
+
+    @media (max-width: 900px) {
+        width: 335px;
+        height: 529px;
+    }
+
+    @media (max-width: 710px){
+        width: 440px;
+        height: 529px;
+    }
 `
 
 export const BackgroundImage = styled.div`
@@ -49,6 +59,10 @@ export const CardContent = styled.div`
     @media (max-width: 950px){
         top: 54%;
         animation: none;
+    }
+
+    @media (max-width: 900px) {
+        top: 45%;
     }
 `
 
