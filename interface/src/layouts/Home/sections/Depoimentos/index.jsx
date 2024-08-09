@@ -5,7 +5,7 @@ import { IoCaretDownSharp } from "react-icons/io5"
 import { Container, Wrapper, ContainerDepoimentos, Title, ContainerPerfil, ContainerImagem, ContainerQuote, Comentario, FotoPerfil, ContainerIcon, Texto, NomePerfil, Foto, Img, ContainerComentario, Improvisado, ContainerTitle } from './style'
 import NavButtons from './components/NavButtons'
 
-const Depoimentos = ({configDepoimentos}) => {
+const Depoimentos = ({ configDepoimentos }) => {
   const [imageIndex, setImageIndex] = useState(0)
   const [sliderButton, setSliderButton] = useState(1)
   const [clientes, setClientes] = useState([])
@@ -116,12 +116,12 @@ const Depoimentos = ({configDepoimentos}) => {
           </Title>
         </ContainerTitle>
         <Improvisado>
-          <ContainerDepoimentos
-            onMouseEnter={() => setPaused(true)}
-            onMouseLeave={() => setPaused(false)}
-          >
-            <ContainerImagem src={configDepoimentos[imageIndex].image}/>
-            {clientes.length > 0 && (
+          {clientes.length > 0 && (
+            <ContainerDepoimentos
+              onMouseEnter={() => setPaused(true)}
+              onMouseLeave={() => setPaused(false)}
+            >
+              <ContainerImagem image={`http://localhost:3001/clientes/imagensclientes/${clientes[imageIndex].clienteId}`} />
               <ContainerPerfil>
                 <ContainerQuote>
                   <BiSolidQuoteLeft size={60} />
@@ -144,8 +144,8 @@ const Depoimentos = ({configDepoimentos}) => {
                     {clientes[imageIndex].nome}
                   </NomePerfil>
                 </FotoPerfil>
-              </ContainerPerfil>)}
-          </ContainerDepoimentos>
+              </ContainerPerfil>
+            </ContainerDepoimentos>)}
           <NavButtons sliderButton={sliderButton} handleButtonClick={handleButtonClick} />
         </Improvisado>
       </Container>

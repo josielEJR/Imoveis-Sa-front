@@ -6,11 +6,14 @@ export const Wrapper = styled.div`
     justify-content: center;
     flex-direction: column;
     position: relative;
-    `
+`
 
 export const Container = styled.div`
     display: flex;
-    width: 1445px;
+
+    @media (max-width: 750px){
+        display: block;
+    }
 `
 
 export const CardContent = styled.div`
@@ -22,46 +25,50 @@ export const CardContent = styled.div`
     padding: 30px;
     gap: 40px;
     flex-direction: column;
+
+    @media (max-width: 150px){
+        padding: 0;
+        gap: 10px;
+    }
 `
 export const Titulo = styled.h1`
     font-size: 32px;
     font-weight: 600;
     line-height: 38px;
+
+    @media (max-width: 450px){
+        font-size: 28px;
+    }
+
+    @media (max-width: 150px) {
+        font-size: 10px
+    }
+`
+export const Image = styled.img`
+    object-fit: cover;
+    width: 100%;
 `
 
 export const CardContainer = styled.div`
-    max-width: 450px;
     width: 450px;
-    height: 630px;
-    display: flex;
+
+    @media (max-width: 750px){
+        width: 100%;
+    }
 `
 
-export const Article = styled.div`
-    padding: 10px;
-    font-size: 16px;
-    font-weight: 300;
-    line-height: 26px;
-`
-
-export const Sobre = styled.div`
+export const Contato = styled.div`
     font-size: 24px;
     font-weight: 400;
     line-height: 29px;
-`
 
-export const Telefone = styled.div`
-    font-size: 24px;
-    font-weight: 400;
-    line-height: 38px;
-`
-export const Whatsapp = styled.div`
-    font-size: 24px;
-    font-weight: 400;
-    line-height: 38px;
-`
+    @media (max-width: 450px){
+        font-size: 20px;
+    }
 
-export const Email = styled.div`
-    font-size: 24px;
-    font-weight: 400;
-    line-height: 38px;
+    @media (max-width: 150px) {
+        font-size: 10px;
+        font-weight: 300;
+        line-height: 10px;
+    }
 `

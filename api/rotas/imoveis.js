@@ -2,6 +2,7 @@ const express = require('express')
 const router = express.Router()
 const connection = require('../database')
 const authconsultor = require('../middleware/authConsultor')
+const path = require('path')
 
 // conexão com a tabela "imoveis"
 router.get('/', (req, res) => {
@@ -299,6 +300,20 @@ router.get('/porConsultor', (req, res) => {
         }
 
         res.json(results)
+    })
+})
+// rota para busacar imagem pelo id do imovel 
+router.get('/imagensimovel/:id', (req, res) => {
+    const id = req.params.id.trim()
+    const caminhoImagem = path.join(__dirname, '../imagens-imovel', `imovel${id}.jpg`)
+    
+    console.log(caminhoImagem)
+    
+    res.sendFile(caminhoImagem, (err) => {
+        if (err) {
+            console.error("Erro ao enviar o arquivo:", err)
+            res.status(404).send('Imagem não encontrada')
+        }
     })
 })
 

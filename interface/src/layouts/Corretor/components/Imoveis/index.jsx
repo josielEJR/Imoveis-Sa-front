@@ -1,11 +1,15 @@
 import React, { useState, useEffect } from 'react'
-import { Container, Wrapper, Titulo, CardContainer, Card, CardContent, Atributos, DropInfo, Title, PriceArea } from './style'
+import { Container, Wrapper, Titulo, CardContainer, Card, CardContent, Atributos, DropInfo, Title, PriceArea, InfoSection, Label, Value, BackgroundImage, Overlay } from './style'
 import { useLocation } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faAngleRight } from '@fortawesome/free-solid-svg-icons'
+import { GiHomeGarage } from "react-icons/gi"
+import { LuBath } from "react-icons/lu"
+import { IoBed } from "react-icons/io5"
+import { TbRulerMeasure } from "react-icons/tb";
 
 const Imoveis = () => {
-    const location = useLocation();
+    const location = useLocation()
     const { data: consultor } = location.state || {}
     const [imoveis, setImoveis] = useState([])
 
@@ -22,7 +26,6 @@ const Imoveis = () => {
         }
     }, [consultor])
 
-    // Função para definir a mensagem de disponibilidade
     const definirDisponibilidade = (imovel) => {
         switch (imovel.disponibilidade) {
             case 'venda':
@@ -45,10 +48,12 @@ const Imoveis = () => {
                 <CardContainer>
                     {imoveis.map(imovel => {
                         const disponibilidade = definirDisponibilidade(imovel);
-
                         return (
-                            <Card key={imovel.id}>
-                                <img src={`/imagensimoveis/${imovel.foto}`} alt={imovel.tipo} />
+                            <Card key={imovel.id}
+                                onClick={() => window.location.href = "/imovel?id=" + imovel.imoveisID}>
+                                <BackgroundImage image={`http://localhost:3001/imoveis/imagensimovel/${imovel.imoveisID}`} alt={`Imagem do imóvel ${imovel.imoveisID}`}>
+                                <Overlay />
+                                </BackgroundImage>
                                 <CardContent>
                                     <Atributos>
                                         <Title> {imovel.bairro}, </Title>
@@ -58,11 +63,27 @@ const Imoveis = () => {
                                         {disponibilidade} | R$ {imovel.preco_venda || imovel.preco_aluguel}
                                     </PriceArea>
                                     <Atributos>
-                                        CLIQUE E CONFIRA <FontAwesomeIcon icon={faAngleRight} style={{ cursor: 'pointer' }} onClick={() => window.location.href = "/imovel?id=" + imovel} />
+                                        CLIQUE E CONFIRA <FontAwesomeIcon icon={faAngleRight} />
                                     </Atributos>
                                 </CardContent>
                                 <DropInfo>
-
+                                    <InfoSection>
+                                        
+                                        <Label><TbRulerMeasure size={20}/> ÁREA</Label>
+                                        <Value>{imovel.tamanho}m²</Value>
+                                    </InfoSection>
+                                    <InfoSection>
+                                        <Label><IoBed size={20}/> QUARTOS</Label>
+                                        <Value>{imovel.quartos}</Value>
+                                    </InfoSection>
+                                    <InfoSection>
+                                        <Label><LuBath size={20}/> BANHEIROS</Label>
+                                        <Value>{imovel.banheiros}</Value>
+                                    </InfoSection>
+                                    <InfoSection>
+                                        <Label><GiHomeGarage size={20} /> VAGAS</Label>
+                                        <Value>{imovel.vagas}</Value>
+                                    </InfoSection>
                                 </DropInfo>
                             </Card>
                         )

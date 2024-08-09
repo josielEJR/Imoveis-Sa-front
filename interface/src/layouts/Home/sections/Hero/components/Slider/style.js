@@ -127,12 +127,9 @@ export const Esquerda = styled.button`
     color: #f2f2f2;
     z-index: 1;
     
-    @media (max-width: 450px) {
+    @media (max-width: 950px) {
         display: none;
     }
 `
 
-export const Icon = styled.i`
-    
-`
 

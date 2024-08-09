@@ -1,5 +1,5 @@
 import React from 'react'
-import { Wrapper, Container, CardContent, CardContainer, Titulo, Sobre, Telefone, Whatsapp, Email } from './style'
+import { Wrapper, Container, CardContent, CardContainer, Titulo, Contato, Image } from './style'
 import { useLocation } from 'react-router-dom'
 
 const About = () => {
@@ -10,29 +10,25 @@ const About = () => {
             <Container>
                 <CardContainer
                     key={data.title}
-                    style={{
-                        backgroundImage: `url(${data.image})`,
-                        backgroundSize: 'cover',
-                        backgroundPosition: 'center',
-                    }}
                 >
+                    <Image src={data.image} alt="" />
                 </CardContainer>
                 <CardContent>
                     <Titulo>
                         Sobre Mim
                     </Titulo>
-                    <Sobre>
+                    <Contato>
                         {data.sobre}
-                    </Sobre>
-                    <Telefone>
+                    </Contato>
+                    <Contato>
                         Telefone: {data.telefone}
-                    </Telefone>
-                    <Whatsapp>
+                    </Contato>
+                    <Contato>
                         WhatsApp: {data.whatsapp}
-                    </Whatsapp>
-                    <Email>
+                    </Contato>
+                    <Contato>
                         Email: {data.email}
-                    </Email>
+                    </Contato>
                 </CardContent>
             </Container>
         </Wrapper>

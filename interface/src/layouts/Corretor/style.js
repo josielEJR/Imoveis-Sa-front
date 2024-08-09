@@ -2,6 +2,11 @@ import styled from "styled-components";
 
 export const Wrapper = styled.div`
     margin-top: 150px;
+
+    @media (max-width: 750px){
+        margin-top: auto;
+    }
+    
 `
 
 export const Container = styled.div`
@@ -9,6 +14,10 @@ export const Container = styled.div`
     flex-wrap: wrap;
     max-width: 1445px;
     margin: 0 auto;
+
+    @media (max-width: 750px){
+        padding: 30px;
+    }
 `
 
 export const Nome = styled.h1`

@@ -15,11 +15,21 @@ export const Container = styled.div`
 `
 
 export const CardContainer = styled.div`
-    width: 1444px;
-    height: 1260px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 30px;
+
+    @media (max-width: 1380px){
+        grid-template-columns: repeat(2, 1fr);
+    }
+    @media (max-width: 950px){
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    
 `
 
 export const Titulo = styled.h1`
@@ -48,21 +58,27 @@ export const Card = styled.div`
     max-width: 450px;
     height: 630px;
     display: flex;
-    background-color: aqua;
     flex-direction: column;
-    overflow: hidden; 
+    overflow: hidden;
+    cursor: pointer; 
+`
 
-    @media (min-width: 1000px) {
-        width: 100%;
-    }
-
-    @media (min-width: 1100px) {
-        width: 50%;
-    }
-
-    @media (min-width: 1540px) {
-        width: 33.33%;
-    }
+export const BackgroundImage = styled.div`
+    display: flex;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background-image: url(${(props) => props.image});
+    background-size: cover; 
+    background-position: 100% 30%;
+`
+export const Overlay = styled.div`
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
 `
 
 export const DropInfo = styled.div`
@@ -70,18 +86,21 @@ export const DropInfo = styled.div`
     height: 73px;
     background-color: black;
     position: relative;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
     bottom: 0;
     left: 0;
     margin-bottom: 0;
+    padding: 10px;
     transition: transform 0.3s ease, opacity 0.3s ease;
 
-    @media (max-width: 1000px) {
+    @media (max-width: 1540px) {
         position: relative;
         opacity: 1;
         transform: translateY(0);
     }
 
-    @media (min-width: 1000px) {
+    @media (min-width: 1540px) {
         position: absolute;
         transform: translateY(100%);
         opacity: 0;
@@ -102,8 +121,9 @@ export const CardContent = styled.div`
     gap: 45px;
     margin-top: auto;
     position: relative;
+    cursor: pointer;
 
-    @media (min-width: 1000px) {
+    @media (min-width: 1540px) {
         ${Card}:hover & {
             margin-bottom: 73px; 
         }
@@ -128,3 +148,33 @@ export const PriceArea = styled.div`
     font-size: 11px;
     font-weight: 300;
 `
+
+export const InfoSection = styled.div`
+    color: aliceblue;
+    padding: 0 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    @media (max-width: 485px){
+        padding: 0;
+    }
+`
+
+export const Label = styled.div`
+    height: 21px;
+    font-size: 10px;
+    font-weight: 500;
+    margin-bottom: 11px;
+    gap: 5px;
+    display: flex;
+    align-items: end;
+`
+
+export const Value = styled.div`
+    height: 21px;
+    font-size: 10px;
+    font-weight: 300;
+    padding: 0 5px;
+`
+

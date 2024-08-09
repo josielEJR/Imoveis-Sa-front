@@ -4,7 +4,7 @@ export const Wrapper = styled.div`
     display: flex;
     justify-content: center;
     overflow: hidden;
-    margin-top: 200px;
+    margin-top: 100px;
 
     @media (max-width: 950px){
         margin-top: 10px;
@@ -72,14 +72,10 @@ export const ContainerImagem = styled.div`
         display: flex;
         width: 730px;
         height: 500px;
-        object-fit: cover;
+        background-image: url(${(props) => props.image});
+        background-size: cover; 
+        background-position: 100% 30%;
     }
-`
-
-export const Imagem = styled.img`
-    width: 100%;
-    height: auto;
-    object-fit: fill;
 `
 
 export const ContainerQuote = styled.div`
