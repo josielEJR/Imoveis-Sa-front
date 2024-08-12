@@ -31,7 +31,7 @@ const configTime = [
     },
     {
       title: 'image4' ,
-      image:'https://cdn.discordapp.com/attachments/352175756278759425/1268645350290227270/Sem_Titulo-1.png?ex=66ad2d8d&is=66abdc0d&hm=83174fb3f22896eb2bff4e3d9f2020febb1eb06d58ea76b09305085ca320ae56&',
+      image:'https://cdn.discordapp.com/attachments/352175756278759425/1268645350290227270/Sem_Titulo-1.png?ex=66bb054d&is=66b9b3cd&hm=0e35394b18343ade69e7e808c8e703fe75b1adebb341f1009a3f29e0be316671&',
       nome:'Milton',
       sobre:'Especialista em gestão de riscos, auxiliando empresas a identificar e mitigar riscos em suas operações.',
       email:'notlim@gmail.com',

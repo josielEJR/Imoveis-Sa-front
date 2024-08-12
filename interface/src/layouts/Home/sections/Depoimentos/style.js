@@ -16,7 +16,7 @@ export const Container = styled.div`
     flex-direction: column;
     gap: 50px;
 
-    @media (min-width: 450px) {
+    @media (min-width: 510px) {
         width: 100%;
         padding: 40px;
     }

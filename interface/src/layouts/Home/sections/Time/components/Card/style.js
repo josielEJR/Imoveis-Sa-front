@@ -125,7 +125,6 @@ export const Nome = styled.div`
     font-weight: 700;
     line-height: 43px;
     padding: 10px;
-    
 `
 
 export const Telefone = styled.div`
@@ -152,9 +151,7 @@ export const ContainerIcon = styled.div`
 
     @media (max-width: 1540px) {
         display: flex;
-
     }
-
 `
 
 export const Direita = styled.button`

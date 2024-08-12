@@ -29,8 +29,8 @@ const Card = ({ configTime }) => {
     }
 
     const handleCardClick = (item) => {
-        console.log('Navigating with data:', item)
         navigate('/corretores', { state: { data: item } })
+        window.scrollTo(0, 0)
     }
 
     const handleTouchEnd = () => {
@@ -118,12 +118,11 @@ const Card = ({ configTime }) => {
                         }}
                         index={index}
                         currentIndex={imageIndex}
-                        
+                        onClick={() => handleCardClick(item)}
                     >
                         <InfoIcon >
                             <LuBadgeInfo  
                             size={30}
-                            onClick={() => handleCardClick(item)}
                             color='white'
                             />
                         </InfoIcon>

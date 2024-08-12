@@ -260,7 +260,7 @@ router.get('/cidadesaluguel', (req, res) => {
         res.json(results)
     })
 })
-// rota para pegar o imóvel pelo id 
+// rota para pegar o imóvel por id 
 router.get('/buscarimovelid', (req, res) => {
     const imovelID = req.query.id
 
@@ -302,7 +302,7 @@ router.get('/porConsultor', (req, res) => {
         res.json(results)
     })
 })
-// rota para busacar imagem pelo id do imovel 
+// rota para busacar imagem por id do imovel 
 router.get('/imagensimovel/:id', (req, res) => {
     const id = req.params.id.trim()
     const caminhoImagem = path.join(__dirname, '../imagens-imovel', `imovel${id}.jpg`)
