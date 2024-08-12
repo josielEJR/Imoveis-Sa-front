@@ -81,6 +81,10 @@ export const ContentLink = styled.span`
     }
 `
 
+export const Link = styled.a``
+
+export const Text = styled.span``
+
 export const Dropdown = styled.div`
     position: absolute;
     width: 263px;
@@ -159,6 +163,8 @@ export const Title = styled.div`
     font-weight: 600;
 `
 
+export const Ul = styled.ul``
+
 export const Li = styled.li`
     padding-top: 7px;
     padding-bottom: 7px;
@@ -169,3 +175,5 @@ export const Li = styled.li`
         font-weight: bold;
     }
 `
+
+export const Button = styled.button``
