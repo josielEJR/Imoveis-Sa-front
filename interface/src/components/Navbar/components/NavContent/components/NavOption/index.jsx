@@ -25,11 +25,21 @@ const NavOption = ({ tipo, url, right }) => {
 
     const redirect = tipo.toLowerCase()
 
-    return (
-        <ContentLink onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
-            <Link href={`imoveis?disponibilidade=${redirect}`} onClick={handleClick}>
+    const navLink = () => {
+        if (redirect === "ajuda") {
+            return <Link onClick={handleClick}>
                 <Text className='p-1'>{tipo}</Text><FontAwesomeIcon icon={faAngleDown} />
             </Link>
+        } else {
+            return <Link href={`imoveis?disponibilidade=${redirect}`} onClick={handleClick}>
+                <Text className='p-1'>{tipo}</Text><FontAwesomeIcon icon={faAngleDown} />
+            </Link>
+        }
+    }
+
+    return (
+        <ContentLink onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+            {navLink()}
 
             {dropdownVisible && <Itens lista={url} redirect={redirect} right={right} />}
         </ContentLink>
