@@ -17,7 +17,7 @@ export const Container = styled.div`
 
     @media (min-width: 1575px) {
         gap: 50px;
-        padding  : 0;
+        padding: 0;
     }
 `
 
@@ -41,7 +41,6 @@ export const Overlay = styled.div`
 export const InfoIcon = styled.div`
     position: absolute;
     z-index: 3;
-    cursor: pointer;
     opacity: 0;
     visibility: hidden;
     transition: opacity 0.3s ease, visibility 0.3s ease;
@@ -71,19 +70,6 @@ export const CardContent = styled.div`
     }
 `
 
-export const slideIn = keyframes`
-
-    0% {
-        transform: translateX(100%);
-        opacity: 0;
-    }
-
-    100% {
-        transform: translateX(0);
-        opacity: 1;
-    }
-`
- 
 export const CardContainer = styled.div`
     position: relative;
     width: 100%;
@@ -91,10 +77,9 @@ export const CardContainer = styled.div`
     height: 630px;
     padding: 20px;
     display: flex;
-    animation: ${slideIn} 0.5s ease-out;
-    transition: transform 0.5s, opacity 0.5s;
+    cursor: pointer;
+    transition: transform 1.2s ease-in-out, box-shadow 0.5s ease-in-out;
 
-    
     &:hover ${CardContent}, &:hover ${Overlay}, &:hover ${InfoIcon} {
         opacity: 1;
         visibility: visible;
@@ -110,6 +95,10 @@ export const CardContainer = styled.div`
 
     @media (min-width: 1540px) {
         width: 33.33%;
+
+        &:hover {
+        transform: scale(1.05); 
+        }
     }
 `
 

@@ -43,7 +43,7 @@ const Imoveis = () => {
         <Wrapper>
             <Container>
                 <Titulo>
-                    Meus Imóveis
+                    Meus Imóveis ({imoveis.length})
                 </Titulo>
                 <CardContainer>
                     {imoveis.map(imovel => {
