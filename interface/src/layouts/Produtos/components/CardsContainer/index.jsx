@@ -70,7 +70,7 @@ const CardsContainer = ({ filters }) => {
             }} /></IndexSelector>
             {
                 indexes.map((elem, index) => {
-                    return <IndexSelector onClick={() => {
+                    return <IndexSelector key={index} onClick={() => {
                         setSelected(elem)
                         scrollToTop()
                     }} >{elem}</IndexSelector>

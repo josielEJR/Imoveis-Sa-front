@@ -1,35 +1,17 @@
-import { useState, useEffect } from 'react'
-
+import Location from './components/Location';
 import FiltroBusca from './components/FiltroBusca';
 import CardsContainer from './components/CardsContainer';
 
-import { Wrapper, Container, LocationSection, LocationText, LocationLabel, LocationIcon, LocationInput } from './style'
-
-import { GrMap } from "react-icons/gr";
+import { Wrapper, Container } from './style'
 
 const Produtos = () => {
-
-    const [location, setLocation] = useState("")
 
     const filters = decodeURIComponent(window.location.href.replace("http://localhost:3000/imoveis", ""))
 
     return (
         <Wrapper>
             <Container>
-                <LocationSection>
-                    <LocationText>
-                        Nossas incríveis propriedades
-                    </LocationText>
-                    <LocationLabel>
-                        <LocationIcon>
-                            <GrMap />
-                        </LocationIcon>
-                        <LocationInput
-                            placeholder='Qual localização?'
-                            onChange={e => setLocation(e.target.value)}
-                        ></LocationInput>
-                    </LocationLabel>
-                </LocationSection>
+                <Location />
 
                 <FiltroBusca />
 
