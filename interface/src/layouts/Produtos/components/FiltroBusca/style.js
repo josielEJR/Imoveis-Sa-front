@@ -75,7 +75,6 @@ export const Button = styled.button`
     justify-content: center;
     align-items: center;
     border-radius: 8px;
-    position: relative;
     padding: 10px;
 
     @media (max-width: 950px){
@@ -95,7 +94,6 @@ export const Button = styled.button`
 export const Codigo = styled.input`
     width: 250px;
     background-color: #FFFFFF;
-    position: relative;
     display: flex;
     border: 2px solid ${props => (props.error ? 'red' : '#888')};
     &:focus {

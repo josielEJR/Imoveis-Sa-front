@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 
-import { LocationSection, LocationText, LocationLabel, LocationIcon, InsertLocation, LocationError } from './style'
+import { Wrapper, Title, LocationSection, InsertLocation, Icon, Label, Input, Dropdown, Ul, Li, Button, Error } from './style'
 
 import { GrMap } from "react-icons/gr";
 
@@ -27,47 +27,70 @@ const Location = () => {
             redirect: "follow"
         };
 
-        fetch(`http://localhost:3001/imoveis/cidades${disponibility}`, requestOptions)
+        const query = disponibility ? `http://localhost:3001/imoveis/cidades${disponibility}` : `http://localhost:3001/imoveis/cidades`
+
+        fetch(query, requestOptions)
             .then((response) => response.text())
             .then((result) => JSON.parse(result))
             .then((result) => {
                 const auxArray = []
-                result.forEach(elem => auxArray.push(elem.cidade.toLowerCase()))
+                result.forEach(elem => auxArray.push(elem.cidade))
                 setCities(auxArray)
             })
             .catch((error) => console.error(error));
     }, [disponibility])
 
+    const handleDropdown = () => {
+        if (cities.length > 0) {
+            return <Ul>
+                {cities.map((elem, index) => {
+                    if (elem.toLowerCase().includes(location.toLowerCase())) {
+                        return <Li key={`${elem}${index}`}>
+                            <Button onClick={() => window.location.href = `/imoveis?cidade=${elem}&disponibilidade=${disponibility}`} >
+                                {elem}
+                            </Button>
+                        </Li>
+                    }
+                })}
+            </Ul>
+        }
+    }
+
     return (
-        <LocationSection>
-            <LocationText>
+        <Wrapper>
+            <Title>
                 Nossas incríveis propriedades
-            </LocationText>
-            <div>
-                <LocationLabel error={error}>
-                    <LocationIcon>
+            </Title>
+            <LocationSection>
+                <InsertLocation error={error}>
+                    <Icon>
                         <GrMap />
-                    </LocationIcon>
-                    <InsertLocation
-                        placeholder='Qual localização?'
-                        onChange={e => setLocation(e.target.value)}
-                        onKeyUp={key => {
-                            if (key.code === "Enter") {
-                                if (cities.includes(location.toLowerCase())) {
-                                    setError('')
-                                    return window.location.href = `/imoveis?cidade=${location}&disponibilidade=${disponibility}`
-                                } else {
-                                    setError("A cidade inserida não está disponível")
+                    </Icon>
+                    <Label>
+                        <Input
+                            placeholder='Qual localização?'
+                            onChange={e => setLocation(e.target.value)}
+                            onKeyUp={key => {
+                                if (key.code === "Enter") {
+                                    if (cities.includes(location)) {
+                                        setError('')
+                                        return window.location.href = `/imoveis?cidade=${location}&disponibilidade=${disponibility}`
+                                    } else {
+                                        setError("A cidade inserida não está disponível")
+                                    }
                                 }
-                            }
-                        }}
-                    ></InsertLocation>
-                </LocationLabel>
-                <LocationError>
+                            }}
+                        ></Input>
+                        <Dropdown display={location} >
+                            {handleDropdown()}
+                        </Dropdown>
+                    </Label>
+                </InsertLocation>
+                <Error>
                     {error}
-                </LocationError>
-            </div>
-        </LocationSection>
+                </Error>
+            </LocationSection>
+        </Wrapper>
     )
 }
 

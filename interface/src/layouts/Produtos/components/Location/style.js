@@ -1,6 +1,6 @@
 import styled from "styled-components"
 
-export const LocationSection = styled.section`
+export const Wrapper = styled.section`
     width: 1444px;
     height: 103px;
     border-left: 5px solid #454545;
@@ -32,7 +32,7 @@ export const LocationSection = styled.section`
     }
 `
 
-export const LocationText = styled.div`
+export const Title = styled.div`
     width: 492px;
     height: 49px;
     font-size: 32px;
@@ -48,8 +48,12 @@ export const LocationText = styled.div`
     }
 `
 
-export const LocationLabel = styled.div`
+export const LocationSection = styled.div`
     width: 500px;
+    height: 53px;
+`
+
+export const InsertLocation = styled.div`
     height: 39px;
     padding: 5px 10px;
     box-sizing: content-box;
@@ -58,14 +62,14 @@ export const LocationLabel = styled.div`
     display: flex;
     color: #454545;
     gap: 25px;
-    border: ${({error}) => error !== '' ? '2px solid red' : '2px solid transparent'};
+    border: ${({ error }) => error !== '' ? '2px solid red' : '2px solid transparent'};
 
     @media (max-width: 600px){
         padding: 0;
     }
 `
 
-export const LocationIcon = styled.div`
+export const Icon = styled.div`
     display: flex;
     align-items: center;
     font-size: 35px;
@@ -75,7 +79,9 @@ export const LocationIcon = styled.div`
     }
 `
 
-export const InsertLocation = styled.input`
+export const Label = styled.div``
+
+export const Input = styled.input`
     width: 100%;
     height: 29px;
     font-size: 24px;
@@ -94,7 +100,51 @@ export const InsertLocation = styled.input`
     }
 `
 
-export const LocationError = styled.div`
+export const Dropdown = styled.div`
+    width: 100%;
+    height: 200px;
+    padding: 20px;
+    background-color: #D9D9D9;
+    position: relative;
+    display: ${({ display }) => display === '' ? "none" : "block"};
+    overflow-y: scroll;
+
+    /* width */
+    &::-webkit-scrollbar {
+      width: 10px;
+      border-radius: 10px;
+    }
+
+    /* Track */
+    &::-webkit-scrollbar-track {
+      background: #D9D9D9; 
+    }
+    
+    /* Handle */
+    &::-webkit-scrollbar-thumb {
+      background: grey; 
+    }
+
+    /* Handle on hover */
+    &::-webkit-scrollbar-thumb:hover {
+      background: #555; 
+    }
+`
+
+export const Ul = styled.ul``
+
+export const Li = styled.li`
+    font-size: 24px;
+    font-weight: 400;
+
+    &:hover{
+        font-weight: 700;
+    }
+`
+
+export const Button = styled.button``
+
+export const Error = styled.div`
     width: 100%;
     text-align: center;
     color: red;
