@@ -5,7 +5,7 @@ import { IoCaretDownSharp } from "react-icons/io5"
 import { Container, Wrapper, ContainerDepoimentos, Title, ContainerPerfil, ContainerImagem, ContainerQuote, Comentario, FotoPerfil, ContainerIcon, Texto, NomePerfil, Foto, Img, ContainerComentario, Improvisado, ContainerTitle } from './style'
 import NavButtons from './components/NavButtons'
 
-const Depoimentos = ({ configDepoimentos }) => {
+const Depoimentos = () => {
   const [imageIndex, setImageIndex] = useState(0)
   const [sliderButton, setSliderButton] = useState(1)
   const [clientes, setClientes] = useState([])

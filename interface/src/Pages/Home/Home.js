@@ -11,9 +11,9 @@ import configDepoimentos from '../../layouts/Home/sections/Depoimentos/component
 const Home = () => {
   return (
     <Wrapper>
-      <Hero />
+      {/* <Hero />
       <Highlights />
-      <Depoimentos configDepoimentos={configDepoimentos} />
+      <Depoimentos configDepoimentos={configDepoimentos} /> */}
       <Time />
     </Wrapper>
   )
