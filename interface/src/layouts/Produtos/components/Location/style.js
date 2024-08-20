@@ -18,14 +18,18 @@ export const Wrapper = styled.section`
     }
 
     @media (max-width: 900px){
+        gap: 100px;
         width: 90%;
         margin: 0 auto;
         height: 100px;
         align-items: center;
     }
 
-    @media (max-width: 600px){
+    @media (max-width: 700px){
         gap: 0;
+    }
+
+    @media (max-width: 600px){
         flex-wrap: wrap;
         height: 170px;
         margin: 0 auto;
@@ -102,12 +106,16 @@ export const Input = styled.input`
 
 export const Dropdown = styled.div`
     width: 100%;
-    height: 200px;
+    height: 180px;
     padding: 20px;
     background-color: #D9D9D9;
     position: relative;
     display: ${({ display }) => display === '' ? "none" : "block"};
     overflow-y: scroll;
+
+    @media (max-width: 900px){
+        height: 150px;
+    }
 
     /* width */
     &::-webkit-scrollbar {
@@ -131,18 +139,24 @@ export const Dropdown = styled.div`
     }
 `
 
+export const Button = styled.button`
+    font-size: 24px;
+`
+
 export const Ul = styled.ul``
 
 export const Li = styled.li`
     font-size: 24px;
     font-weight: 400;
 
+    @media (max-width: 900px){
+        font-size: 18px;
+    }
+
     &:hover{
         font-weight: 700;
     }
 `
-
-export const Button = styled.button``
 
 export const Error = styled.div`
     width: 100%;

@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react'
 import { Wrapper, Title, LocationSection, InsertLocation, Icon, Label, Input, Dropdown, Ul, Li, Button, Error } from './style'
 
 import { GrMap } from "react-icons/gr";
+import { FaSearch } from "react-icons/fa";
 
 const Location = () => {
 
@@ -85,6 +86,9 @@ const Location = () => {
                             {handleDropdown()}
                         </Dropdown>
                     </Label>
+                    <Button onClick={() => window.location.href = `/imoveis?cidade=${location}&disponibilidade=${disponibility}`} >
+                        <FaSearch />
+                    </Button>
                 </InsertLocation>
                 <Error>
                     {error}
