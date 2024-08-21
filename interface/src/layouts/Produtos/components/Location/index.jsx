@@ -70,7 +70,10 @@ const Location = () => {
                     <Label>
                         <Input
                             placeholder='Qual localização?'
-                            onChange={e => setLocation(e.target.value)}
+                            onChange={e => {
+                                setLocation(e.target.value)
+                                setError('')
+                            }}
                             onKeyUp={key => {
                                 if (key.code === "Enter") {
                                     if (cities.includes(location)) {
