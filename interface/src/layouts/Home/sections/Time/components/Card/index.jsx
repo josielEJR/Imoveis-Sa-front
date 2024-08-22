@@ -40,7 +40,10 @@ const Card = ({ configTime }) => {
         spaceBetween={30}
         slidesPerView={1}
         navigation={true}
-
+        autoplay={{
+          delay: 2500,
+          disableOnInteraction: false,
+        }}
         breakpoints={{
           500: {
             slidesPerView: 1,

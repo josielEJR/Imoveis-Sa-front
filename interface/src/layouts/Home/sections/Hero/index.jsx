@@ -9,8 +9,8 @@ const Hero = () => {
 
   return (
     <ContainerHero>
-      {/* <Slider config={config} />
-      <FiltroBusca  /> */}
+      <Slider config={config} />
+      <FiltroBusca  />
     </ContainerHero>
   )
 }
