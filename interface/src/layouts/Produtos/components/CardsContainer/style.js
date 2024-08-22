@@ -52,4 +52,9 @@ export const Selectors = styled.div`
 
 export const IndexSelector = styled.button`
     margin: 0 5px;
+    background-color: ${({selected}) => selected === "true" ? "black" : "#454545"};
+    color: white;
+    width: 20px;
+    height: 20px;
+    border-radius: 20px;
 `

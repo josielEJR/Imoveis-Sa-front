@@ -2,8 +2,6 @@ import { useState, useEffect } from 'react'
 
 import Card from '../Card'
 
-import { FaAngleLeft, FaAngleRight } from "react-icons/fa6"
-
 import { Wrapper, Container, CardsSection, SelectorSection, Selectors, IndexSelector } from './style'
 
 const CardsContainer = ({ filters }) => {
@@ -27,7 +25,7 @@ const CardsContainer = ({ filters }) => {
             .then((result) => JSON.parse(result))
             .then((result) => {
                 const arrayAux = []
-                result.forEach((prod, index) => {
+                result.forEach((prod) => {
                     arrayAux.push(prod)
                 })
                 setProducts(arrayAux)
@@ -58,32 +56,14 @@ const CardsContainer = ({ filters }) => {
 
     const selector = () => {
         return <Selectors>
-            <IndexSelector><FaAngleLeft onClick={() => {
-                setSelected(current => {
-                    if(current - 1 < 1){
-                        return 1
-                    }else{
-                        scrollToTop()
-                        return current - 1
-                    }
-                })
-            }} /></IndexSelector>
             {
                 indexes.map((elem, index) => {
-                    return <IndexSelector key={index} onClick={() => {
+                    return <IndexSelector selected={selected == elem ? "true" : "false"} key={index} onClick={() => {
                         setSelected(elem)
                         scrollToTop()
                     }} >{elem}</IndexSelector>
                 })
             }
-            <IndexSelector><FaAngleRight onClick={() => setSelected(current => {
-                if(current + 1 > indexes.length){
-                    return indexes.length
-                }else{
-                    scrollToTop()
-                    return current + 1
-                }
-            })} /></IndexSelector>
         </Selectors>
     }
 
