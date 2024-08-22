@@ -28,3 +28,5 @@ export const Logo = styled.div`
         margin: 28px 10px;
     }
 `
+
+export const Img = styled.img``

@@ -88,6 +88,7 @@ export const Text = styled.span``
 export const Dropdown = styled.div`
     position: absolute;
     width: 263px;
+    height: 400px;
     margin-left: ${props => `${props.margin || 0}px`};
     font-size: 18px;
     background-color: #070707;
@@ -99,12 +100,14 @@ export const Dropdown = styled.div`
     @media (max-width: 950px) {
         position: unset;
         margin-left: 0;
+        height: unset;
     }
 `
 
 export const SideDropdown = styled.div`
     position: absolute;
     width: 280px;
+    height: 400px;
     right: ${props => props.right + "px"};
     top: 0;
     font-size: 18px;
@@ -119,6 +122,7 @@ export const SideDropdown = styled.div`
         position: unset;
         padding: 20px;
         width: 205px;
+        height: unset;
     }
 `
 
