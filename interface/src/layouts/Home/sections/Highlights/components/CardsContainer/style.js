@@ -6,40 +6,11 @@ export const Container = styled.div`
     width: 90%;
     margin: auto;
     display: flex;
-    flex-wrap: wrap;
-    overflow: hidden;
-`
-
-export const Arrows = styled.div`
-    display: none;
-
-    @media (max-width: 1080px){
-        max-width: 1870px;
-        display: flex;
-        justify-content: space-between;
-        width: 100%;
-        position: absolute;
-        margin-top: 430px;
-        padding: 0 50px;
-    }
-
-    @media (max-width: 700px){
-        padding: 0;
-    }
-
-    @media (max-width: 482px){
-        margin-top: 502px;
-    }
-`
-
-export const Icon = styled.button`
-    width: 45px;
-    height: 45px;
-    display: flex;
     justify-content: center;
 
-    @media (max-width: 560px){
-        padding: 0 10px;
+    .swiper-slide{
+        display: flex;
+        justify-content: center;
     }
 `
 
@@ -62,39 +33,4 @@ export const CardsSection = styled.div`
     display: flex;
     justify-content: center;
     margin: auto;
-`
-
-export const SelectorSection = styled.div`
-    width: 100%;
-`
-
-export const Selectors = styled.div`
-    width: 175px;
-    height: 21px;
-    margin: auto;
-    display: flex;
-    justify-content: center;
-
-    @media (max-width: 1080px){
-        display: none;
-    }
-`
-
-const growSelector = keyframes`
-    0% {flex-grow: 0}
-    100% {flex-grow: 1} 
-`
-
-const shrinkSelector = keyframes`
-    0% {flex-grow: 1}
-    100% {flex-grow: 0}
-`
-
-export const IndexSelector = styled.div`
-    width: 35px;
-    margin: 0 6px;
-    background-color: ${props => props.grow === "true" ? "#454545" : "#000000"};
-    flex-grow: ${props => props.grow === "true" ? 1 : 0};
-    animation: ${props => props.grow === "true" ? growSelector : shrinkSelector} 0.6s;
-    cursor: pointer;
 `
