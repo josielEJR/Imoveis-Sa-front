@@ -31,7 +31,7 @@ const configTime = [
     },
     {
       title: 'image4' ,
-      image:'https://cdn.discordapp.com/attachments/352175756278759425/1268645350290227270/Sem_Titulo-1.png?ex=66c6e2cd&is=66c5914d&hm=2c93ce6c206a45e1f7ec237641568c091d9cbc93a1f28b35c2da0f33bd9d6883&',
+      image:'https://uploaddeimagens.com.br/images/004/830/941/original/Sem_Titulo-1.png?1724355495',
       nome:'Milton',
       sobre:'Especialista em gestão de riscos, auxiliando empresas a identificar e mitigar riscos em suas operações.',
       email:'notlim@gmail.com',
