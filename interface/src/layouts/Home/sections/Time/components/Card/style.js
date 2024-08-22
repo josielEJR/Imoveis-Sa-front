@@ -1,14 +1,33 @@
-import Slider from "react-slick";
 import styled from "styled-components";
+import { SwiperSlide } from "swiper/react";
 
 export const Wrapper = styled.div`
-    overflow: hidden;
+    .swiper-pagination{
+        position: relative;
+        bottom: -5px;
 
-    .slick-slide {
-        padding: 0 10px;
-        justify-content: space-around;
+        @media (max-width: 1030px) {
+            display: none;
+        }
     }
 
+    .swiper-button-disabled{
+        opacity: 0 !important;
+    }
+
+    .swiper-button-prev, .swiper-button-next {
+        opacity: 50%;
+        background-color: white;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        color: black;
+    }
+
+    .swiper-button-prev:after, .swiper-button-next:after {
+        font-size: 20px;
+    }
 `
 
 export const Img = styled.img`
@@ -29,7 +48,7 @@ export const Overlay = styled.div`
     transition: opacity 0.3s ease, visibility 0.3s ease;
     background: #000000CC;
 
-    @media (max-width: 1540px) {
+    @media (max-width: 1030px) {
         opacity: 1;
         visibility: visible;
     }
@@ -42,7 +61,7 @@ export const InfoIcon = styled.div`
     visibility: hidden;
     transition: opacity 0.3s ease, visibility 0.3s ease;
 
-    @media (max-width: 1540px) {
+    @media (max-width: 1030px) {
         opacity: 1;
         visibility: visible;
     }
@@ -61,16 +80,14 @@ export const CardContent = styled.div`
     visibility: hidden;
     transition: opacity 0.3s ease, visibility 0.3s ease;
 
-    @media (max-width: 1540px) {
+    @media (max-width: 1030px) {
         opacity: 1;
         visibility: visible;
     }
 `
 
-export const CardContainer = styled.div`
+export const CardContainer = styled(SwiperSlide)`
     position: relative;
-    width: 100% !important;
-    max-width: 450px !important;
     height: 630px;
     display: flex !important;
     cursor: pointer;
@@ -81,21 +98,9 @@ export const CardContainer = styled.div`
         visibility: visible;
     }
 
-    @media (min-width: 1000px) {
-        width: 100% ;
-    }
-
-    @media (min-width: 1100px) {
-        width: 50%;
-    }
-
-    @media (min-width: 1540px) {
-        width: 33.33%;
-
-        &:hover {
+    &:hover {
         transform: scale(1.05); 
-        }
-    }
+    }    
 `
 
 export const Article = styled.div`
@@ -125,4 +130,3 @@ export const Email = styled.div`
     line-height: 16px;
     padding: 10px;
 `
-

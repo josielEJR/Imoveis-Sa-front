@@ -31,7 +31,7 @@ const configTime = [
     },
     {
       title: 'image4' ,
-      image:'https://cdn.discordapp.com/attachments/352175756278759425/1268645350290227270/Sem_Titulo-1.png?ex=66c43fcd&is=66c2ee4d&hm=671eaed19a119aea2baeb2d6d8e6f8b9cd3c162577eef4be2d8da502e1fb98c7&',
+      image:'https://cdn.discordapp.com/attachments/352175756278759425/1268645350290227270/Sem_Titulo-1.png?ex=66c6e2cd&is=66c5914d&hm=2c93ce6c206a45e1f7ec237641568c091d9cbc93a1f28b35c2da0f33bd9d6883&',
       nome:'Milton',
       sobre:'Especialista em gestão de riscos, auxiliando empresas a identificar e mitigar riscos em suas operações.',
       email:'notlim@gmail.com',
@@ -43,7 +43,7 @@ const configTime = [
       title: 'image5' ,
       image:'https://img.freepik.com/fotos-premium/jovem-mulher-latina-tirando-selfies-em-pe-ao-ar-livre-na-rua-conceito-urbano_58466-16058.jpg?size=626&ext=jpg&ga=GA1.1.370512319.1722003464&semt=sph',
       nome:'Larissa',
-      sobre:'Consultora de recursos humanos com foco em desenvolvimento de pessoas e cultura organizacional. Possui experiência em recrutamento, seleção, treinamento e avaliação de desempenho.',
+      sobre:'Consultora de recursos humanos com foco em desenvolvimento de pessoas e cultura organizacional.',
       email:'assiral@gmail.com',
       whatsapp:'(21) 98586-7432',
       telefone: '(21) 4563-2675',
