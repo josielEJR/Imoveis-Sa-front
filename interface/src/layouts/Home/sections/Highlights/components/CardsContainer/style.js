@@ -12,6 +12,21 @@ export const Container = styled.div`
         display: flex;
         justify-content: center;
     }
+
+    .swiper-button-prev, .swiper-button-next{
+        background-color: #f2f2f2;
+        width: 40px;
+        height: 40px;
+        border-radius: 40px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .swiper-button-prev::after, .swiper-button-next::after{
+        font-size: 20px;
+        color: black;
+    }
 `
 
 export const TitleSection = styled.div`

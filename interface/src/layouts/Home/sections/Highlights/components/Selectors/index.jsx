@@ -2,30 +2,28 @@ import { useState } from 'react'
 
 import { Wrapper, SelectorSection, IndexSelector } from './style'
 
-const Selectors = () => {
-
-    const [selected, setSelected] = useState(0)
+const Selectors = ({ selectedButton, handleButtonClick }) => {
 
     return (
         <Wrapper>
             <SelectorSection>
                 <IndexSelector
                     onClick={() => {
-                        setSelected(0)
+                        handleButtonClick(0)
                     }}
-                    grow={selected === 0 ? "true" : "false"}
+                    grow={selectedButton === 0 ? "true" : "false"}
                 />
                 <IndexSelector
                     onClick={() => {
-                        setSelected(1)
+                        handleButtonClick(1)
                     }}
-                    grow={selected === 1 ? "true" : "false"}
+                    grow={selectedButton === 1 ? "true" : "false"}
                 />
                 <IndexSelector
                     onClick={() => {
-                        setSelected(2)
+                        handleButtonClick(2)
                     }}
-                    grow={selected === 2 ? "true" : "false"}
+                    grow={selectedButton === 2 ? "true" : "false"}
                 />
             </SelectorSection>
         </Wrapper>

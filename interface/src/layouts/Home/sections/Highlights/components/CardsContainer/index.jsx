@@ -1,16 +1,22 @@
 import { useState, useEffect } from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react';
+import { Pagination, Navigation, Autoplay } from 'swiper/modules'
 
 import Card from '../Card'
 import Selectors from '../Selectors'
 
 import { Wrapper, Container, TitleSection, Title, CardsSection } from './style'
 import 'swiper/css';
+import 'swiper/css/pagination'
+import 'swiper/css/navigation'
 
 const CardsContainer = () => {
 
     const [products, setProducts] = useState([])
     const [cardsDisplay, setCardsDisplay] = useState(1)
+    const [windowWidth, setWindowWidth] = useState(window.outerWidth)
+    const [selectedButton, setSelectedButton] = useState(0)
+    const [swiperRef, setSwiperRef] = useState(null)
 
     useEffect(() => {
         const myHeaders = new Headers();
@@ -45,9 +51,7 @@ const CardsContainer = () => {
         } else {
             setCardsDisplay(1)
         }
-    }, [])
 
-    useEffect(() => {
         function handleResize() {
             if (window.outerWidth > 1400) {
                 setCardsDisplay(3)
@@ -56,6 +60,8 @@ const CardsContainer = () => {
             } else {
                 setCardsDisplay(1)
             }
+
+            setWindowWidth(window.outerWidth)
         }
 
         window.addEventListener('resize', handleResize)
@@ -64,6 +70,17 @@ const CardsContainer = () => {
             window.removeEventListener('resize', handleResize)
         }
     }, [])
+
+    const handleButtonClick = (buttonIndex) => {
+        setSelectedButton(buttonIndex)
+        if(swiperRef){
+            swiperRef.slideTo(buttonIndex)
+        }
+    }
+
+    const handleSlideChange = (swiper) => {
+        setSelectedButton(swiper.activeIndex)
+    }
 
     return (
         <Wrapper>
@@ -74,8 +91,16 @@ const CardsContainer = () => {
 
             <Container>
                 <Swiper
+                    modules={[Navigation, Pagination, Autoplay]}
                     slidesPerView={cardsDisplay}
+                    onSwiper={setSwiperRef}
+                    onSlideChange={handleSlideChange}
                     spaceBetween={0}
+                    navigation
+                    autoplay={{
+                        delay: 3500,
+                        disableOnInteraction: false
+                    }}
                 >
                     {products.map((prod, index) => (
                         <SwiperSlide>
@@ -97,7 +122,7 @@ const CardsContainer = () => {
                 </Swiper>
             </Container>
 
-            <Selectors />
+            {windowWidth > 1000 ? <Selectors selectedButton={selectedButton} handleButtonClick={handleButtonClick} /> : <></>}
         </Wrapper>
     )
 }
