@@ -12,8 +12,8 @@ const Home = () => {
   return (
     <Wrapper>
       <Hero />
-      <Depoimentos configDepoimentos={configDepoimentos} />
-      <Time />
+      {/* <Depoimentos configDepoimentos={configDepoimentos} /> */}
+      {/* <Time /> */}
     </Wrapper>
   )
 }
