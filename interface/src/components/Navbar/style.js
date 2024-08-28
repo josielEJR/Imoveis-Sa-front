@@ -5,7 +5,7 @@ export const Wrapper = styled.div`
     background-color: #050505;
     position: sticky;
     top: 0;
-    z-index: 1;
+    z-index: 2;
 `
 
 export const Nav = styled.nav`
@@ -28,3 +28,5 @@ export const Logo = styled.div`
         margin: 28px 10px;
     }
 `
+
+export const Img = styled.img``

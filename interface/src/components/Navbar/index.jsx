@@ -2,7 +2,7 @@ import { NavLink } from 'react-router-dom'
 
 import Content from './components/NavContent/index'
 
-import { Wrapper, Nav, Logo } from './style'
+import { Wrapper, Nav, Logo, Img } from './style'
 
 const Navbar = () => {
     return (
@@ -10,7 +10,7 @@ const Navbar = () => {
             <Nav>
                 <Logo>
                     <NavLink to="/home">
-                        <img src="logo.svg" alt="" style={{ width: '90px' }} />
+                        <Img src="logo.svg" alt="" style={{ width: '90px' }} />
                     </NavLink>
                 </Logo>
 

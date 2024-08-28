@@ -1,17 +1,16 @@
-import { useState } from 'react'
-
-import { Link } from 'react-router-dom'
+import { useState, useEffect } from 'react'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faAngleDown } from '@fortawesome/free-solid-svg-icons'
 
-import { ContentLink } from '../../style'
+import { ContentLink, Link, Text } from '../../style'
 
 import Itens from './itens'
 
 const NavOption = ({ tipo, url, right }) => {
 
     const [dropdownVisible, setDropdownVisible] = useState(false)
+    const [windowWidth, setWindowWidth] = useState(window.outerWidth)
 
     const handleMouseEnter = () => {
         setDropdownVisible(true)
@@ -27,14 +26,39 @@ const NavOption = ({ tipo, url, right }) => {
 
     const redirect = tipo.toLowerCase()
 
+    useEffect(() => {
+        const handleResize = () => {
+            setWindowWidth(window.outerWidth)
+        }
+
+        window.addEventListener('resize', handleResize)
+
+        return _ => {
+            window.removeEventListener('resize', handleResize)
+        }
+    }, [])
+
+    const handleRedirect = () => {
+        if (windowWidth < 950) {
+            return (
+                <Link onClick={handleClick}>
+                    <Text className='p-1'>{tipo}</Text><FontAwesomeIcon icon={faAngleDown} />
+                </Link>
+            )
+        } else {
+            return (
+                <Link href={`imoveis?disponibilidade=${redirect}`} onClick={handleClick}>
+                    <Text className='p-1'>{tipo}</Text><FontAwesomeIcon icon={faAngleDown} />
+                </Link>
+            )
+        }
+    }
+
     return (
         <ContentLink onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
-            <div onClick={handleClick}>
-                <span className='p-1'>{tipo}</span><FontAwesomeIcon icon={faAngleDown} />
-            </div>
+            {handleRedirect()}
 
             {dropdownVisible && <Itens lista={url} redirect={redirect} right={right} />}
-            {/* <Itens lista={url} redirect={redirect} right={right} /> */}
         </ContentLink>
     )
 }
