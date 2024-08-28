@@ -126,3 +126,13 @@ export const AnunciarButton = styled.button`
         width: 100%;
     }
 `
+
+export const Error = styled.div`
+    font-size: 20px;
+    color: red;
+    font-weight: bold;
+
+    @media (max-width: 560px) {
+        font-size: 15px;
+    }
+`

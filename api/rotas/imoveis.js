@@ -82,13 +82,8 @@ router.get('/busca', (req, res) => {
     })
 })
 // rota para adicionar imoveis 
-router.post('/adicionar', authconsultor, (req, res) => {
-    const consultorId = req.consultorId
-
-    if (consultorId == undefined) {
-        return { mensagem: "O usuário não tem permissão para cadastrar um imóvel" }
-    }
-
+router.post('/adicionar', (req, res) => {
+    
     const { tipo, endereco, numero, bairro, cidade, cep, quartos, banheiros, descricao, preco_venda, preco_aluguel, disponibilidade, qualidade, tamanho } = req.body;
 
     // Validar dados recebidos (validação simples)
@@ -111,7 +106,7 @@ router.post('/adicionar', authconsultor, (req, res) => {
         disponibilidade,
         qualidade,
         tamanho: parseFloat(tamanho),
-        consultorId
+        
     };
 
     connection.query('INSERT INTO imoveis SET ?', imovel, (err, result) => {

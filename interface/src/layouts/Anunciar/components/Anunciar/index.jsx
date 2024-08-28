@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 
-import { Container, Wrapper, Label, LabelContainer, FormConteiner, TitleContainer, Title, Input, Select, AnunciarButton } from './style'
+import { Container, Wrapper, Label, LabelContainer, FormConteiner, TitleContainer, Title, Input, Select, AnunciarButton, Error } from './style'
 
 const Anunciar = () => {
 
@@ -18,6 +18,7 @@ const Anunciar = () => {
     const [qualidade, setQualidade] = useState('');
     const [disponibilidade, setDisponibilidade] = useState('');
     const [descricao, setDescricao] = useState('');
+    const [Erro, setErro] = useState('');
 
     const navigate = useNavigate()
 
@@ -38,25 +39,29 @@ const Anunciar = () => {
         setAnimate(true);
         setTimeout(() => setAnimate(false), 300);
 
-        if (!residencia || !endereco || !numero || !bairro || !cidade || !cep || !quartos || !banheiros || !tamanho || !qualidade || !disponibilidade || !descricao) {
+        if (residencia && endereco && numero && bairro && cidade && cep && quartos && banheiros && tamanho && qualidade && disponibilidade && descricao) {
 
-        } else {
-            const myHeaders = new Headers();
-            myHeaders.append("Content-Type", "application/json");
+            const myHeaders = {
+                'Content-Type': 'application/json',
+                Authorization: 'Bearer ' + localStorage.getItem('token')
+            }
 
             const raw = JSON.stringify({
-                residencia: residencia,
-                endereco: endereco,
-                numero: numero,
-                bairro: bairro,
-                cidade: cidade,
-                cep: cep,
-                quartos: quartos,
-                banheiros: banheiros,
-                tamanho: tamanho,
-                qualidade: qualidade,
-                disponibilidade: disponibilidade,
-                descricao: descricao
+                "tipo": residencia,
+                "endereco": endereco,
+                "numero": numero,
+                "bairro": bairro,
+                "cidade": cidade,
+                "cep": cep,
+                "quartos": quartos,
+                "banheiros": banheiros,
+                "descricao": descricao,
+                "preco_venda": "0",
+                "preco_aluguel": "0",
+                "tamanho": tamanho,
+                "qualidade": qualidade,
+                "disponibilidade": disponibilidade
+
             });
 
             const requestOptions = {
@@ -66,21 +71,20 @@ const Anunciar = () => {
                 redirect: "follow"
             };
 
-
-            fetch("http://localhost:3001/clientes/cadastrar", requestOptions)
+            fetch("http://localhost:3001/imoveis/adicionar", requestOptions)
                 .then((response) => response.text())
-                .then((result) => JSON.parse(result))
                 .then((result) => {
-                    const userNome = result.nome
-                    const userEmail = result.email
-                    const userCelular = result.celular
-                    localStorage.setItem("currentUserNome", userNome)
-                    localStorage.setItem("currentUserEmail", userEmail)
-                    localStorage.setItem("currentUserCelular", userCelular)
+                    console.log(result)
+                    // window.location.href = disponibilidade == "venda" || disponibilidade == "venda_e_alugel" ? "http://localhost:3000/imoveis?disponibilidade=venda" : "http://localhost:3000/imoveis?disponibilidade=aluguel"
                 })
-                .then(() => window.location.reload())
                 .catch((error) => console.error(error));
         }
+
+        else {
+
+            setErro("Erro")
+        }
+
     }
 
     const handleNumericInputChange = (setter) => (e) => {
@@ -148,9 +152,9 @@ const Anunciar = () => {
                         <Label>Disponibilidade</Label>
                         <Select value={disponibilidade} onChange={handleDisponibilidadeChange}>
                             <option value="">Selecione uma Opção</option>
-                            <option value="Vender">Vender</option>
-                            <option value="Alugar">Alugar</option>
-                            <option value="Vender/Alugar">Vender/Alugar</option>
+                            <option value="Venda">Vender</option>
+                            <option value="Aluguel">Alugar</option>
+                            <option value="Venda/Aluguel">Vender/Alugar</option>
                         </Select>
                     </LabelContainer>
                     <LabelContainer>
@@ -161,6 +165,9 @@ const Anunciar = () => {
                 <AnunciarButton animate={animate} onClick={handleAnunciarClick}>
                     Anunciar
                 </AnunciarButton>
+                <Error>
+                    {Erro}
+                </Error>
             </Container>
         </Wrapper>
     )
