@@ -7,7 +7,7 @@ CREATE TABLE IF NOT EXISTS clientes (
   senha VARCHAR(50) NOT NULL,
   cpf VARCHAR(50) NOT NULL,
   celular VARCHAR(25) NOT NULL,
-  comentario VARCHAR(500) NOT NULL,
+  comentario VARCHAR(500),
   foto_perfil VARCHAR(255)
 );
 

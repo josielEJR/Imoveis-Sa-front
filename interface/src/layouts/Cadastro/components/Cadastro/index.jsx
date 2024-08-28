@@ -1,6 +1,7 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
 
-import { Container, Wrapper, InnerWrapper, Title, TextContainer, HighlightedLink, Input, CadastroButton, PasswordWrapper, EyeIcon } from './style'
+import { Container, Wrapper, InnerWrapper, Title, TextContainer, HighlightedLink, Input, CadastroButton, PasswordWrapper, EyeIcon, ErroCadastro } from './style'
 
 import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai';
 
@@ -14,10 +15,57 @@ const Cadastro = () => {
     const [password, setPassword] = useState('');
     const [showPassword, setShowPassword] = useState(false);
     const [emailError, setEmailError] = useState(false);
+    const [loginError, setLoginError] = useState('');
+
+    const navigate = useNavigate()
+
+    useEffect(() => {
+        if (localStorage.length > 0) {
+            navigate("/home")
+        }
+    }, [])
 
     const handleCadastroClick = () => {
         setAnimate(true);
         setTimeout(() => setAnimate(false), 300);
+
+        if (!email || !name || !cpf || !celular || !password) {
+            setLoginError('Existem Campos Faltando')
+
+        } else {
+            const myHeaders = new Headers();
+            myHeaders.append("Content-Type", "application/json");
+
+            const raw = JSON.stringify({
+                "nome": name,
+                "email": email,
+                "senha": password,
+                "cpf": cpf,
+                "celular": celular
+            });
+
+            const requestOptions = {
+                method: "POST",
+                headers: myHeaders,
+                body: raw,
+                redirect: "follow"
+            };
+
+            fetch("http://localhost:3001/clientes/cadastrar", requestOptions)
+                .then((response) => response.text())
+                .then((result) => JSON.parse(result))
+                .then((result) => {
+                    const userNome = result.nome
+                    const userEmail = result.email
+                    const userCelular = result.celular
+                    localStorage.setItem("currentUserNome", userNome)
+                    localStorage.setItem("currentUserEmail", userEmail)
+                    localStorage.setItem("currentUserCelular", userCelular)
+                })
+                .then(() => window.location.reload())
+                .catch((error) => console.error(error));
+        }
+
     }
 
     const handleNameChange = (e) => {
@@ -69,7 +117,7 @@ const Cadastro = () => {
                 <InnerWrapper>
                     <Title>Crie sua Conta</Title>
                     <TextContainer>
-                        Já possui Cadastro? <HighlightedLink href="#">Entre aqui!</HighlightedLink>
+                        Já possui Cadastro? <HighlightedLink href="/login">Entre aqui!</HighlightedLink>
                     </TextContainer>
                     <Input
                         type="text"
@@ -109,6 +157,9 @@ const Cadastro = () => {
                             {showPassword ? <AiOutlineEye /> : <AiOutlineEyeInvisible />}
                         </EyeIcon>
                     </PasswordWrapper>
+                    <ErroCadastro>
+                        {loginError}
+                    </ErroCadastro>
                     <CadastroButton animate={animate} onClick={handleCadastroClick}>
                         Cadastre-se
                     </CadastroButton>

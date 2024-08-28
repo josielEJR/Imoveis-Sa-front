@@ -48,7 +48,7 @@ VALUES
 
 INSERT INTO imoveis ( consultorId, tipo, endereco, numero, bairro, cidade, cep, quartos, banheiros, descricao, preco_venda, tamanho, qualidade, disponibilidade) 
 VALUES 
-( 2, 'Casa', 'Rua das Acácias', '456', 'Botafogo', 'Rio de Janeiro', '21000-000', 5, 4,
+( 5, 'Casa', 'Rua das Acácias', '456', 'Botafogo', 'Rio de Janeiro', '21000-000', 5, 4,
 'Casa espaçosa e confortável com 5 quartos e 4 banheiros. Área externa com piscina e churrasqueira.', 
 700000.00, 300, 5.0, 'venda');
 

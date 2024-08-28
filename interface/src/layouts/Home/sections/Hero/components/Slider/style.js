@@ -27,13 +27,14 @@ export const Container = styled.div`
     }
 `
 
+
 export const ImageContainer = styled.div`
     display: flex;
     width: 100%;
     height: 100%;
     position: absolute;
     transition: transform 0.9s ease-in-out;
-    transform: translateX(${({ index, currentIndex }) => (index - currentIndex) * 100}%);
+    transform: translateX(${({ index, currentIndex }) => (index - currentIndex)* 100}%);
 `
 
 export const Overlay = styled.div`
@@ -102,16 +103,12 @@ export const ButtonPrice = styled.button`
 `
 
 export const Direita = styled.button`
-    width: 45px;
-    height: 45px;
     display: flex;
     align-items: center;
-    background-color: rgba(0, 0, 0, 0.5);
     cursor: pointer;
     right: 30px;
     position: absolute;
     top: 50%;
-    border-radius: 50%;
     color: #f2f2f2;
     z-index: 1;
 
@@ -121,25 +118,21 @@ export const Direita = styled.button`
 `
 
 export const Esquerda = styled.button`
-    width: 45px;
-    height: 45px;
     display: flex;
     align-items: center;
-    background-color: rgba(0, 0, 0, 0.5);
     cursor: pointer;
     left: 30px;
     position: absolute;
     top: 50%;
-    border-radius: 50%;
     color: #f2f2f2;
     z-index: 1;
-
-    @media (max-width: 950px) {
+    
+    @media (max-width: 450px) {
         display: none;
     }
 `
 
 export const Icon = styled.i`
-    padding-left: 12px;  
+    
 `
 
