@@ -1,24 +1,24 @@
-import React, { useEffect, useState} from 'react'
+import React, { useEffect, useState } from 'react'
 
 import { useNavigate } from 'react-router-dom'
-import { ContainerInput, Codigo, IconDrop, ListaCompra, Input, Button, Wrapper, UlOptions, UlBairros, LiTipo, CheckBoxWrapper, CheckBox, CheckBoxLabel, ErroText, ContainerFiltro } from './style'
+import { ContainerInput, Codigo, IconDrop, Input, Button, Wrapper, UlOptions, LiTipo, CheckBoxWrapper, CheckBox, CheckBoxLabel, ErroText, ContainerFiltro } from './style'
 import { IoIosArrowDropdownCircle } from "react-icons/io"
 
 const FiltroBusca = () => {
   const navigate = useNavigate()
 
-  const [ produtos, setProdutos ] = useState([])
-  const [ showBairros, setShowBairros ] = useState(false)
-  const [ showTipo, setShowTipo ] = useState(false)
-  const [ showCompra, setShowCompra ] = useState(false)
-  const [ selectedBairro, setSelectedBairro ] = useState([])
-  const [ selectedTipo, setSelectedTipo ] = useState([])
-  const [ selectedCompra, setSelectedCompra ] = useState([])
-  const [ codigo, setCodigo ] = useState ('')
-  const [ error, setError ] = useState('')
-  const [ showErroMessage, setShowErroMessage ] = useState(false)
-  const [ inputErro, setInputErro ] = useState(false)
-  const [ buttonError, setButtonError ] = useState(false)
+  const [produtos, setProdutos] = useState([])
+  const [showBairros, setShowBairros] = useState(false)
+  const [showTipo, setShowTipo] = useState(false)
+  const [showCompra, setShowCompra] = useState(false)
+  const [selectedBairro, setSelectedBairro] = useState([])
+  const [selectedTipo, setSelectedTipo] = useState([])
+  const [selectedCompra, setSelectedCompra] = useState([])
+  const [codigo, setCodigo] = useState('')
+  const [error, setError] = useState('')
+  const [showErroMessage] = useState(false)
+  const [inputErro, setInputErro] = useState(false)
+  const [buttonError, setButtonError] = useState(false)
 
   useEffect(() => {
     if (error) {
@@ -67,11 +67,10 @@ const FiltroBusca = () => {
   }
 
   const filtrarImoveis = () => {
-
     let disponibilidadeQuery = []
     let query = ''
 
-    const imovelID  = codigo.trim()
+    const imovelID = codigo.trim()
 
     const filterCheck = selectedBairro.length > 0 || selectedCompra.length > 0 || selectedTipo.length > 0
 
@@ -91,7 +90,7 @@ const FiltroBusca = () => {
     }
 
     if (imovelID && !filterCheck) {
-      fetch(`http://localhost:3001/imoveis/${imovelID}`, { method: 'GET', redirect: 'follow' })
+      fetch(`http://localhost:3001/imoveis/buscarimovelid?id=${imovelID}`, { method: 'GET', redirect: 'follow' })
         .then((response) => {
           if (!response.ok) {
             throw new Error('Erro na resposta da API')
@@ -118,13 +117,13 @@ const FiltroBusca = () => {
     if (!imovelID && filterCheck) {
       if (selectedCompra.includes('Alugar')) {
         disponibilidadeQuery.push('aluguel');
-    }
+      }
 
-    if (selectedCompra.includes('Comprar')) {
+      if (selectedCompra.includes('Comprar')) {
         disponibilidadeQuery.push('venda');
-    }
+      }
 
-    if (selectedCompra.includes('Alugar') && selectedCompra.includes('Comprar')) {
+      if (selectedCompra.includes('Alugar') && selectedCompra.includes('Comprar')) {
 
         disponibilidadeQuery.push('venda_e_aluguel');
       }

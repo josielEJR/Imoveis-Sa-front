@@ -13,7 +13,7 @@ const authconsultor = (req, res, next) => {
 
     try {
         const decoded = jwt.verify(token, process.env.JWT_SECRET);
-        req.consultorId = decoded.consultorId; 
+        req.consultorId = decoded.consultorId;
         next();
     } catch (err) {
         res.status(400).json({ error: 'Token inválido .' });
