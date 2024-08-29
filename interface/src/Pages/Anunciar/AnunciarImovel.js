@@ -149,14 +149,14 @@ const AnunciarImovel = () => {
                                 "tamanho": tamanho,
                                 "qualidade": qualidade,
                                 "disponibilidade": disponibilidade
-                            });
+                            })
 
                             const requestOptions = {
                                 method: "POST",
                                 headers: myHeaders,
                                 body: raw,
                                 redirect: "follow"
-                            };
+                            }
 
                             fetch("http://localhost:3001/imoveis/adicionar", requestOptions)
                                 .then((response) => response.text())

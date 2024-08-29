@@ -1,21 +1,35 @@
 import React, { useState, useEffect } from 'react'
-import { Container, ContainerContent, ContainerIcon, ContainerInfo, Content, Icon, ContainerDescrição, Value, Wrapper, DescriçãoIcon, DropOver, TextDrop, Aba } from './style'
-import { TbRulerMeasure } from "react-icons/tb";
-import { IoCarSportOutline } from "react-icons/io5";
-import { LiaCouchSolid } from "react-icons/lia";
-import { TbBed } from "react-icons/tb";
-import { PiBathtub } from "react-icons/pi";
-import { MdInfoOutline } from "react-icons/md";
+import { Container, ContainerContent, ContainerIcon, ContainerInfo, Content, Icon, ContainerDescrição, Value, Wrapper, DescriçãoIcon, DropOver, TextDrop, Aba, Title, Text } from './style'
+import { TbRulerMeasure } from "react-icons/tb"
+import { IoCarSportOutline } from "react-icons/io5"
+import { LiaCouchSolid } from "react-icons/lia"
+import { TbBed } from "react-icons/tb"
+import { PiBathtub } from "react-icons/pi"
+import { MdInfoOutline } from "react-icons/md"
 
 const ContentDescrição = ({ imovelID }) => {
   const [prodInfo, setProdInfo] = useState({})
   const [activeIcon, setActiveIcon] = useState(null)
+  const [isSmallScreen, setIsSmallScreen] = useState(window.innerWidth <= 960)
+
+  const [leftPercentage, setLeftPercentage] = useState({
+    condominio: 5,
+    iptu: 5,
+    seguro: 5,
+    taxa: 5,
+  })
+  const [topPercentage, setTopPercentage] = useState({
+    condominio: 5,
+    iptu: 5,
+    seguro: 5,
+    taxa: 5,
+  })
 
   useEffect(() => {
     const requestOptions = {
       method: "GET",
       redirect: "follow"
-    };
+    }
 
     fetch(`http://localhost:3001/imoveis/buscarimovelid?id=${imovelID}`, requestOptions)
       .then((response) => response.text())
@@ -24,45 +38,100 @@ const ContentDescrição = ({ imovelID }) => {
         console.log(produto[0])
         return setProdInfo(produto[0])
       })
-      .catch((error) => console.error(error));
+      .catch((error) => console.error(error))
   }, [imovelID])
 
 
   const formatarPreco = (preco) => {
-    return new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(preco);
+    return new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(preco)
   }
 
   const getPreco = () => {
     switch (prodInfo.disponibilidade) {
       case 'aluguel':
-        return formatarPreco(prodInfo.preco_aluguel);
+        return formatarPreco(prodInfo.preco_aluguel)
       case 'venda':
-        return formatarPreco(prodInfo.preco_venda);
+        return formatarPreco(prodInfo.preco_venda)
       case 'venda_e_aluguel':
-        return formatarPreco(prodInfo.preco_venda);
+        return formatarPreco(prodInfo.preco_venda)
       default:
-        return 'Preço não disponível';
+        return 'Preço não disponível'
     }
   }
 
   const getDisponibilidade = () => {
     switch (prodInfo.disponibilidade) {
       case 'aluguel':
-        return ('Aluguel');
+        return ('Aluguel')
       case 'venda':
-        return ('Venda');
+        return ('Venda')
       case 'venda_e_aluguel':
-        return ('Venda');
+        return ('Venda')
       default:
-        return 'dispolidade não disponovel';
+        return 'dispolidade não disponovel'
     }
   }
 
   const handleMouseEnter = (icon) => setActiveIcon(icon)
   const handleMouseLeave = () => setActiveIcon(null)
 
-  return (
+  useEffect(() => {
+    const handleResize = () => {
+      const screenWidth = window.innerWidth
+      setIsSmallScreen(screenWidth <= 590)
 
+      if (screenWidth <= 590) {
+        setLeftPercentage({
+          condominio: 19,
+          iptu: 5,
+          seguro: 25,
+          taxa: 24,
+        })
+        setTopPercentage({
+          condominio: 50,
+          iptu: 59,
+          seguro: 68,
+          taxa: 76,
+        })
+      } else if (screenWidth <= 720) {
+        setLeftPercentage({
+          condominio: 40,
+          iptu: 27,
+          seguro: 45,
+          taxa: 45,
+        })
+      } else if (screenWidth <= 860) {
+        setLeftPercentage({
+          condominio: 30,
+          iptu: 30,
+          seguro: 35,
+          taxa: 35,
+        })
+      } else if (screenWidth <= 960) {
+        setLeftPercentage({
+          condominio: 25,
+          iptu: 17,
+          seguro: 30,
+          taxa: 30,
+        })
+      } else {
+        setLeftPercentage({
+          condominio: 5,
+          iptu: 5,
+          seguro: 5,
+          taxa: 5,
+        })
+      }
+    }
+
+    handleResize()
+
+    window.addEventListener('resize', handleResize)
+
+    return () => window.removeEventListener('resize', handleResize)
+  }, [])
+
+  return (
     <Wrapper>
       <Container>
         <ContainerContent>
@@ -71,64 +140,97 @@ const ContentDescrição = ({ imovelID }) => {
               {getDisponibilidade()}
             </Content>
             <Content>
-              Condominio
+              <Text>
+                Condominio
+              </Text>
               <MdInfoOutline
                 size={30}
                 onMouseEnter={() => handleMouseEnter('condominio')}
                 onMouseLeave={handleMouseLeave}
               />
               {activeIcon === 'condominio' && (
-                <DropOver>
-                  <TextDrop>
+                <DropOver
+                  leftPercentage={`${leftPercentage.condominio}%`}
+                  topPercentage={`${topPercentage.condominio}%`}
+                >
+                  <Title>
+                    Condominio
+                  </Title>
                   <Aba />
-                  Valor sujeito a alteração conforme deliberações condominiais, podendo, ainda, variar de acordo com as despesas fixas e eventuais do condomínio (ex.: água, luz, conservação e manutenção do prédio, entre outros).</TextDrop>
+                  <TextDrop>
+                    Valor sujeito a alteração conforme deliberações condominiais, podendo, ainda, variar de acordo com as despesas fixas e eventuais do condomínio (ex.: água, luz, conservação e manutenção do prédio, entre outros).
+                  </TextDrop>
                 </DropOver>
               )}
             </Content>
             <Content>
-              IPTU
+              <Text>
+                IPTU
+              </Text>
               <MdInfoOutline
                 size={30}
                 onMouseEnter={() => handleMouseEnter('iptu')}
                 onMouseLeave={handleMouseLeave}
               />
               {activeIcon === 'iptu' && (
-                <DropOver>
+                <DropOver
+                  leftPercentage={`${leftPercentage.iptu}%`}
+                  topPercentage={`${topPercentage.iptu}%`}
+                >
+                  <Title>
+                    IPTU
+                  </Title>
+                  <Aba />
                   <TextDrop>
-                    <Aba />
-                    Informações sobre o condomínio
+                    Valor sujeito a alteração conforme deliberações condominiais, podendo, ainda, variar de acordo com as despesas fixas e eventuais do condomínio (ex.: água, luz, conservação e manutenção do prédio, entre outros).
                   </TextDrop>
                 </DropOver>
               )}
             </Content>
             <Content>
-              Seguro incêndio
+              <Text>
+                Seguro incêndio
+              </Text>
               <MdInfoOutline
                 size={30}
                 onMouseEnter={() => handleMouseEnter('seguro')}
                 onMouseLeave={handleMouseLeave}
               />
               {activeIcon === 'seguro' && (
-                <DropOver>
+                <DropOver
+                  leftPercentage={`${leftPercentage.seguro}%`}
+                  topPercentage={`${topPercentage.seguro}%`}
+                >
+                  <Title>
+                    Seguro incêndio
+                  </Title>
+                  <Aba />
                   <TextDrop>
-                    <Aba />
-                    Informações sobre o condomínio
+                    Valor sujeito a alteração conforme deliberações condominiais, podendo, ainda, variar de acordo com as despesas fixas e eventuais do condomínio (ex.: água, luz, conservação e manutenção do prédio, entre outros).
                   </TextDrop>
                 </DropOver>
               )}
             </Content>
             <Content>
-              Taxa de serviço
+              <Text>
+                Taxa de serviço
+              </Text>
               <MdInfoOutline
                 size={30}
                 onMouseEnter={() => handleMouseEnter('taxa')}
                 onMouseLeave={handleMouseLeave}
               />
               {activeIcon === 'taxa' && (
-                <DropOver>
+                <DropOver
+                  leftPercentage={`${leftPercentage.taxa}%`}
+                  topPercentage={`${topPercentage.taxa}%`}
+                >
+                  <Title>
+                    Taxa de serviço
+                  </Title>
+                  <Aba />
                   <TextDrop>
-                    <Aba />
-                    Informações sobre o condomínio
+                    Valor sujeito a alteração conforme deliberações condominiais, podendo, ainda, variar de acordo com as despesas fixas e eventuais do condomínio (ex.: água, luz, conservação e manutenção do prédio, entre outros).
                   </TextDrop>
                 </DropOver>
               )}
