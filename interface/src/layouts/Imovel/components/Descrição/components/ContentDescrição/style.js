@@ -79,7 +79,8 @@ export const Icon = styled.div`
 
 export const Text = styled.div`
     display: flex;
-    overflow-wrap: break-word;
+    white-space: nowrap;
+
 `
 
 export const DropOver = styled.div`
