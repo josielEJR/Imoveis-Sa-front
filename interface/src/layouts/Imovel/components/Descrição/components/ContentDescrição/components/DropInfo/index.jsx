@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { Aba, DropHover, TextDrop, Title, Wrapper } from './style'
 
 const DropInfo = ({ activeIcon, iconName }) => {
-    const [setIsSmallScreen] = useState(window.innerWidth <= 960)
+    const [iSmalScreen ,setIsSmallScreen] = useState(window.innerWidth <= 960)
 
     const [leftPercentage, setLeftPercentage] = useState({
         condominio: 5,

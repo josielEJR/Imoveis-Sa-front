@@ -7,7 +7,7 @@ import { LiaCouchSolid } from "react-icons/lia"
 import { TbBed } from "react-icons/tb"
 import { PiBathtub } from "react-icons/pi"
 import { MdInfoOutline } from "react-icons/md"
-import DropInfo from '../DropInfo'
+import DropInfo from './components/DropInfo'
 
 const ContentDescrição = ({ imovelID }) => {
   const [prodInfo, setProdInfo] = useState({})
@@ -28,7 +28,6 @@ const ContentDescrição = ({ imovelID }) => {
       })
       .catch((error) => console.error(error))
   }, [imovelID])
-
 
   const formatarPreco = (preco) => {
     return new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(preco)
