@@ -21,10 +21,7 @@ services:
     ports:
       - "3306:3306"
     volumes:
-      - ./tabelas/consultores.sql:/docker-entrypoint-initdb.d/consultores.sql
-      - ./tabelas/clientes.sql:/docker-entrypoint-initdb.d/clientes.sql
-      - ./tabelas/imoveis.sql:/docker-entrypoint-initdb.d/imoveis.sql
-      - ./tabelas/visitas.sql:/docker-entrypoint-initdb.d/visitas.sql
+      - ./tabelas/tabelas.sql:/docker-entrypoint-initdb.d/tabelas.sql
       - ./my_custom.cnf:/etc/mysql/conf.d/my_custom.cnf
     networks:
       - minha_rede

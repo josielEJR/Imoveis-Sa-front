@@ -90,13 +90,17 @@ const Login = () => {
                     .then(response => JSON.parse(response))
                     .then(result => result[0])
                     .then(result => {
+                        const userID = result.clienteId
                         const userNome = result.nome
                         const userEmail = result.email
                         const userCelular = result.celular
+                        const userCPF = result.cpf
                         localStorage.setItem("token", loginValid)
+                        localStorage.setItem("currentUserID", userID)
                         localStorage.setItem("currentUserNome", userNome)
                         localStorage.setItem("currentUserEmail", userEmail)
                         localStorage.setItem("currentUserCelular", userCelular)
+                        localStorage.setItem("currentUserCPF", userCPF)
                     })
 
                 setTimeout(() => {
