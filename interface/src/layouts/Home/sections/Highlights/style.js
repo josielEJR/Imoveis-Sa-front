@@ -4,6 +4,6 @@ export const Wrapper = styled.section`
     max-width: 1870px;
     height: 865px;
     box-sizing: border-box;
-    margin: auto 0;
+    margin: 0 auto;
     width: 100%;
 `

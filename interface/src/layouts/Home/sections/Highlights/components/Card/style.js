@@ -144,7 +144,7 @@ export const Favorite = styled.button`
     z-index: 1;
     right: 0px;
     margin: 10px;
-    color: ${({color}) => color !== "true" ? "black" : "red"};
+    color: white;
     cursor: pointer;
     ${({color}) => color === "true" && css`animation: ${onFavorite} 0.5s ease`}
 `
