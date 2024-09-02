@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 //components
 import NavBar from './components/Navbar/index.jsx';
+import Footer from '../src/components/Footer/index.jsx'
 
 // Pages
 import Login from './Pages/Login/Login.js'
@@ -17,7 +18,7 @@ const App = () => {
   return (
     <>
       <BrowserRouter>
-      <NavBar />
+        <NavBar />
         <Routes>
           <Route path='/imoveis' element={<Imoveis />} />
           <Route path='/corretores' element={<PageCorretor />} />
@@ -31,6 +32,7 @@ const App = () => {
           <Route path='*' element={<Cadastrar />} />
           <Route path='/home' element={<Home />} />
         </Routes>
+        <Footer />
       </BrowserRouter>
     </>
   );

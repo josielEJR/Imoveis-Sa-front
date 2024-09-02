@@ -2,31 +2,31 @@ import styled from "styled-components";
 import { SwiperSlide } from "swiper/react";
 
 export const Wrapper = styled.div`
-    .swiper-pagination{
-        position: relative;
-        bottom: -5px;
 
-        @media (max-width: 1030px) {
-            display: none;
-        }
+`
+
+export const Container = styled.div`
+    display: flex;
+    justify-content: center;
+
+    .swiper-slide{
+        display: flex;
+        justify-content: center;
     }
 
-    .swiper-button-disabled{
-        opacity: 0 !important;
+    .swiper-button-prev, .swiper-button-next{
+        background-color: #f2f2f2;
+        width: 40px;
+        height: 40px;
+        border-radius: 40px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 
-    .swiper-button-prev, .swiper-button-next {
-        opacity: 50%;
-        background-color: white;
-        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
-        width: 30px;
-        height: 30px;
-        border-radius: 50%;
-        color: black;
-    }
-
-    .swiper-button-prev:after, .swiper-button-next:after {
+    .swiper-button-prev::after, .swiper-button-next::after{
         font-size: 20px;
+        color: black;
     }
 `
 
@@ -87,6 +87,8 @@ export const CardContent = styled.div`
 `
 
 export const CardContainer = styled(SwiperSlide)`
+    width: 450px;
+    margin: 20px;
     position: relative;
     height: 630px;
     display: flex !important;

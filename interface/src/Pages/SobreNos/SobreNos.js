@@ -1,4 +1,3 @@
-import Footer from '../../components/Footer'
 
 const SobreNos = () => {
     return (
@@ -63,7 +62,6 @@ const SobreNos = () => {
                     </div>
                 </section>
             </main>
-            <Footer />
         </>
     )
 }

@@ -5,7 +5,7 @@ import { Pagination, Navigation, Autoplay } from 'swiper/modules'
 import Card from '../Card'
 import Selectors from '../Selectors'
 
-import { Wrapper, Container, TitleSection, Title, CardsSection } from './style'
+import { Wrapper, Container, TitleSection, Title } from './style'
 import 'swiper/css';
 import 'swiper/css/pagination'
 import 'swiper/css/navigation'
@@ -121,7 +121,6 @@ const CardsContainer = () => {
                     ))}
                 </Swiper>
             </Container>
-
             {windowWidth > 1000 ? <Selectors selectedButton={selectedButton} handleButtonClick={handleButtonClick} /> : <></>}
         </Wrapper>
     )

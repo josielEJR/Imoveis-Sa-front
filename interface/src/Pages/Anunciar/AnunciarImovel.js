@@ -1,5 +1,4 @@
 import { useState } from 'react'
-import Footer from '../../components/Footer'
 
 const AnunciarImovel = () => {
 
@@ -170,7 +169,6 @@ const AnunciarImovel = () => {
                 </form>
 
             </main>
-            <Footer />
         </>
     )
 }
