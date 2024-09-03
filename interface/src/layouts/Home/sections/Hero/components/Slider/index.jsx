@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { ButtonPrice, Container, ImageContainer, TextArea, Direita, Esquerda, Icon, Overlay, Wrapper, ContainerInfo } from './style'
+import { ButtonPrice, Container, ImageContainer, TextArea, Direita, Esquerda, Overlay, Wrapper, ContainerInfo } from './style'
 import { useNavigate } from 'react-router-dom'
 import { FaAngleLeft, FaAngleRight } from "react-icons/fa6"
 import NavButtons from './components/NavButtons'
@@ -113,14 +113,10 @@ const Slider = ({ config }) => {
           onMouseLeave={() => setPaused(false)}
         />
         <Direita onClick={next} >
-          <Icon>
             <FaAngleRight size={20} />
-          </Icon>
         </Direita>
         <Esquerda onClick={prev} >
-          <Icon>
             <FaAngleLeft size={20} />
-          </Icon>
         </Esquerda>
         <ContainerInfo>
           <TextArea>

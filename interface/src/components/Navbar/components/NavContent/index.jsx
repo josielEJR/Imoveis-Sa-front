@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 
 import NavOption from './components/NavOption'
 import Anunciar from './components/Anunciar'
+import SobreNos from './components/SobreNos'
 import Login from './components/Login'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -49,7 +50,7 @@ const Content = () => {
 
                 <Anunciar />
 
-                <NavOption tipo={"Ajuda"} />
+                <SobreNos />
 
                 {displayLogin > 950 && <Login />}
             </NavContent>

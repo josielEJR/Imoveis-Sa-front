@@ -7,7 +7,7 @@ const Anunciar = () => {
         <>
             <ContentLink>
                 <NavLink to="/anunciarimovel">
-                    <span className='p-1'>Anunciar</span>
+                    Anunciar
                 </NavLink>
             </ContentLink>
         </>
