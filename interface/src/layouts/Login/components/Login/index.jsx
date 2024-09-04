@@ -14,6 +14,13 @@ const Login = () => {
     const [emailError, setEmailError] = useState(false);
     const [loginError, setLoginError] = useState('')
 
+    useEffect(() => {
+        if(window.location.href.includes("?error=")){
+            const filters = decodeURIComponent(window.location.href.replace("http://localhost:3000/login?error=", ""))
+            setLoginError(filters)
+        }
+    }, [])
+
     const toggleShowPassword = () => {
         setShowPassword(currentPass => !currentPass);
     }
@@ -173,6 +180,7 @@ const Login = () => {
             <Container>
                 <InnerWrapper>
                     <Title>LOGIN</Title>
+                    {loginError ? <LoginError>{loginError}</LoginError> : <></>}
                     <Input
                         type="email"
                         placeholder="E-mail"

@@ -40,7 +40,7 @@ const Card = ({ imagem, bairro, cidade, tipo, preco, area, quartos, banheiros, v
 
     const handleFavorite = () => {
         if (localStorage.length === 0) {
-            return window.location.href = "/login"
+            return window.location.href = "/login?error=Faça login para favoritar um imóvel"
         }
 
         if (favorited !== "true") {
