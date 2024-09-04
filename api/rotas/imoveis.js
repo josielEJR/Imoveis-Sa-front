@@ -313,7 +313,7 @@ router.get('/porConsultor', (req, res) => {
         res.json(results)
     })
 })
-// rota para busacar imagem por id do imovel 
+// rota para buscar imagem por id do imovel 
 router.get('/imagensimovel/:id', (req, res) => {
     const id = req.params.id.trim()
     const caminhoImagem = path.join(__dirname, '../imagens-imovel', `imovel${id}.jpg`)

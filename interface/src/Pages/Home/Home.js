@@ -10,9 +10,9 @@ const Home = () => {
   return (
     <Wrapper>
       <Hero />
-      <Highlights />
+      {/* <Highlights />
       <Depoimentos configDepoimentos={configDepoimentos} />
-      <Time />
+      <Time /> */}
     </Wrapper>
   )
 }
