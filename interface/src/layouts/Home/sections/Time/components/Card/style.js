@@ -68,14 +68,10 @@ export const InfoIcon = styled.div`
 `
 
 export const CardContent = styled.div`
-    color: #FFFFFF;
-    display: flex;
-    flex-direction: column;
-    gap: 45px;
-    top: 220px;
-    padding: 20px;
+    width: 100%;
+    height: 100%;
     position: absolute;
-    opacity: 0;
+    opacity: 0.5;
     z-index: 2;
     visibility: hidden;
     transition: opacity 0.3s ease, visibility 0.3s ease;
@@ -87,11 +83,12 @@ export const CardContent = styled.div`
 `
 
 export const CardContainer = styled(SwiperSlide)`
-    width: 450px;
-    margin: 20px;
+    width: 458px;
+    height: 629px;
+    margin: 55px 17px;
+    background-color: black;
     position: relative;
-    height: 630px;
-    display: flex !important;
+    overflow: hidden;
     cursor: pointer;
     transition: transform 1.2s ease-in-out, box-shadow 0.5s ease-in-out;
 

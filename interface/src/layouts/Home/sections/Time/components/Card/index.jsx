@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react'
 import { Container, CardContent, CardContainer, Article, Nome, Telefone, Email, Wrapper, Overlay, InfoIcon, Img, } from './style'
 import { LuBadgeInfo } from "react-icons/lu"
 import { Navigation, Pagination, Autoplay } from 'swiper/modules'
-import { Swiper } from 'swiper/react'
+import { Swiper, SwiperSlide } from 'swiper/react'
 
 import 'swiper/css'
 import 'swiper/css/pagination'
@@ -44,7 +44,7 @@ const Card = ({ configTime }) => {
   }, [])
 
   useEffect(() => {
-    if (window.outerWidth > 1400) {
+    if (window.outerWidth > 1500) {
       setCardsDisplay(3)
     } else if (window.outerWidth > 1000) {
       setCardsDisplay(2)
@@ -53,7 +53,7 @@ const Card = ({ configTime }) => {
     }
 
     function handleResize() {
-      if (window.outerWidth > 1400) {
+      if (window.outerWidth > 1500) {
         setCardsDisplay(3)
       } else if (window.outerWidth > 1000) {
         setCardsDisplay(2)
@@ -90,7 +90,7 @@ const Card = ({ configTime }) => {
           slidesPerView={cardsDisplay}
           onSwiper={setSwiperRef}
           onSlideChange={handleSlideChange}
-          spaceBetween={0}
+          spaceBetween={10}
           navigation
           autoplay={{
             delay: 3500,
@@ -98,19 +98,21 @@ const Card = ({ configTime }) => {
           }}
         >
           {configTime.map((item) => (
-            <CardContainer>
-              <Img src={item.image} alt={item.nome} />
-              <Overlay />
-              <InfoIcon>
-                <LuBadgeInfo size={30} color='white' />
-              </InfoIcon>
-              <CardContent>
-                <Nome>{item.nome}</Nome>
-                <Telefone>{item.telefone}</Telefone>
-                <Email>{item.email}</Email>
-                <Article>{item.sobre}</Article>
-              </CardContent>
-            </CardContainer>
+            <SwiperSlide>
+              <CardContainer>
+                <Img src={item.image} alt={item.nome} />
+                <Overlay />
+                <InfoIcon>
+                  <LuBadgeInfo size={30} color='white' />
+                </InfoIcon>
+                <CardContent>
+                  <Nome>{item.nome}</Nome>
+                  <Telefone>{item.telefone}</Telefone>
+                  <Email>{item.email}</Email>
+                  <Article>{item.sobre}</Article>
+                </CardContent>
+              </CardContainer>
+            </SwiperSlide>
           ))}
         </Swiper>
       </Container>

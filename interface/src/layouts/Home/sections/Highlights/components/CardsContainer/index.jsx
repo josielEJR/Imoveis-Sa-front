@@ -88,7 +88,6 @@ const CardsContainer = () => {
                 <Title>CONFIRA NOSSOS</Title>
                 <Title>DESTAQUES</Title>
             </TitleSection>
-
             <Container>
                 <Swiper
                     modules={[Navigation, Pagination, Autoplay]}
