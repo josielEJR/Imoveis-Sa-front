@@ -1,24 +1,39 @@
-import styled, { keyframes } from "styled-components";
+import styled from "styled-components";
+import { SwiperSlide } from "swiper/react";
 
 export const Wrapper = styled.div`
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    position: relative;
+    .swiper-pagination{
+        position: relative;
+        bottom: -5px;
+
+        @media (max-width: 1030px) {
+            display: none;
+        }
+    }
+
+    .swiper-button-disabled{
+        opacity: 0 !important;
+    }
+
+    .swiper-button-prev, .swiper-button-next {
+        opacity: 50%;
+        background-color: white;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        color: black;
+    }
+
+    .swiper-button-prev:after, .swiper-button-next:after {
+        font-size: 20px;
+    }
 `
 
-export const Container = styled.div`
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
+export const Img = styled.img`
     width: 100%;
-    gap: 20px;
-    padding: 40px;
-
-    @media (min-width: 1575px) {
-        gap: 50px;
-        padding  : 0;
-    }
+    height: 100%;
+    object-fit: cover;
 `
 
 export const Overlay = styled.div`
@@ -33,71 +48,59 @@ export const Overlay = styled.div`
     transition: opacity 0.3s ease, visibility 0.3s ease;
     background: #000000CC;
 
-    @media (max-width: 1540px) {
+    @media (max-width: 1030px) {
+        opacity: 1;
+        visibility: visible;
+    }
+`
+export const InfoIcon = styled.div`
+    position: absolute;
+    padding: 15px;
+    z-index: 3;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+
+    @media (max-width: 1030px) {
         opacity: 1;
         visibility: visible;
     }
 `
 
 export const CardContent = styled.div`
-    max-width: 460px;
     color: #FFFFFF;
     display: flex;
     flex-direction: column;
     gap: 45px;
-    margin-top: auto;
-    position: relative;
+    top: 220px;
+    padding: 20px;
+    position: absolute;
     opacity: 0;
     z-index: 2;
     visibility: hidden;
     transition: opacity 0.3s ease, visibility 0.3s ease;
 
-    @media (max-width: 1540px) {
+    @media (max-width: 1030px) {
         opacity: 1;
         visibility: visible;
     }
 `
 
-export const slideIn = keyframes`
-
-    0% {
-        transform: translateX(100%);
-        opacity: 0;
-    }
-
-    100% {
-        transform: translateX(0);
-        opacity: 1;
-    }
-`
- 
-export const CardContainer = styled.div`
+export const CardContainer = styled(SwiperSlide)`
     position: relative;
-    width: 100%;
-    max-width: 450px;
     height: 630px;
-    padding: 20px;
-    display: flex;
-    animation: ${slideIn} 0.5s ease-out;
-    transition: transform 0.5s, opacity 0.5s;
+    display: flex !important;
+    cursor: pointer;
+    transition: transform 1.2s ease-in-out, box-shadow 0.5s ease-in-out;
 
-    
-    &:hover ${CardContent}, &:hover ${Overlay} {
+    &:hover ${CardContent}, &:hover ${Overlay}, &:hover ${InfoIcon} {
         opacity: 1;
         visibility: visible;
     }
 
-    @media (min-width: 1000px) {
-        width: 100%;
-    }
-
-    @media (min-width: 1100px) {
-        width: 50%;
-    }
-
-    @media (min-width: 1540px) {
-        width: 33.33%;
-    }
+    &:hover {
+        transform: scale(1.05); 
+    }    
 `
 
 export const Article = styled.div`
@@ -112,7 +115,6 @@ export const Nome = styled.div`
     font-weight: 700;
     line-height: 43px;
     padding: 10px;
-    
 `
 
 export const Telefone = styled.div`
@@ -127,49 +129,4 @@ export const Email = styled.div`
     font-weight: 300;
     line-height: 16px;
     padding: 10px;
-`
-
-export const ContainerIcon = styled.div`
-    display: none;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    height: 100%;  
-    position: absolute;
-
-    @media (max-width: 1540px) {
-        display: flex;
-
-    }
-
-`
-
-export const Direita = styled.button`
-    display: none;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    color: #f2f2f2;
-    z-index: 2;
-    color: black;
-
-    @media (max-width: 1540px) {
-        display: flex;
-        justify-content: space-between;
-    }
-`
-
-export const Esquerda = styled.button`
-    display: none;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    color: #f2f2f2;
-    z-index: 2;
-    color: black;
-    
-    @media (max-width: 1540px) {
-        display: flex;
-        justify-content: space-between;
-    }
 `

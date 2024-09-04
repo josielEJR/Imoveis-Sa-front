@@ -1,28 +1,34 @@
 import React from 'react'
-import { Wrapper, Container, CardContent, CardContainer, Titulo, Sobre, Telefone, Whatsapp, Email } from './style'
+import { Wrapper, Container, CardContent, CardContainer, Titulo, Contato, Image } from './style'
+import { useLocation } from 'react-router-dom'
 
 const About = () => {
+    const Location = useLocation()
+    const { data } = Location.state || {}
     return (
         <Wrapper>
             <Container>
-                <CardContainer>
+                <CardContainer
+                    key={data.title}
+                >
+                    <Image src={data.image} alt="" />
                 </CardContainer>
                 <CardContent>
                     <Titulo>
                         Sobre Mim
                     </Titulo>
-                    <Sobre>
-                    Sed porttitor lectus nibh. Praesent sapien massa, convallis a pellentesque nec, egestas non nisi. Vivamus suscipit tortor eget felis porttitor volutpat. Vivamus suscipit tortor eget felis porttitor volutpat.
-                    </Sobre>
-                    <Telefone>
-                        Tel: (11) 3569-4523
-                    </Telefone>
-                    <Whatsapp>
-                    WhatsApp: (11) 9 5456-1789
-                    </Whatsapp>
-                    <Email>
-                    Email: agents@example.com
-                    </Email>
+                    <Contato>
+                        {data.sobre}
+                    </Contato>
+                    <Contato>
+                        Telefone: {data.telefone}
+                    </Contato>
+                    <Contato>
+                        WhatsApp: {data.whatsapp}
+                    </Contato>
+                    <Contato>
+                        Email: {data.email}
+                    </Contato>
                 </CardContent>
             </Container>
         </Wrapper>

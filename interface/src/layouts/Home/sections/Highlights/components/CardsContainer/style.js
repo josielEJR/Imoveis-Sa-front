@@ -6,13 +6,26 @@ export const Container = styled.div`
     width: 90%;
     margin: auto;
     display: flex;
-    flex-wrap: wrap;
-    overflow: scroll;
-    overflow-y: hidden;
-    scroll-behavior: smooth;
+    justify-content: center;
 
-    &::-webkit-scrollbar {
-        -webkit-appearance: none;
+    .swiper-slide{
+        display: flex;
+        justify-content: center;
+    }
+
+    .swiper-button-prev, .swiper-button-next{
+        background-color: #f2f2f2;
+        width: 40px;
+        height: 40px;
+        border-radius: 40px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .swiper-button-prev::after, .swiper-button-next::after{
+        font-size: 20px;
+        color: black;
     }
 `
 
@@ -26,8 +39,8 @@ export const Title = styled.div`
     font-weight: 700;
     height: 50px;
 
-    @media (max-width: 480px){
-        margin-top: 40px;
+    @media (max-width: 482px){
+        height: unset;
     }
 `
 
@@ -35,43 +48,4 @@ export const CardsSection = styled.div`
     display: flex;
     justify-content: center;
     margin: auto;
-`
-
-export const SelectorSection = styled.div`
-    width: 100%;
-`
-
-export const Selectors = styled.div`
-    width: 175px;
-    height: 21px;
-    margin: auto;
-    display: flex;
-    justify-content: center;
-
-    @media (max-width: 1100px){
-        width: 270px;
-    }
-
-    @media (max-width: 950px){
-        display: none;
-    }
-`
-
-const growSelector = keyframes`
-    0% {flex-grow: 0}
-    100% {flex-grow: 1} 
-`
-
-const shrinkSelector = keyframes`
-    0% {flex-grow: 1}
-    100% {flex-grow: 0}
-`
-
-export const IndexSelector = styled.div`
-    width: 35px;
-    margin: 0 6px;
-    background-color: ${props => props.grow === "true" ? "#454545" : "#000000"};
-    flex-grow: ${props => props.grow === "true" ? 1 : 0};
-    animation: ${props => props.grow === "true" ? growSelector : shrinkSelector} 0.6s;
-    cursor: pointer;
 `

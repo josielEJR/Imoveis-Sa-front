@@ -18,6 +18,8 @@ export const ContainerFiltro = styled.div`
     position: relative;
     top: -100px;
     gap: 32px;
+    justify-content: center; 
+    
     
     @media (max-width: 1280px){
         gap: 10px;
@@ -26,6 +28,7 @@ export const ContainerFiltro = styled.div`
     @media (max-width: 650px) {
         height: 300px;
         display: grid;
+        justify-content: normal; 
     }
 `
 
@@ -33,19 +36,21 @@ export const ContainerInput = styled.div`
     width: 100%;
     display: flex;
     gap: 32px;
-
+    
+    
     @media (max-width: 1280px){
         gap: 10px;
     }
+
     @media (max-width: 950px){
         gap: 10px;
     }
+
     @media (max-width: 650px){
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         gap: 20px;
     }
-
 `
 
 export const Button = styled.button`
@@ -53,8 +58,8 @@ export const Button = styled.button`
     background-color: #212121;
     display: flex;
     color: #FFFFFF;
-    ${({ error }) => 
-        error && 
+    ${({ error }) =>
+        error &&
         css`
         border: 2px solid red; 
     `}
@@ -159,8 +164,7 @@ export const ListaCompra = styled.ul`
     z-index: 1;
 
     @media (max-width: 1280px){
-        width: 250px;
-        
+        width: 250px;   
     }
 
     @media (max-width: 950px){
@@ -266,10 +270,10 @@ export const ErroText = styled.p`
     color: red;
     font-size: large;
 
-    @media (max-width: 450px ) {
-        top: 58%;
-        padding-left: 30px;
+    @media (max-width: 650px ) {
+        top: 55%;
         font-weight: 700;
         font-size: 18px;
+        left: 20%; 
     }
 `

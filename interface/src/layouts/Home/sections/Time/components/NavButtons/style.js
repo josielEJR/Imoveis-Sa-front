@@ -15,6 +15,11 @@ const shrinkSelector = keyframes`
 export const WrapperNavButton = styled.div`
     width: 100%;
     height: 20px;
+    margin-top: 30px;
+    
+    @media (max-width: 1030px) {
+        display: none;
+    }
 `
 
 export const ContainerNavButton = styled.div`
@@ -22,7 +27,6 @@ export const ContainerNavButton = styled.div`
     width: 200px;
     height: 100%;
     margin: auto;
-
 `
 
 export const NavButton = styled.button`

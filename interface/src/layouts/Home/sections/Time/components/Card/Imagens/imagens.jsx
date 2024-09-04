@@ -5,7 +5,9 @@ const configTime = [
       nome:'Roberto',
       sobre:'Especialista em marketing de conteúdo, com paixão por storytelling e criação de conteúdo de alta qualidade.',
       email:'otrebor@gmail.com',
-      telefone:'(11) 95348-6834',
+      whatsapp:'(11) 95348-6834',
+      telefone: '(11) 3569-4523',
+      consultorid:'1'
     },
     {
       title: 'image2' ,
@@ -13,7 +15,9 @@ const configTime = [
       nome:'José',
       sobre:'Especialista em transformação digital, auxiliando empresas a otimizarem seus processos e adotarem novas tecnologias',
       email:'esoj@gmail.com',
-      telefone:'(11) 94869-5738',
+      whatsapp:'(11) 94869-5738',
+      telefone: '(11) 2545-9687',
+      consultorid:'2'
     },
     {
       title: 'image3' ,
@@ -21,23 +25,29 @@ const configTime = [
       nome:'Alana',
       sobre:'Especialista em gestão de talentos, auxiliando empresas a atrair, desenvolver e reter os melhores profissionais.',
       email:'anala@gmail.com',
-      telefone:'(11) 96789-6547',
+      whatsapp:'(11) 96789-6547',
+      telefone: '(11) 4589-7563',
+      consultorid:'3'
     },
     {
       title: 'image4' ,
-      image:'https://cdn.discordapp.com/attachments/352175756278759425/1268645350290227270/Sem_Titulo-1.png?ex=66ad2d8d&is=66abdc0d&hm=83174fb3f22896eb2bff4e3d9f2020febb1eb06d58ea76b09305085ca320ae56&',
+      image:'https://uploaddeimagens.com.br/images/004/830/941/original/Sem_Titulo-1.png?1724355495',
       nome:'Milton',
       sobre:'Especialista em gestão de riscos, auxiliando empresas a identificar e mitigar riscos em suas operações.',
       email:'notlim@gmail.com',
-      telefone:'(11) 93654-7826',
+      whatsapp:'(11) 93654-7826',
+      telefone: '(11) 3654-8978',
+      consultorid:'4'
     },
     {
       title: 'image5' ,
       image:'https://img.freepik.com/fotos-premium/jovem-mulher-latina-tirando-selfies-em-pe-ao-ar-livre-na-rua-conceito-urbano_58466-16058.jpg?size=626&ext=jpg&ga=GA1.1.370512319.1722003464&semt=sph',
       nome:'Larissa',
-      sobre:'Consultora de recursos humanos com foco em desenvolvimento de pessoas e cultura organizacional. Possui experiência em recrutamento, seleção, treinamento e avaliação de desempenho.',
+      sobre:'Consultora de recursos humanos com foco em desenvolvimento de pessoas e cultura organizacional.',
       email:'assiral@gmail.com',
-      telefone:'(21) 98586-7432',
+      whatsapp:'(21) 98586-7432',
+      telefone: '(21) 4563-2675',
+      consultorid:'5'
     }
   ]
   

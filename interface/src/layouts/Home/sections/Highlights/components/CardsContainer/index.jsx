@@ -1,14 +1,22 @@
 import { useState, useEffect } from 'react'
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Pagination, Navigation, Autoplay } from 'swiper/modules'
 
 import Card from '../Card'
+import Selectors from '../Selectors'
 
-import { Wrapper, Container, TitleSection, Title, CardsSection, SelectorSection, Selectors, IndexSelector } from './style'
+import { Wrapper, Container, TitleSection, Title, CardsSection } from './style'
+import 'swiper/css';
+import 'swiper/css/pagination'
+import 'swiper/css/navigation'
 
 const CardsContainer = () => {
 
-    const [selected, setSelected] = useState(0)
-    const [pageLayout, setPageLayout] = useState(window.outerWidth)
     const [products, setProducts] = useState([])
+    const [cardsDisplay, setCardsDisplay] = useState(1)
+    const [windowWidth, setWindowWidth] = useState(window.outerWidth)
+    const [selectedButton, setSelectedButton] = useState(0)
+    const [swiperRef, setSwiperRef] = useState(null)
 
     useEffect(() => {
         const myHeaders = new Headers();
@@ -36,8 +44,24 @@ const CardsContainer = () => {
     }, [])
 
     useEffect(() => {
+        if (window.outerWidth > 1400) {
+            setCardsDisplay(3)
+        } else if (window.outerWidth > 1000) {
+            setCardsDisplay(2)
+        } else {
+            setCardsDisplay(1)
+        }
+
         function handleResize() {
-            setPageLayout(window.outerWidth)
+            if (window.outerWidth > 1400) {
+                setCardsDisplay(3)
+            } else if (window.outerWidth > 1000) {
+                setCardsDisplay(2)
+            } else {
+                setCardsDisplay(1)
+            }
+
+            setWindowWidth(window.outerWidth)
         }
 
         window.addEventListener('resize', handleResize)
@@ -47,62 +71,15 @@ const CardsContainer = () => {
         }
     }, [])
 
-    function scrollToPercentage(percentage) {
-        const container = document.getElementById('scrollContainer');
-        const contentWidth = container.scrollWidth;
-        const containerWidth = container.clientWidth;
-        const scrollAmount = (contentWidth - containerWidth) * (percentage / 100);
-        container.scrollLeft = scrollAmount;
+    const handleButtonClick = (buttonIndex) => {
+        setSelectedButton(buttonIndex)
+        if(swiperRef){
+            swiperRef.slideTo(buttonIndex)
+        }
     }
 
-    const selector = () => {
-        if (pageLayout <= 1100) {
-            return <Selectors>
-                {
-                    products.map((elem, index) => (
-                        <IndexSelector
-                            onClick={() => {
-                                setSelected(index)
-                                scrollToPercentage(index * 25)
-                            }}
-                            grow={selected === index ? "true" : "false"}
-                        />
-                    ))
-                }
-            </Selectors>
-        } else if (pageLayout > 1100) {
-            return <Selectors>
-                {
-                    products && products.length > 3 ?
-                        <>
-                            <IndexSelector
-                                onClick={() => {
-                                    setSelected(0)
-                                    scrollToPercentage(0)
-                                }}
-                                grow={selected === 0 ? "true" : "false"}
-                            />
-                            <IndexSelector
-                                onClick={() => {
-                                    setSelected(1)
-                                    scrollToPercentage(50)
-                                }}
-                                grow={selected === 1 ? "true" : "false"}
-                            />
-                        </> : ''
-                }
-                {
-                    products && products.length > 4 ?
-                        <IndexSelector
-                            onClick={() => {
-                                setSelected(2)
-                                scrollToPercentage(100)
-                            }}
-                            grow={selected === 2 ? "true" : "false"}
-                        /> : ''
-                }
-            </Selectors>
-        }
+    const handleSlideChange = (swiper) => {
+        setSelectedButton(swiper.activeIndex)
     }
 
     return (
@@ -111,11 +88,23 @@ const CardsContainer = () => {
                 <Title>CONFIRA NOSSOS</Title>
                 <Title>DESTAQUES</Title>
             </TitleSection>
-            <Container id='scrollContainer'>
-                <CardsSection>
-                    {products && products.length > 0 ?
-                        products.map((prod, index) => {
-                            return <Card
+
+            <Container>
+                <Swiper
+                    modules={[Navigation, Pagination, Autoplay]}
+                    slidesPerView={cardsDisplay}
+                    onSwiper={setSwiperRef}
+                    onSlideChange={handleSlideChange}
+                    spaceBetween={0}
+                    navigation
+                    autoplay={{
+                        delay: 3500,
+                        disableOnInteraction: false
+                    }}
+                >
+                    {products.map((prod, index) => (
+                        <SwiperSlide>
+                            <Card
                                 key={index}
                                 imagem={"https://queroficarrico.com/blog/wp-content/uploads/2017/06/como_investir_em_imoveis.jpg"}
                                 bairro={prod.bairro.toUpperCase()}
@@ -128,13 +117,12 @@ const CardsContainer = () => {
                                 vagas={prod.vagas}
                                 id={prod.imoveisID}
                             />
-                        }) : ''
-                    }
-                </CardsSection>
+                        </SwiperSlide>
+                    ))}
+                </Swiper>
             </Container>
-            <SelectorSection>
-                {selector()}
-            </SelectorSection>
+
+            {windowWidth > 1000 ? <Selectors selectedButton={selectedButton} handleButtonClick={handleButtonClick} /> : <></>}
         </Wrapper>
     )
 }

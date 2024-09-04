@@ -5,7 +5,7 @@ import { useState, useEffect } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faAngleRight } from '@fortawesome/free-solid-svg-icons'
 
-import { Dropdown, Title, SideDropdown, DropdownContent, Li, Rotate } from '../../style'
+import { Dropdown, Title, SideDropdown, DropdownContent, Ul, Li, Rotate } from '../../style'
 
 const Itens = ({ lista, redirect, right }) => {
 
@@ -41,13 +41,13 @@ const Itens = ({ lista, redirect, right }) => {
                 <Dropdown onMouseLeave={handleMouseLeave}>
 
                     <Title>Cidade</Title>
-                    <ul>
+                    <Ul>
                         {cidades.map(elem => (
                             <Li key={elem.cidade} onMouseEnter={() => handleMouseEnter(elem.cidade)} weight={selected === elem.cidade ? "bold" : ''}>
                                 <button>{elem.cidade}</button> {selected === elem.cidade ? <Rotate><FontAwesomeIcon icon={faAngleRight} /></Rotate> : ''}
                             </Li>
                         ))}
-                    </ul>
+                    </Ul>
 
 
                     {selected &&
@@ -55,7 +55,7 @@ const Itens = ({ lista, redirect, right }) => {
                             <DropdownContent>
                                 <Title>Tipo de imóvel</Title>
 
-                                <ul>
+                                <Ul>
                                     <Li>
                                         <a href={`/imoveis?cidade=${selected}&tipo=casa&disponibilidade=${redirect}`}>Casas</a>
                                     </Li>
@@ -65,7 +65,7 @@ const Itens = ({ lista, redirect, right }) => {
                                     <Li>
                                         <a href={`/imoveis?cidade=${selected}&disponibilidade=${redirect}`}>Todos</a>
                                     </Li>
-                                </ul>
+                                </Ul>
                             </DropdownContent>
                         </SideDropdown>
                     }
@@ -76,7 +76,7 @@ const Itens = ({ lista, redirect, right }) => {
                 <Dropdown>
                     <Title>Ajuda</Title>
 
-                    <ul>
+                    <Ul>
                         <Li key="duvidasfrequentes">
                             <Link
                                 to={`/duvidasfrequentes`}
@@ -87,7 +87,7 @@ const Itens = ({ lista, redirect, right }) => {
                                 to={`/sobrenos`}
                             >Sobre nós</Link>
                         </Li>
-                    </ul>
+                    </Ul>
                 </Dropdown>
             )
         }
