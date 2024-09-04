@@ -1,157 +1,92 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 
-import { CardContent, CardContainer, Article, Nome, Telefone, Email, Wrapper, Container, Overlay, Direita, Esquerda, Icon, ContainerIcon, } from './style'
-import { FaAngleLeft, FaAngleRight } from "react-icons/fa6"
-import NavButtons from '../../../Time/components/NavButtons/index'
+import { CardContent, CardContainer, Article, Nome, Telefone, Email, Wrapper, Overlay, InfoIcon, Img, } from './style'
 import { useNavigate } from 'react-router-dom'
+import { LuBadgeInfo } from "react-icons/lu"
+import { Virtual, Navigation, Pagination, Autoplay } from 'swiper/modules'
+import { Swiper } from 'swiper/react'
+import 'swiper/css'
+import 'swiper/css/pagination'
+import 'swiper/css/navigation'
+import NavButtons from '../NavButtons'
 
 const Card = ({ configTime }) => {
-    const [imageIndex, setImageIndex] = useState(0)
-    const [visibleCards, setVisibleCards] = useState(1)
-    const [touchStart, setTouchStart] = useState(0)
-    const [touchEnd, setTouchEnd] = useState(0)
-    const [touchStartTime, setTouchStartTime] = useState(0)
-    const [paused] = useState(false)
-    const navigate = useNavigate()
+  const navigate = useNavigate()
+  const [selectedButton, setSelectedButton] = useState(1)
+  const [swiperRef, setSwiperRef] = useState(null)
 
-    const handleButtonClick = (buttonIndex) => {
-        setImageIndex(buttonIndex - 1)
+  const handleCardClick = (item) => {
+    navigate('/corretores', { state: { data: item } })
+    console.log('navigate')
+    window.scrollTo(0, 0)
+  }
+
+  const handleButtonClick = (buttonIndex) => {
+    setSelectedButton(buttonIndex);
+    if (swiperRef) {
+      swiperRef.slideTo(buttonIndex - 1);
     }
+  }
 
-    const handleTouchStart = (e) => {
-        setTouchStart(e.touches[0].clientX)
-        setTouchStartTime(new Date().getTime())
-    }
+  const handleSlideChange = (swiper) => {
+    setSelectedButton(swiper.activeIndex + 1)
+  }
 
-    const handleTouchMove = (e) => {
-        setTouchEnd(e.touches[0].clientX)
-    }
+  return (
+    <Wrapper>
+      <Swiper
+        onSwiper={setSwiperRef}
+        onSlideChange={handleSlideChange}
+        spaceBetween={30}
+        slidesPerView={1}
+        navigation={true}
+        autoplay={{
+          delay: 2500,
+          disableOnInteraction: false,
+        }}
+        breakpoints={{
+          500: {
+            slidesPerView: 1,
+            spaceBetween: 40,
 
-    const handleCardClick = (item) => {
-        console.log('Navigating with data:', item)
-        navigate('/consultores', { state: { data: item } })
-    }
+          },
+          640: {
+            slidesPerView: 2,
+            spaceBetween: 20,
 
-    const handleTouchEnd = () => {
-        const touchEndTime = new Date().getTime()
-        const touchDuration = touchEndTime - touchStartTime
-
-        if (touchDuration > 200) {
-            if (touchStart - touchEnd > 10) {
-                next()
-            }
-
-            if (touchStart - touchEnd < -10) {
-                prev()
-            }
-
-        }
-        setTouchStart(0)
-        setTouchEnd(0)
-        setTouchStartTime(0)
-    }
-
-    const next = () => {
-        setImageIndex((prevIndex) => {
-            const maxIndex = visibleCards === 3 ? 3 : (visibleCards === 2 ? 4 : 5)
-            const nextIndex = (prevIndex + 1) % configTime.length;
-            if (nextIndex >= maxIndex) {
-                return 0
-            }
-            return nextIndex;
-        })
-    }
-
-    const prev = () => {
-        setImageIndex((prevIndex) => (prevIndex - 1 + configTime.length) % configTime.length)
-    }
-
-    useEffect(() => {
-        const updateCardCount = () => {
-            if (window.innerWidth >= 1540) {
-                setVisibleCards(3)
-            } else if (window.innerWidth >= 1100) {
-                setVisibleCards(2)
-            } else {
-                setVisibleCards(1)
-            }
-        }
-
-        window.addEventListener('resize', updateCardCount)
-        updateCardCount()
-
-        return () => window.removeEventListener('resize', updateCardCount)
-    }, [])
-
-    useEffect(() => {
-        const interval = setInterval(() => {
-            if (!paused) {
-                next()
-            }
-        }, 6000)
-        return () => clearInterval(interval)
-    }, [paused, visibleCards])
-
-    const getCardsToRender = () => {
-        if (imageIndex + visibleCards <= configTime.length) {
-            return configTime.slice(imageIndex, imageIndex + visibleCards)
-        } else {
-            return [...configTime.slice(imageIndex), ...configTime.slice(0, (imageIndex + visibleCards) % configTime.length)]
-        }
-    }
-
-    return (
-        <Wrapper>
-            <Container
-                onTouchStart={handleTouchStart}
-                onTouchMove={handleTouchMove}
-                onTouchEnd={handleTouchEnd}
-            >
-                {getCardsToRender().map((item, index) => (
-                    <CardContainer
-                        key={index}
-                        style={{
-                            backgroundImage: `url(${item.image})`,
-                            backgroundSize: 'cover',
-                            backgroundPosition: 'center',
-                        }}
-                        index={index}
-                        currentIndex={imageIndex}
-                        onClick={() => handleCardClick(item)}
-                    >
-                        <Overlay />
-                        <CardContent>
-                            <Nome>
-                                {item.nome}
-                            </Nome>
-                            <Article>
-                                {item.sobre}
-                            </Article>
-                            <Telefone>
-                                Tel: {item.telefone}
-                            </Telefone>
-                            <Email>
-                                E-mail: {item.email}
-                            </Email>
-                        </CardContent>
-                    </CardContainer>
-                ))}
-                {visibleCards === 3 && (
-                    <NavButtons 
-                    selectedButton={(imageIndex % configTime.length) + 1} 
-                    handleButtonClick={handleButtonClick} />
-                )}
-            </Container>
-            <ContainerIcon>
-                <Direita onClick={prev} >
-                    <FaAngleLeft size={25} />
-                </Direita>
-                <Esquerda onClick={next} >
-                    <FaAngleRight size={25} />
-                </Esquerda>
-            </ContainerIcon>
-        </Wrapper>
-    )
+          },
+          1030: {
+            slidesPerView: 3,
+            spaceBetween: 30,
+          }
+        }}
+        modules={[Virtual, Navigation, Pagination, Autoplay]}
+        className="mySwiper"
+      >
+        {configTime.map((item) => (
+          <CardContainer
+            onClick={() => handleCardClick(item)}
+          >
+            <Img src={item.image} alt={item.nome} />
+            <Overlay />
+            <InfoIcon>
+              <LuBadgeInfo size={30} color='white' />
+            </InfoIcon>
+            <CardContent>
+              <Nome>{item.nome}</Nome>
+              <Telefone>{item.telefone}</Telefone>
+              <Email>{item.email}</Email>
+              <Article>{item.sobre}</Article>
+            </CardContent>
+          </CardContainer>
+        ))}
+      </Swiper>
+      <NavButtons
+        selectedButton={selectedButton}
+        handleButtonClick={handleButtonClick}
+      />
+    </Wrapper>
+  )
 }
 
 export default Card

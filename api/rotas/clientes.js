@@ -2,6 +2,7 @@ const express = require('express')
 const router = express.Router()
 const connection = require('../database')
 const jwt = require('jsonwebtoken')
+const path = require('path')
 
 // conexão a tabela "clientes"
 router.get('/', (req, res) => {
@@ -75,4 +76,19 @@ router.get('/busca', (req, res) => {
         res.status(200).json(results)
     })
 })
+// rota para buscar foto por id 
+router.get('/imagensclientes/:id', (req, res) => {
+    const id = req.params.id.trim()
+    const caminhoImagem = path.join(__dirname, '../imagens', `foto${id}.jpg`)
+    
+    console.log(caminhoImagem)
+    
+    res.sendFile(caminhoImagem, (err) => {
+        if (err) {
+            console.error("Erro ao enviar o arquivo:", err)
+            res.status(404).send('Imagem não encontrada')
+        }
+    })
+})
+
 module.exports = router

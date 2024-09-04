@@ -5,7 +5,7 @@ import { NavLink } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCircleUser, faHeart, faBell } from '@fortawesome/free-regular-svg-icons'
 
-import { ContentLink, Dropdown, Li } from '../../style'
+import { ContentLink, Dropdown, Ul, Li, Button } from '../../style'
 import { LoginButton, LoginLabel } from './style'
 
 const Login = () => {
@@ -19,13 +19,13 @@ const Login = () => {
     const handleLogin = () => {
         if (localStorage.length === 0 && window.outerWidth > 950) {
             return (
-                <NavLink onClick={handleClick}>
+                <NavLink to={'login'} onClick={handleClick}>
                     <FontAwesomeIcon icon={faCircleUser} /> Entrar
                 </NavLink>
             )
         } else if (localStorage.length !== 0) {
             return (
-                <button id='usuario'><FontAwesomeIcon icon={faCircleUser} style={{ fill: "white" }} /> {localStorage.currentUserNome}</button>
+                <Button id='usuario'><FontAwesomeIcon icon={faCircleUser} style={{ fill: "white" }} /> {localStorage.currentUserNome}</Button>
             )
         }
     }
@@ -34,7 +34,7 @@ const Login = () => {
         if (dropdownVisible || window.outerWidth <= 950) {
             return (
                 <Dropdown margin={-113}>
-                    <ul>
+                    <Ul>
                         {localStorage.length === 0 &&
                             <>
                                 <LoginLabel>Entre para ver seus favoritos, visitas e propostas</LoginLabel>
@@ -66,15 +66,15 @@ const Login = () => {
                         </Li>
                         {localStorage.length > 0 &&
                             <Li>
-                                <button onClick={() => {
+                                <Button onClick={() => {
                                     localStorage.clear()
                                     setTimeout(() => {
                                         window.location.reload()
                                     }, 200)
-                                }}>Sair da conta</button>
+                                }}>Sair da conta</Button>
                             </Li>
                         }
-                    </ul>
+                    </Ul>
                 </Dropdown>
             )
         }
