@@ -29,7 +29,7 @@ export const CloseMenuButton = styled.div`
         height: 42px;
         text-align: center;
         line-height: 42px;
-        margin: 28px 20px 28px 20px;
+        margin: 28px 20px;
         font-size: 40px;
         color: #EEEEEE;
         animation: ${spin} 1s;
@@ -88,7 +88,7 @@ export const Text = styled.span``
 export const Dropdown = styled.div`
     position: absolute;
     width: 263px;
-    height: 400px;
+    height: 420px;
     margin-left: ${props => `${props.margin || 0}px`};
     font-size: 18px;
     background-color: #070707;
@@ -107,7 +107,7 @@ export const Dropdown = styled.div`
 export const SideDropdown = styled.div`
     position: absolute;
     width: 280px;
-    height: 400px;
+    height: 420px;
     right: ${props => props.right + "px"};
     top: 0;
     font-size: 18px;
@@ -170,9 +170,10 @@ export const Title = styled.div`
 export const Ul = styled.ul``
 
 export const Li = styled.li`
+    width: 96px;
+    height: 30px;
     padding-top: 7px;
     padding-bottom: 7px;
-    font-weight: ${props => props.weight};
     display: flex;
     justify-content: space-between;
     &:hover {
