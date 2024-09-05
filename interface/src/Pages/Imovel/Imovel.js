@@ -1,5 +1,3 @@
-import ImovelPrincipal from '../../components/ImovelPrincipal.js'
-import Footer from '../../components/Footer.js'
 import ImovelLayout from '../../layouts/Imovel/index.jsx'
 
 const Imovel = () => {
