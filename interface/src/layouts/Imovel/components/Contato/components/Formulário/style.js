@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 
 export const Wrapper = styled.div`
    width: 100%;
@@ -52,6 +52,18 @@ export const TextArea = styled.textarea`
     resize: none;
 `
 
+const clickAnimation = keyframes`
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(0.9);
+  }
+  100% {
+    transform: scale(1);
+  }
+`
+
 export const Button = styled.button`
     width: 100%;
     max-width: 250px;
@@ -61,9 +73,6 @@ export const Button = styled.button`
     color: white;
     font-size: 22px;
     cursor: pointer;
-    transition: background-color 0.3s;
+    animation: ${({ animate }) => animate ? clickAnimation: 'none'} 0.3s ease-in-out;
 
-    &:hover {
-        background-color: #0056b3;
-    }
 `

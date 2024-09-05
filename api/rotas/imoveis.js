@@ -273,16 +273,22 @@ router.get('/cidadesaluguel', (req, res) => {
 })
 // rota para pegar o imóvel por id 
 router.get('/buscarimovelid', (req, res) => {
-    const imovelID = req.query.id
+    const imovelID = req.query.id;
 
-    let sqlQuery = 'SELECT * FROM imoveis WHERE imoveisID = ?'
+    let sqlQuery = `
+        SELECT i.*, img.url 
+        FROM imoveis i
+        LEFT JOIN imagens img ON i.imoveisID = img.imoveisID
+        WHERE i.imoveisID = ?
+    `;
+
     connection.query(sqlQuery, [imovelID], (err, results) => {
         if (err) {
-            console.error('Erro ao buscar imóvel por id:', err)
-            return res.status(500).json({ error: 'Erro ao buscar imóveis por id ' })
+            console.error('Erro ao buscar imóvel por id:', err);
+            return res.status(500).json({ error: 'Erro ao buscar imóvel por id' });
         }
-        res.json(results)
-    })
+        res.json(results);
+    });
 })
 
 router.get('/ordenarimovelqualidade', (req, res) => {

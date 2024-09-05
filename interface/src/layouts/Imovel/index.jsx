@@ -3,6 +3,7 @@ import DescriçãoLayout from './components/Descrição'
 import { Wrapper } from './style'
 import LocalizaçãoLayout from './components/Localização'
 import ContatoLayout from './components/Contato'
+import ImovelInfo from './components/ImovelInfo'
 
 const ImovelLayout = ({ imovelID }) => {
   const [consultorId, setConsultorId] = useState(null)
@@ -30,9 +31,10 @@ const ImovelLayout = ({ imovelID }) => {
 
   return (
     <Wrapper>
+      <ImovelInfo imovelID={imovelID}  />
       {/* <DescriçãoLayout imovelID={imovelID}/> */}
       {/* <LocalizaçãoLayout imovelID={imovelID} />  */}
-      <ContatoLayout consultorId={consultorId} />
+      {/* <ContatoLayout consultorId={consultorId} /> */}
     </Wrapper>
   )
 }
