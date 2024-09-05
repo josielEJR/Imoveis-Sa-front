@@ -102,10 +102,10 @@ const Card = ({ configTime }) => {
               <CardContainer>
                 <Img src={item.image} alt={item.nome} />
                 <Overlay />
+                <CardContent>
                 <InfoIcon>
                   <LuBadgeInfo size={30} color='white' />
                 </InfoIcon>
-                <CardContent>
                   <Nome>{item.nome}</Nome>
                   <Telefone>{item.telefone}</Telefone>
                   <Email>{item.email}</Email>

@@ -35,7 +35,7 @@ export const TitleSection = styled.div`
 `
 
 export const Title = styled.div`
-    font-size: 32px;
+    font-size: 36px;
     font-weight: 700;
     height: 50px;
 

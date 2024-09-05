@@ -52,7 +52,7 @@ export const ContainerTitle = styled.div`
 
 export const Title = styled.div`
     font-weight: 700;
-    font-size: 32px;
+    font-size: 36px;
 
     @media (max-width: 450px){
         font-size: 25px;
