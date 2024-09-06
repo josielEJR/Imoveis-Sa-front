@@ -18,9 +18,9 @@ export const Container = styled.div`
 `
 
 export const Title = styled.div`
-    font-size: 32px;
+    font-size: 15px;
     font-weight: 600;
-    line-height: 38px;
+    line-height: 18px;
     margin-bottom: 50px;
     display: flex;
     align-items: center;
@@ -32,6 +32,11 @@ export const Title = styled.div`
     height: 60px;
     background-color: #454545;
     margin-right: 10px;
+    }
+
+    @media (min-width: 600px){
+        font-size: 32px;
+        line-height: 38px;
     }
 `
 

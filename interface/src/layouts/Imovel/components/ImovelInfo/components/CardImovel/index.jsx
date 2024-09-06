@@ -10,6 +10,7 @@ import { Navigation, Pagination, Autoplay } from 'swiper/modules'
 
 const CardImovel = ({ imovelID }) => {
   const [prodInfo, setProdInfo] = useState({})
+  const [imagens, setImagens] = useState([])
 
   useEffect(() => {
     const requestOptions = {
@@ -18,33 +19,34 @@ const CardImovel = ({ imovelID }) => {
     }
 
     fetch(`http://localhost:3001/imoveis/buscarimovelid?id=${imovelID}`, requestOptions)
-      .then((response) => response.text())
-      .then((result) => JSON.parse(result))
+      .then((response) => response.json())
       .then((produto) => {
-        console.log(produto[0])
-        return setProdInfo(produto[0])
+        setProdInfo(produto[0])
+        if (produto[0]?.imagens) {
+          setImagens(produto[0].imagens.split(','))
+        }
       })
       .catch((error) => console.error(error))
   }, [imovelID])
 
   return (
     <Wrapper>
-      <CardContainer>
         <Swiper
           spaceBetween={10}
           slidesPerView={1}
-          loop={true} // Infinite loop
-          autoplay={{ delay: 3000 }} // Autoplay opcional
-          navigation={true} // Setas de navegação
-          pagination={{ clickable: true }} // Paginação
-          modules={[Navigation, Pagination, Autoplay]} // Módulos Swiper
-          style={{width: '700px', height: '630px' }} // Tamanho do Swiper
+          loop={true} 
+          autoplay={{ delay: 3000 }} 
+          navigation={true} 
+          pagination={{ clickable: true }} 
+          modules={[Navigation, Pagination, Autoplay]} 
+          
         >
-              <SwiperSlide >
-                <Image src={`http://localhost:3001/imoveis/imagensimovel/${prodInfo.imoveisID}`} />
-              </SwiperSlide>
+          {imagens.map((imagem, index) => (
+            <SwiperSlide key={index}>
+              <Image src={`http://localhost:3001/${imagem}`} alt={`Imagem ${index + 1}`} />
+            </SwiperSlide>
+          ))}
         </Swiper>
-      </CardContainer>
     </Wrapper>
   )
 }

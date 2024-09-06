@@ -276,19 +276,19 @@ router.get('/buscarimovelid', (req, res) => {
     const imovelID = req.query.id;
 
     let sqlQuery = `
-        SELECT i.*, img.url 
+        SELECT i.*, GROUP_CONCAT(img.url) as imagens 
         FROM imoveis i
         LEFT JOIN imagens img ON i.imoveisID = img.imoveisID
         WHERE i.imoveisID = ?
-    `;
-
+        GROUP BY i.imoveisID
+    `
     connection.query(sqlQuery, [imovelID], (err, results) => {
         if (err) {
             console.error('Erro ao buscar imóvel por id:', err);
-            return res.status(500).json({ error: 'Erro ao buscar imóvel por id' });
+            return res.status(500).json({ error: 'Erro ao buscar imóvel por id' })
         }
         res.json(results);
-    });
+    })
 })
 
 router.get('/ordenarimovelqualidade', (req, res) => {

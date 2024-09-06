@@ -7,8 +7,6 @@ CREATE TABLE IF NOT EXISTS imagens (
     FOREIGN KEY (imoveisID) REFERENCES imoveis(imoveisID) ON DELETE CASCADE
 );
 
-
-
 INSERT INTO imagens (imoveisID, url) VALUES 
 (1, 'imagens-imovel/imagem.jpg'),
 (1, 'imagens-imovel/imagem1.jpg');
