@@ -43,16 +43,15 @@ const Itens = ({ lista, redirect, right }) => {
                     <Ul>
                         {cidades.map((elem, index) => {
                             if (index < 7) {
-                                return <Li key={elem.cidade} onMouseEnter={() => handleMouseEnter(elem.cidade)}>
+                                return <Li key={elem.cidade} onMouseEnter={() => handleMouseEnter(elem.cidade)} onClick={() => handleMouseEnter(elem.cidade)}>
                                     <Button>{elem.cidade}</Button> {selected === elem.cidade ? <Rotate><FontAwesomeIcon icon={faAngleRight} /></Rotate> : ''}
                                 </Li>
                             }
                         })}
-                        <Li key={"exploraroutrascidades"} onMouseEnter={() => handleMouseEnter("")} style={{fontSize: "16px"}}>
-                            <Button>Explorar outras cidades</Button>
+                        <Li key={"exploraroutrascidades"} onMouseEnter={() => handleMouseEnter("")} onClick={() => handleMouseEnter("")} style={{ fontSize: "16px" }}>
+                            <Button onClick={() => window.location.href="/imoveis"}>Explorar outras cidades</Button>
                         </Li>
                     </Ul>
-
 
                     {selected &&
                         <SideDropdown right={right}>

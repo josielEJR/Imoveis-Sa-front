@@ -2,8 +2,9 @@ import { useState } from 'react'
 
 import { NavLink } from 'react-router-dom'
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCircleUser, faHeart, faBell, faEnvelope } from '@fortawesome/free-regular-svg-icons'
+import { FaRegUserCircle, FaBell } from "react-icons/fa";
+import { FaHouseChimney, FaHeart } from "react-icons/fa6";
+import { IoMdMail, IoIosLogOut } from "react-icons/io";
 
 import { ContentLink, Dropdown, Ul, Li, Button } from '../../style'
 import { LoginButton, LoginLabel } from './style'
@@ -20,13 +21,13 @@ const Login = () => {
         if (localStorage.length === 0 && window.outerWidth > 950) {
             return (
                 <NavLink to={'login'} onClick={handleClick}>
-                    <FontAwesomeIcon icon={faCircleUser} /> Entrar
+                    <Button><FaRegUserCircle /> Entrar</Button>
                 </NavLink>
             )
         } else if (localStorage.length !== 0) {
             return (
                 <Button id='usuario'>
-                    <FontAwesomeIcon icon={faCircleUser} style={{ fill: "white" }} /> {localStorage.currentUserNome}
+                    <FaRegUserCircle /> {localStorage.currentUserNome}
                 </Button>
             )
         }
@@ -36,7 +37,7 @@ const Login = () => {
         if (dropdownVisible || window.outerWidth <= 950) {
             if (!localStorage.token || !localStorage.token.includes("Bearer")) {
                 return (
-                    <Dropdown margin={-113}>
+                    <Dropdown margin={-93}>
                         <Ul>
                             {localStorage.length === 0 &&
                                 <>
@@ -50,21 +51,21 @@ const Login = () => {
                                 <NavLink
                                     to="/favoritos"
                                 >
-                                    <FontAwesomeIcon icon={faHeart} /> Imóveis favoritos
+                                    <FaHeart /> Imóveis favoritos
                                 </NavLink>
                             </Li>
                             <Li>
                                 <NavLink
                                     to="/alertas"
                                 >
-                                    <FontAwesomeIcon icon={faBell} /> Propostas enviadas
+                                    <FaBell /> Propostas enviadas
                                 </NavLink>
                             </Li>
                             <Li>
                                 <NavLink
                                     to="/propostas"
                                 >
-                                    <FontAwesomeIcon icon={faCircleUser} /> Visitas agendadas
+                                    <FaRegUserCircle /> Visitas agendadas
                                 </NavLink>
                             </Li>
                             {localStorage.length > 0 &&
@@ -82,27 +83,27 @@ const Login = () => {
                 )
             } else {
                 return (
-                    <Dropdown margin={-113}>
+                    <Dropdown margin={-93}>
                         <Ul>
                             <Li>
                                 <NavLink
-                                    to="/imoveispendentes"
+                                    to="/meusimoveis"
                                 >
-                                    <FontAwesomeIcon icon={faEnvelope} /> Imóveis pendentes à aprovação
+                                    <FaHouseChimney /> Meus Imoveis
                                 </NavLink>
                             </Li>
                             <Li>
                                 <NavLink
                                     to="/imoveispendentes"
                                 >
-                                    <FontAwesomeIcon icon={faEnvelope} /> Imóveis pendentes à aprovação
+                                    <IoMdMail /> Imóveis pendentes à aprovação
                                 </NavLink>
                             </Li>
                             <Li>
                                 <NavLink
                                     to="/solicitacoesvisita"
                                 >
-                                    <FontAwesomeIcon icon={faBell} /> Solicitações de agendas
+                                    <FaBell /> Solicitações de agendas
                                 </NavLink>
                             </Li>
                             <Li>
@@ -111,7 +112,7 @@ const Login = () => {
                                     setTimeout(() => {
                                         window.location.reload()
                                     }, 200)
-                                }}>Sair da conta</Button>
+                                }}><IoIosLogOut /> Sair da conta</Button>
                             </Li>
                         </Ul>
                     </Dropdown>
