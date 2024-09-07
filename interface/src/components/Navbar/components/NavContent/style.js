@@ -204,10 +204,7 @@ export const Li = styled.li`
 `
 
 export const Button = styled.button`
-
     & svg {
         display: inline;
     }
-
-
 `
