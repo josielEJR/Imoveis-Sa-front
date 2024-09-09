@@ -29,7 +29,7 @@ const ImovelInfo = ({ imovelID }) => {
           case 'venda_e_aluguel':
             return ('Venda')
           default:
-            return 'dispolidade não disponovel'
+            return 'disponibilidade não disponivel'
         }
       }
 

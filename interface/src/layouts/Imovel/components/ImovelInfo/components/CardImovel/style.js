@@ -5,7 +5,7 @@ export const Wrapper = styled.div`
         width: 100%;
         height: 630px;
 
-    @media (min-width: 1000px){
+    @media (min-width: 1030px){
         width: 600px;
     }
 

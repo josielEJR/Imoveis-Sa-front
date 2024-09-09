@@ -6,42 +6,52 @@ export const Wrapper = styled.div`
 export const Container = styled.div`
     display: flex; 
     width: 100%;
-    height: 630px;
+    height: 550px;
 
-    @media (min-width: 1000px) {
+    @media (min-width: 1030px) {
         max-width: 730px;
+        height: 630px;
     }
 `
 export const Content = styled.div`
     display: flex;
     flex-direction: column;
-    background-color: aqua;
     width: 100%;
-    gap: 50px;
+    justify-content: space-between;
 `
 
 export const Preço = styled.div`
     display: flex;
     flex-direction: column;
     gap: 20px;
+    font-size: 25px;
+
+    @media (min-width: 1230px){
+        font-size: 34px;
+    }
 `
 export const Tipo = styled.div`
     display: flex;
+    font-size: 28px;
 `
 export const ItensWrapper = styled.ul`
     display: flex;
     flex-direction: column;
     width: 100%;
-    height: 280px;
-    background-color: beige;
     list-style-type: disc;
-    gap: 20px;
+    font-size: 22px;
+
+    @media (min-width: 1030px) {
+        font-size: 28px;
+    }
 `
 export const Itens = styled.li`
     display: flex;
     flex-direction: column;
     padding-left: 25px;
 `
+
+export const Li = styled.li``
 
 export const Button = styled.button`
     width: 100%;

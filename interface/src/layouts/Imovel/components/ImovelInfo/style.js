@@ -1,10 +1,10 @@
 import styled from "styled-components";
 
 export const Wrapper = styled.div`
-    margin-top: 150px;
+    margin-top: 0;
 
-    @media (max-width: 750px){
-        margin-top: 0;
+    @media (min-width: 1230px){
+        margin-top: 150px;
     }
 `
 
@@ -46,7 +46,7 @@ export const Content = styled.div`
     flex-direction: column;
     gap: 20px;
     
-    @media (min-width: 1000px) {
+    @media (min-width: 1030px) {
         flex-direction: unset;
         gap: 20px;
     }
