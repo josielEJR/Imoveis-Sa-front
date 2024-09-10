@@ -75,7 +75,7 @@ const Login = () => {
                                         setTimeout(() => {
                                             window.location.reload()
                                         }, 200)
-                                    }}>Sair da conta</Button>
+                                    }}><IoIosLogOut /> Sair da conta</Button>
                                 </Li>
                             }
                         </Ul>
