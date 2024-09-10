@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react'
-import 'swiper/css' // Importa estilos básicos do Swiper
-import 'swiper/css/navigation' // Estilos de navegação (setas)
-import 'swiper/css/pagination' // Estilos de paginação (bolinhas)
-import { CardContainer, Image, Wrapper } from './style'
+import 'swiper/css' 
+import 'swiper/css/navigation' 
+import 'swiper/css/pagination' 
+import { Image, Wrapper } from './style'
 
-// Import Swiper core and required modules
 import { Navigation, Pagination, Autoplay } from 'swiper/modules'
 
 const CardImovel = ({ imovelID }) => {

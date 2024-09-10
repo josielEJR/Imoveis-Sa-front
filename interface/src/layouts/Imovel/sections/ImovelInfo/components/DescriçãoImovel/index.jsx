@@ -1,10 +1,16 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { Wrapper, Container, Content, Preço, Tipo, ItensWrapper, Button, Itens, Li } from './style'
 import Interação from '../Interação'
 
 const DescriçãoImovel = ({ dadosImovel }) => {
-
+  const [animate, setAnimate] = useState(false)
   const itensArray = typeof dadosImovel.itens === 'string' ? dadosImovel.itens.split(',') : []
+
+  const handleAgendarClick = (e) => {
+    e.preventDefault()
+    setAnimate(true);
+    setTimeout(() => setAnimate(false), 300)
+  }
 
   const getDisponibilidade = () => {
     switch (dadosImovel.disponibilidade) {
@@ -23,26 +29,43 @@ const DescriçãoImovel = ({ dadosImovel }) => {
     return new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(preco)
   }
 
+  const aplicarDesconto = (preco, percentual) => {
+    return preco * (1 - percentual / 100)
+  }
+
   const getPreco = () => {
+    let preco
     switch (dadosImovel.disponibilidade) {
       case 'aluguel':
-        return formatarPreco(dadosImovel.preco_aluguel)
+        preco = dadosImovel.preco_aluguel
+        break
       case 'venda':
-        return formatarPreco(dadosImovel.preco_venda)
+        preco = dadosImovel.preco_venda
+        break
       case 'venda_e_aluguel':
-        return formatarPreco(dadosImovel.preco_aluguel)
+        preco = dadosImovel.preco_aluguel
+        break
       default:
-        return 'Preço não disponível'
+        return { precoNormal: 'Preço não disponível', precoComDesconto: 'Preço não disponível' }
+    }
+
+    const precoComDesconto = aplicarDesconto(preco, 5)
+    return {
+      precoNormal: formatarPreco(preco),
+      precoComDesconto: formatarPreco(precoComDesconto)
     }
   }
+
+  const { precoNormal, precoComDesconto } = getPreco()
+
   return (
     <Wrapper>
       <Container>
         <Content>
           <Preço>
-            Total R$ {getPreco()}
+            Total R$ {precoNormal}
             <Tipo>
-              {getDisponibilidade()} {getPreco()}
+              {getDisponibilidade()} {precoComDesconto}
             </Tipo>
           </Preço>
           <ItensWrapper>
@@ -55,7 +78,9 @@ const DescriçãoImovel = ({ dadosImovel }) => {
               }
             </Itens>
           </ItensWrapper>
-          <Button >
+          <Button animate={animate} onClick={(e) => {
+            handleAgendarClick(e)
+          }} >
             Agendar uma visita
           </Button>
         </Content>

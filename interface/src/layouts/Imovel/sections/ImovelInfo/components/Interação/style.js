@@ -1,4 +1,4 @@
-import styled from "styled-components"
+import styled, { keyframes } from "styled-components"
 
 export const Wrapper = styled.div``
 
@@ -17,7 +17,6 @@ export const Options = styled.div`
 `
 
 export const ShareOptionsWrapper = styled.div`
-    
     position: absolute;
     left: 20%;
     border: 1px solid #ccc;
@@ -31,10 +30,10 @@ export const ShareOptionsWrapper = styled.div`
     font-size: 20px;
     flex-direction: column;
     display: flex;
-    width: 250px;
+    width: 450px;
 
     @media (min-width: 520px) {
-        left: 50%;
+        left: 40%;
     }
 `
 
@@ -42,7 +41,9 @@ export const Url = styled.p`
     color: black;
     border-radius: 10px;
     background-color: white;
-    max-width: 250px;         
+    width: 100%;
+    display: flex;
+    justify-content: center;        
     white-space: nowrap;      
     overflow: hidden;         
     text-overflow: ellipsis; 
@@ -53,10 +54,23 @@ export const OptionsWrapper = styled.div`
     justify-content: space-between;
 `
 
+const clickAnimation = keyframes`
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(0.9);
+  }
+  100% {
+    transform: scale(1);
+  }
+`
+
 export const BotãoUrl = styled.button`
     border-radius: 10px;
     background-color: white;
     color: black;
+    animation: ${({ animate }) => animate ? clickAnimation: 'none'} 0.3s ease-in-out;
 `
 
 export const ShareOption = styled.div`

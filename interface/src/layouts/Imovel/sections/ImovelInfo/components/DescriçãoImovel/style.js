@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 
 export const Wrapper = styled.div`
    width: 100%; 
@@ -41,9 +41,6 @@ export const ItensWrapper = styled.ul`
     list-style-type: disc;
     font-size: 22px;
 
-    @media (min-width: 1030px) {
-        font-size: 28px;
-    }
 `
 export const Itens = styled.li`
     display: flex;
@@ -52,6 +49,18 @@ export const Itens = styled.li`
 `
 
 export const Li = styled.li``
+
+const clickAnimation = keyframes`
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(0.9);
+  }
+  100% {
+    transform: scale(1);
+  }
+`
 
 export const Button = styled.button`
     width: 100%;
@@ -62,10 +71,5 @@ export const Button = styled.button`
     color: white;
     font-size: 22px;
     cursor: pointer;
-    transition: background-color 0.3s, transform 0.5s;
-
-    &:hover {
-        background: linear-gradient(45deg, #bbb, #0000);
-        transform: translateY(-5px);
-    }
+    animation: ${({ animate }) => animate ? clickAnimation: 'none'} 0.3s ease-in-out;
 `

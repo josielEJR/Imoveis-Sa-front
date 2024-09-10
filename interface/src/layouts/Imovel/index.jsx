@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react'
-import DescriçãoLayout from './components/Descrição'
+import DescriçãoLayout from './sections/Descrição'
 import { Wrapper } from './style'
 import LocalizaçãoLayout from './components/Localização'
-import ContatoLayout from './components/Contato'
-import ImovelInfo from './components/ImovelInfo'
+import ContatoLayout from './sections/Contato'
+import ImovelInfo from './sections/ImovelInfo'
 
 const ImovelLayout = ({ imovelID }) => {
   const [consultorId, setConsultorId] = useState(null)
@@ -26,15 +26,14 @@ const ImovelLayout = ({ imovelID }) => {
         }
       })
       .catch(error => console.error('Erro ao buscar imóvel:', error));
-  }, [imovelID]);
-
+  }, [imovelID])
 
   return (
     <Wrapper>
       <ImovelInfo imovelID={imovelID}  />
-      {/* <DescriçãoLayout imovelID={imovelID}/> */}
-      {/* <LocalizaçãoLayout imovelID={imovelID} />  */}
-      {/* <ContatoLayout consultorId={consultorId} /> */}
+      <DescriçãoLayout imovelID={imovelID}/>
+      <LocalizaçãoLayout imovelID={imovelID} /> 
+      <ContatoLayout consultorId={consultorId} />
     </Wrapper>
   )
 }
