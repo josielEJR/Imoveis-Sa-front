@@ -118,8 +118,8 @@ const Login = () => {
                 myHeaders.append("Content-Type", "application/json");
 
                 const raw = JSON.stringify({
-                    "consultor_email": "ralves@gmail.com",
-                    "senha": "123456"
+                    "consultor_email": email,
+                    "senha": password
                 });
 
                 const requestOptions = {
@@ -160,7 +160,7 @@ const Login = () => {
                             localStorage.setItem("currentUserNome", userNome)
                             localStorage.setItem("currentUserEmail", userEmail)
                             localStorage.setItem("currentUserCelular", userCelular)
-                            localStorage.setItem("token", consultorLoginValid)
+                            localStorage.setItem("token", `Bearer ${consultorLoginValid}`)
                         })
 
                     setTimeout(() => {
