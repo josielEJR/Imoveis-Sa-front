@@ -1,10 +1,11 @@
 import styled from "styled-components";
 
 export const Wrapper = styled.div`
-    display: flex;
-    justify-content: center;
-    overflow: hidden;
-    margin-top: 100px;
+    max-width: 1870px;
+    height: 865px;
+    box-sizing: border-box;
+    margin: 0 auto;
+    width: 100%;
 
     @media (max-width: 950px){
         margin-top: 10px;
@@ -12,9 +13,11 @@ export const Wrapper = styled.div`
 `
 
 export const Container = styled.div`
+    max-width: 1600px;
     display: flex;
     flex-direction: column;
     gap: 50px;
+    margin: 0 auto;
 
     @media (min-width: 510px) {
         width: 100%;
@@ -48,8 +51,8 @@ export const ContainerTitle = styled.div`
 `
 
 export const Title = styled.div`
-    font-weight: 800;
-    font-size: 30px;
+    font-weight: 700;
+    font-size: 36px;
 
     @media (max-width: 450px){
         font-size: 25px;

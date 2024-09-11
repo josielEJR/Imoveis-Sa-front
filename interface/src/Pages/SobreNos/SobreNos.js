@@ -3,12 +3,10 @@ import SobreNosLayout from '../../layouts/SobreNos'
 
 const SobreNos = () => {
   return (
-    <div>
-      <SobreNosLayout>
-        
-      </SobreNosLayout>
-    </div>
-  )
+    <>
+      <SobreNosLayout />
+    </>
+    )
 }
 
 export default SobreNos

@@ -1,4 +1,4 @@
-import styled, { keyframes } from "styled-components"
+import styled from "styled-components"
 
 export const Wrapper = styled.div``
 
@@ -35,7 +35,7 @@ export const TitleSection = styled.div`
 `
 
 export const Title = styled.div`
-    font-size: 48px;
+    font-size: 36px;
     font-weight: 700;
     height: 50px;
 
