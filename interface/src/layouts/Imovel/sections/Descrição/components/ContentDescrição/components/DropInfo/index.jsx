@@ -24,42 +24,42 @@ const DropInfo = ({ activeIcon, iconName }) => {
 
             if (screenWidth <= 590) {
                 setLeftPercentage({
-                    condominio: 19,
-                    iptu: 5,
+                    condominio: 22,
+                    iptu: 7,
                     seguro: 25,
                     taxa: 24,
                 })
                 setTopPercentage({
-                    condominio: 50,
-                    iptu: 59,
-                    seguro: 68,
-                    taxa: 76,
+                    condominio: 330,
+                    iptu: 238,
+                    seguro: 249,
+                    taxa: 260,
                 })
             } else if (screenWidth <= 722) {
                 setLeftPercentage({
-                    condominio: 36,
-                    iptu: 24,
-                    seguro: 44,
-                    taxa: 43,
+                    condominio: 35.5,
+                    iptu: 23.5,
+                    seguro: 43,
+                    taxa: 42,
                 })
                 setTopPercentage({
-                    condominio: 36.5,
-                    iptu: 45.5,
-                    seguro: 54,
-                    taxa: 63,
+                    condominio: 213,
+                    iptu: 224,
+                    seguro: 234.5,
+                    taxa: 245.5,
                 })
             } else if (screenWidth <= 960) {
                 setLeftPercentage({
                     condominio: 30,
-                    iptu: 27,
-                    seguro: 45,
-                    taxa: 30,
+                    iptu: 20,
+                    seguro: 36,
+                    taxa: 35,
                 })
                 setTopPercentage({
-                    condominio: 36.5,
-                    iptu: 45,
-                    seguro: 54,
-                    taxa: 63,
+                    condominio: 213,
+                    iptu: 224,
+                    seguro: 234.5,
+                    taxa: 245.5,
                 })
             } else {
                 setLeftPercentage({

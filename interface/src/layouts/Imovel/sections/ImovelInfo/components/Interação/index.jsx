@@ -20,9 +20,11 @@ const Interação = () => {
   const currentUrl = window.location.href
 
   const copiarUrl = (e) => {
-    navigator.clipboard.writeText(currentUrl)
     e.preventDefault()
-    
+    setAnimate(true);
+    setTimeout(() => setAnimate(false), 300)
+
+    navigator.clipboard.writeText(currentUrl)
       .then(() => {
         alert("Link copiado para a área de transferência!")
       })

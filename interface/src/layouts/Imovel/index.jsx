@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import DescriçãoLayout from './sections/Descrição'
 import { Wrapper } from './style'
-import LocalizaçãoLayout from './components/Localização'
+import LocalizaçãoLayout from './sections/Localização'
 import ContatoLayout from './sections/Contato'
 import ImovelInfo from './sections/ImovelInfo'
 

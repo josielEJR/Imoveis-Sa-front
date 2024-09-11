@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react'
 import { Container, Wrapper, Titulo, CardContainer, Card, CardContent, Atributos, DropInfo, Title, PriceArea, InfoSection, Label, Value, BackgroundImage, Overlay } from './style'
-import { useLocation } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faAngleRight } from '@fortawesome/free-solid-svg-icons'
 import { GiHomeGarage } from "react-icons/gi"
@@ -8,14 +7,12 @@ import { LuBath } from "react-icons/lu"
 import { IoBed } from "react-icons/io5"
 import { TbRulerMeasure } from "react-icons/tb";
 
-const Imoveis = () => {
-    const location = useLocation()
-    const { data: consultor } = location.state || {}
+const Imoveis = ({corretor}) => {
     const [imoveis, setImoveis] = useState([])
 
     useEffect(() => {
-        if (consultor && consultor.consultorid) {
-            fetch(`http://localhost:3001/imoveis/porConsultor?consultorId=${consultor.consultorid}`)
+        if (corretor) {
+            fetch(`http://localhost:3001/imoveis/porConsultor?consultorId=${corretor}`) 
                 .then(response => response.json())
                 .then(data => {
                     setImoveis(data)
@@ -24,8 +21,8 @@ const Imoveis = () => {
                     console.error('Erro ao buscar imóveis:', error)
                 })
         }
-    }, [consultor])
-
+    }, [corretor])
+    
     const definirDisponibilidade = (imovel) => {
         switch (imovel.disponibilidade) {
             case 'venda':

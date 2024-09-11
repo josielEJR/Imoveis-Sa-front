@@ -23,7 +23,7 @@ export const ShareOptionsWrapper = styled.div`
     border-radius: 5px;
     padding: 10px;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-    z-index: 100;
+    z-index: 1;
     background-color: black;
     color: white;
     gap: 20px;
@@ -31,10 +31,6 @@ export const ShareOptionsWrapper = styled.div`
     flex-direction: column;
     display: flex;
     width: 450px;
-
-    @media (min-width: 520px) {
-        left: 40%;
-    }
 `
 
 export const Url = styled.p`

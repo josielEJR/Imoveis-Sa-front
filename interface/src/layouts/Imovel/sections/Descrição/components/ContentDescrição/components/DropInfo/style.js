@@ -11,7 +11,7 @@ export const DropHover = styled.div`
     gap: 15px;
     margin: 0;
     left: 5%;
-    z-index: 3;
+    z-index: 1;
     padding: 10px;
     width: 320px;
     background-color: #D9D9D9;

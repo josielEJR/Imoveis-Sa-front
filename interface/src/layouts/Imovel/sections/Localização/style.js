@@ -19,24 +19,30 @@ export const TitleWrapper = styled.div`
 `
 
 export const Title = styled.div`
-    font-size: 32px;
-    font-weight: 600;
-    line-height: 38px;
-    text-align: left;
-    position: relative;
-    display: inline-block;
-    cursor: pointer;
-    order: ${(props) => props.order};
+  font-size: 32px;
+  font-weight: 600;
+  line-height: 38px;
+  text-align: left;
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  order: ${(props) => props.order};
+  color: ${(props) => (props.isActive ? '#000' : '#777')}; 
 
-    &::after {
+  &:hover {
+    transform: scale(1.10); 
+  }
+
+  &::after {
     content: '';
     display: ${(props) => (props.isActive ? 'block' : 'none')};
-    width: 150px;
+    width: ${(props) => (props.isActive ? '80%' : '50%')};
     height: 6px;
     background-color: #454545;
-    position: relative;
+    position: absolute;
     bottom: -15px;
     left: 0;
-    }
+  }
 `
+
 

@@ -74,4 +74,8 @@ export const Button = styled.button`
     font-size: 22px;
     cursor: pointer;
     animation: ${({ animate }) => animate ? clickAnimation: 'none'} 0.3s ease-in-out;
+    
+    &:hover {
+    transform: scale(1.05); 
+    }
 `
