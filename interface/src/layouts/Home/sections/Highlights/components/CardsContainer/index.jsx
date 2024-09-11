@@ -120,7 +120,8 @@ const CardsContainer = () => {
                     ))}
                 </Swiper>
             </Container>
-            {windowWidth > 1000 ? <Selectors selectedButton={selectedButton} handleButtonClick={handleButtonClick} /> : <></>}
+
+            {windowWidth > 1400 ? <Selectors selectedButton={selectedButton} handleButtonClick={handleButtonClick} /> : <></>}
         </Wrapper>
     )
 }

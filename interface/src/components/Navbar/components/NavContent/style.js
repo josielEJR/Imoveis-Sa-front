@@ -29,7 +29,7 @@ export const CloseMenuButton = styled.div`
         height: 42px;
         text-align: center;
         line-height: 42px;
-        margin: 28px 20px 28px 20px;
+        margin: 28px 20px;
         font-size: 40px;
         color: #EEEEEE;
         animation: ${spin} 1s;
@@ -58,6 +58,7 @@ export const NavContent = styled.div`
 
     @media (max-width: 950px) {
         position: fixed;
+        top: 0;
         width: 300px;
         height: 100%;
         background-color: #050505;
@@ -73,11 +74,15 @@ export const NavContent = styled.div`
 export const ContentLink = styled.span`
     display: inline-block;
     color: #EEEEEE;
+    width: 100px;
+    height: 30px;
     margin: 28px 20px 26px 20px;
     font-weight: 300px;
     font-size: 20px;
     @media (max-width: 950px) {
         display: block;
+        width: unset;
+        height: unset;
     }
 `
 
@@ -88,16 +93,18 @@ export const Text = styled.span``
 export const Dropdown = styled.div`
     position: absolute;
     width: 263px;
-    height: 400px;
+    height: 430px;
     margin-left: ${props => `${props.margin || 0}px`};
     font-size: 18px;
-    background-color: #070707;
+    background-color: #050505;
     box-sizing: border-box;
-    padding: 29px;
+    padding: 49px 29px 29px;
     box-shadow: 0px 4px 8px 0px #00000026;
     border-radius: 0 0 3px 3px;
 
     @media (max-width: 950px) {
+        padding: 29px;
+        background-color: #070707;
         position: unset;
         margin-left: 0;
         height: unset;
@@ -107,18 +114,20 @@ export const Dropdown = styled.div`
 export const SideDropdown = styled.div`
     position: absolute;
     width: 280px;
-    height: 400px;
+    height: 430px;
     right: ${props => props.right + "px"};
     top: 0;
     font-size: 18px;
-    background-color: #090909;
+    background-color: #050505;
     box-sizing: border-box;
-    padding: 29px;
+    padding: 49px 29px 29px;
     box-shadow: 0px 4px 8px 0px #00000026;
     overflow: hidden;
     border-radius: 3px;
 
     @media (max-width: 950px) {
+        padding: 29px;
+        background-color: #090909;
         position: unset;
         padding: 20px;
         width: 205px;
@@ -172,12 +181,30 @@ export const Ul = styled.ul``
 export const Li = styled.li`
     padding-top: 7px;
     padding-bottom: 7px;
-    font-weight: ${props => props.weight};
     display: flex;
     justify-content: space-between;
-    &:hover {
+
+    & a {
+        font-size: 18px;
+    }
+
+    & a svg {
+        height: 15px;
+        width: 15px;
+        display: inline;
+    }
+
+    & button svg {
+        display: inline;
+    }
+
+    &:hover{
         font-weight: bold;
     }
 `
 
-export const Button = styled.button``
+export const Button = styled.button`
+    & svg {
+        display: inline;
+    }
+`

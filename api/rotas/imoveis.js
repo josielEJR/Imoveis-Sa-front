@@ -83,13 +83,8 @@ router.get('/busca', (req, res) => {
     })
 })
 // rota para adicionar imoveis 
-router.post('/adicionar', authconsultor, (req, res) => {
-    const consultorId = req.consultorId
-
-    if (consultorId == undefined) {
-        return { mensagem: "O usuário não tem permissão para cadastrar um imóvel" }
-    }
-
+router.post('/adicionar', (req, res) => {
+    
     const { tipo, endereco, numero, bairro, cidade, cep, quartos, banheiros, descricao, preco_venda, preco_aluguel, disponibilidade, qualidade, tamanho } = req.body;
 
     // Validar dados recebidos (validação simples)
@@ -112,7 +107,7 @@ router.post('/adicionar', authconsultor, (req, res) => {
         disponibilidade,
         qualidade,
         tamanho: parseFloat(tamanho),
-        consultorId
+        
     };
 
     connection.query('INSERT INTO imoveis SET ?', imovel, (err, result) => {
@@ -242,9 +237,9 @@ router.get('/aluguel', (req, res) => {
 router.get('/cidades', (req, res) => {
     let sqlQuery = 'SELECT DISTINCT cidade FROM imoveis ORDER BY cidade ASC'
     connection.query(sqlQuery, (err, results) => {
-        if(err){
+        if (err) {
             console.error('Erro ao buscar cidades disponíveis: ', err)
-            return res.status(500).json({ error: 'Erro ao buscar cidades disponíveis'})
+            return res.status(500).json({ error: 'Erro ao buscar cidades disponíveis' })
         }
         res.json(results)
     })
@@ -317,14 +312,54 @@ router.get('/porConsultor', (req, res) => {
 router.get('/imagensimovel/:id', (req, res) => {
     const id = req.params.id.trim()
     const caminhoImagem = path.join(__dirname, '../imagens-imovel', `imovel${id}.jpg`)
-    
+
     console.log(caminhoImagem)
-    
+
     res.sendFile(caminhoImagem, (err) => {
         if (err) {
             console.error("Erro ao enviar o arquivo:", err)
             res.status(404).send('Imagem não encontrada')
         }
+    })
+})
+
+// adicionar e pegar os imoveis marcados como favoritos pelos usuarios
+router.get('/favoritos', (req, res) => {
+    const { clienteID } = req.query
+
+    const query = 'SELECT * FROM imoveis WHERE imoveisID IN (SELECT imovelID FROM favoritos WHERE clienteID = ?)'
+
+    connection.query(query, [clienteID], (err, results) => {
+        if (err) {
+            return res.status(500).send(err)
+        }
+        res.json(results)
+    })
+})
+
+router.post('/adicionarimovelfavorito', (req, res) => {
+    const { clienteID, imovelID } = req.body
+
+    const query = 'INSERT INTO favoritos (clienteID, imovelID) VALUES (?, ?)'
+
+    connection.query(query, [clienteID, imovelID], (err, result) => {
+        if (err) {
+            return res.status(500).send(err)
+        }
+        res.status(201).send('Produto adicionado aos favoritos')
+    })
+})
+
+router.delete('/removerimovelfavorito', (req, res) => {
+    const { clienteID, imovelID } = req.body
+
+    const query = "DELETE FROM favoritos WHERE clienteID = ? AND imovelID = ?"
+
+    connection.query(query, [clienteID, imovelID], (err, result) =>{
+        if(err){
+            return res.status(500).send(err)
+        }
+        res.send('Produto removido dos favoritos')
     })
 })
 

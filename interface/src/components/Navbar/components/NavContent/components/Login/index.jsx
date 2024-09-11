@@ -2,8 +2,9 @@ import { useState } from 'react'
 
 import { NavLink } from 'react-router-dom'
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCircleUser, faHeart, faBell } from '@fortawesome/free-regular-svg-icons'
+import { FaRegUserCircle, FaBell } from "react-icons/fa";
+import { FaHouseChimney, FaHeart } from "react-icons/fa6";
+import { IoMdMail, IoIosLogOut } from "react-icons/io";
 
 import { ContentLink, Dropdown, Ul, Li, Button } from '../../style'
 import { LoginButton, LoginLabel } from './style'
@@ -20,68 +21,108 @@ const Login = () => {
         if (localStorage.length === 0 && window.outerWidth > 950) {
             return (
                 <NavLink to={'login'} onClick={handleClick}>
-                    <FontAwesomeIcon icon={faCircleUser} /> Entrar
+                    <Button><FaRegUserCircle /> Entrar</Button>
                 </NavLink>
             )
         } else if (localStorage.length !== 0) {
             return (
-                <Button id='usuario'><FontAwesomeIcon icon={faCircleUser} style={{ fill: "white" }} /> {localStorage.currentUserNome}</Button>
+                <Button id='usuario'>
+                    <FaRegUserCircle /> {localStorage.currentUserNome}
+                </Button>
             )
         }
     }
 
     const handleDropdown = () => {
         if (dropdownVisible || window.outerWidth <= 950) {
-            return (
-                <Dropdown margin={-113}>
-                    <Ul>
-                        {localStorage.length === 0 &&
-                            <>
-                                <LoginLabel>Entre para ver seus favoritos, visitas e propostas</LoginLabel>
+            if (!localStorage.token || !localStorage.token.includes("Bearer")) {
+                return (
+                    <Dropdown margin={-93}>
+                        <Ul>
+                            {localStorage.length === 0 &&
+                                <>
+                                    <LoginLabel>Entre para ver seus favoritos, visitas e propostas</LoginLabel>
+                                    <Li>
+                                        <LoginButton onClick={() => window.location.href = "/login"}>Entrar</LoginButton>
+                                    </Li>
+                                </>
+                            }
+                            <Li>
+                                <NavLink
+                                    to="/favoritos"
+                                >
+                                    <FaHeart /> Imóveis favoritos
+                                </NavLink>
+                            </Li>
+                            <Li>
+                                <NavLink
+                                    to="/alertas"
+                                >
+                                    <FaBell /> Propostas enviadas
+                                </NavLink>
+                            </Li>
+                            <Li>
+                                <NavLink
+                                    to="/propostas"
+                                >
+                                    <FaRegUserCircle /> Visitas agendadas
+                                </NavLink>
+                            </Li>
+                            {localStorage.length > 0 &&
                                 <Li>
-                                    <LoginButton onClick={() => window.location.href = "/login"}>Entrar</LoginButton>
+                                    <Button onClick={() => {
+                                        localStorage.clear()
+                                        setTimeout(() => {
+                                            window.location.reload()
+                                        }, 200)
+                                    }}><IoIosLogOut /> Sair da conta</Button>
                                 </Li>
-                            </>
-                        }
-                        <Li>
-                            <NavLink
-                                to="/favoritos"
-                            >
-                                <FontAwesomeIcon icon={faHeart} /> Imóveis favoritos
-                            </NavLink>
-                        </Li>
-                        <Li>
-                            <NavLink
-                                to="/alertas"
-                            >
-                                <FontAwesomeIcon icon={faBell} /> Propostas enviadas
-                            </NavLink>
-                        </Li>
-                        <Li>
-                            <NavLink
-                                to="/propostas"
-                            >
-                                <FontAwesomeIcon icon={faCircleUser} /> Visitas agendadas
-                            </NavLink>
-                        </Li>
-                        {localStorage.length > 0 &&
+                            }
+                        </Ul>
+                    </Dropdown>
+                )
+            } else {
+                return (
+                    <Dropdown margin={-93}>
+                        <Ul>
+                            <Li>
+                                <NavLink
+                                    to="/meusimoveis"
+                                >
+                                    <FaHouseChimney /> Meus Imoveis
+                                </NavLink>
+                            </Li>
+                            <Li>
+                                <NavLink
+                                    to="/imoveispendentes"
+                                >
+                                    <IoMdMail /> Imóveis pendentes à aprovação
+                                </NavLink>
+                            </Li>
+                            <Li>
+                                <NavLink
+                                    to="/solicitacoesvisita"
+                                >
+                                    <FaBell /> Solicitações de agendas
+                                </NavLink>
+                            </Li>
                             <Li>
                                 <Button onClick={() => {
                                     localStorage.clear()
                                     setTimeout(() => {
                                         window.location.reload()
                                     }, 200)
-                                }}>Sair da conta</Button>
+                                }}><IoIosLogOut /> Sair da conta</Button>
                             </Li>
-                        }
-                    </Ul>
-                </Dropdown>
-            )
+                        </Ul>
+                    </Dropdown>
+                )
+            }
         }
     }
 
     return (
-        <ContentLink onMouseEnter={() => setDropdownVisible(true)} onMouseLeave={() => setDropdownVisible(false)}>
+        <ContentLink onMouseEnter={() => setDropdownVisible(true)} onMouseLeave={() => setDropdownVisible(false)} >
             {handleLogin()}
 
             {handleDropdown()}

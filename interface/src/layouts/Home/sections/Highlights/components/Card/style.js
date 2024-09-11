@@ -1,4 +1,4 @@
-import styled, { keyframes } from "styled-components"
+import styled, { keyframes, css } from "styled-components"
 
 export const Wrapper = styled.div`
     width: 458px;
@@ -126,4 +126,25 @@ export const Value = styled.div`
     height: 21px;
     font-size: 10px;
     font-weight: 300;
+`
+
+const onFavorite = keyframes`
+    0% {font-size: 30px;}
+    50% {font-size: 35px;}
+    100% {font-size: 30px;}
+`
+
+export const Favorite = styled.button`
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    font-size: 30px;
+    display: flex;
+    align-items: center;
+    z-index: 1;
+    right: 0px;
+    margin: 10px;
+    color: white;
+    cursor: pointer;
+    ${({color}) => color === "true" && css`animation: ${onFavorite} 0.5s ease`}
 `

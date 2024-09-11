@@ -41,6 +41,7 @@ export const Title = styled.h2`
     margin-bottom: 20px;
     font-size: 30px;
     color: white;
+    font-weight: bold;
 `
 
 export const Input = styled.input`
