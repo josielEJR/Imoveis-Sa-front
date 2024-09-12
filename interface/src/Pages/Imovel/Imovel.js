@@ -1,4 +1,3 @@
-import ImovelPrincipal from '../../components/ImovelPrincipal.js'
 import ImovelLayout from '../../layouts/Imovel/index.jsx'
 
 const Imovel = () => {
@@ -8,7 +7,6 @@ const Imovel = () => {
     return (
         <>
             <ImovelLayout imovelID={url} />
-            <ImovelPrincipal imovelID={url} />
         </>
     )
 }

@@ -30,6 +30,7 @@ const SliderComponent = () => {
                 spaceBetween={0}
                 pagination={{
                     clickable: true,
+                    el: '.custom-pagination',
                 }}
                 navigation={true}
                 autoplay={{
@@ -58,6 +59,7 @@ const SliderComponent = () => {
                         <img src={image} alt={`Slide ${index + 1}`} />
                     </SwiperSlide>
                 ))}
+                <div className="custom-pagination"></div> {/* Container de paginação */}
             </Swiper>
         </Wrapper>
     );
