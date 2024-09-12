@@ -1,5 +1,4 @@
 import ImovelPrincipal from '../../components/ImovelPrincipal.js'
-
 import ImovelLayout from '../../layouts/Imovel/index.jsx'
 
 const Imovel = () => {

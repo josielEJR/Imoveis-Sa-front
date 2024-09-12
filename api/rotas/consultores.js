@@ -3,6 +3,7 @@ const router = express.Router()
 const connection = require('../database')
 const jwt = require('jsonwebtoken')
 const authconsultor = require('../middleware/authConsultor')
+const path = require('path')
 
 // conexão a tabela "consultor"
 router.get('/', (req, res) => {
@@ -94,6 +95,31 @@ router.get('/meus-imoveis', authconsultor, (req, res) => {
         }
 
         res.status(200).json(results)
+    })
+})
+
+router.get('/buscarconsultorid', (req, res) => {
+    const consultorId = req.query.id
+
+    let sqlQuery = 'SELECT * FROM consultores WHERE consultorId = ?'
+    connection.query(sqlQuery, [consultorId], (err, results) => {
+        if (err) {
+            console.error('Erro ao buscar consultor por id:', err)
+            return res.status(500).json({ error: 'Erro ao buscar consultor por id ' })
+        }
+        res.json(results)
+    })
+})
+
+router.get('/imagensconsultores/:id', (req, res) => {
+    const id = req.params.id.trim()
+    const caminhoImagem = path.join(__dirname, '../imagens-corretor', `foto${id}.jpg`)
+    
+    res.sendFile(caminhoImagem, (err) => {
+        if (err) {
+            console.error("Erro ao enviar o arquivo:", err)
+            res.status(404).send('Imagem não encontrada')
+        }
     })
 })
 

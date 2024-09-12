@@ -161,5 +161,4 @@ export const ContainerIcon = styled.div`
     position: relative;
     top: -15px;
     left: 15px;
-
 `

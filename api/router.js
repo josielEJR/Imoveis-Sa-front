@@ -14,5 +14,6 @@ app.use((req, res, next) => {
 
 app.use('/imagens', express.static(path.join(__dirname, 'imagens')))
 app.use('/imagens-imovel', express.static(path.join(__dirname, 'imagens-imovel')))
+app.use('/imagens-corretor', express.static(path.join(__dirname, 'imagens-corretor')))
 
 module.exports = app
