@@ -3,7 +3,6 @@ version: '3.8'
 networks:
   minha_rede:
 
-
 services:
   mysql:
     image: mysql:5.7
@@ -21,10 +20,12 @@ services:
     ports:
       - "3306:3306"
     volumes:
-      - ./tabelas/consultores.sql:/docker-entrypoint-initdb.d/consultores.sql
-      - ./tabelas/clientes.sql:/docker-entrypoint-initdb.d/clientes.sql
-      - ./tabelas/imoveis.sql:/docker-entrypoint-initdb.d/imoveis.sql
-      - ./tabelas/visitas.sql:/docker-entrypoint-initdb.d/visitas.sql
+      - ./tabelas/01_consultores.sql:/docker-entrypoint-initdb.d/01_consultores.sql
+      - ./tabelas/02_clientes.sql:/docker-entrypoint-initdb.d/02_clientes.sql
+      - ./tabelas/03_imoveis.sql:/docker-entrypoint-initdb.d/03_imoveis.sql
+      - ./tabelas/04_visitas.sql:/docker-entrypoint-initdb.d/04_visitas.sql
+      - ./tabelas/05_imagens.sql:/docker-entrypoint-initdb.d/05_imagens.sql
+      - ./tabelas/06_favoritos.sql:/docker-entrypoint-initdb.d/06_favoritos.sql
       - ./my_custom.cnf:/etc/mysql/conf.d/my_custom.cnf
     networks:
       - minha_rede

@@ -2,32 +2,72 @@ import styled from "styled-components";
 import { SwiperSlide } from "swiper/react";
 
 export const Wrapper = styled.div`
-    .swiper-pagination{
-        position: relative;
-        bottom: -5px;
 
-        @media (max-width: 1030px) {
-            display: none;
-        }
+`
+
+export const Container = styled.div`
+    display: flex;
+    justify-content: center;
+
+    .swiper-slide{
+        display: flex;
+        justify-content: center;
     }
 
-    .swiper-button-disabled{
-        opacity: 0 !important;
+    .swiper-button-prev, .swiper-button-next{
+        margin: 0 20px;
+        background-color: #f2f2f2;
+        width: 40px;
+        height: 40px;
+        border-radius: 40px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 
-    .swiper-button-prev, .swiper-button-next {
-        opacity: 50%;
-        background-color: white;
-        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
-        width: 30px;
-        height: 30px;
-        border-radius: 50%;
+    .swiper-button-prev::after, .swiper-button-next::after{
+        font-size: 20px;
         color: black;
     }
+`
 
-    .swiper-button-prev:after, .swiper-button-next:after {
-        font-size: 20px;
+export const CardContent = styled.div`
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    color: white;
+    opacity: 0.5;
+    z-index: 2;
+    padding: 20px;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+
+    @media (max-width: 1030px) {
+        opacity: 1;
+        visibility: visible;
     }
+`
+
+export const CardContainer = styled(SwiperSlide)`
+    display: flex;
+    flex-direction: column;
+    width: 458px;
+    height: 629px;
+    margin: 55px 17px;
+    background-color: black;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 1.2s ease-in-out, box-shadow 0.5s ease-in-out;
+
+    &:hover ${CardContent}, &:hover ${Overlay}, &:hover ${InfoIcon} {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    &:hover {
+        transform: scale(1.05); 
+    }    
 `
 
 export const Img = styled.img`
@@ -54,7 +94,7 @@ export const Overlay = styled.div`
     }
 `
 export const InfoIcon = styled.div`
-    position: absolute;
+    margin-bottom: 300px;
     padding: 15px;
     z-index: 3;
     opacity: 0;
@@ -67,42 +107,6 @@ export const InfoIcon = styled.div`
     }
 `
 
-export const CardContent = styled.div`
-    color: #FFFFFF;
-    display: flex;
-    flex-direction: column;
-    gap: 45px;
-    top: 220px;
-    padding: 20px;
-    position: absolute;
-    opacity: 0;
-    z-index: 2;
-    visibility: hidden;
-    transition: opacity 0.3s ease, visibility 0.3s ease;
-
-    @media (max-width: 1030px) {
-        opacity: 1;
-        visibility: visible;
-    }
-`
-
-export const CardContainer = styled(SwiperSlide)`
-    position: relative;
-    height: 630px;
-    display: flex !important;
-    cursor: pointer;
-    transition: transform 1.2s ease-in-out, box-shadow 0.5s ease-in-out;
-
-    &:hover ${CardContent}, &:hover ${Overlay}, &:hover ${InfoIcon} {
-        opacity: 1;
-        visibility: visible;
-    }
-
-    &:hover {
-        transform: scale(1.05); 
-    }    
-`
-
 export const Article = styled.div`
     padding: 10px;
     font-size: 16px;
@@ -111,9 +115,8 @@ export const Article = styled.div`
 `
 
 export const Nome = styled.div`
-    font-size: 36px;
+    font-size: 32px;
     font-weight: 700;
-    line-height: 43px;
     padding: 10px;
 `
 

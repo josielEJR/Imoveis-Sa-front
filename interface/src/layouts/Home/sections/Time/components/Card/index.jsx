@@ -1,90 +1,122 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 
-import { CardContent, CardContainer, Article, Nome, Telefone, Email, Wrapper, Overlay, InfoIcon, Img, } from './style'
-import { useNavigate } from 'react-router-dom'
+import { Container, CardContent, CardContainer, Article, Nome, Telefone, Email, Wrapper, Overlay, InfoIcon, Img, } from './style'
 import { LuBadgeInfo } from "react-icons/lu"
-import { Virtual, Navigation, Pagination, Autoplay } from 'swiper/modules'
-import { Swiper } from 'swiper/react'
+import { Navigation, Pagination, Autoplay } from 'swiper/modules'
+import { Swiper, SwiperSlide } from 'swiper/react'
+
 import 'swiper/css'
 import 'swiper/css/pagination'
 import 'swiper/css/navigation'
 import NavButtons from '../NavButtons'
 
 const Card = ({ configTime }) => {
-  const navigate = useNavigate()
-  const [selectedButton, setSelectedButton] = useState(1)
+
+  const [products, setProducts] = useState([])
+  const [cardsDisplay, setCardsDisplay] = useState(1)
+  const [windowWidth, setWindowWidth] = useState(window.outerWidth)
+  const [selectedButton, setSelectedButton] = useState(0)
   const [swiperRef, setSwiperRef] = useState(null)
 
-  const handleCardClick = (item) => {
-    navigate('/corretores', { state: { data: item } })
-    console.log('navigate')
-    window.scrollTo(0, 0)
-  }
+  useEffect(() => {
+    const myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+
+    const requestOptions = {
+      method: "GET",
+      headers: myHeaders,
+      redirect: "follow"
+    };
+
+    fetch("http://localhost:3001/imoveis/ordenarimovelqualidade", requestOptions)
+      .then((response) => response.text())
+      .then((result) => JSON.parse(result))
+      .then((result) => {
+        const arrayAux = []
+        result.forEach((prod, index) => {
+          if (index < 5) {
+            arrayAux.push(prod)
+          }
+        })
+        setProducts(arrayAux)
+      })
+      .catch((error) => console.error(error));
+  }, [])
+
+  useEffect(() => {
+    if (window.outerWidth > 1500) {
+      setCardsDisplay(3)
+    } else if (window.outerWidth > 1000) {
+      setCardsDisplay(2)
+    } else {
+      setCardsDisplay(1)
+    }
+
+    function handleResize() {
+      if (window.outerWidth > 1500) {
+        setCardsDisplay(3)
+      } else if (window.outerWidth > 1000) {
+        setCardsDisplay(2)
+      } else {
+        setCardsDisplay(1)
+      }
+
+      setWindowWidth(window.outerWidth)
+    }
+
+    window.addEventListener('resize', handleResize)
+
+    return _ => {
+      window.removeEventListener('resize', handleResize)
+    }
+  }, [])
 
   const handleButtonClick = (buttonIndex) => {
-    setSelectedButton(buttonIndex);
+    setSelectedButton(buttonIndex)
     if (swiperRef) {
-      swiperRef.slideTo(buttonIndex - 1);
+      swiperRef.slideTo(buttonIndex)
     }
   }
 
   const handleSlideChange = (swiper) => {
-    setSelectedButton(swiper.activeIndex + 1)
+    setSelectedButton(swiper.activeIndex)
   }
 
   return (
     <Wrapper>
-      <Swiper
-        onSwiper={setSwiperRef}
-        onSlideChange={handleSlideChange}
-        spaceBetween={30}
-        slidesPerView={1}
-        navigation={true}
-        autoplay={{
-          delay: 2500,
-          disableOnInteraction: false,
-        }}
-        breakpoints={{
-          500: {
-            slidesPerView: 1,
-            spaceBetween: 40,
-
-          },
-          640: {
-            slidesPerView: 2,
-            spaceBetween: 20,
-
-          },
-          1030: {
-            slidesPerView: 3,
-            spaceBetween: 30,
-          }
-        }}
-        modules={[Virtual, Navigation, Pagination, Autoplay]}
-        className="mySwiper"
-      >
-        {configTime.map((item) => (
-          <CardContainer
-            onClick={() => handleCardClick(item)}
-          >
-            <Img src={item.image} alt={item.nome} />
-            <Overlay />
-            <InfoIcon>
-              <LuBadgeInfo size={30} color='white' />
-            </InfoIcon>
-            <CardContent>
-              <Nome>{item.nome}</Nome>
-              <Telefone>{item.telefone}</Telefone>
-              <Email>{item.email}</Email>
-              <Article>{item.sobre}</Article>
-            </CardContent>
-          </CardContainer>
-        ))}
-      </Swiper>
-      <NavButtons
-        selectedButton={selectedButton}
-        handleButtonClick={handleButtonClick}
-      />
+      <Container>
+        <Swiper
+          modules={[Navigation, Pagination, Autoplay]}
+          slidesPerView={cardsDisplay}
+          onSwiper={setSwiperRef}
+          onSlideChange={handleSlideChange}
+          spaceBetween={10}
+          navigation
+          autoplay={{
+            delay: 3500,
+            disableOnInteraction: false
+          }}
+        >
+          {configTime.map((item) => (
+            <SwiperSlide>
+              <CardContainer>
+                <Img src={item.image} alt={item.nome} />
+                <Overlay />
+                <CardContent>
+                <InfoIcon>
+                  <LuBadgeInfo size={30} color='white' />
+                </InfoIcon>
+                  <Nome>{item.nome}</Nome>
+                  <Telefone>{item.telefone}</Telefone>
+                  <Email>{item.email}</Email>
+                  <Article>{item.sobre}</Article>
+                </CardContent>
+              </CardContainer>
+            </SwiperSlide>
+          ))}
+        </Swiper>
+      </Container>
+      {windowWidth > 1000 ? <NavButtons selectedButton={selectedButton} handleButtonClick={handleButtonClick} /> : <></>}
     </Wrapper>
   )
 }

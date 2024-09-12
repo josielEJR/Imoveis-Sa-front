@@ -5,7 +5,7 @@ import { useState, useEffect } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faAngleRight } from '@fortawesome/free-solid-svg-icons'
 
-import { Dropdown, Title, SideDropdown, DropdownContent, Ul, Li, Rotate } from '../../style'
+import { Dropdown, Title, SideDropdown, DropdownContent, Ul, Li, Button, Rotate } from '../../style'
 
 const Itens = ({ lista, redirect, right }) => {
 
@@ -39,16 +39,19 @@ const Itens = ({ lista, redirect, right }) => {
         if (lista) {
             return (
                 <Dropdown onMouseLeave={handleMouseLeave}>
-
                     <Title>Cidade</Title>
                     <Ul>
-                        {cidades.map(elem => (
-                            <Li key={elem.cidade} onMouseEnter={() => handleMouseEnter(elem.cidade)} weight={selected === elem.cidade ? "bold" : ''}>
-                                <button>{elem.cidade}</button> {selected === elem.cidade ? <Rotate><FontAwesomeIcon icon={faAngleRight} /></Rotate> : ''}
-                            </Li>
-                        ))}
+                        {cidades.map((elem, index) => {
+                            if (index < 7) {
+                                return <Li key={elem.cidade} onMouseEnter={() => handleMouseEnter(elem.cidade)} onClick={() => handleMouseEnter(elem.cidade)}>
+                                    <Button>{elem.cidade}</Button> {selected === elem.cidade ? <Rotate><FontAwesomeIcon icon={faAngleRight} /></Rotate> : ''}
+                                </Li>
+                            }
+                        })}
+                        <Li key={"exploraroutrascidades"} onMouseEnter={() => handleMouseEnter("")} onClick={() => handleMouseEnter("")} style={{ fontSize: "16px" }}>
+                            <Button onClick={() => window.location.href="/imoveis"}>Explorar outras cidades</Button>
+                        </Li>
                     </Ul>
-
 
                     {selected &&
                         <SideDropdown right={right}>

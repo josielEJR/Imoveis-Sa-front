@@ -1,39 +1,36 @@
-import styled, {keyframes} from "styled-components"
+import styled, { keyframes } from "styled-components";
 
-const growSelctor = keyframes`
+export const Wrapper = styled.div`
+    width: 100%;
+`
+
+export const SelectorSection = styled.div`
+    width: 175px;
+    height: 21px;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+
+    @media (max-width: 1080px){
+        display: none;
+    }
+`
+
+const growSelector = keyframes`
     0% {flex-grow: 0}
-    100% {flex-grow: 1}
-    
+    100% {flex-grow: 1} 
 `
 
 const shrinkSelector = keyframes`
     0% {flex-grow: 1}
     100% {flex-grow: 0}
-
 `
 
-export const WrapperNavButton = styled.div`
-    width: 100%;
-    height: 20px;
-    margin-top: 30px;
-    
-    @media (max-width: 1030px) {
-        display: none;
-    }
-`
-
-export const ContainerNavButton = styled.div`
-    display: flex;
-    width: 200px;
-    height: 100%;
-    margin: auto;
-`
-
-export const NavButton = styled.button`
-    flex-grow: ${props => props.selected === "true" ? 1 : 0};
-    animation: ${props => props.selected === "true" ? growSelctor : shrinkSelector} 0.6s;
-    background-color: ${props => props.selected === "true" ? '#454545' : 'black'};
-    width: ${(props) => props.width}px;
-    margin: 0 5px;
-    height: 20px;
+export const IndexSelector = styled.div`
+    width: 35px;
+    margin: 0 6px;
+    background-color: ${props => props.grow === "true" ? "#454545" : "#000000"};
+    flex-grow: ${props => props.grow === "true" ? 1 : 0};
+    animation: ${props => props.grow === "true" ? growSelector : shrinkSelector} 0.6s;
+    cursor: pointer;
 `

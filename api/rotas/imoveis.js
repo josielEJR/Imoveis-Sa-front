@@ -237,9 +237,9 @@ router.get('/aluguel', (req, res) => {
 router.get('/cidades', (req, res) => {
     let sqlQuery = 'SELECT DISTINCT cidade FROM imoveis ORDER BY cidade ASC'
     connection.query(sqlQuery, (err, results) => {
-        if(err){
+        if (err) {
             console.error('Erro ao buscar cidades disponíveis: ', err)
-            return res.status(500).json({ error: 'Erro ao buscar cidades disponíveis'})
+            return res.status(500).json({ error: 'Erro ao buscar cidades disponíveis' })
         }
         res.json(results)
     })
@@ -268,15 +268,21 @@ router.get('/cidadesaluguel', (req, res) => {
 })
 // rota para pegar o imóvel por id 
 router.get('/buscarimovelid', (req, res) => {
-    const imovelID = req.query.id
+    const imovelID = req.query.id;
 
-    let sqlQuery = 'SELECT * FROM imoveis WHERE imoveisID = ?'
+    let sqlQuery = `
+        SELECT i.*, GROUP_CONCAT(img.url) as imagens 
+        FROM imoveis i
+        LEFT JOIN imagens img ON i.imoveisID = img.imoveisID
+        WHERE i.imoveisID = ?
+        GROUP BY i.imoveisID
+    `
     connection.query(sqlQuery, [imovelID], (err, results) => {
         if (err) {
-            console.error('Erro ao buscar imóvel por id:', err)
-            return res.status(500).json({ error: 'Erro ao buscar imóveis por id ' })
+            console.error('Erro ao buscar imóvel por id:', err);
+            return res.status(500).json({ error: 'Erro ao buscar imóvel por id' })
         }
-        res.json(results)
+        res.json(results);
     })
 })
 
@@ -308,18 +314,58 @@ router.get('/porConsultor', (req, res) => {
         res.json(results)
     })
 })
-// rota para busacar imagem por id do imovel 
+// rota para buscar imagem por id do imovel 
 router.get('/imagensimovel/:id', (req, res) => {
     const id = req.params.id.trim()
     const caminhoImagem = path.join(__dirname, '../imagens-imovel', `imovel${id}.jpg`)
-    
+
     console.log(caminhoImagem)
-    
+
     res.sendFile(caminhoImagem, (err) => {
         if (err) {
             console.error("Erro ao enviar o arquivo:", err)
             res.status(404).send('Imagem não encontrada')
         }
+    })
+})
+
+// adicionar e pegar os imoveis marcados como favoritos pelos usuarios
+router.get('/favoritos', (req, res) => {
+    const { clienteID } = req.query
+
+    const query = 'SELECT * FROM imoveis WHERE imoveisID IN (SELECT imovelID FROM favoritos WHERE clienteID = ?)'
+
+    connection.query(query, [clienteID], (err, results) => {
+        if (err) {
+            return res.status(500).send(err)
+        }
+        res.json(results)
+    })
+})
+
+router.post('/adicionarimovelfavorito', (req, res) => {
+    const { clienteID, imovelID } = req.body
+
+    const query = 'INSERT INTO favoritos (clienteID, imovelID) VALUES (?, ?)'
+
+    connection.query(query, [clienteID, imovelID], (err, result) => {
+        if (err) {
+            return res.status(500).send(err)
+        }
+        res.status(201).send('Produto adicionado aos favoritos')
+    })
+})
+
+router.delete('/removerimovelfavorito', (req, res) => {
+    const { clienteID, imovelID } = req.body
+
+    const query = "DELETE FROM favoritos WHERE clienteID = ? AND imovelID = ?"
+
+    connection.query(query, [clienteID, imovelID], (err, result) =>{
+        if(err){
+            return res.status(500).send(err)
+        }
+        res.send('Produto removido dos favoritos')
     })
 })
 

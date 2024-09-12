@@ -1,33 +1,29 @@
 import React from 'react'
 import { Wrapper, Container, CardContent, CardContainer, Titulo, Contato, Image } from './style'
-import { useLocation } from 'react-router-dom'
 
-const About = () => {
-    const Location = useLocation()
-    const { data } = Location.state || {}
+const About = ({ dados }) => {
+
     return (
         <Wrapper>
             <Container>
-                <CardContainer
-                    key={data.title}
-                >
-                    <Image src={data.image} alt="" />
+                <CardContainer>
+                    <Image src={`http://localhost:3001/consultores/imagensconsultores/${dados.consultorId}`} alt={`foto do consultor ${dados.nome}`} />
                 </CardContainer>
                 <CardContent>
                     <Titulo>
                         Sobre Mim
                     </Titulo>
                     <Contato>
-                        {data.sobre}
+                        {dados.sobre}
                     </Contato>
                     <Contato>
-                        Telefone: {data.telefone}
+                        Telefone: {dados.telefone}
                     </Contato>
                     <Contato>
-                        WhatsApp: {data.whatsapp}
+                        WhatsApp: {dados.whatsApp}
                     </Contato>
                     <Contato>
-                        Email: {data.email}
+                        Email: {dados.consultor_email}
                     </Contato>
                 </CardContent>
             </Container>

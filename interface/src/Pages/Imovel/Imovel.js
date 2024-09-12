@@ -7,7 +7,6 @@ const Imovel = () => {
     return (
         <>
             <ImovelLayout imovelID={url} />
-            {/* <Footer /> */}
         </>
     )
 }
