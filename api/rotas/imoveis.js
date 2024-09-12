@@ -3,6 +3,7 @@ const router = express.Router()
 const connection = require('../database')
 const authconsultor = require('../middleware/authConsultor')
 const path = require('path')
+const { rawListeners } = require('process')
 
 // conexão com a tabela "imoveis"
 router.get('/', (req, res) => {
@@ -360,6 +361,55 @@ router.delete('/removerimovelfavorito', (req, res) => {
             return res.status(500).send(err)
         }
         res.send('Produto removido dos favoritos')
+    })
+})
+
+router.get('/visitascliente', (req, res) => {
+    const {id} = req.query
+
+    const query = "SELECT * FROM visitas WHERE clienteId = ?"
+
+    connection.query(query, [id], (err, result) => {
+        if(err){
+            return res.status(500).send(err)
+        }
+        res.send(result)
+    })
+})
+router.get('/visitasconsultor', (req, res) => {
+    const {id} = req.query
+
+    const query = "SELECT * FROM visitas WHERE consultorId = ?"
+
+    connection.query(query, [id], (err, result) => {
+        if(err){
+            return res.status(500).send(err)
+        }
+        res.send(result)
+    })
+})
+router.post('/agendarvisita', (req, res) => {
+    const {clienteID, consultorID, imovelID, data_visita} = req.body
+
+    const query = "INSERT INTO visitas (clienteId, imoveisID, consultorId, data_visita) VALUES (?, ?, ?, ?)"
+    connection.query(query, [clienteID, imovelID, consultorID, data_visita], (err, result) => {
+        if(err){
+            return res.status(500).send(err)
+        }
+
+        res.send("Visita agendada")
+    })
+})
+router.get('/cancelarvisita', (req, res) => {
+    const {visitaId} = req.body
+
+    const query = "SELECT * FROM visitas WHERE visitaId = ?"
+    connection.query(query, [visitaId], (err, result) => {
+        if(err){
+            return res.status(500).send(err)
+        }
+
+        res.send(result)
     })
 })
 
