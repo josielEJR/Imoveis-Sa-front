@@ -14,6 +14,13 @@ const Login = () => {
     const [emailError, setEmailError] = useState(false);
     const [loginError, setLoginError] = useState('')
 
+    useEffect(() => {
+        if(window.location.href.includes("?error=")){
+            const filters = decodeURIComponent(window.location.href.replace("http://localhost:3000/login?error=", ""))
+            setLoginError(filters)
+        }
+    }, [])
+
     const toggleShowPassword = () => {
         setShowPassword(currentPass => !currentPass);
     }
@@ -90,13 +97,17 @@ const Login = () => {
                     .then(response => JSON.parse(response))
                     .then(result => result[0])
                     .then(result => {
+                        const userID = result.clienteId
                         const userNome = result.nome
                         const userEmail = result.email
                         const userCelular = result.celular
+                        const userCPF = result.cpf
                         localStorage.setItem("token", loginValid)
+                        localStorage.setItem("currentUserID", userID)
                         localStorage.setItem("currentUserNome", userNome)
                         localStorage.setItem("currentUserEmail", userEmail)
                         localStorage.setItem("currentUserCelular", userCelular)
+                        localStorage.setItem("currentUserCPF", userCPF)
                     })
 
                 setTimeout(() => {
@@ -107,8 +118,8 @@ const Login = () => {
                 myHeaders.append("Content-Type", "application/json");
 
                 const raw = JSON.stringify({
-                    "consultor_email": "ralves@gmail.com",
-                    "senha": "123456"
+                    "consultor_email": email,
+                    "senha": password
                 });
 
                 const requestOptions = {
@@ -149,7 +160,7 @@ const Login = () => {
                             localStorage.setItem("currentUserNome", userNome)
                             localStorage.setItem("currentUserEmail", userEmail)
                             localStorage.setItem("currentUserCelular", userCelular)
-                            localStorage.setItem("token", consultorLoginValid)
+                            localStorage.setItem("token", `Bearer ${consultorLoginValid}`)
                         })
 
                     setTimeout(() => {
@@ -169,6 +180,7 @@ const Login = () => {
             <Container>
                 <InnerWrapper>
                     <Title>LOGIN</Title>
+                    {loginError ? <LoginError>{loginError}</LoginError> : <></>}
                     <Input
                         type="email"
                         placeholder="E-mail"

@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 //components
 import NavBar from './components/Navbar/index.jsx';
+import Footer from '../src/components/Footer/index.jsx'
 
 // Pages
 import Login from './Pages/Login/Login.js'
@@ -12,12 +13,13 @@ import SobreNos from './Pages/SobreNos/SobreNos.js'
 import AnunciarImovel from './Pages/Anunciar/AnunciarImovel.js'
 import Imovel from './Pages/Imovel/Imovel.js'
 import PageCorretor from './Pages/Corretor/index.jsx';
+import Favoritos from './Pages/Favoritos/Favoritos.jsx'
 
 const App = () => {
   return (
     <>
       <BrowserRouter>
-      <NavBar />
+        <NavBar />
         <Routes>
           <Route path='/imoveis' element={<Imoveis />} />
           <Route path='/corretores' element={<PageCorretor />} />
@@ -27,10 +29,12 @@ const App = () => {
           <Route path='/login' element={<Login />} />
           <Route path='/loginconsultor' element={<LoginConsultor />} />
           <Route path='/cadastrar' element={<Cadastrar />} />
+          <Route path='/favoritos' element={<Favoritos />} />
           <Route path='/' element={<Home />} />
           <Route path='*' element={<Cadastrar />} />
           <Route path='/home' element={<Home />} />
         </Routes>
+        <Footer />
       </BrowserRouter>
     </>
   );

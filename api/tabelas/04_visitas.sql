@@ -1,4 +1,4 @@
-USE websiteInfo
+USE websiteInfo;
 
 CREATE TABLE IF NOT EXISTS visitas (
     visitaId INTEGER PRIMARY KEY AUTO_INCREMENT,

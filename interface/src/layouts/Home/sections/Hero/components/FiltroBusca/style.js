@@ -151,17 +151,16 @@ export const IconDrop = styled.i`
 `
 
 export const ListaCompra = styled.ul`
-    width: 228px;
     position: relative;
+    width: 280px;
     padding: 20px;
-    transition: opacity 0.5s ease, max-height 0.5s ease;
-    margin-top: 20px;
-    background: #ffffff;
-    flex-direction: column;
     right: 20px;
+    transition: opacity 0.5s ease, max-height 0.5s ease;
+    background: #ffffff;
     border-radius: 8px;
     border: 2px solid #000;
     z-index: 1;
+    margin-top: 25px;
 
     @media (max-width: 1280px){
         width: 250px;   
@@ -198,6 +197,7 @@ export const UlOptions = styled.ul`
     border-radius: 8px;
     border: 2px solid #000;
     z-index: 1;
+    margin-top: 25px;
 
     @media (max-width: 1280px){
         width: 250px;

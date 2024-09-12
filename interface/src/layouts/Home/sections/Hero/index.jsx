@@ -10,7 +10,7 @@ const Hero = () => {
   return (
     <ContainerHero>
       <Slider config={config} />
-      <FiltroBusca  />
+      <FiltroBusca />
     </ContainerHero>
   )
 }

@@ -13,6 +13,11 @@ export const Container = styled.div`
 `
 
 export const Title = styled.div`
-    font-weight: 800;
-    font-size: 38px;
+    font-size: 36px;
+    font-weight: 700;
+    height: 50px;
+
+    @media (max-width: 482px){
+        height: unset;
+    }
 `

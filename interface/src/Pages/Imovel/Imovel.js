@@ -8,7 +8,7 @@ const Imovel = () => {
     return (
         <>
             <ImovelLayout imovelID={url} />
-            {/* <Footer /> */}
+            <ImovelPrincipal imovelID={url} />
         </>
     )
 }
