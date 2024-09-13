@@ -12,7 +12,7 @@ const Time = () => {
         <Title>
           Nosso Time
         </Title>
-        <Card configTime={configTime}/>
+        <Card />
       </Container>
     </Wrapper>
   )
