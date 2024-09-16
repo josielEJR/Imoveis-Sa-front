@@ -63,7 +63,7 @@ const Login = () => {
                             </Li>
                             <Li>
                                 <NavLink
-                                    to="/propostas"
+                                    to="/visitas"
                                 >
                                     <FaRegUserCircle /> Visitas agendadas
                                 </NavLink>
