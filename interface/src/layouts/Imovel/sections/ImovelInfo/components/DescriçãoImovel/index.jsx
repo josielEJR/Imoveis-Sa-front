@@ -84,7 +84,7 @@ const DescriçãoImovel = ({ dadosImovel }) => {
             Agendar uma visita
           </Button>
         </Content>
-        <Interação />
+        <Interação dadosImovel={dadosImovel}/>
       </Container>
     </Wrapper>
   )

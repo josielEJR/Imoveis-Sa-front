@@ -82,8 +82,8 @@ export const InfoIcon = styled.div`
 export const CardContainer = styled(SwiperSlide)`
     display: flex;
     flex-direction: column;
-    width: 458px;
-    height: 629px;
+    max-width: 458px;
+    height: 650px;
     margin: 55px 17px;
     background-color: black;
     position: relative;

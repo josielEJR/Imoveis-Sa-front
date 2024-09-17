@@ -15,6 +15,7 @@ export const Container = styled.div`
     display: flex;
     flex-direction: column;
     gap: 50px;
+    padding: 20px;
 
     @media (min-width: 510px) {
         width: 100%;
@@ -23,6 +24,8 @@ export const Container = styled.div`
 
     @media (min-width: 1280px){
         gap: 100px;
+        max-width: 1450px;
+        width: 100%;
     }
 `
 
@@ -100,7 +103,8 @@ export const Comentario = styled.div`
     padding: 10px;
 
     @media (min-width: 1280px){
-        width: 700px;
+        max-width: 700px;
+        width: 100%;
         height: 250px;
     }
 `
