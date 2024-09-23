@@ -22,11 +22,7 @@ export const Nav = styled.nav`
 
 export const Logo = styled.div`
     width: 90px;
-    margin: 28px 50px;
-
-    @media (max-width: 950px){
-        margin: 28px 10px;
-    }
+    margin: 10px 50px;
 `
 
 export const Img = styled.img``

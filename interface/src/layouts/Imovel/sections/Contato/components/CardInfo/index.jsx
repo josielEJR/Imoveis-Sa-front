@@ -9,20 +9,19 @@ const CardInfo = ({ consultorId }) => {
             const requestOptions = {
                 method: "GET",
                 redirect: "follow"
-            };
+            }
 
             fetch(`http://localhost:3001/consultores/buscarconsultorid?id=${consultorId}`, requestOptions)
                 .then(response => response.json())
                 .then(consultorArray => {
                     if (consultorArray.length > 0) {
                         const consultor = consultorArray[0]
-                        console.log(consultor);
-                        setConsultorInfo(consultor);
+                        setConsultorInfo(consultor)
                     } else {
-                        console.log("Consultor não encontrado");
+                        console.log("Consultor não encontrado")
                     }
                 })
-                .catch(error => console.error(error));
+                .catch(error => console.error(error))
         }
     }, [consultorId])
 

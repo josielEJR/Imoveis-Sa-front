@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from 'react'
-
-import { Container, CardContent, CardContainer, Article, Nome, Telefone, Email, Wrapper, Overlay, InfoIcon, Img, } from './style'
+import { Container, CardContent, CardContainer, Article, Nome, Telefone, Email, Wrapper, Overlay, InfoIcon, Img } from './style'
 import { LuBadgeInfo } from "react-icons/lu"
 import { Navigation, Pagination, Autoplay } from 'swiper/modules'
 import { Swiper, SwiperSlide } from 'swiper/react'
-
 import 'swiper/css'
 import 'swiper/css/pagination'
 import 'swiper/css/navigation'
@@ -18,16 +16,17 @@ const Card = () => {
   const [windowWidth, setWindowWidth] = useState(window.outerWidth)
   const [selectedButton, setSelectedButton] = useState(0)
   const [swiperRef, setSwiperRef] = useState(null)
+  
 
   useEffect(() => {
-    const myHeaders = new Headers();
-    myHeaders.append("Content-Type", "application/json");
+    const myHeaders = new Headers()
+    myHeaders.append("Content-Type", "application/json")
 
     const requestOptions = {
       method: "GET",
       headers: myHeaders,
       redirect: "follow"
-    };
+    }
 
     fetch("http://localhost:3001/consultores", requestOptions)
       .then((response) => response.text())
@@ -41,7 +40,7 @@ const Card = () => {
         })
         setProducts(arrayAux)
       })
-      .catch((error) => console.error(error));
+      .catch((error) => console.error(error))
   }, [])
 
   useEffect(() => {
@@ -80,8 +79,8 @@ const Card = () => {
   }
 
   const handleClick = (item) => {
-    navigate(`/corretores?id=${item.consultorId}`)
-    window.scrollTo(0, 0)
+      navigate(`/corretores?id=${item.consultorId}`)
+      window.scrollTo(0, 0)
   }
 
   const handleSlideChange = (swiper) => {
@@ -104,7 +103,7 @@ const Card = () => {
           }}
         >
           {products.map((item) => (
-            <SwiperSlide>
+            <SwiperSlide key={item.consultorId}>
               <CardContainer onClick={() => handleClick(item)}>
                 <Img src={`http://localhost:3001/consultores/imagensconsultores/${item.consultorId}`} alt={`foto do consultor ${item.nome}`} />
                 <Overlay />
@@ -122,9 +121,10 @@ const Card = () => {
           ))}
         </Swiper>
       </Container>
+
       {windowWidth > 1000 ? <NavButtons selectedButton={selectedButton} handleButtonClick={handleButtonClick} /> : <></>}
     </Wrapper>
   )
 }
 
-export default Card
+export default Card;

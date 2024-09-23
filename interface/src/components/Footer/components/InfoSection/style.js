@@ -25,7 +25,7 @@ export const ContactSection = styled.div`
     @media (max-width: 450px) {
         display: flex;
         flex-wrap: wrap;
-        justify-content: center;
+        justify-content: space-around;
     }
 `
 
@@ -33,10 +33,11 @@ export const LogoSection = styled.div`
     font-size: 48px;
     font-weight: 700;
     margin: 60px 0;
-
+    
     @media (max-width: 1280px){
-        width: 110px;
         margin: 60px auto;
+        display: flex;
+        justify-content: center;
     }
 `
 
@@ -68,6 +69,12 @@ export const SocialMediaLabel = styled.div``
 export const SocialMedia = styled.div`
     margin-top: 30px;
     font-size: 35px;
+    
+    @media (max-width:450px) {
+        display: flex;
+        justify-content: end;
+        align-items: center;
+    }
 `
 
 export const SocialMediaLink = styled.div`
@@ -88,7 +95,6 @@ export const MapSection = styled.div`
     }
 
     @media (max-width: 451px) {
-        width: 250px;
         height: 208px;
     }
 `

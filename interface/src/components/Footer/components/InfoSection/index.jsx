@@ -27,7 +27,7 @@ const InfoSection = () => {
             <Container>
                 <ContactSection>
                     <LogoSection>
-                        <a href="/home"><Logo src="logo.svg" alt="LOGO" /></a>
+                        <a href="/home"><Logo src="logo-branco.png" alt="LOGO" /></a>
                     </LogoSection>
 
                     {pageSize <= 1280 ?

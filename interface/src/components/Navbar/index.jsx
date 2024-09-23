@@ -10,7 +10,7 @@ const Navbar = () => {
             <Nav>
                 <Logo>
                     <NavLink to="/home">
-                        <Img src="logo.svg" alt="" style={{ width: '90px' }} />
+                        <Img src="logo-branco.png" alt="" style={{ width: '90px' }} />
                     </NavLink>
                 </Logo>
 

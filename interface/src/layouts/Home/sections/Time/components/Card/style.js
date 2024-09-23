@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import { SwiperSlide } from "swiper/react";
 
 export const Wrapper = styled.div`
