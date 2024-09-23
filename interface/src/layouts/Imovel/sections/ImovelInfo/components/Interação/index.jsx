@@ -1,42 +1,86 @@
-import React, { useState } from 'react'
-import { IconWrapper, Tag, Wrapper, ShareOptionsWrapper, ShareOption, Options, Url, BotãoUrl, OptionsWrapper } from './style'
-import { GrFavorite } from "react-icons/gr"
-import { PiShareFatLight } from "react-icons/pi"
-import { CiFacebook } from "react-icons/ci"
-import { FaWhatsapp } from "react-icons/fa"
-import { RiDiscordLine } from "react-icons/ri"
-import { BsTwitterX } from "react-icons/bs"
-import { MdOutlineEmail } from "react-icons/md"
-import { IoMdCloseCircleOutline } from "react-icons/io"
+import React, { useEffect, useState } from 'react';
+import {IconWrapper, Tag, Wrapper, ShareOptionsWrapper, ShareOption, Options,Url, BotãoUrl, OptionsWrapper, Favorite} from './style';
+import { FaRegHeart, FaHeart } from "react-icons/fa";
+import { PiShareFatLight } from "react-icons/pi";
+import { CiFacebook } from "react-icons/ci";
+import { FaWhatsapp } from "react-icons/fa";
+import { RiDiscordLine } from "react-icons/ri";
+import { BsTwitterX } from "react-icons/bs";
+import { MdOutlineEmail } from "react-icons/md";
+import { IoMdCloseCircleOutline } from "react-icons/io";
 
-const Interação = () => {
-  const [showShareOptions, setShowShareOptions] = useState(false)
-  const [animate, setAnimate] = useState(false)
+const Interação = ({ dadosImovel }) => {
+  const [showShareOptions, setShowShareOptions] = useState(false);
+  const [animate, setAnimate] = useState(false);
+  const [favorited, setFavorited] = useState(false);
+
+  useEffect(() => {
+    const requestOptions = {
+      method: "GET",
+      redirect: "follow"
+    };
+
+    if (localStorage.currentUserID) {
+      fetch(`http://localhost:3001/imoveis/favoritos?clienteID=${localStorage.currentUserID}`, requestOptions)
+        .then(response => response.json())
+        .then(result => {
+          const isFavorited = result.some(elem => elem.imoveisID === dadosImovel.imoveisID);
+          setFavorited(isFavorited);
+        })
+        .catch(error => console.error('Erro ao buscar favoritos:', error));
+    }
+  }, [dadosImovel.imoveisID]);
+
+  const handleFavorite = () => {
+    if (!localStorage.currentUserID) {
+      return window.location.href = "/login?error=Faça login para favoritar um imóvel";
+    }
+
+    const url = favorited ? "http://localhost:3001/imoveis/removerimovelfavorito" : "http://localhost:3001/imoveis/adicionarimovelfavorito";
+    const method = favorited ? "DELETE" : "POST";
+
+    const requestOptions = {
+      method,
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        clienteID: localStorage.currentUserID,
+        imovelID: dadosImovel.imoveisID
+      }),
+      redirect: "follow"
+    };
+
+    fetch(url, requestOptions)
+      .then(() => setFavorited(!favorited))
+      .catch(error => console.error('Erro ao atualizar favoritos:', error));
+  };
 
   const toggleShareOptions = () => {
-    setShowShareOptions(!showShareOptions)
-  }
+    setShowShareOptions(!showShareOptions);
+  };
 
-  const currentUrl = window.location.href
+  const currentUrl = window.location.href;
 
   const copiarUrl = (e) => {
-    e.preventDefault()
+    e.preventDefault();
     setAnimate(true);
-    setTimeout(() => setAnimate(false), 300)
+    setTimeout(() => setAnimate(false), 300);
 
     navigator.clipboard.writeText(currentUrl)
       .then(() => {
-        alert("Link copiado para a área de transferência!")
+        alert("Link copiado para a área de transferência!");
       })
-      .catch((err) => {
-        console.error("Erro ao copiar o link: ", err)
-      })
-  }
+      .catch(err => {
+        console.error("Erro ao copiar o link: ", err);
+      });
+  };
+
   return (
     <Wrapper>
       <IconWrapper>
-        <GrFavorite size={30} style={{ cursor: 'pointer' }} />
-        <PiShareFatLight size={30} onClick={toggleShareOptions} style={{ cursor: 'pointer' }} />
+        <Favorite onClick={handleFavorite} color={favorited ? "true" : "false"}>
+          {favorited ? <FaHeart /> : <FaRegHeart />}
+        </Favorite>
+        <PiShareFatLight onClick={toggleShareOptions} style={{ cursor: 'pointer' }} />
       </IconWrapper>
       {showShareOptions && (
         <ShareOptionsWrapper>
@@ -71,16 +115,14 @@ const Interação = () => {
               </Tag>
             </ShareOption>
           </Options>
-          <Url>
-            {currentUrl}
-          </Url>
+          <Url>{currentUrl}</Url>
           <BotãoUrl onClick={copiarUrl} animate={animate}>
             Copiar
           </BotãoUrl>
         </ShareOptionsWrapper>
       )}
     </Wrapper>
-  )
-}
+  );
+};
 
-export default Interação
+export default Interação;

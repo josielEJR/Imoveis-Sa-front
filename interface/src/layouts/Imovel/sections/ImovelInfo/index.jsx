@@ -14,7 +14,6 @@ const ImovelInfo = ({ imovelID }) => {
     fetch(`http://localhost:3001/imoveis/buscarimovelid?id=${imovelID}`, requestOptions)
       .then((response) => response.json())
       .then((produto) => {
-        console.log(produto[0])
         setProdInfo(produto[0])
       })
       .catch((error) => console.error(error))

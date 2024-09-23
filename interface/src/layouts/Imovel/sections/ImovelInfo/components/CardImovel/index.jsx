@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react'
-import 'swiper/css' 
-import 'swiper/css/navigation' 
-import 'swiper/css/pagination' 
+import 'swiper/css'
+import 'swiper/css/navigation'
+import 'swiper/css/pagination'
 import { Image, Wrapper } from './style'
 
 import { Navigation, Pagination, Autoplay } from 'swiper/modules'
@@ -25,7 +25,9 @@ const CardImovel = ({ imovelID }) => {
           setImagens(produto[0].imagens.split(','))
         }
       })
-      .catch((error) => console.error(error))
+      .catch((error) => {
+        console.error(error)
+      })
   }, [imovelID])
 
   return (
@@ -33,12 +35,11 @@ const CardImovel = ({ imovelID }) => {
         <Swiper
           spaceBetween={10}
           slidesPerView={1}
-          loop={true} 
-          autoplay={{ delay: 3000 }} 
-          navigation={true} 
-          pagination={{ clickable: true }} 
-          modules={[Navigation, Pagination, Autoplay]} 
-          
+          loop={true}
+          autoplay={{ delay: 3000 }}
+          navigation={true}
+          pagination={{ clickable: true }}
+          modules={[Navigation, Pagination, Autoplay]}
         >
           {imagens.map((imagem, index) => (
             <SwiperSlide key={index}>

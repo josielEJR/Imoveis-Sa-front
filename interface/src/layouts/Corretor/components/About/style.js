@@ -47,10 +47,12 @@ export const Titulo = styled.h1`
 export const Image = styled.img`
     object-fit: cover;
     width: 100%;
+    height: 100%;
 `
 
 export const CardContainer = styled.div`
     width: 450px;
+    height: 630px;
 
     @media (max-width: 750px){
         width: 100%;

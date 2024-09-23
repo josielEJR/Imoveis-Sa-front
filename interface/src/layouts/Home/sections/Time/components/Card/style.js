@@ -1,8 +1,7 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import { SwiperSlide } from "swiper/react";
 
 export const Wrapper = styled.div`
-
 `
 
 export const Container = styled.div`
@@ -48,11 +47,43 @@ export const CardContent = styled.div`
     }
 `
 
+export const Overlay = styled.div`
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    background: #000000CC;
+
+    @media (max-width: 1030px) {
+        opacity: 1;
+        visibility: visible;
+    }
+`
+
+export const InfoIcon = styled.div`
+    margin-bottom: 300px;
+    padding: 15px;
+    z-index: 3;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+
+    @media (max-width: 1030px) {
+        opacity: 1;
+        visibility: visible;
+    }
+`
+
 export const CardContainer = styled(SwiperSlide)`
     display: flex;
     flex-direction: column;
-    width: 458px;
-    height: 629px;
+    max-width: 458px;
+    height: 650px;
     margin: 55px 17px;
     background-color: black;
     position: relative;
@@ -74,37 +105,6 @@ export const Img = styled.img`
     width: 100%;
     height: 100%;
     object-fit: cover;
-`
-
-export const Overlay = styled.div`
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: 1;
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.3s ease, visibility 0.3s ease;
-    background: #000000CC;
-
-    @media (max-width: 1030px) {
-        opacity: 1;
-        visibility: visible;
-    }
-`
-export const InfoIcon = styled.div`
-    margin-bottom: 300px;
-    padding: 15px;
-    z-index: 3;
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.3s ease, visibility 0.3s ease;
-
-    @media (max-width: 1030px) {
-        opacity: 1;
-        visibility: visible;
-    }
 `
 
 export const Article = styled.div`

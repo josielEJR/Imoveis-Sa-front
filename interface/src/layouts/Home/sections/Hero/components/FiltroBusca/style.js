@@ -196,7 +196,7 @@ export const UlOptions = styled.ul`
     background: #ffffff;
     border-radius: 8px;
     border: 2px solid #000;
-    z-index: 1;
+    z-index: 2;
     margin-top: 25px;
 
     @media (max-width: 1280px){
@@ -227,7 +227,7 @@ export const UlBairros = styled.ul`
     right: 20px;
     border-radius: 8px;
     border: 2px solid #000;
-    z-index: 1;
+    z-index: 2;
 
     @media (max-width: 1280px){
         width: 250px;

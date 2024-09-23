@@ -23,7 +23,6 @@ const ContentDescrição = ({ imovelID }) => {
       .then((response) => response.text())
       .then((result) => JSON.parse(result))
       .then((produto) => {
-        console.log(produto[0])
         return setProdInfo(produto[0])
       })
       .catch((error) => console.error(error))
