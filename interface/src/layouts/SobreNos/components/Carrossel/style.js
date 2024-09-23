@@ -15,7 +15,7 @@ export const Wrapper = styled.div`
     justify-content: center;
     align-items: center;
     padding: 0; 
-    margin: 0; 
+    margin: 0;
   }
 
   .swiper-slide img {
@@ -25,16 +25,16 @@ export const Wrapper = styled.div`
   }
 
   .swiper-button-prev, .swiper-button-next {
-        opacity: 50%;
-        background-color: white;
-        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
-        width: 30px;
-        height: 30px;
-        border-radius: 50%;
-        color: black;
+    opacity: 50%;
+    background-color: white;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    color: black;
     }
 
-    .swiper-button-prev:after, .swiper-button-next:after {
+  .swiper-button-prev:after, .swiper-button-next:after {
         font-size: 20px;
     }
     
@@ -58,7 +58,7 @@ export const Wrapper = styled.div`
     z-index: 10;
 
     @media (max-width: 1280px) {
-        display: none;
+      display: none;
     }
 
   }
