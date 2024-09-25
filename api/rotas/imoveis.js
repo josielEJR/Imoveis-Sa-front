@@ -364,47 +364,4 @@ router.delete('/removerimovelfavorito', (req, res) => {
     })
 })
 
-router.get('/visitas', (req, res) => {
-    const {clienteID, consultorID} = req.query
-
-    let query = "SELECT * FROM visitas INNER JOIN imoveis ON visitas.imoveisID = imoveis.imoveisID JOIN clientes ON visitas.clienteId = clientes.clienteId JOIN consultores ON visitas.consultorId = consultores.consultorId"
-
-    if(clienteID){
-        query += ` WHERE visitas.clienteId = ${clienteID}`
-    }else if(consultorID){
-        query += ` WHERE visitas.consultorId = ${consultorID}`
-    }
-
-    connection.query(query, (err, result) => {
-        if(err){
-            return res.status(500).send(err)
-        }
-        res.send(result)
-    })
-})
-router.post('/agendarvisita', (req, res) => {
-    const {clienteID, consultorID, imovelID, data_visita} = req.body
-
-    const query = "INSERT INTO visitas (clienteId, imoveisID, consultorId, data_visita) VALUES (?, ?, ?, ?)"
-    connection.query(query, [clienteID, imovelID, consultorID, data_visita], (err, result) => {
-        if(err){
-            return res.status(500).send(err)
-        }
-
-        res.send("Visita agendada")
-    })
-})
-router.get('/cancelarvisita/:id', (req, res) => {
-    const visitaId = req.params.id
-
-    const query = "SELECT * FROM visitas WHERE visitaId = ?"
-    connection.query(query, [visitaId], (err, result) => {
-        if(err){
-            return res.status(500).send(err)
-        }
-
-        res.send(result)
-    })
-})
-
 module.exports = router

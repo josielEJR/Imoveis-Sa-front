@@ -3,29 +3,30 @@ const router = express.Router()
 const connection = require('../database')
 const authCliente = require('../middleware/authCliente')
 const nodemailer = require('nodemailer');
+const bodyParser = require('body-parser')
 require('dotenv').config()
 
 //Configuração do nodemailer
 const transporter = nodemailer.createTransport({
-    host: 'smtp.office365.com',
+    host: 'smtp.gmail.com',
     port: 587,
     secure: false,
     auth: {
-        user: 'juninhojoga1038@hotmail.com',
-        pass: '102030405060'
+        user: 'jvitorcavalcante18@gmail.com',
+        pass: 'bbnn tblh lspd yvyr'
     }
 })
 
 // função para enviar e-mail
-function enviarEmail(corpoImovel, corpoCliente, dataVisita) {
+function enviarEmail(remetente, destinatario, imovelID, corpoCliente, dataVisita) {
     const mailOptions = {
-        from: 'juninhojoga1038@hotmail.com',
-        to: 'juninhojoka11@gmail.com',
+        from: remetente,
+        to: destinatario,
         subject: 'Solicitação de visita',
         html: `
             <p> Olá</p>
             <p>O cliente solicitou uma visita para o seguinte imóvel:</p>
-            <pre>${corpoImovel}</pre>
+            <a href="http://localhost:3000/imovel?id=${imovelID}">Página do imóvel</a>
             <p>Aqui estão algumas informações do cliente:</p>
             <pre>${corpoCliente}</pre>
             <p>A visita está agendada para a data ${dataVisita}.</p>
@@ -87,6 +88,71 @@ router.post('/', authCliente, (req, res) => {
                 }
             })
         })
+    })
+})
+router.get('/visitas', (req, res) => {
+    const {clienteID, consultorID} = req.query
+
+    let query = "SELECT v.visitaId, ci.clienteId, i.imoveisID, co.consultorId, v.data_visita, i.tipo, i.endereco, i.numero, i.bairro, i.cidade, i.cep, i.quartos, i.banheiros, i.preco_venda, i.preco_aluguel, i.tamanho, i.disponibilidade, i.vagas, co.nome AS nome_consultor, co.consultor_email, ci.email AS cliente_email, ci.nome AS nome_cliente FROM visitas AS v JOIN imoveis AS i ON v.imoveisID = i.imoveisID JOIN clientes AS ci ON v.clienteId = ci.clienteId JOIN consultores AS co ON v.consultorId = co.consultorId"
+
+    if(clienteID){
+        query += ` WHERE v.clienteId = ${clienteID}`
+    }else if(consultorID){
+        query += ` WHERE v.consultorId = ${consultorID}`
+    }
+
+    connection.query(query, (err, result) => {
+        if(err){
+            return res.status(500).send(err)
+        }
+        res.send(result)
+    })
+})
+router.post('/agendarvisita', (req, res) => {
+    const {clienteID, consultorID, imovelID, data_visita} = req.body
+
+    let dados_cliente
+    let consultorEmail
+
+    const formatedDate = data_visita.split('-')[2]+'/'+data_visita.split('-')[1]+'/'+data_visita.split('-')[0];
+
+    connection.query("SELECT * FROM visitas WHERE imoveisID = ? AND data_visita = ?", [imovelID, data_visita], (req, result) => {
+        if(result.length > 0){
+            return res.send(JSON.stringify({agendado: false, mensagem: "A data solicitada já esta reservada"}))
+        }
+    })
+
+    connection.query("SELECT nome, email, celular FROM clientes WHERE clienteId = ?", [clienteID], (err, result) => {
+        dados_cliente = `
+        Nome: ${result[0].nome},
+        Email: ${result[0].email},
+        Telefone: ${result[0].celular}
+        `
+    })
+
+    connection.query("SELECT consultor_email FROM consultores WHERE consultorId = ?", [consultorID], (req, result) =>{
+        consultorEmail = result[0].consultor_email
+    })
+
+    connection.query("INSERT INTO visitas (clienteId, imoveisID, consultorId, data_visita) VALUES (?, ?, ?, ?)", [clienteID, imovelID, consultorID, data_visita], (err, result) => {
+        if(err){
+            return res.status(500).send(err)
+        }
+
+        enviarEmail("jvitorcavalcante18@gmail.com", consultorEmail, imovelID, dados_cliente, formatedDate)
+        return res.send(true)
+    })
+})
+router.get('/cancelarvisita/:id', (req, res) => {
+    const visitaId = req.params.id
+
+    const query = "SELECT * FROM visitas WHERE visitaId = ?"
+    connection.query(query, [visitaId], (err, result) => {
+        if(err){
+            return res.status(500).send(err)
+        }
+
+        res.send(result)
     })
 })
 module.exports = router
