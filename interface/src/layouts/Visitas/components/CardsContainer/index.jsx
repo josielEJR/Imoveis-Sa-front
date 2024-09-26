@@ -2,13 +2,17 @@ import { useState, useEffect } from 'react'
 
 import Card from '../Card'
 
-import { Wrapper, Container, CardsSection, SelectorSection, Selectors, IndexSelector, Error } from './style'
+import { FaCalendarAlt } from "react-icons/fa";
+import { FaIdCardClip } from "react-icons/fa6";
+
+import { Wrapper, Container, CardsSection, ConsultorSection, Cards, Text, Consultores, VisitaButton, SelectorSection, Selectors, IndexSelector, Error } from './style'
 
 const CardsContainer = () => {
 
     const [selected, setSelected] = useState(0)
     const [indexes, setIndexes] = useState([])
     const [products, setProducts] = useState([])
+    const [selectedButton, setSelectedButton] = useState("historico");
 
     useEffect(() => {
         const requestOptions = {
@@ -16,7 +20,7 @@ const CardsContainer = () => {
             redirect: "follow"
         };
 
-        fetch(`http://localhost:3001/imoveis/visitas?clienteID=${localStorage.currentUserID}`, requestOptions)
+        fetch(`http://localhost:3001/visita/visitas?clienteID=${localStorage.currentUserID}`, requestOptions)
             .then((response) => response.text())
             .then((result) => JSON.parse(result))
             .then((result) => {
@@ -69,7 +73,8 @@ const CardsContainer = () => {
     const visitas = () => {
         if (localStorage.length === 0 || products.length === 0) {
             return <Error>
-                Não existem visitas agendadas
+                <FaCalendarAlt className='icon' />
+                Você não tem visitas agendadas
             </Error>
         } else {
             return products.map((prod, index) => {
@@ -97,8 +102,22 @@ const CardsContainer = () => {
 
     return (
         <Wrapper>
-            <Container id='scrollContainer'>
+            <Container>
                 <CardsSection>
+                    <ConsultorSection>
+                        <Text>Seus consultores</Text>
+                        <Consultores> <FaIdCardClip /> *consultores*</Consultores>
+                    </ConsultorSection>
+                    <Text>
+                        <VisitaButton
+                            underline={selectedButton == "historico"}
+                            onClick={() => setSelectedButton("historico")}
+                        >Histórico</VisitaButton>
+                        <VisitaButton
+                            underline={selectedButton == "proximas visitas"}
+                            onClick={() => setSelectedButton("proximas visitas")}
+                        >Próximas visitas</VisitaButton>
+                    </Text>
                     {visitas()}
                 </CardsSection>
             </Container>

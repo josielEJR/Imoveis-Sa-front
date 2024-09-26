@@ -108,6 +108,18 @@ router.get('/visitas', (req, res) => {
         res.send(result)
     })
 })
+router.get('/getconsultores', (req, res) => {
+    const {clienteID} = req.query
+
+    let query = "SELECT DISTINCT consultorId FROM visitas WHERE clienteID = ?"
+
+    connection.query(query, [clienteID], (err, result) => {
+        if(err){
+            return res.status(500).send(err)
+        }
+        res.send(result)
+    })
+})
 router.post('/agendarvisita', (req, res) => {
     const {clienteID, consultorID, imovelID, data_visita} = req.body
 

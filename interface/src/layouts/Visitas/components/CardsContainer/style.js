@@ -36,6 +36,30 @@ export const CardsSection = styled.div`
     gap: 50px 30px;
 `
 
+export const ConsultorSection = styled.section`
+    width: 100%;
+`
+
+export const Text = styled.div`
+    font-weight: 700;
+    display: flex;
+    gap: 20px;
+    width: 100%;
+`
+
+export const Consultores = styled.div`
+    padding: 20px;
+    display: flex;
+    gap: 10px;
+    height: 58px;
+    line-height: 15px;
+    border: 1px solid black;
+`
+
+export const VisitaButton = styled.button`
+    text-decoration: ${props => props.underline ? "underline" : "none"};
+`
+
 export const SelectorSection = styled.div`
     width: 100%;
 `
@@ -59,5 +83,14 @@ export const IndexSelector = styled.button`
 `
 
 export const Error = styled.div`
+    width: 100%;
     font-size: 28px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 40px;
+
+    & .icon{
+        width: 100%;
+    }
 `
