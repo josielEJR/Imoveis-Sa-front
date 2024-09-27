@@ -2,7 +2,7 @@ import { useState } from 'react'
 
 import { NavLink } from 'react-router-dom'
 
-import { FaRegUserCircle, FaBell } from "react-icons/fa";
+import { FaRegUserCircle, FaBell, FaCalendarAlt } from "react-icons/fa";
 import { FaHouseChimney, FaHeart } from "react-icons/fa6";
 import { IoMdMail, IoIosLogOut } from "react-icons/io";
 
@@ -63,9 +63,9 @@ const Login = () => {
                             </Li>
                             <Li>
                                 <NavLink
-                                    to="/propostas"
+                                    to="/visitas"
                                 >
-                                    <FaRegUserCircle /> Visitas agendadas
+                                    <FaCalendarAlt /> Visitas agendadas
                                 </NavLink>
                             </Li>
                             {localStorage.length > 0 &&
@@ -103,7 +103,7 @@ const Login = () => {
                                 <NavLink
                                     to="/solicitacoesvisita"
                                 >
-                                    <FaBell /> Solicitações de agendas
+                                    <FaCalendarAlt /> Solicitações de agendas
                                 </NavLink>
                             </Li>
                             <Li>

@@ -3,6 +3,7 @@ const router = express.Router()
 const connection = require('../database')
 const authconsultor = require('../middleware/authConsultor')
 const path = require('path')
+const { rawListeners } = require('process')
 
 // conexão com a tabela "imoveis"
 router.get('/', (req, res) => {

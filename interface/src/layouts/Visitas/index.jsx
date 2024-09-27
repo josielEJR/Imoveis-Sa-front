@@ -2,13 +2,11 @@ import CardsContainer from './components/CardsContainer'
 
 import { Wrapper, Container, Title } from './style'
 
-const ImoveisFavoritos = () => {
+const Visitas = () => {
     return (
         <Wrapper>
             <Container>
-                <Title>
-                    Imoveis Favoritos
-                </Title>
+                <Title>Suas visitas</Title>
 
                 <CardsContainer />
             </Container>
@@ -16,4 +14,4 @@ const ImoveisFavoritos = () => {
     )
 }
 
-export default ImoveisFavoritos
+export default Visitas
