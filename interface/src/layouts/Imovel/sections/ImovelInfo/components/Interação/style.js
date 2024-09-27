@@ -18,7 +18,9 @@ export const Options = styled.div`
 
 export const ShareOptionsWrapper = styled.div`
   position: absolute;
-  left: 20%;
+  top: 130%;                           
+  left: 50%;                
+  transform: translate(-50%, -50%); 
   border: 1px solid #ccc;
   border-radius: 5px;
   padding: 10px;
@@ -30,7 +32,12 @@ export const ShareOptionsWrapper = styled.div`
   font-size: 20px;
   flex-direction: column;
   display: flex;
-  width: 450px;
+  max-width: 450px;
+  
+  @media (min-width: 1030px) {
+    width: 100%;
+    top: 60%;
+  }
 `
 
 export const Url = styled.p`
