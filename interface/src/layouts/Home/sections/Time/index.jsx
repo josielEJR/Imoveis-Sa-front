@@ -1,11 +1,8 @@
 import React from 'react'
-
 import { Title, Wrapper, Container, } from './style'
 import Card from './components/Card'
-import configTime from './components/Card/Imagens/imagens'
 
 const Time = () => {
-
   return (
     <Wrapper>
       <Container>
