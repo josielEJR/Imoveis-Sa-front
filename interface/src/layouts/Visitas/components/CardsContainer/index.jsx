@@ -5,14 +5,15 @@ import Card from '../Card'
 import { FaCalendarAlt } from "react-icons/fa";
 import { FaIdCardClip } from "react-icons/fa6";
 
-import { Wrapper, Container, CardsSection, ConsultorSection, Cards, Text, Consultores, VisitaButton, SelectorSection, Selectors, IndexSelector, Error } from './style'
+import { Wrapper, Container, CardsSection, ConsultorSection, Text, Consultores, Consultor, ConsultorInfo, ConsultorNome, ConsultorEmail, VisitaButton, SelectorSection, Selectors, IndexSelector, Error } from './style'
 
 const CardsContainer = () => {
 
     const [selected, setSelected] = useState(0)
     const [indexes, setIndexes] = useState([])
     const [products, setProducts] = useState([])
-    const [selectedButton, setSelectedButton] = useState("historico");
+    const [consultores, setConsultores] = useState([])
+    const [selectedButton, setSelectedButton] = useState("historico")
 
     useEffect(() => {
         const requestOptions = {
@@ -23,10 +24,13 @@ const CardsContainer = () => {
         fetch(`http://localhost:3001/visita/visitas?clienteID=${localStorage.currentUserID}`, requestOptions)
             .then((response) => response.text())
             .then((result) => JSON.parse(result))
-            .then((result) => {
-                setProducts(result)
-                console.log(result)
-            })
+            .then((result) => setProducts(result))
+            .catch((error) => console.error(error));
+
+        fetch(`http://localhost:3001/visita/getconsultores?clienteID=${localStorage.currentUserID}`, requestOptions)
+            .then((response) => response.text())
+            .then((result) => JSON.parse(result))
+            .then((result) => setConsultores(result))
             .catch((error) => console.error(error));
     }, [])
 
@@ -100,13 +104,32 @@ const CardsContainer = () => {
         }
     }
 
+    const getConsultores = () => {
+        if(consultores.length === 0){
+            return <Text>
+                <FaIdCardClip />
+                Você ainda não possui um consultor para te atender
+            </Text>
+        }else{
+            return consultores.map((elem, index) => (
+                <Consultor key={`consultor${index}`} onClick={() => window.location.href = "corretores"}>
+                    <FaIdCardClip className='icon' /> 
+                    <ConsultorInfo>
+                        <ConsultorNome>{elem.nome}</ConsultorNome>
+                        <ConsultorEmail>{elem.consultor_email}</ConsultorEmail>
+                    </ConsultorInfo>
+                </Consultor>
+            ))
+        }
+    }
+
     return (
         <Wrapper>
             <Container>
                 <CardsSection>
                     <ConsultorSection>
                         <Text>Seus consultores</Text>
-                        <Consultores> <FaIdCardClip /> *consultores*</Consultores>
+                        <Consultores>{getConsultores()}</Consultores>
                     </ConsultorSection>
                     <Text>
                         <VisitaButton

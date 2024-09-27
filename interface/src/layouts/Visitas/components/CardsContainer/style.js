@@ -50,10 +50,33 @@ export const Text = styled.div`
 export const Consultores = styled.div`
     padding: 20px;
     display: flex;
+    flex-direction: column;
+    gap: 20px;
+`
+
+export const Consultor = styled.div`
+    cursor: pointer;
+    display: flex;
     gap: 10px;
-    height: 58px;
-    line-height: 15px;
-    border: 1px solid black;
+
+    & .icon{
+        height: 60px;
+        width: 25px;
+    }
+`
+
+export const ConsultorInfo = styled.div`
+    display: flex;
+    flex-direction: column;
+`
+
+export const ConsultorNome = styled.span`
+    font-size: 22px;
+`
+
+export const ConsultorEmail = styled.span`
+    font-size: 15px;
+    font-style: italic;
 `
 
 export const VisitaButton = styled.button`

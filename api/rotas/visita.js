@@ -111,7 +111,7 @@ router.get('/visitas', (req, res) => {
 router.get('/getconsultores', (req, res) => {
     const {clienteID} = req.query
 
-    let query = "SELECT DISTINCT consultorId FROM visitas WHERE clienteID = ?"
+    let query = "SELECT DISTINCT c.consultorId, c.nome, c.consultor_email FROM visitas JOIN consultores AS c ON visitas.consultorId = c.consultorId WHERE clienteId = 1"
 
     connection.query(query, [clienteID], (err, result) => {
         if(err){
