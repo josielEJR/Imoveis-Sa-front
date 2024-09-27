@@ -16,31 +16,17 @@ const Card = () => {
   const [windowWidth, setWindowWidth] = useState(window.outerWidth)
   const [selectedButton, setSelectedButton] = useState(0)
   const [swiperRef, setSwiperRef] = useState(null)
-  
 
   useEffect(() => {
-    const myHeaders = new Headers()
-    myHeaders.append("Content-Type", "application/json")
-
-    const requestOptions = {
-      method: "GET",
-      headers: myHeaders,
-      redirect: "follow"
-    }
-
-    fetch("http://localhost:3001/consultores", requestOptions)
-      .then((response) => response.text())
-      .then((result) => JSON.parse(result))
-      .then((result) => {
-        const arrayAux = []
-        result.forEach((prod, index) => {
-          if (index < 5) {
-            arrayAux.push(prod)
-          }
-        })
-        setProducts(arrayAux)
+    fetch('http://localhost:3001/consultores')
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.json();
       })
-      .catch((error) => console.error(error))
+      .then(data => setProducts(data))
+      .catch(error => console.error('Houve um problema com a operação de fetch:', error));
   }, [])
 
   useEffect(() => {
@@ -121,10 +107,8 @@ const Card = () => {
           ))}
         </Swiper>
       </Container>
-
       {windowWidth > 1000 ? <NavButtons selectedButton={selectedButton} handleButtonClick={handleButtonClick} /> : <></>}
     </Wrapper>
   )
 }
-
-export default Card;
+export default Card
