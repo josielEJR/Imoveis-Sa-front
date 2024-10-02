@@ -86,10 +86,10 @@ const onFavorite = keyframes`
 `
 
 export const Favorite = styled.button`
-    position: relative;
-    display: flex;
-    z-index: 1;
-    color: black;
-    cursor: pointer;
-    ${({color}) => color === "true" && css`animation: ${onFavorite} 0.5s ease`}
+  position: relative;
+  display: flex;
+  z-index: 1;
+  color: black;
+  cursor: pointer;
+  ${({color}) => color === "true" && css`animation: ${onFavorite} 0.5s ease`}
 `

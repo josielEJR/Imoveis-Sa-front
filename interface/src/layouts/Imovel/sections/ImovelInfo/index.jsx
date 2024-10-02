@@ -3,7 +3,7 @@ import { Container, Content, Title, Wrapper } from './style'
 import CardImovel from './components/CardImovel'
 import DescriçãoImovel from './components/DescriçãoImovel'
 
-const ImovelInfo = ({ imovelID }) => {
+const ImovelInfo = ({ imovelID, scrollToAgendar }) => {
   const [prodInfo, setProdInfo] = useState({})
   useEffect(() => {
     const requestOptions = {
@@ -40,7 +40,7 @@ const ImovelInfo = ({ imovelID }) => {
         </Title>
         <Content>
           <CardImovel imovelID={imovelID} />
-          <DescriçãoImovel dadosImovel={prodInfo} />
+          <DescriçãoImovel dadosImovel={prodInfo}  scrollToAgendar={scrollToAgendar}/>
         </Content>
       </Container>
     </Wrapper>

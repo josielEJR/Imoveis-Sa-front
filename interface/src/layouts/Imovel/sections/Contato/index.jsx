@@ -1,22 +1,22 @@
-import React from 'react'
+import React, { forwardRef } from 'react'
 import { Container, ContatoContainer, Title, Wrapper } from './style'
 import CardInfo from './components/CardInfo'
 import Agendar from './components/Formulário'
 
-const ContatoLayout = ({ consultorId }) => {
+const ContatoLayout = forwardRef(({ consultorId, imovelID }, ref) => {
     return (
-        <Wrapper>
+        <Wrapper ref={ref}>
             <Container>
-                <Title >
+                <Title>
                     Fale com o Corretor
                 </Title>
                 <ContatoContainer>
                     <CardInfo consultorId={consultorId} />
-                    <Agendar />
+                    <Agendar imovelID={imovelID}/>
                 </ContatoContainer>
             </Container>
         </Wrapper>
     )
-}
+})
 
 export default ContatoLayout

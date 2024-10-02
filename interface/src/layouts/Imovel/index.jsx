@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import DescriçãoLayout from './sections/Descrição'
 import { Wrapper } from './style'
 import LocalizaçãoLayout from './sections/Localização'
@@ -9,6 +9,7 @@ import Loading from '../../components/Loading'
 const ImovelLayout = ({ imovelID }) => {
   const [consultorId, setConsultorId] = useState(null)
   const [loading, setLoading] = useState(true)
+  const contatoRef = useRef(null)
 
   useEffect(() => {
     const requestOptions = {
@@ -35,13 +36,17 @@ const ImovelLayout = ({ imovelID }) => {
     }, 1500)
   }, [])
 
+  const scrollToAgendar = () => {
+    contatoRef.current.scrollIntoView({ behavior: 'smooth' }) 
+  }
+
   return (
     <Wrapper>
       {loading && <Loading />}
-      <ImovelInfo imovelID={imovelID}  />
-      <DescriçãoLayout imovelID={imovelID}/>
+      <ImovelInfo imovelID={imovelID} scrollToAgendar={scrollToAgendar} />
+      <DescriçãoLayout imovelID={imovelID} />
       <LocalizaçãoLayout imovelID={imovelID} /> 
-      <ContatoLayout consultorId={consultorId} />
+      <ContatoLayout consultorId={consultorId} imovelID={imovelID} ref={contatoRef}/>
     </Wrapper>
   )
 }

@@ -1,15 +1,20 @@
-import React, { useState } from 'react'
+import React, { useRef, useState } from 'react'
 import { Wrapper, Container, Content, Preço, Tipo, ItensWrapper, Button, Itens, Li } from './style'
 import Interação from '../Interação'
 
-const DescriçãoImovel = ({ dadosImovel }) => {
+const DescriçãoImovel = ({ dadosImovel, scrollToAgendar}) => {
   const [animate, setAnimate] = useState(false)
+  
   const itensArray = typeof dadosImovel.itens === 'string' ? dadosImovel.itens.split(',') : []
 
   const handleAgendarClick = (e) => {
     e.preventDefault()
-    setAnimate(true);
-    setTimeout(() => setAnimate(false), 300)
+    setAnimate(true)
+
+    setTimeout(() => {
+      setAnimate(false)
+      scrollToAgendar() 
+    }, 300)
   }
 
   const getDisponibilidade = () => {

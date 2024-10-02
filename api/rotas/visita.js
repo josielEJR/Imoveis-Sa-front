@@ -2,8 +2,7 @@ const express = require('express')
 const router = express.Router()
 const connection = require('../database')
 const authCliente = require('../middleware/authCliente')
-const nodemailer = require('nodemailer');
-const bodyParser = require('body-parser')
+const nodemailer = require('nodemailer')
 require('dotenv').config()
 
 //Configuração do nodemailer
@@ -12,8 +11,8 @@ const transporter = nodemailer.createTransport({
     port: 587,
     secure: false,
     auth: {
-        user: 'jvitorcavalcante18@gmail.com',
-        pass: 'bbnn tblh lspd yvyr'
+        user: 'juninhojoka11@gmail.com',
+        pass: 'juninhojr11'
     }
 })
 
@@ -93,7 +92,7 @@ router.post('/', authCliente, (req, res) => {
 router.get('/visitas', (req, res) => {
     const {clienteID, consultorID} = req.query
 
-    let query = "SELECT v.visitaId, ci.clienteId, i.imoveisID, co.consultorId, v.data_visita, i.tipo, i.endereco, i.numero, i.bairro, i.cidade, i.cep, i.quartos, i.banheiros, i.preco_venda, i.preco_aluguel, i.tamanho, i.disponibilidade, i.vagas, co.nome AS nome_consultor, co.consultor_email, ci.email AS cliente_email, ci.nome AS nome_cliente FROM visitas AS v JOIN imoveis AS i ON v.imoveisID = i.imoveisID JOIN clientes AS ci ON v.clienteId = ci.clienteId JOIN consultores AS co ON v.consultorId = co.consultorId"
+    let query = "SELECT v.visitaId, ci.clienteId, i.imoveisID, co.consultorId, v.data_visita, v.comentario, i.tipo, i.endereco, i.numero, i.bairro, i.cidade, i.cep, i.quartos, i.banheiros, i.preco_venda, i.preco_aluguel, i.tamanho, i.disponibilidade, i.vagas, co.nome AS nome_consultor, co.consultor_email, ci.email AS cliente_email, ci.nome AS nome_cliente FROM visitas AS v JOIN imoveis AS i ON v.imoveisID = i.imoveisID JOIN clientes AS ci ON v.clienteId = ci.clienteId JOIN consultores AS co ON v.consultorId = co.consultorId"
 
     if(clienteID){
         query += ` WHERE v.clienteId = ${clienteID}`
@@ -121,40 +120,56 @@ router.get('/getconsultores', (req, res) => {
     })
 })
 router.post('/agendarvisita', (req, res) => {
-    const {clienteID, consultorID, imovelID, data_visita} = req.body
+    const { clienteID, consultorID, imovelID, data_visita, comentario, nome, email } = req.body
 
     let dados_cliente
     let consultorEmail
 
-    const formatedDate = data_visita.split('-')[2]+'/'+data_visita.split('-')[1]+'/'+data_visita.split('-')[0];
-
+    // Verifica se a data já está reservada
     connection.query("SELECT * FROM visitas WHERE imoveisID = ? AND data_visita = ?", [imovelID, data_visita], (req, result) => {
-        if(result.length > 0){
-            return res.send(JSON.stringify({agendado: false, mensagem: "A data solicitada já esta reservada"}))
+        if(result.length > 0) {
+            return res.send(JSON.stringify({agendado: false, mensagem: "A data solicitada já está reservada"}))
         }
-    })
-
-    connection.query("SELECT nome, email, celular FROM clientes WHERE clienteId = ?", [clienteID], (err, result) => {
-        dados_cliente = `
-        Nome: ${result[0].nome},
-        Email: ${result[0].email},
-        Telefone: ${result[0].celular}
-        `
-    })
-
-    connection.query("SELECT consultor_email FROM consultores WHERE consultorId = ?", [consultorID], (req, result) =>{
-        consultorEmail = result[0].consultor_email
-    })
-
-    connection.query("INSERT INTO visitas (clienteId, imoveisID, consultorId, data_visita) VALUES (?, ?, ?, ?)", [clienteID, imovelID, consultorID, data_visita], (err, result) => {
-        if(err){
-            return res.status(500).send(err)
+        if (clienteID) {
+            connection.query("SELECT nome, email, celular FROM clientes WHERE clienteId = ?", [clienteID], (err, result) => {
+                if (err) {
+                    return res.status(500).send(err)
+                }
+                dados_cliente = `
+                    Nome: ${result[0].nome},
+                    Email: ${result[0].email},
+                    Telefone: ${result[0].celular}
+                `
+            })
+        } else {
+            // Se o cliente não está cadastrado, usa o nome e email fornecidos
+            dados_cliente = `
+                Nome: ${nome},
+                Email: ${email}
+            `
         }
-
-        enviarEmail("jvitorcavalcante18@gmail.com", consultorEmail, imovelID, dados_cliente, formatedDate)
-        return res.send(true)
+        connection.query("SELECT consultor_email FROM consultores WHERE consultorId = ?", [consultorID], (err, result) => {
+            if (err) {
+                return res.status(500).send(err)
+            }
+            consultorEmail = result[0].consultor_email
+        })
+        // Insere a visita no banco de dados
+        connection.query(
+            "INSERT INTO visitas (clienteId, imoveisID, consultorId, data_visita, comentario) VALUES (?, ?, ?, ?, ?)",
+            [clienteID || null, imovelID, consultorID, data_visita, comentario], // clienteID pode ser null
+            (err, result) => {
+                if (err) {
+                    return res.status(500).send(err)
+                }
+                // Envia o email após agendar
+                enviarEmail("juninhojoka11@gmail.com", consultorEmail, imovelID, dados_cliente, data_visita, comentario)
+                return res.send({ agendado: true })
+            }
+        )
     })
 })
+
 router.get('/cancelarvisita/:id', (req, res) => {
     const visitaId = req.params.id
 
