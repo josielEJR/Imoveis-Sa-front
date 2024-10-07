@@ -87,9 +87,9 @@ const Login = () => {
                         <Ul>
                             <Li>
                                 <NavLink
-                                    to="/meusimoveis"
+                                    to={`/corretores?id=${localStorage.id}`}
                                 >
-                                    <FaHouseChimney /> Meus Imoveis
+                                    <FaHouseChimney /> Meu perfil
                                 </NavLink>
                             </Li>
                             <Li>
