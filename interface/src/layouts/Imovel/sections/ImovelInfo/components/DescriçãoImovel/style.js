@@ -40,7 +40,6 @@ export const ItensWrapper = styled.ul`
     width: 100%;
     list-style-type: disc;
     font-size: 22px;
-
 `
 export const Itens = styled.li`
     display: flex;
