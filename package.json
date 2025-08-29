@@ -1,0 +1,26 @@
+{
+  "name": "projeto-imoveis-sa",
+  "version": "1.0.0",
+  "description": "Projeto Imóveis SA - Frontend e API",
+  "main": "index.js",
+  "scripts": {
+    "start": "npm run start:docker & wait-on http://localhost:3001/health && npm run start:frontend",
+    "start:docker": "cd api && docker-compose up",
+    "start:api": "cd api && npm start",
+    "start:frontend": "cd interface && npm start",
+    "install:all": "npm install && cd api && npm install && cd ../interface && npm install",
+    "dev": "npm run start:docker & wait-on http://localhost:3001/health && npm run start:frontend",
+    "build": "cd interface && npm run build",
+    "test": "cd interface && npm test",
+    "docker:down": "cd api && docker-compose down",
+    "docker:build": "cd api && docker-compose build",
+    "docker:logs": "cd api && docker-compose logs -f"
+  },
+  "keywords": ["imoveis", "react", "node", "express"],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "concurrently": "^8.2.2",
+    "wait-on": "^7.2.0"
+  }
+}
