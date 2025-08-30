@@ -3,11 +3,11 @@ const mysql = require('mysql');
 console.log('🔌 Iniciando conexão com o banco de dados...');
 
 const connection = mysql.createConnection({
-  host: process.env.DB_HOST || 'localhost',
-  port: process.env.DB_PORT || '3306',
-  user: process.env.DB_USER || 'root',
-  password: process.env.DB_PASSWORD || '',
-  database: process.env.DB_NAME || 'websiteInfo',
+  host: process.env.MYSQLHOST,
+  port: process.env.MYSQLPORT,
+  user: process.env.MYSQLUSER,
+  password: process.env.MYSQLPASSWORD,
+  database: process.env.MYSQLDATABASE,
 });
 
 connection.connect(err => {
