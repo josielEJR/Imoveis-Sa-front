@@ -1,3 +1,5 @@
+require('dotenv').config(); // <-- carrega o .env
+
 const express = require('express')
 const bodyParser = require('body-parser')
 const cors = require('cors')
@@ -16,7 +18,6 @@ app.get('/health', (req, res) => {
 });
 
 app.use('/', routes)
-
 
 app.listen(port, () => { 
    console.log('server started at port ' + port)
