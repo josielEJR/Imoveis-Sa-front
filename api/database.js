@@ -1,13 +1,21 @@
-const mysql = require('mysql');
+const mysql = require('mysql2');
 
-console.log('🔌 Iniciando conexão com o banco de dados...');
+require('dotenv').config();
+
+console.log("🔧 Config DB:", {
+  host: process.env.MYSQLHOST,
+  port: process.env.MYSQLPORT,
+  user: process.env.MYSQLUSER,
+  password: process.env.MYSQLPASSWORD ? "****" : null,
+  database: process.env.MYSQLDATABASE
+});
 
 const connection = mysql.createConnection({
   host: process.env.MYSQLHOST,
   port: process.env.MYSQLPORT,
   user: process.env.MYSQLUSER,
   password: process.env.MYSQLPASSWORD,
-  database: process.env.MYSQLDATABASE,
+  database: process.env.MYSQLDATABASE
 });
 
 connection.connect(err => {
