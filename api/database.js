@@ -1,20 +1,21 @@
-const mysql = require('mysql')
+const mysql = require('mysql');
 
-console.log('Começando a conexão com o banco de dados ...')
+console.log('🔌 Iniciando conexão com o banco de dados...');
 
 const connection = mysql.createConnection({
-    host: 'database',
-    port: '3306',
-    user: 'root',
-    password: 'root',
-    database: 'websiteInfo',
-})
-connection.connect(err => {
-    if (err) {
-        console.log('Error ao se conectar com o banco de dados:', err)
-        process.exit(1)
-    }
-    return console.log('conectado ao banco de dados !')
-})
+  host: process.env.DB_HOST || 'localhost',
+  port: process.env.DB_PORT || '3306',
+  user: process.env.DB_USER || 'root',
+  password: process.env.DB_PASSWORD || '',
+  database: process.env.DB_NAME || 'websiteInfo',
+});
 
-module.exports = connection
+connection.connect(err => {
+  if (err) {
+    console.error('❌ Erro ao se conectar ao banco de dados:', err);
+    process.exit(1);
+  }
+  console.log('✅ Conectado ao banco de dados!');
+});
+
+module.exports = connection;
