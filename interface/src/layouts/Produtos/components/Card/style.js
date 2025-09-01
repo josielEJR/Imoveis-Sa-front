@@ -3,6 +3,7 @@ import styled, { keyframes, css } from "styled-components"
 export const Wrapper = styled.div`
     width: 458px;
     height: 629px;
+    margin: 10px 0;
     background-color: black;
     position: relative;
     overflow: hidden;

@@ -2,7 +2,8 @@ import { useState, useEffect } from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination, Navigation, Autoplay } from 'swiper/modules'
 
-import Card from '../Card'
+import Card from '../../../../../Produtos/components/Card/index'
+// import Card from '../Card/index'
 import Selectors from '../Selectors'
 
 import { Wrapper, Container, TitleSection, Title } from './style'

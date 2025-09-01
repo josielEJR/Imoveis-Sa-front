@@ -6,7 +6,7 @@ import { FaRegHeart, FaHeart } from "react-icons/fa";
 
 import { Wrapper, BackgroundImage, CardContent, TitleSection, Title, PriceArea, RedirectIndicator, HouseInfo, InfoSection, Label, Value, Favorite } from "./style"
 
-const Card = ({ imagem, bairro, cidade, tipo, preco, area, quartos, banheiros, vagas, id }) => {
+const Card = ({ imagem, bairro, cidade, tipo, precoVenda, precoAluguel, area, quartos, banheiros, vagas, id }) => {
 
     const [hover, setHover] = useState("")
     const [favorited, setFavorited] = useState("")
@@ -104,7 +104,7 @@ const Card = ({ imagem, bairro, cidade, tipo, preco, area, quartos, banheiros, v
                 </TitleSection>
 
                 <PriceArea>
-                    {tipo} | R$ {formatarPreco(preco)}
+                    {tipo} | R$ {formatarPreco(precoVenda) > 0 && formatarPreco(precoVenda) || formatarPreco(precoAluguel)}
                 </PriceArea>
 
                 <RedirectIndicator>
