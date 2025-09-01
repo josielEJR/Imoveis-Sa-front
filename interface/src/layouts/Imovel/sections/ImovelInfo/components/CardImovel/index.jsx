@@ -12,17 +12,27 @@ const CardImovel = ({ imovelID }) => {
   const [imagens, setImagens] = useState([])
 
   useEffect(() => {
+    if (!imovelID) {
+      console.log('ID do imóvel não fornecido no CardImovel');
+      return;
+    }
+
     const requestOptions = {
       method: "GET",
       redirect: "follow"
     }
 
-    fetch(`http://localhost:3001/imoveis/buscarimovelid?id=${imovelID}`, requestOptions)
+    fetch(`/imoveis/buscarimovelid?id=${imovelID}`, requestOptions)
       .then((response) => response.json())
       .then((produto) => {
-        setProdInfo(produto[0])
-        if (produto[0]?.imagens) {
-          setImagens(produto[0].imagens.split(','))
+        if (produto && produto.length > 0) {
+          setProdInfo(produto[0])
+          if (produto[0]?.imagens) {
+            setImagens(produto[0].imagens.split(','))
+          }
+        } else {
+          setProdInfo({})
+          setImagens([])
         }
       })
       .catch((error) => {
@@ -43,7 +53,7 @@ const CardImovel = ({ imovelID }) => {
         >
           {imagens.map((imagem, index) => (
             <SwiperSlide key={index}>
-              <Image src={`http://localhost:3001/${imagem}`} alt={`Imagem ${index + 1}`} />
+              <Image src={`https://imoveis-sa.onrender.com/api/${imagem}`} alt={`Imagem ${index + 1}`} />
             </SwiperSlide>
           ))}
         </Swiper>

@@ -18,7 +18,7 @@ const LoginConsultor = () => {
     e.preventDefault()
 
     try {
-      const response = await fetch('http://localhost:3001/consultores/login', {
+      const response = await fetch('https://imoveis-sa.onrender.com/api/consultores/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -43,7 +43,7 @@ const LoginConsultor = () => {
           redirect: "follow"
         }
 
-        fetch(`http://localhost:3001/consultores/busca?consultor_email=${consultor_email}`, requestOptions)
+        fetch(`https://imoveis-sa.onrender.com/api/consultores/busca?consultor_email=${consultor_email}`, requestOptions)
           .then(data => data.text())
           .then(response => JSON.parse(response))
           .then(result => result[0])
@@ -79,7 +79,7 @@ const LoginConsultor = () => {
           redirect: "follow"
         };
 
-        fetch("http://localhost:3001/consultores/login", requestOptions)
+        fetch("https://imoveis-sa.onrender.com/api/consultores/login", requestOptions)
           .then((response) => response.text())
           .then((result) => console.log(result))
           .catch((error) => console.error(error));

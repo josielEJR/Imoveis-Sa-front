@@ -11,14 +11,12 @@ const CardInfo = ({ consultorId }) => {
                 redirect: "follow"
             }
 
-            fetch(`http://localhost:3001/consultores/buscarconsultorid?id=${consultorId}`, requestOptions)
+            fetch(`/consultores/buscarconsultorid?id=${consultorId}`, requestOptions)
                 .then(response => response.json())
                 .then(consultorArray => {
                     if (consultorArray.length > 0) {
                         const consultor = consultorArray[0]
                         setConsultorInfo(consultor)
-                    } else {
-                        console.log("Consultor não encontrado")
                     }
                 })
                 .catch(error => console.error(error))
@@ -31,7 +29,13 @@ const CardInfo = ({ consultorId }) => {
                 <CardContainer
                     key={consultorInfo.id}
                 >
-                    <Image src={`http://localhost:3001/consultores/imagensconsultores/${consultorInfo.consultorId}`} alt={`foto do consultor ${consultorInfo.nome}`} />
+                    <Image 
+                      src={`/consultores/imagensconsultores/${consultorInfo.consultorid}`} 
+                      alt={`foto do consultor ${consultorInfo.nome}`}
+                      onError={(e) => {
+                        e.target.src = '/logo-branco.png';
+                      }}
+                    />
                 </CardContainer>
                 <CardContent>
                     <Titulo>

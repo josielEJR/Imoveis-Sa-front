@@ -17,7 +17,7 @@ const Card = ({ imagem, bairro, cidade, tipo, preco, area, quartos, banheiros, v
             redirect: "follow"
         };
 
-        fetch(`http://localhost:3001/imoveis/favoritos?clienteID=${localStorage.currentUserID}`, requestOptions)
+        fetch(`/imoveis/favoritos?clienteID=${localStorage.currentUserID}`, requestOptions)
             .then((response) => response.text())
             .then((result) => JSON.parse(result))
             .then((result) => {
@@ -61,7 +61,7 @@ const Card = ({ imagem, bairro, cidade, tipo, preco, area, quartos, banheiros, v
                 redirect: "follow"
             };
 
-            fetch("http://localhost:3001/imoveis/adicionarimovelfavorito", requestOptions)
+            fetch("/imoveis/adicionarimovelfavorito", requestOptions)
                 .catch((error) => console.error(error));
         } else {
             setFavorited("false")
@@ -81,7 +81,7 @@ const Card = ({ imagem, bairro, cidade, tipo, preco, area, quartos, banheiros, v
                 redirect: "follow"
             };
 
-            fetch("http://localhost:3001/imoveis/removerimovelfavorito", requestOptions)
+            fetch("/imoveis/removerimovelfavorito", requestOptions)
                 .catch((error) => console.error(error));
         }
     }
@@ -100,7 +100,6 @@ const Card = ({ imagem, bairro, cidade, tipo, preco, area, quartos, banheiros, v
 
                 <TitleSection>
                     <Title>{bairro}</Title>
-                    <Title>{cidade}</Title>
                 </TitleSection>
 
                 <PriceArea>

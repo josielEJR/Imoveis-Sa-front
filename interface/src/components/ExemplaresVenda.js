@@ -13,7 +13,7 @@ const ExemplaresVenda = () => {
             redirect: "follow"
         };
 
-        fetch("http://localhost:3001/imoveis/venda", requestOptions)
+        fetch("https://imoveis-sa.onrender.com/api/imoveis/venda", requestOptions)
             .then((response) => response.text())
             .then((result) => JSON.parse(result))
             .then((produtos) => {

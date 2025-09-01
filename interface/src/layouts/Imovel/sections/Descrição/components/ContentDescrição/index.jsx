@@ -14,18 +14,36 @@ const ContentDescrição = ({ imovelID }) => {
   const [activeIcon, setActiveIcon] = useState(null)
 
   useEffect(() => {
+    if (!imovelID) {
+      console.log('ID do imóvel não fornecido no ContentDescrição');
+      return;
+    }
+
     const requestOptions = {
       method: "GET",
       redirect: "follow"
     }
 
-    fetch(`http://localhost:3001/imoveis/buscarimovelid?id=${imovelID}`, requestOptions)
-      .then((response) => response.text())
-      .then((result) => JSON.parse(result))
-      .then((produto) => {
-        return setProdInfo(produto[0])
+    console.log('Fazendo requisição para:', `/imoveis/buscarimovelid?id=${imovelID}`);
+    fetch(`/imoveis/buscarimovelid?id=${imovelID}`, requestOptions)
+      .then((response) => {
+        console.log('Status da resposta:', response.status);
+        return response.text();
       })
-      .catch((error) => console.error(error))
+      .then((result) => {
+        console.log('Resposta bruta:', result);
+        return JSON.parse(result);
+      })
+      .then((produto) => {
+        console.log('Dados do imóvel no ContentDescrição:', produto);
+        if (produto && produto.length > 0) {
+          setProdInfo(produto[0])
+        } else {
+          console.log('Nenhum imóvel encontrado');
+          setProdInfo({})
+        }
+      })
+      .catch((error) => console.error('Erro na requisição:', error))
   }, [imovelID])
 
   const formatarPreco = (preco) => {
@@ -33,6 +51,10 @@ const ContentDescrição = ({ imovelID }) => {
   }
 
   const getPreco = () => {
+    if (!prodInfo || !prodInfo.disponibilidade) {
+      return 'Preço não disponível'
+    }
+    
     switch (prodInfo.disponibilidade) {
       case 'aluguel':
         return formatarPreco(prodInfo.preco_aluguel)
@@ -46,6 +68,10 @@ const ContentDescrição = ({ imovelID }) => {
   }
 
   const getDisponibilidade = () => {
+    if (!prodInfo || !prodInfo.disponibilidade) {
+      return 'Disponibilidade não disponível'
+    }
+    
     switch (prodInfo.disponibilidade) {
       case 'aluguel':
         return ('Aluguel')
@@ -54,7 +80,7 @@ const ContentDescrição = ({ imovelID }) => {
       case 'venda_e_aluguel':
         return ('Venda')
       default:
-        return 'dispolidade não disponovel'
+        return 'Disponibilidade não disponível'
     }
   }
 
@@ -127,16 +153,16 @@ const ContentDescrição = ({ imovelID }) => {
               {getPreco()}
             </Value>
             <Value >
-              {formatarPreco(prodInfo.condominio)}
+              {prodInfo.condominio ? formatarPreco(prodInfo.condominio) : 'N/A'}
             </Value>
             <Value >
-              {formatarPreco(prodInfo.iptu)}
+              {prodInfo.iptu ? formatarPreco(prodInfo.iptu) : 'N/A'}
             </Value>
             <Value >
-              {formatarPreco(prodInfo.seguro_incendio)}
+              {prodInfo.seguro_incendio ? formatarPreco(prodInfo.seguro_incendio) : 'N/A'}
             </Value>
             <Value >
-              {formatarPreco(prodInfo.taxa_de_servicos)}
+              {prodInfo.taxa_de_servicos ? formatarPreco(prodInfo.taxa_de_servicos) : 'N/A'}
             </Value>
           </ContainerInfo>
         </ContainerContent>
@@ -162,10 +188,10 @@ const ContentDescrição = ({ imovelID }) => {
           </DescriçãoIcon>
           <ContainerInfo>
             <Value >
-              {prodInfo.tamanho} m²
+              {prodInfo.tamanho ? `${prodInfo.tamanho} m²` : 'N/A'}
             </Value>
             <Value >
-              {prodInfo.vagas}
+              {prodInfo.vagas || 'N/A'}
             </Value>
             {prodInfo.mobiliado && (
               <Value >
@@ -173,10 +199,10 @@ const ContentDescrição = ({ imovelID }) => {
               </Value>
             )}
             <Value >
-              {prodInfo.quartos}
+              {prodInfo.quartos || 'N/A'}
             </Value>
             <Value >
-              {prodInfo.banheiros}
+              {prodInfo.banheiros || 'N/A'}
             </Value>
           </ContainerInfo>
         </ContainerIcon>

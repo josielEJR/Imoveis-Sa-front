@@ -163,7 +163,7 @@ const Cadastrar = () => {
         };
 
         let estaCadastrado = false
-        await fetch("http://localhost:3001/clientes/cadastrar", requestOptions)
+        await fetch("https://imoveis-sa.onrender.com/api/clientes/cadastrar", requestOptions)
           .then((response) => response.text())
           .then((result) => JSON.parse(result))
           .then((result) => {

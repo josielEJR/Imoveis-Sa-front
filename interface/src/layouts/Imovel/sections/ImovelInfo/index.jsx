@@ -6,12 +6,17 @@ import DescriçãoImovel from './components/DescriçãoImovel'
 const ImovelInfo = ({ imovelID, scrollToAgendar }) => {
   const [prodInfo, setProdInfo] = useState({})
   useEffect(() => {
+    if (!imovelID) {
+      console.log('ID do imóvel não fornecido no ImovelInfo');
+      return;
+    }
+
     const requestOptions = {
       method: "GET",
       redirect: "follow"
     }
 
-    fetch(`http://localhost:3001/imoveis/buscarimovelid?id=${imovelID}`, requestOptions)
+    fetch(`/imoveis/buscarimovelid?id=${imovelID}`, requestOptions)
       .then((response) => response.json())
       .then((produto) => {
         setProdInfo(produto[0])
@@ -20,6 +25,10 @@ const ImovelInfo = ({ imovelID, scrollToAgendar }) => {
   }, [imovelID])
 
   const getDisponibilidade = () => {
+    if (!prodInfo || !prodInfo.disponibilidade) {
+      return 'Disponibilidade não disponível'
+    }
+    
     switch (prodInfo.disponibilidade) {
       case 'aluguel':
         return ('Aluguel')
@@ -28,20 +37,24 @@ const ImovelInfo = ({ imovelID, scrollToAgendar }) => {
       case 'venda_e_aluguel':
         return ('Venda')
       default:
-        return 'disponibilidade não disponivel'
+        return 'Disponibilidade não disponível'
     }
   }
 
   return (
     <Wrapper>
       <Container>
-        <Title>
-          {prodInfo.imoveisID} {prodInfo.tipo} para {getDisponibilidade()} com {prodInfo.tamanho}m², {prodInfo.quartos} quarto e com {prodInfo.vagas} vaga
-        </Title>
-        <Content>
-          <CardImovel imovelID={imovelID} />
-          <DescriçãoImovel dadosImovel={prodInfo}  scrollToAgendar={scrollToAgendar}/>
-        </Content>
+        {prodInfo && prodInfo.imoveisID ? (
+          <>
+            <Title>
+              {prodInfo.imoveisID} {prodInfo.tipo} para {getDisponibilidade()} com {prodInfo.tamanho}m², {prodInfo.quartos} quarto e com {prodInfo.vagas} vaga
+            </Title>
+            <Content>
+              <CardImovel imovelID={imovelID} />
+              <DescriçãoImovel dadosImovel={prodInfo}  scrollToAgendar={scrollToAgendar}/>
+            </Content>
+          </>
+        ) : null}
       </Container>
     </Wrapper>
   )

@@ -32,7 +32,7 @@ const ImovelPrincipal = ({ imovelID }) => {
             redirect: "follow"
         };
 
-        fetch(`http://localhost:3001/imoveis/buscarimovelid?id=${imovelID}`, requestOptions)
+        fetch(`https://imoveis-sa.onrender.com/api/imoveis/buscarimovelid?id=${imovelID}`, requestOptions)
             .then((response) => response.text())
             .then((result) => JSON.parse(result))
             .then((produto) => {
@@ -345,7 +345,7 @@ const ImovelPrincipal = ({ imovelID }) => {
                                 redirect: "follow"
                             };
 
-                            fetch(`http://localhost:3001/atualizar/${imovelID}`, requestOptions)
+                            fetch(`https://imoveis-sa.onrender.com/api/atualizar/${imovelID}`, requestOptions)
                                 .then((response) => response.text())
                                 .then((result) => console.log(result))
                                 .catch((error) => console.error(error));
@@ -372,7 +372,7 @@ const ImovelPrincipal = ({ imovelID }) => {
                                     redirect: "follow"
                                 };
 
-                                fetch(`http://localhost:3001/deletar/${imovelID}`, requestOptions)
+                                fetch(`https://imoveis-sa.onrender.com/api/deletar/${imovelID}`, requestOptions)
                                     .then((response) => response.text())
                                     .then((result) => console.log(result))
                                     .catch((error) => console.error(error));

@@ -18,7 +18,7 @@ const Agendar = ({ imovelID }) => {
             redirect: "follow"
         }
 
-        fetch(`http://localhost:3001/imoveis/buscarimovelid?id=${imovelID}`, requestOptions)
+        fetch(`/imoveis/buscarimovelid?id=${imovelID}`, requestOptions)
             .then((response) => response.json())
             .then((produto) => {
                 setProdInfo(produto[0])
@@ -53,7 +53,7 @@ const Agendar = ({ imovelID }) => {
             },
             body: JSON.stringify({
                 clienteID: localStorage.currentUserID || null,
-                consultorID: prodInfo.consultorId,
+                consultorID: prodInfo.consultorid,
                 imovelID: prodInfo.imoveisID,
                 data_visita: selectedDate,
                 hora_visita: selectedTime,
@@ -64,7 +64,7 @@ const Agendar = ({ imovelID }) => {
         }
 
         try {
-            const response = await fetch("http://localhost:3001/visita/agendarvisita", requestOptions);
+            const response = await fetch("/visita/agendarvisita", requestOptions);
             const data = await response.json();
         
             console.log("Resposta da API:", data);  // Adicione logs aqui

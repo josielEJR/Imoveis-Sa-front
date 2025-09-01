@@ -12,7 +12,7 @@ const Corretor = ({corretor}) => {
       redirect: "follow"
     }
 
-    fetch(`http://localhost:3001/consultores/buscarconsultorid?id=${corretor}`, requestOptions)
+    fetch(`/consultores/buscarconsultorid?id=${corretor}`, requestOptions)
       .then((response) => response.text())
       .then((result) => JSON.parse(result))
       .then((produto) => {

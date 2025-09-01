@@ -15,7 +15,7 @@ const Depoimentos = () => {
   const [touchStartTime, setTouchStartTime] = useState(0)
 
   useEffect(() => {
-    fetch('http://localhost:3001/clientes')
+    fetch('/clientes')
       .then(response => {
         if (!response.ok) {
           throw new Error('Network response was not ok');
@@ -121,7 +121,7 @@ const Depoimentos = () => {
               onMouseEnter={() => setPaused(true)}
               onMouseLeave={() => setPaused(false)}
             >
-              <ContainerImagem image={`http://localhost:3001/clientes/imagensclientes/${clientes[imageIndex].clienteId}`} />
+              <ContainerImagem image={`/clientes/imagensclientes/${clientes[imageIndex].clienteid}`} />
               <ContainerPerfil>
                 <ContainerQuote>
                   <BiSolidQuoteLeft size={60} />
@@ -138,7 +138,13 @@ const Depoimentos = () => {
                 </ContainerComentario>
                 <FotoPerfil>
                   <Foto>
-                    <Img src={`http://localhost:3001/clientes/imagensclientes/${clientes[imageIndex].clienteId}`} />
+                    <Img 
+                      src={`/clientes/imagensclientes/${clientes[imageIndex].clienteid}`} 
+                      onError={(e) => {
+                        console.log('Erro ao carregar imagem do cliente:', clientes[imageIndex].clienteid);
+                        e.target.src = '/logo-branco.png';
+                      }}
+                    />
                   </Foto>
                   <NomePerfil>
                     {clientes[imageIndex].nome}

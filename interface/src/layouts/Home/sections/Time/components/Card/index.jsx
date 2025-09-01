@@ -18,7 +18,7 @@ const Card = () => {
   const [swiperRef, setSwiperRef] = useState(null)
 
   useEffect(() => {
-    fetch('http://localhost:3001/consultores')
+    fetch('/api/consultores')
       .then(response => {
         if (!response.ok) {
           throw new Error('Network response was not ok');
@@ -65,7 +65,7 @@ const Card = () => {
   }
 
   const handleClick = (item) => {
-      navigate(`/corretores?id=${item.consultorId}`)
+      navigate(`/corretores?id=${item.consultorid}`)
       window.scrollTo(0, 0)
   }
 
@@ -89,9 +89,9 @@ const Card = () => {
           }}
         >
           {products.map((item) => (
-            <SwiperSlide key={item.consultorId}>
+            <SwiperSlide key={item.consultorid}>
               <CardContainer onClick={() => handleClick(item)}>
-                <Img src={`http://localhost:3001/consultores/imagensconsultores/${item.consultorId}`} alt={`foto do consultor ${item.nome}`} />
+                <Img src={`/api/consultores/imagensconsultores/${item.consultorid}`} alt={`foto do consultor ${item.nome}`} />
                 <Overlay />
                 <CardContent>
                   <InfoIcon>

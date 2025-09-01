@@ -51,7 +51,7 @@ const Cadastro = () => {
                 redirect: "follow"
             };
 
-            fetch("http://localhost:3001/clientes/cadastrar", requestOptions)
+            fetch("/clientes/cadastrar", requestOptions)
                 .then((response) => response.text())
                 .then((result) => JSON.parse(result))
                 .then((result) => {

@@ -12,17 +12,22 @@ const ImovelLayout = ({ imovelID }) => {
   const contatoRef = useRef(null)
 
   useEffect(() => {
+    if (!imovelID) {
+      console.log('ID do imóvel não fornecido');
+      return;
+    }
+
     const requestOptions = {
       method: "GET",
       redirect: "follow"
     }
 
-    fetch(`http://localhost:3001/imoveis/buscarimovelid?id=${imovelID}`, requestOptions)
+    fetch(`/imoveis/buscarimovelid?id=${imovelID}`, requestOptions)
       .then(response => response.json())
       .then(imoveis => {
         if (imoveis.length > 0) {
           const imovel = imoveis[0]
-          setConsultorId(imovel.consultorId)
+                      setConsultorId(imovel.consultorid)
         } else {
           console.log('Imóvel não encontrado');
         }

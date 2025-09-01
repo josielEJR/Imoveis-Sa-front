@@ -13,7 +13,7 @@ const ExemplaresAluguel = () => {
             redirect: "follow"
         };
 
-        fetch("http://localhost:3001/imoveis/aluguel", requestOptions)
+        fetch("https://imoveis-sa.onrender.com/api/imoveis/aluguel", requestOptions)
             .then((response) => response.text())
             .then((result) => JSON.parse(result))
             .then((produtos) => {

@@ -28,7 +28,7 @@ const Location = () => {
             redirect: "follow"
         };
 
-        const query = disponibility ? `http://localhost:3001/imoveis/cidades${disponibility}` : `http://localhost:3001/imoveis/cidades`
+        const query = disponibility ? `/imoveis/cidades${disponibility}` : `/imoveis/cidades`
 
         fetch(query, requestOptions)
             .then((response) => response.text())

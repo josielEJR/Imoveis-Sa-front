@@ -21,13 +21,13 @@ const CardsContainer = () => {
             redirect: "follow"
         };
 
-        fetch(`http://localhost:3001/visita/visitas?clienteID=${localStorage.currentUserID}`, requestOptions)
+        fetch(`/visita/visitas?clienteID=${localStorage.currentUserID}`, requestOptions)
             .then((response) => response.text())
             .then((result) => JSON.parse(result))
             .then((result) => setProducts(result))
             .catch((error) => console.error(error));
 
-        fetch(`http://localhost:3001/visita/getconsultores?clienteID=${localStorage.currentUserID}`, requestOptions)
+        fetch(`/visita/getconsultores?clienteID=${localStorage.currentUserID}`, requestOptions)
             .then((response) => response.text())
             .then((result) => JSON.parse(result))
             .then((result) => setConsultores(result))

@@ -16,7 +16,7 @@ const CardsContainer = () => {
             redirect: "follow"
         };
 
-        fetch(`http://localhost:3001/imoveis/favoritos?clienteID=${localStorage.currentUserID}`, requestOptions)
+        fetch(`/imoveis/favoritos?clienteID=${localStorage.currentUserID}`, requestOptions)
             .then((response) => response.text())
             .then((result) => JSON.parse(result))
             .then((result) => {

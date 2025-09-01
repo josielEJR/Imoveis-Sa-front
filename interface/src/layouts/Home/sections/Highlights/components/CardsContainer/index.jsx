@@ -28,7 +28,7 @@ const CardsContainer = () => {
             redirect: "follow"
         };
 
-        fetch("http://localhost:3001/imoveis/ordenarimovelqualidade", requestOptions)
+        fetch("/imoveis/ordenarimovelqualidade", requestOptions)
             .then((response) => response.text())
             .then((result) => JSON.parse(result))
             .then((result) => {

@@ -7,7 +7,14 @@ const About = ({ dados }) => {
         <Wrapper>
             <Container>
                 <CardContainer>
-                    <Image src={`http://localhost:3001/consultores/imagensconsultores/${dados.consultorId}`} alt={`foto do consultor ${dados.nome}`} />
+                    <Image 
+  src={`/consultores/imagensconsultores/${dados.consultorid}`} 
+  alt={`foto do consultor ${dados.nome}`}
+  onError={(e) => {
+    console.log('Erro ao carregar imagem do consultor:', dados.consultorid);
+    e.target.src = '/logo-branco.png';
+  }}
+/>
                 </CardContainer>
                 <CardContent>
                     <Titulo>

@@ -76,7 +76,7 @@ const Login = () => {
                 redirect: "follow"
             };
 
-            const loginValid = await fetch("http://localhost:3001/clientes/login", requestOptions)
+            const loginValid = await fetch("/clientes/login", requestOptions)
                 .then((response) => response.text())
                 .then((result) => JSON.parse(result))
                 .then((result) => result.token)
@@ -92,11 +92,12 @@ const Login = () => {
                     redirect: "follow"
                 }
 
-                fetch(`http://localhost:3001/clientes/busca?email=${email}`, requestOptions)
+                fetch(`/clientes/busca?email=${email}`, requestOptions)
                     .then(data => data.text())
                     .then(response => JSON.parse(response))
                     .then(result => result[0])
                     .then(result => {
+                        console.log('Dados do cliente no login:', result);
                         const userID = result.clienteId
                         const userNome = result.nome
                         const userEmail = result.email
@@ -129,7 +130,7 @@ const Login = () => {
                     redirect: "follow"
                 };
 
-                const consultorLoginValid = await fetch("http://localhost:3001/consultores/login", requestOptions)
+                const consultorLoginValid = await fetch("/consultores/login", requestOptions)
                     .then((response) => response.text())
                     .then((result) => JSON.parse(result))
                     .then((result) => result.token)
@@ -145,7 +146,7 @@ const Login = () => {
                         redirect: "follow"
                     }
 
-                    fetch(`http://localhost:3001/consultores/busca?consultor_email=${email}`, requestOptions)
+                    fetch(`/consultores/busca?consultor_email=${email}`, requestOptions)
                         .then(data => data.text())
                         .then(response => JSON.parse(response))
                         .then(result => result[0])
@@ -154,7 +155,7 @@ const Login = () => {
                             const userEmail = result.consultor_email
                             const userCelular = result.celular
                             const userTipo = result.tipo
-                            const userId = result.consultorId
+                            const userId = result.consultorid
                             localStorage.setItem("tipo", userTipo)
                             localStorage.setItem("id", userId)
                             localStorage.setItem("currentUserNome", userNome)

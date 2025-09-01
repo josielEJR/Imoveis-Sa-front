@@ -10,7 +10,7 @@ const Clientes = () => {
 
   async function obterClientes() {
     try {
-      const response = await fetch('http://localhost:3001/clientes');
+      const response = await fetch('https://imoveis-sa.onrender.com/api/clientes');
       if (!response.ok) {
         throw new Error('Erro ao obter clientes');
       }

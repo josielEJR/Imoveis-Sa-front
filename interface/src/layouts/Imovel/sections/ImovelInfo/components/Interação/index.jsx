@@ -21,7 +21,7 @@ const Interação = ({ dadosImovel }) => {
     };
 
     if (localStorage.currentUserID) {
-      fetch(`http://localhost:3001/imoveis/favoritos?clienteID=${localStorage.currentUserID}`, requestOptions)
+      fetch(`/imoveis/favoritos?clienteID=${localStorage.currentUserID}`, requestOptions)
         .then(response => response.json())
         .then(result => {
           const isFavorited = result.some(elem => elem.imoveisID === dadosImovel.imoveisID);
@@ -36,7 +36,7 @@ const Interação = ({ dadosImovel }) => {
       return window.location.href = "/login?error=Faça login para favoritar um imóvel";
     }
 
-    const url = favorited ? "http://localhost:3001/imoveis/removerimovelfavorito" : "http://localhost:3001/imoveis/adicionarimovelfavorito";
+    const url = favorited ? "/imoveis/removerimovelfavorito" : "/imoveis/adicionarimovelfavorito";
     const method = favorited ? "DELETE" : "POST";
 
     const requestOptions = {

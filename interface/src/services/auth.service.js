@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const apiURL = 'http://localhost:3001'
+const apiURL = 'https://imoveis-sa.onrender.com/api/'
 
 const authService = {
 

@@ -85,7 +85,7 @@ const FiltroBusca = () => {
     }
 
     if (imovelID && !filterCheck) {
-      fetch(`http://localhost:3001/imoveis/${imovelID}`, { method: 'GET', redirect: 'follow' })
+      fetch(`/imoveis/${imovelID}`, { method: 'GET', redirect: 'follow' })
         .then((response) => {
           if (!response.ok) {
             throw new Error('Erro na resposta da API')
@@ -132,7 +132,7 @@ const FiltroBusca = () => {
         query += query ? `&bairro=${selectedBairro.join(',')}` : `?bairro=${selectedBairro.join(',')}`
       }
 
-      fetch("http://localhost:3001/imoveis/busca" + query, { method: "GET", redirect: "follow" })
+      fetch("/imoveis/busca" + query, { method: "GET", redirect: "follow" })
         .then((response) => response.json())
         .then((data) => {
           console.log('Filtros selecionado :', data)

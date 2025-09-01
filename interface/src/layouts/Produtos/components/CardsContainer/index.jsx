@@ -20,7 +20,7 @@ const CardsContainer = ({ filters }) => {
             redirect: "follow"
         };
 
-        fetch(`http://localhost:3001/imoveis/busca${filters}`, requestOptions)
+        fetch(`/imoveis/busca${filters}`, requestOptions)
             .then((response) => response.text())
             .then((result) => JSON.parse(result))
             .then((result) => {

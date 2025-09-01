@@ -12,7 +12,7 @@ const Imoveis = ({corretor}) => {
 
     useEffect(() => {
         if (corretor) {
-            fetch(`http://localhost:3001/imoveis/porConsultor?consultorId=${corretor}`) 
+            fetch(`/imoveis/porConsultor?consultorId=${corretor}`) 
                 .then(response => response.json())
                 .then(data => {
                     setImoveis(data)
@@ -48,7 +48,7 @@ const Imoveis = ({corretor}) => {
                         return (
                             <Card key={imovel.id}
                                 onClick={() => window.location.href = "/imovel?id=" + imovel.imoveisID}>
-                                <BackgroundImage image={`http://localhost:3001/imoveis/imagensimovel/${imovel.imoveisID}`} alt={`Imagem do imóvel ${imovel.imoveisID}`}>
+                                <BackgroundImage image={`/imoveis/imagensimovel/${imovel.imoveisID}`} alt={`Imagem do imóvel ${imovel.imoveisID}`}>
                                 <Overlay />
                                 </BackgroundImage>
                                 <CardContent>
