@@ -29,7 +29,7 @@ const CardsContainer = () => {
             redirect: "follow"
         };
 
-        fetch("/imoveis/ordenarimovelqualidade", requestOptions)
+        fetch("https://imoveis-sa.onrender.com/api/imoveis/ordenarimovelqualidade", requestOptions)
             .then((response) => response.text())
             .then((result) => JSON.parse(result))
             .then((result) => {
