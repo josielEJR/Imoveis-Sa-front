@@ -6,11 +6,6 @@ import DescriçãoImovel from './components/DescriçãoImovel'
 const ImovelInfo = ({ imovelID, scrollToAgendar }) => {
   const [prodInfo, setProdInfo] = useState({})
   useEffect(() => {
-    if (!imovelID) {
-      console.log('ID do imóvel não fornecido no ImovelInfo');
-      return;
-    }
-
     const requestOptions = {
       method: "GET",
       redirect: "follow"
@@ -44,17 +39,13 @@ const ImovelInfo = ({ imovelID, scrollToAgendar }) => {
   return (
     <Wrapper>
       <Container>
-        {prodInfo && prodInfo.imoveisID ? (
-          <>
-            <Title>
-              {prodInfo.imoveisID} {prodInfo.tipo} para {getDisponibilidade()} com {prodInfo.tamanho}m², {prodInfo.quartos} quarto e com {prodInfo.vagas} vaga
-            </Title>
-            <Content>
-              <CardImovel imovelID={imovelID} />
-              <DescriçãoImovel dadosImovel={prodInfo}  scrollToAgendar={scrollToAgendar}/>
-            </Content>
-          </>
-        ) : null}
+        <Title>
+          {prodInfo.imoveisID} {prodInfo.tipo} para {getDisponibilidade()} com {prodInfo.tamanho}m², {prodInfo.quartos} quarto e com {prodInfo.vagas} vaga
+        </Title>
+        <Content>
+          <CardImovel imovelID={imovelID} />
+          <DescriçãoImovel dadosImovel={prodInfo} scrollToAgendar={scrollToAgendar} />
+        </Content>
       </Container>
     </Wrapper>
   )
