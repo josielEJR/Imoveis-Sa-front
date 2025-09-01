@@ -103,7 +103,7 @@ const Card = ({ imagem, bairro, cidade, tipo, precoVenda, precoAluguel, area, qu
                 </TitleSection>
 
                 <PriceArea>
-                    {tipo} | R$ {formatarPreco(precoVenda) > 0 && precoVenda || formatarPreco(precoAluguel)}
+                    {tipo} | R$ {formatarPreco(precoVenda) > 0 && formatarPreco(precoVenda) || formatarPreco(precoAluguel)}
                 </PriceArea>
 
                 <RedirectIndicator>
