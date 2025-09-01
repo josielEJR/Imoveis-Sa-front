@@ -25,7 +25,7 @@ const ContentDescrição = ({ imovelID }) => {
     }
 
     console.log('Fazendo requisição para:', `/imoveis/buscarimovelid?id=${imovelID}`);
-    fetch(`/imoveis/buscarimovelid?id=${imovelID}`, requestOptions)
+    fetch(`https://imoveis-sa.onrender.com/api/imoveis/buscarimovelid?id=${imovelID}`, requestOptions)
       .then((response) => {
         console.log('Status da resposta:', response.status);
         return response.text();

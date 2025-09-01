@@ -90,7 +90,7 @@ const FiltroBusca = () => {
     }
 
     if (imovelID && !filterCheck) {
-      fetch(`/imoveis/buscarimovelid?id=${imovelID}`, { method: 'GET', redirect: 'follow' })
+      fetch(`https://imoveis-sa.onrender.com/api/imoveis/buscarimovelid?id=${imovelID}`, { method: 'GET', redirect: 'follow' })
         .then((response) => {
           if (!response.ok) {
             throw new Error('Erro na resposta da API')
@@ -140,7 +140,7 @@ const FiltroBusca = () => {
         query += query ? `&bairro=${selectedBairro.join(',')}` : `?bairro=${selectedBairro.join(',')}`
       }
 
-      fetch("/imoveis/busca" + query, { method: "GET", redirect: "follow" })
+      fetch("https://imoveis-sa.onrender.com/api/imoveis/busca" + query, { method: "GET", redirect: "follow" })
         .then((response) => response.json())
         .then((data) => {
           console.log('Filtros selecionado :', data)

@@ -12,7 +12,7 @@ const Imoveis = ({corretor}) => {
 
     useEffect(() => {
         if (corretor) {
-            fetch(`/imoveis/porConsultor?consultorId=${corretor}`) 
+            fetch(`https://imoveis-sa.onrender.com/api/imoveis/porConsultor?consultorId=${corretor}`) 
                 .then(response => response.json())
                 .then(data => {
                     setImoveis(data)

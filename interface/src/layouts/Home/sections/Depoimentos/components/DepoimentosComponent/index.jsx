@@ -15,7 +15,7 @@ const Depoimentos = () => {
   const [touchStartTime, setTouchStartTime] = useState(0)
 
   useEffect(() => {
-    fetch('/clientes')
+    fetch('https://imoveis-sa.onrender.com/api/clientes')
       .then(response => {
         if (!response.ok) {
           throw new Error('Network response was not ok');

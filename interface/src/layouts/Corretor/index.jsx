@@ -12,7 +12,7 @@ const Corretor = ({corretor}) => {
       redirect: "follow"
     }
 
-    fetch(`/consultores/buscarconsultorid?id=${corretor}`, requestOptions)
+    fetch(`https://imoveis-sa.onrender.com/api/consultores/buscarconsultorid?id=${corretor}`, requestOptions)
       .then((response) => response.text())
       .then((result) => JSON.parse(result))
       .then((produto) => {

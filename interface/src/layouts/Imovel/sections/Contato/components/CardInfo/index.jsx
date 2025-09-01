@@ -11,7 +11,7 @@ const CardInfo = ({ consultorId }) => {
                 redirect: "follow"
             }
 
-            fetch(`/consultores/buscarconsultorid?id=${consultorId}`, requestOptions)
+            fetch(`https://imoveis-sa.onrender.com/api/consultores/buscarconsultorid?id=${consultorId}`, requestOptions)
                 .then(response => response.json())
                 .then(consultorArray => {
                     if (consultorArray.length > 0) {

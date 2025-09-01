@@ -21,13 +21,13 @@ const CardsContainer = () => {
             redirect: "follow"
         };
 
-        fetch(`/visita/visitas?clienteID=${localStorage.currentUserID}`, requestOptions)
+        fetch(`https://imoveis-sa.onrender.com/api/visita/visitas?clienteID=${localStorage.currentUserID}`, requestOptions)
             .then((response) => response.text())
             .then((result) => JSON.parse(result))
             .then((result) => setProducts(result))
             .catch((error) => console.error(error));
 
-        fetch(`/visita/getconsultores?clienteID=${localStorage.currentUserID}`, requestOptions)
+        fetch(`https://imoveis-sa.onrender.com/api/visita/getconsultores?clienteID=${localStorage.currentUserID}`, requestOptions)
             .then((response) => response.text())
             .then((result) => JSON.parse(result))
             .then((result) => setConsultores(result))

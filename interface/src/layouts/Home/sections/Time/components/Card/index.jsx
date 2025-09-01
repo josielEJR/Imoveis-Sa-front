@@ -18,7 +18,7 @@ const Card = () => {
   const [swiperRef, setSwiperRef] = useState(null)
 
   useEffect(() => {
-    fetch('/api/consultores')
+    fetch('https://imoveis-sa.onrender.com/api/api/consultores')
       .then(response => {
         if (!response.ok) {
           throw new Error('Network response was not ok');

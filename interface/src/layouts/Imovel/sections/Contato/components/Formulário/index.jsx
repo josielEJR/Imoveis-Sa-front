@@ -18,7 +18,7 @@ const Agendar = ({ imovelID }) => {
             redirect: "follow"
         }
 
-        fetch(`/imoveis/buscarimovelid?id=${imovelID}`, requestOptions)
+        fetch(`https://imoveis-sa.onrender.com/api/imoveis/buscarimovelid?id=${imovelID}`, requestOptions)
             .then((response) => response.json())
             .then((produto) => {
                 setProdInfo(produto[0])
@@ -64,7 +64,7 @@ const Agendar = ({ imovelID }) => {
         }
 
         try {
-            const response = await fetch("/visita/agendarvisita", requestOptions);
+            const response = await fetch("https://imoveis-sa.onrender.com/api/visita/agendarvisita", requestOptions);
             const data = await response.json();
         
             console.log("Resposta da API:", data);  // Adicione logs aqui

@@ -44,9 +44,9 @@ const Content = () => {
 
                 {displayLogin <= 950 && <Login />}
 
-                <NavOption tipo={"Venda"} url={"/imoveis/cidadesvenda"} right="-260" />
+                <NavOption tipo={"Venda"} url={"https://imoveis-sa.onrender.com/api/imoveis/cidadesvenda"} right="-260" />
 
-                <NavOption tipo={"Aluguel"} url={"/imoveis/cidadesaluguel"} right="-260" />
+                <NavOption tipo={"Aluguel"} url={"https://imoveis-sa.onrender.com/api/imoveis/cidadesaluguel"} right="-260" />
 
                 <Anunciar />
 

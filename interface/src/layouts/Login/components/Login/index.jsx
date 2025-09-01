@@ -76,7 +76,7 @@ const Login = () => {
                 redirect: "follow"
             };
 
-            const loginValid = await fetch("/clientes/login", requestOptions)
+            const loginValid = await fetch("https://imoveis-sa.onrender.com/api/clientes/login", requestOptions)
                 .then((response) => response.text())
                 .then((result) => JSON.parse(result))
                 .then((result) => result.token)
@@ -92,7 +92,7 @@ const Login = () => {
                     redirect: "follow"
                 }
 
-                fetch(`/clientes/busca?email=${email}`, requestOptions)
+                fetch(`https://imoveis-sa.onrender.com/api/clientes/busca?email=${email}`, requestOptions)
                     .then(data => data.text())
                     .then(response => JSON.parse(response))
                     .then(result => result[0])
@@ -130,7 +130,7 @@ const Login = () => {
                     redirect: "follow"
                 };
 
-                const consultorLoginValid = await fetch("/consultores/login", requestOptions)
+                const consultorLoginValid = await fetch("https://imoveis-sa.onrender.com/api/consultores/login", requestOptions)
                     .then((response) => response.text())
                     .then((result) => JSON.parse(result))
                     .then((result) => result.token)
@@ -146,7 +146,7 @@ const Login = () => {
                         redirect: "follow"
                     }
 
-                    fetch(`/consultores/busca?consultor_email=${email}`, requestOptions)
+                    fetch(`https://imoveis-sa.onrender.com/api/consultores/busca?consultor_email=${email}`, requestOptions)
                         .then(data => data.text())
                         .then(response => JSON.parse(response))
                         .then(result => result[0])

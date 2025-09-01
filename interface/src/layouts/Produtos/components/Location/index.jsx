@@ -28,7 +28,7 @@ const Location = () => {
             redirect: "follow"
         };
 
-        const query = disponibility ? `/imoveis/cidades${disponibility}` : `/imoveis/cidades`
+        const query = disponibility ? `https://imoveis-sa.onrender.com/api/imoveis/cidades${disponibility}` : `https://imoveis-sa.onrender.com/api/imoveis/cidades`
 
         fetch(query, requestOptions)
             .then((response) => response.text())

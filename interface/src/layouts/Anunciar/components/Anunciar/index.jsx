@@ -71,7 +71,7 @@ const Anunciar = () => {
                 redirect: "follow"
             };
 
-            fetch("/imoveis/adicionar", requestOptions)
+            fetch("https://imoveis-sa.onrender.com/api/imoveis/adicionar", requestOptions)
                 .then((response) => response.text())
                 .then((result) => {
                     console.log(result)

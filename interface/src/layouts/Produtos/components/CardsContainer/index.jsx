@@ -20,7 +20,7 @@ const CardsContainer = ({ filters }) => {
             redirect: "follow"
         };
 
-        fetch(`/imoveis/busca${filters}`, requestOptions)
+        fetch(`https://imoveis-sa.onrender.com/api/imoveis/busca${filters}`, requestOptions)
             .then((response) => response.text())
             .then((result) => JSON.parse(result))
             .then((result) => {

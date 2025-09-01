@@ -16,7 +16,7 @@ const CardsContainer = () => {
             redirect: "follow"
         };
 
-        fetch(`/imoveis/favoritos?clienteID=${localStorage.currentUserID}`, requestOptions)
+        fetch(`https://imoveis-sa.onrender.com/api/imoveis/favoritos?clienteID=${localStorage.currentUserID}`, requestOptions)
             .then((response) => response.text())
             .then((result) => JSON.parse(result))
             .then((result) => {

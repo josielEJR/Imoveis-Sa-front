@@ -22,7 +22,7 @@ const CardImovel = ({ imovelID }) => {
       redirect: "follow"
     }
 
-    fetch(`/imoveis/buscarimovelid?id=${imovelID}`, requestOptions)
+    fetch(`https://imoveis-sa.onrender.com/api/imoveis/buscarimovelid?id=${imovelID}`, requestOptions)
       .then((response) => response.json())
       .then((produto) => {
         if (produto && produto.length > 0) {

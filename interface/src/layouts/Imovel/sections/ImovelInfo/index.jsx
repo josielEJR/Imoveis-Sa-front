@@ -11,7 +11,7 @@ const ImovelInfo = ({ imovelID, scrollToAgendar }) => {
       redirect: "follow"
     }
 
-    fetch(`/imoveis/buscarimovelid?id=${imovelID}`, requestOptions)
+    fetch(`https://imoveis-sa.onrender.com/api/imoveis/buscarimovelid?id=${imovelID}`, requestOptions)
       .then((response) => response.json())
       .then((produto) => {
         setProdInfo(produto[0])

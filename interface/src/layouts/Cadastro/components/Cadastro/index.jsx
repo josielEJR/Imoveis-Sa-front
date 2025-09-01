@@ -51,7 +51,7 @@ const Cadastro = () => {
                 redirect: "follow"
             };
 
-            fetch("/clientes/cadastrar", requestOptions)
+            fetch("https://imoveis-sa.onrender.com/api/clientes/cadastrar", requestOptions)
                 .then((response) => response.text())
                 .then((result) => JSON.parse(result))
                 .then((result) => {

@@ -17,7 +17,7 @@ const Card = ({ imagem, bairro, cidade, tipo, precoVenda, precoAluguel, area, qu
             redirect: "follow"
         };
 
-        fetch(`/imoveis/favoritos?clienteID=${localStorage.currentUserID}`, requestOptions)
+        fetch(`https://imoveis-sa.onrender.com/api/imoveis/favoritos?clienteID=${localStorage.currentUserID}`, requestOptions)
             .then((response) => response.text())
             .then((result) => JSON.parse(result))
             .then((result) => {
@@ -61,7 +61,7 @@ const Card = ({ imagem, bairro, cidade, tipo, precoVenda, precoAluguel, area, qu
                 redirect: "follow"
             };
 
-            fetch("/imoveis/adicionarimovelfavorito", requestOptions)
+            fetch("https://imoveis-sa.onrender.com/api/imoveis/adicionarimovelfavorito", requestOptions)
                 .catch((error) => console.error(error));
         } else {
             setFavorited("false")
@@ -81,7 +81,7 @@ const Card = ({ imagem, bairro, cidade, tipo, precoVenda, precoAluguel, area, qu
                 redirect: "follow"
             };
 
-            fetch("/imoveis/removerimovelfavorito", requestOptions)
+            fetch("https://imoveis-sa.onrender.com/api/imoveis/removerimovelfavorito", requestOptions)
                 .catch((error) => console.error(error));
         }
     }

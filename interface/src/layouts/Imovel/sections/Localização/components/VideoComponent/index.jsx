@@ -15,7 +15,7 @@ const VideoComponent = ({imovelID}) => {
       redirect: "follow"
     }
 
-    fetch(`/imoveis/buscarimovelid?id=${imovelID}`, requestOptions)
+    fetch(`https://imoveis-sa.onrender.com/api/imoveis/buscarimovelid?id=${imovelID}`, requestOptions)
       .then((response) => response.text())
       .then((result) => JSON.parse(result))
       .then((produto) => {
