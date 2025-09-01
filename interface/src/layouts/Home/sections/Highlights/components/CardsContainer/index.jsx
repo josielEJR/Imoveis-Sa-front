@@ -109,12 +109,13 @@ const CardsContainer = () => {
                                 bairro={prod.bairro.toUpperCase()}
                                 cidade={prod.cidade.toUpperCase()}
                                 tipo={prod.tipo.toUpperCase()}
-                                preco={prod.preco_venda || prod.preco_aluguel}
+                                precoVenda={prod.preco_venda}
+                                precoAluguel={prod.preco_aluguel}
                                 area={prod.tamanho}
                                 quartos={prod.quartos}
                                 banheiros={prod.banheiros}
                                 vagas={prod.vagas}
-                                id={prod.imoveisID}
+                                id={prod.imoveisid}
                             />
                         </SwiperSlide>
                     ))}
