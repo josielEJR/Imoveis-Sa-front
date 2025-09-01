@@ -49,7 +49,7 @@ const Itens = ({ lista, redirect, right }) => {
                             }
                         })}
                         <Li key={"exploraroutrascidades"} onMouseEnter={() => handleMouseEnter("")} onClick={() => handleMouseEnter("")} style={{ fontSize: "16px" }}>
-                            <Button onClick={() => window.location.href="/imoveis"}>Explorar outras cidades</Button>
+                            <Button onClick={() => window.location.href="/produtos"}>Explorar outras cidades</Button>
                         </Li>
                     </Ul>
 
@@ -60,13 +60,13 @@ const Itens = ({ lista, redirect, right }) => {
 
                                 <Ul>
                                     <Li>
-                                        <a href={`/imoveis?cidade=${selected}&tipo=casa&disponibilidade=${redirect}`}>Casas</a>
+                                        <a href={`/produtos?cidade=${selected}&tipo=Casa&disponibilidade=${redirect}`}>Casas</a>
                                     </Li>
                                     <Li>
-                                        <a href={`/imoveis?cidade=${selected}&tipo=apartamento&disponibilidade=${redirect}`}>Apartamentos</a>
+                                        <a href={`/produtos?cidade=${selected}&tipo=Apartamento&disponibilidade=${redirect}`}>Apartamentos</a>
                                     </Li>
                                     <Li>
-                                        <a href={`/imoveis?cidade=${selected}&disponibilidade=${redirect}`}>Todos</a>
+                                        <a href={`/produtos?cidade=${selected}&disponibilidade=${redirect}`}>Todos</a>
                                     </Li>
                                 </Ul>
                             </DropdownContent>

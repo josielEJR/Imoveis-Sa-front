@@ -47,7 +47,7 @@ const Location = () => {
                 {cities.map((elem, index) => {
                     if (elem.toLowerCase().includes(location.toLowerCase())) {
                         return <Li key={`${elem}${index}`}>
-                            <Button onClick={() => window.location.href = `/imoveis?cidade=${elem}&disponibilidade=${disponibility}`} >
+                            <Button onClick={() => window.location.href = `/produtos?cidade=${elem}&disponibilidade=${disponibility}`} >
                                 {elem}
                             </Button>
                         </Li>
@@ -78,7 +78,7 @@ const Location = () => {
                                 if (key.code === "Enter") {
                                     if (cities.includes(location)) {
                                         setError('')
-                                        return window.location.href = `/imoveis?cidade=${location}&disponibilidade=${disponibility}`
+                                        return window.location.href = `/produtos?cidade=${location}&disponibilidade=${disponibility}`
                                     } else {
                                         setError("A cidade inserida não está disponível")
                                     }
@@ -89,7 +89,7 @@ const Location = () => {
                             {handleDropdown()}
                         </Dropdown>
                     </Label>
-                    <Button onClick={() => window.location.href = `/imoveis?cidade=${location}&disponibilidade=${disponibility}`} >
+                    <Button onClick={() => window.location.href = `/produtos?cidade=${location}&disponibilidade=${disponibility}`} >
                         <FaSearch />
                     </Button>
                 </InsertLocation>

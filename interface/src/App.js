@@ -22,7 +22,7 @@ const App = () => {
       <BrowserRouter>
         <NavBar />
         <Routes>
-          <Route path='/imoveis' element={<Imoveis />} />
+          <Route path='/produtos' element={<Imoveis />} />
           <Route path='/corretores' element={<PageCorretor />} />
           <Route path='/sobrenos' element={<SobreNos />} />
           <Route path='/anunciarimovel' element={<AnunciarImovel />} />

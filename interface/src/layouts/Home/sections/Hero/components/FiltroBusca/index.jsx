@@ -146,7 +146,8 @@ const FiltroBusca = () => {
           console.log('Filtros selecionado :', data)
           setProdutos(data)
           if (data.length > 0) {
-            navigate(`/imoveis${query}`)
+            // navigate(`/produtos${query}`)
+            window.location.href = `/produtos${query}`
           } else {
             console.log('Não foram encontrados imóveis com os filtros selecionados.')
           }

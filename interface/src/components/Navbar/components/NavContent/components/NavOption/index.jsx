@@ -47,7 +47,7 @@ const NavOption = ({ tipo, url, right }) => {
             )
         } else {
             return (
-                <Link href={`imoveis?disponibilidade=${redirect}`} onClick={handleClick}>
+                <Link href={`produtos?disponibilidade=${redirect}`} onClick={handleClick}>
                     <Text className='p-1'>{tipo}</Text><FontAwesomeIcon icon={faAngleDown} />
                 </Link>
             )
