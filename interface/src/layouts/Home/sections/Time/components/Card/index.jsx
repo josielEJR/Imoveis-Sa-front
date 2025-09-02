@@ -91,7 +91,7 @@ const Card = () => {
           {products.map((item) => (
             <SwiperSlide key={item.consultorid}>
               <CardContainer onClick={() => handleClick(item)}>
-                <Img src={`/api/consultores/imagensconsultores/${item.consultorid}`} alt={`foto do consultor ${item.nome}`} />
+                <Img src={`https://img.freepik.com/fotos-premium/sorriso-de-retrato-e-mulher-de-negocios-com-os-bracos-cruzados-no-escritorio-pronto-para-os-objetivos-da-empresa-chefe-lider-e-empreendedora-feliz-ou-confiante-do-canada-com-missao-de-visao-ou-mentalidade-de-sucesso_590464-149832.jpg?semt=ais_hybrid&w=740&q=80`} alt={`foto do consultor ${item.nome}`} />
                 <Overlay />
                 <CardContent>
                   <InfoIcon>

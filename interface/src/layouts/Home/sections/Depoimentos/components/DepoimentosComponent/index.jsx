@@ -22,7 +22,15 @@ const Depoimentos = () => {
         }
         return response.json();
       })
-      .then(data => setClientes(data))
+      .then(data => {
+        const arrayAux = []
+        data.forEach((data, index) => {
+          if (index < 3) {
+            arrayAux.push(data)
+          }
+        })
+        setClientes(arrayAux)
+      })
       .catch(error => console.error('Houve um problema com a operação de fetch:', error));
   }, [])
 
@@ -121,7 +129,7 @@ const Depoimentos = () => {
               onMouseEnter={() => setPaused(true)}
               onMouseLeave={() => setPaused(false)}
             >
-              <ContainerImagem image={`/clientes/imagensclientes/${clientes[imageIndex].clienteid}`} />
+              <ContainerImagem image={`https://therapistlosangeles.com/wp-content/uploads/2024/03/Family-rediscovering-joy-after-family-therapy.jpg`} />
               <ContainerPerfil>
                 <ContainerQuote>
                   <BiSolidQuoteLeft size={60} />
@@ -138,8 +146,8 @@ const Depoimentos = () => {
                 </ContainerComentario>
                 <FotoPerfil>
                   <Foto>
-                    <Img 
-                      src={`/clientes/imagensclientes/${clientes[imageIndex].clienteid}`} 
+                    <Img
+                      src={`https://therapistlosangeles.com/wp-content/uploads/2024/03/Family-rediscovering-joy-after-family-therapy.jpg`}
                       onError={(e) => {
                         console.log('Erro ao carregar imagem do cliente:', clientes[imageIndex].clienteid);
                         e.target.src = '/logo-branco.png';
